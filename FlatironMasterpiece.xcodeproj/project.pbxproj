@@ -14,6 +14,8 @@
 		27AAFE341DDAC9AA00C08348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE321DDAC9AA00C08348 /* Main.storyboard */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
+		45F553441DDCEFCD002E799A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553431DDCEFCD002E799A /* Secrets.swift */; };
+		45F553461DDCF01E002E799A /* APIClient_GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClient_GooglePlaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		27AAFE351DDAC9AA00C08348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27AAFE381DDAC9AA00C08348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27AAFE3A1DDAC9AA00C08348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45F553431DDCEFCD002E799A /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		45F553451DDCF01E002E799A /* APIClient_GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient_GooglePlaces.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,12 +70,22 @@
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				27AAFE301DDAC9AA00C08348 /* ViewController.swift */,
 				27AAFE321DDAC9AA00C08348 /* Main.storyboard */,
+				45F553471DDCF03A002E799A /* APIClients */,
 				275D177A1DDB8869001CE463 /* User.swift */,
+				45F553431DDCEFCD002E799A /* Secrets.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 			);
 			path = FlatironMasterpiece;
+			sourceTree = "<group>";
+		};
+		45F553471DDCF03A002E799A /* APIClients */ = {
+			isa = PBXGroup;
+			children = (
+				45F553451DDCF01E002E799A /* APIClient_GooglePlaces.swift */,
+			);
+			name = APIClients;
 			sourceTree = "<group>";
 		};
 		F21936DC72EBB2F540AE7ED2 /* Pods */ = {
@@ -126,7 +140,7 @@
 				TargetAttributes = {
 					27AAFE2A1DDAC9AA00C08348 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = T88J73TZ8D;
+						DevelopmentTeam = 74479ETUA8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -216,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AAFE311DDAC9AA00C08348 /* ViewController.swift in Sources */,
+				45F553441DDCEFCD002E799A /* Secrets.swift in Sources */,
+				45F553461DDCF01E002E799A /* APIClient_GooglePlaces.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 			);
@@ -341,10 +357,11 @@
 			baseConfigurationReference = D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T88J73TZ8D;
+				DEVELOPMENT_TEAM = 74479ETUA8;
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = eli.FlatironMasterpiece;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yayitserica.FlatironMasterpiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -355,10 +372,11 @@
 			baseConfigurationReference = 5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T88J73TZ8D;
+				DEVELOPMENT_TEAM = 74479ETUA8;
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = eli.FlatironMasterpiece;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yayitserica.FlatironMasterpiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
