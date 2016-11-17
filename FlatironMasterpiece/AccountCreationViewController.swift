@@ -27,6 +27,14 @@ class AccountCreationViewController: UIViewController {
         
         createViews()
         
+//        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
+//        
+//        for specialView in specialViews {
+//            
+//            specialView.specialConstrain(to: view)
+//            
+//        }
+        
     }
 
     func createViews() {
@@ -132,9 +140,7 @@ class AccountCreationViewController: UIViewController {
         createAccountButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
-        createAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        createAccountButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        createAccountButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        createAccountButton.specialConstrain(to: view)
         
         
     }
@@ -142,3 +148,19 @@ class AccountCreationViewController: UIViewController {
 
 }
 
+
+
+extension UIView {
+    
+    func specialConstrain(to view: UIView) {
+        
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        
+    }
+    
+    
+}
