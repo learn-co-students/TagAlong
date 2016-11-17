@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4BE56BB58A6BBB767185452A27F7A348 /* Pods-FlatironMasterpiece-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CECBDC7629CDE9EBA3E6D49BCE1E9555 /* Pods-FlatironMasterpiece-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F7446D16D9F4B842418185C148E47C8 /* Pods-FlatironMasterpiece-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 145468193CEC00B919A3AA90CA4A617F /* Pods-FlatironMasterpiece-dummy.m */; };
-
-		591E3369636C6E78FC35BF3F70FFC62C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-
-		580FDD740CC8E6C76332B022CF087956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-
+		7F3D300570225F16EE6D6C5822E6E04B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		AB12B92565459CC251CD3AD2480F023F /* Pods-FlatironMasterpiece-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CECBDC7629CDE9EBA3E6D49BCE1E9555 /* Pods-FlatironMasterpiece-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECAA1F133BA4792A87639E3708BD3CE1 /* Pods-FlatironMasterpiece-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 145468193CEC00B919A3AA90CA4A617F /* Pods-FlatironMasterpiece-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,23 +23,13 @@
 		24C829ED3424274152EAA1C4DDF81EF3 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		2DF17B5E7D5F87D48E5DDE49A1F859D1 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Subspecs/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		427E151AEFCD5428FC2707924FA67761 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5658F4E267C3BDDA523E9F1B4D91F9C1 /* Pods-FlatironMasterpiece.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FlatironMasterpiece.modulemap"; sourceTree = "<group>"; };
-<<<<<<< HEAD
+		5658F4E267C3BDDA523E9F1B4D91F9C1 /* Pods-FlatironMasterpiece.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FlatironMasterpiece.modulemap"; sourceTree = "<group>"; };
 		74B70147A64EA87FBB49D8E109B64F98 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Subspecs/Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
-		A82E12354170E4401F61BE06064BF1F1 /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82E12354170E4401F61BE06064BF1F1 /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FlatironMasterpiece.framework; path = "Pods-FlatironMasterpiece.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C296AE9F36EDDC55E5689D51A3CCE404 /* Pods-FlatironMasterpiece-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlatironMasterpiece-acknowledgements.plist"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-=======
-		653F849BC2732CB3078BF4AB439A19ED /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
-		8E60FD512C179F5D3C63DA4830C756DB /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Subspecs/Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A82E12354170E4401F61BE06064BF1F1 /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C296AE9F36EDDC55E5689D51A3CCE404 /* Pods-FlatironMasterpiece-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlatironMasterpiece-acknowledgements.plist"; sourceTree = "<group>"; };
-		C5278AABDE2FEB24A3A46119828FFA5B /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
->>>>>>> master
 		CECBDC7629CDE9EBA3E6D49BCE1E9555 /* Pods-FlatironMasterpiece-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlatironMasterpiece-umbrella.h"; sourceTree = "<group>"; };
 		DFCD23526EAA28214E444EBC6E887F7A /* Pods-FlatironMasterpiece-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlatironMasterpiece-frameworks.sh"; sourceTree = "<group>"; };
 		F769EDE7CC5A77CDBE3B2309AF3BD5FA /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
@@ -51,15 +37,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7602AB62AB088700178727FD798566BB /* Frameworks */ = {
+		A0F811E2B02019FFC08883E73CFB6AB9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				591E3369636C6E78FC35BF3F70FFC62C /* Foundation.framework in Frameworks */,
-=======
-				580FDD740CC8E6C76332B022CF087956 /* Foundation.framework in Frameworks */,
->>>>>>> master
+				7F3D300570225F16EE6D6C5822E6E04B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,15 +54,8 @@
 				8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */,
 				9595338FF99D6E406412D70BB160C308 /* Resources */,
 			);
+			name = GooglePlaces;
 			path = GooglePlaces;
-			sourceTree = "<group>";
-		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		48460414F60419566CEAF7B8714D2F82 /* Pods-FlatironMasterpiece */ = {
@@ -114,7 +89,6 @@
 			children = (
 				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
 			);
-<<<<<<< HEAD
 			name = iOS;
 			sourceTree = "<group>";
 		};
@@ -127,11 +101,6 @@
 			name = Maps;
 			sourceTree = "<group>";
 		};
-=======
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
->>>>>>> master
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +117,6 @@
 			children = (
 				955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */,
 			);
-<<<<<<< HEAD
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
@@ -182,9 +150,6 @@
 				F8567FFA809DD02B36CFB593922A14EA /* GooglePlaces.bundle */,
 			);
 			name = Resources;
-=======
-			path = GooglePlaces;
->>>>>>> master
 			sourceTree = "<group>";
 		};
 		9B11E61FCFEF10C032E6F2ED83C063FA /* Products */ = {
@@ -198,11 +163,7 @@
 		9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */,
-=======
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
->>>>>>> master
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +200,7 @@
 				9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */,
 				9335B78F64E389AD6BD28E5033911D2C /* Resources */,
 			);
+			name = GooglePlacePicker;
 			path = GooglePlacePicker;
 			sourceTree = "<group>";
 		};
@@ -257,30 +219,31 @@
 				8FFA7EAE118844748AD9685060A6B673 /* Base */,
 				7A999BD5B4C2C01904FC59776164FBE1 /* Maps */,
 			);
+			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		E239310324A97D6CFC7C9BD0DB035A6F /* Headers */ = {
+		0F6B5ADF5B72A7CF48152D1B2662AABD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BE56BB58A6BBB767185452A27F7A348 /* Pods-FlatironMasterpiece-umbrella.h in Headers */,
+				AB12B92565459CC251CD3AD2480F023F /* Pods-FlatironMasterpiece-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7D3836750B50B78DE97B79F98D60A8B5 /* Pods-FlatironMasterpiece */ = {
+		0C13A3CF98B601E782F6EF8D4FC422CE /* Pods-FlatironMasterpiece */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF260364DEED83BA638F10EAE18F97F3 /* Build configuration list for PBXNativeTarget "Pods-FlatironMasterpiece" */;
+			buildConfigurationList = 0705241D1A15B10E168B69306E916656 /* Build configuration list for PBXNativeTarget "Pods-FlatironMasterpiece" */;
 			buildPhases = (
-				C0ED63198CACAA60F30B327A7A4DE59A /* Sources */,
-				7602AB62AB088700178727FD798566BB /* Frameworks */,
-				E239310324A97D6CFC7C9BD0DB035A6F /* Headers */,
+				9AF1D0ADFAA0984C6394477CEC0A167F /* Sources */,
+				A0F811E2B02019FFC08883E73CFB6AB9 /* Frameworks */,
+				0F6B5ADF5B72A7CF48152D1B2662AABD /* Headers */,
 			);
 			buildRules = (
 			);
@@ -312,29 +275,64 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D3836750B50B78DE97B79F98D60A8B5 /* Pods-FlatironMasterpiece */,
+				0C13A3CF98B601E782F6EF8D4FC422CE /* Pods-FlatironMasterpiece */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C0ED63198CACAA60F30B327A7A4DE59A /* Sources */ = {
+		9AF1D0ADFAA0984C6394477CEC0A167F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7446D16D9F4B842418185C148E47C8 /* Pods-FlatironMasterpiece-dummy.m in Sources */,
+				ECAA1F133BA4792A87639E3708BD3CE1 /* Pods-FlatironMasterpiece-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		54D31A35C5BEB6C16FA93A1E80929419 /* Release */ = {
+		12261207F52423333C6394F96FD4EEF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F434FC1BDD6DE32F139E2AC5262413D /* Pods-FlatironMasterpiece.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FlatironMasterpiece/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FlatironMasterpiece;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7AEAB7F2B1E25A87A93C9AEB0A4444C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24C829ED3424274152EAA1C4DDF81EF3 /* Pods-FlatironMasterpiece.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -363,42 +361,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		90E6BED24E264F7B26207DB229FC15D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F434FC1BDD6DE32F139E2AC5262413D /* Pods-FlatironMasterpiece.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FlatironMasterpiece/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FlatironMasterpiece;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		CACE7C8415F53E79F07C6BBE57F0F61D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -487,20 +449,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0705241D1A15B10E168B69306E916656 /* Build configuration list for PBXNativeTarget "Pods-FlatironMasterpiece" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12261207F52423333C6394F96FD4EEF8 /* Debug */,
+				7AEAB7F2B1E25A87A93C9AEB0A4444C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CACE7C8415F53E79F07C6BBE57F0F61D /* Debug */,
 				ED4FC68AB2A4E06C718CFF338F6F156B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF260364DEED83BA638F10EAE18F97F3 /* Build configuration list for PBXNativeTarget "Pods-FlatironMasterpiece" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				90E6BED24E264F7B26207DB229FC15D8 /* Debug */,
-				54D31A35C5BEB6C16FA93A1E80929419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
