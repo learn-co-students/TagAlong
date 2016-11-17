@@ -1,6 +1,0 @@
-framework module Pods_FlatironMasterpiece {
-  umbrella header "Pods-FlatironMasterpiece-umbrella.h"
-
-  export *
-  module * { export * }
-}
