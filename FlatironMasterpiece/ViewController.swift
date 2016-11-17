@@ -15,8 +15,6 @@ class ViewController: UIViewController {
     
     var placesClient: GMSPlacesClient?
     
-    let store = DataStore.sharedInstance
-    
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
@@ -33,20 +31,19 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         //you have to start
         locationManager.startUpdatingLocation()
-        getLocation { (latitude, longitude) in
-            self.latitude = latitude
-            self.longitude = longitude
- 
-            print("data store lat is \(latitude) and data store long is \(longitude)")
-        }
-        APIClientGooglePlaces.getRestaurants(lat: latitude, long: longitude)
+//        getLocation { (placelatitude, placelongitude) in
+//            self.latitude = placelatitude
+//            self.longitude = placelongitude
+// 
+//            print("data store lat is \(placelatitude) and data store long is \(placelongitude)")
+//        }
+        getLocation()
+        
+        print("latitude is \(self.latitude)")
         
     }
- 
-    @IBAction func getCurrentPlaceBtnPressed(_ sender: UIButton) {
-    }
     
-    func getLocation(_ completion:@escaping (Double, Double)->Void) {
+    func getLocation() {
         print("working after button pressed")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
             
@@ -67,10 +64,16 @@ class ViewController: UIViewController {
             //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
             let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
             //Place coordinates are (40.748944899999998, -74.0002432)
-            completion(place.coordinate.latitude, place.coordinate.longitude)
             print("Place name is \(placeName)")
             print("Place address is \(placeAddress)")
             print("Place coordinates are \(placeCoordinates)")
+            print("self.latitude is \(self.latitude)")
+            self.latitude = place.coordinate.latitude
+            self.longitude = place.coordinate.longitude
+            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude)
+            print("latitude is NOW \(self.latitude)")
+//            completion(place.coordinate.latitude, place.coordinate.longitude)
+            
          })
      }
 
