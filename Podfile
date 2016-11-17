@@ -7,5 +7,8 @@ target 'FlatironMasterpiece' do
 
   # Pods for FlatironMasterpiece
   pod 'GooglePlaces'
-end
+  pod 'Firebase'
+  pod 'FirebaseAuth'
 
+
+end

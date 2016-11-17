@@ -17,6 +17,7 @@
 		27AAFE341DDAC9AA00C08348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE321DDAC9AA00C08348 /* Main.storyboard */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
+		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		27AAFE381DDAC9AA00C08348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27AAFE3A1DDAC9AA00C08348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
+		95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				275D177A1DDB8869001CE463 /* User.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
+				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 			);
 			path = FlatironMasterpiece;
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */,
+				95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */,
 				27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */,
 				27AAFE341DDAC9AA00C08348 /* Main.storyboard in Resources */,
 			);
@@ -199,7 +203,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D5646F83F63F92936815156C /* [CP] Embed Pods Frameworks */ = {
