@@ -17,10 +17,10 @@ class LogInViewController: UIViewController {
         var loginEmail = UITextField()
         var loginPassword = UITextField()
         var registerButton = UIButton()
-        var forgotEmailButton = UIButton()
+        var forgotPasswordButton = UIButton()
         var loginButton = UIButton()
         
-        
+        //need to add LOGIN SCREEN label at very top of view
         view.addSubview(loginLabel)
         loginLabel.text = "Log In"
         loginLabel.textAlignment = .center
@@ -42,8 +42,50 @@ class LogInViewController: UIViewController {
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
+        view.addSubview(loginPassword)
+        loginPassword.placeholder = "  App Password"
+        loginPassword.layer.borderWidth = 1
+        loginPassword.layer.cornerRadius = 5
+        loginPassword.layer.borderColor = UIColor.lightGray.cgColor
+        loginPassword.translatesAutoresizingMaskIntoConstraints = false
+        loginPassword.topAnchor.constraint(equalTo: loginEmail.bottomAnchor, constant: 5).isActive = true
+        loginPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        
+        view.addSubview(loginButton)
+        loginButton.setTitle("Log In", for: UIControlState.normal)
+        loginButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 20).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
 
-    
+        
+        
+        view.addSubview(registerButton)
+        registerButton.setTitle("Register?", for: UIControlState.normal)
+        registerButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
+        registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
+        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        view.addSubview(forgotPasswordButton)
+        forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
+        forgotPasswordButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        forgotPasswordButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 120).isActive = true
+        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
     
     
     
