@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		250347BF1DDD1A1B00B896AA /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BD1DDD1A1B00B896AA /* AccountCreationView.swift */; };
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
+		250347C21DDD1B8200B896AA /* features:AccountCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347C11DDD1B8200B896AA /* features:AccountCreation.swift */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		275D177B1DDB8869001CE463 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D177A1DDB8869001CE463 /* User.swift */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		250347BD1DDD1A1B00B896AA /* AccountCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationView.swift; sourceTree = "<group>"; };
 		250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
+		250347C11DDD1B8200B896AA /* features:AccountCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "features:AccountCreation.swift"; sourceTree = "<group>"; };
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
+				250347C11DDD1B8200B896AA /* features:AccountCreation.swift */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				27AAFE301DDAC9AA00C08348 /* ViewController.swift */,
 				27AAFE321DDAC9AA00C08348 /* Main.storyboard */,
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				250347C21DDD1B8200B896AA /* features:AccountCreation.swift in Sources */,
 				27AAFE311DDAC9AA00C08348 /* ViewController.swift in Sources */,
 				250347BF1DDD1A1B00B896AA /* AccountCreationView.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,

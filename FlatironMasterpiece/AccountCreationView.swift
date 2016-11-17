@@ -9,14 +9,6 @@
 import Foundation
 
 
-class AccountCreationView {
     
     
     
-    
-    
-    
-    
-    
-    
-}
