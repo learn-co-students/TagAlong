@@ -15,13 +15,11 @@ class ViewController: UIViewController {
     
     var placesClient: GMSPlacesClient?
     
-    
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         placesClient = GMSPlacesClient.shared()
     }
     
