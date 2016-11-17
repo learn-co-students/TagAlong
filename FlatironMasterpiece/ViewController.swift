@@ -10,15 +10,20 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
+
 class ViewController: UIViewController {
     
     var placesClient: GMSPlacesClient?
     
+    let store = DataStore.sharedInstance
+    
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         placesClient = GMSPlacesClient.shared()
-        print("working")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,78 +33,46 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         //you have to start
         locationManager.startUpdatingLocation()
+        getLocation { (latitude, longitude) in
+            self.latitude = latitude
+            self.longitude = longitude
+ 
+            print("data store lat is \(latitude) and data store long is \(longitude)")
+        }
+        APIClientGooglePlaces.getRestaurants(lat: latitude, long: longitude)
         
     }
  
     @IBAction func getCurrentPlaceBtnPressed(_ sender: UIButton) {
+    }
+    
+    func getLocation(_ completion:@escaping (Double, Double)->Void) {
         print("working after button pressed")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
+            
             if let error = error {
                 print("pick place error:\(error.localizedDescription)")
                 return
             }
-            if let placeLikelihoodList = placeLikelihoodList {
-                let place = placeLikelihoodList.likelihoods.first?.place
-                if let place = place {
-                    let placeName = place.name
-                    let placeAddressComponents = place.addressComponents
-                    let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n")
-                    let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
-                
-                    print("Place name is \(placeName)")
-                    print("Place address is \(placeAddress)")
-                    print("Place coordinates are \(placeCoordinates)")
-                    
-                }
-            }
             
-        })
-        
-
-//            
-//            self.nameLabel.text = "No current place"
-//            self.addressLabel.text = ""
-//            
-//            if let placeLikelihoodList = placeLikelihoodList {
-//                let place = placeLikelihoodList.likelihoods.first?.place
-//                if let place = place {
-//                    self.nameLabel.text = place.name
-//                    self.addressLabel.text = place.formattedAddress!.componentsSeparatedByString(", ")
-//                        .joinWithSeparator("\n")
-//                }
-//            }
-//        })
-    }
-        
-        
-        
-        
-//        
-//        
-//        placesClient?.currentPlace(callback: {
-//            (placeLikelihoodList: GMSPlaceLikelihoodList?, error: NSError?) -> Void in
-//            if let error = error {
-//                print("Pick Place error: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            if let placeLikelihoodList = placeLikelihoodList {
-//                let place = placeLikelihoodList.likelihoods.first?.place
-//                if let place = place {
-//                    let placeName = place.name
-//                    let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n")
-//                    
-//                    print("The placeName: \(placeName)\n")
-//                    print("The placeAddress: \(placeAddress)")
-//                    
-//                }
-//            }
-//        } as! GMSPlaceLikelihoodListCallback)
-//    }
-    
-    
-    
-
+            guard let placeLikelihoodList = placeLikelihoodList else { return }
+            
+            guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
+            
+            let placeName = place.name
+            //Place name is Public School 33
+            let placeAddressComponents = place.addressComponents
+            
+            guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
+            //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
+            let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
+            //Place coordinates are (40.748944899999998, -74.0002432)
+            completion(place.coordinate.latitude, place.coordinate.longitude)
+            print("Place name is \(placeName)")
+            print("Place address is \(placeAddress)")
+            print("Place coordinates are \(placeCoordinates)")
+         })
+     }
 
 }
 

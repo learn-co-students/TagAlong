@@ -9,8 +9,9 @@
 import Foundation
 
 
-//let gpApiKey = "AIzaSyC2MS9RQaWQ-NP6mQ80TV4BkPsZdsbAGuQ"
-let gpApiKey = "AIzaSyCHpMNpmqweioW5MyGZqpqtDEzg8r67Fio"
+let gpApiKey = "AIzaSyC2MS9RQaWQ-NP6mQ80TV4BkPsZdsbAGuQ"
+let gpSearchApiKey = "AIzaSyCHpMNpmqweioW5MyGZqpqtDEzg8r67Fio"
 let linkedInClientID = "86th49hrfm4s05"
 let linkedInClientSecret = "Tvt2tcwPnOfSpJrI"
+
 
