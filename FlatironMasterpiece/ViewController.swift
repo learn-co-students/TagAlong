@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     var placesClient: GMSPlacesClient?
     
+    
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
@@ -38,8 +39,6 @@ class ViewController: UIViewController {
 //            print("data store lat is \(placelatitude) and data store long is \(placelongitude)")
 //        }
         getLocation()
-        
-        print("latitude is \(self.latitude)")
         
     }
     
@@ -67,7 +66,6 @@ class ViewController: UIViewController {
             print("Place name is \(placeName)")
             print("Place address is \(placeAddress)")
             print("Place coordinates are \(placeCoordinates)")
-            print("self.latitude is \(self.latitude)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude)
