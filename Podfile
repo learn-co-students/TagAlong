@@ -10,6 +10,7 @@ target 'FlatironMasterpiece' do
   pod 'GooglePlaces'
   pod 'Firebase'
   pod 'FirebaseAuth'
+  
 
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'

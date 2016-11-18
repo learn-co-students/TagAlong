@@ -20,7 +20,14 @@ class AccountCreationViewController: UIViewController {
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
 
+    var firstNameConfirmed = false
+    var lastNameConfirmed = false
+    var emailConfirmed = false
+    var password = false
+    var industry = false
+    var jobtitle = false
     
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +43,29 @@ class AccountCreationViewController: UIViewController {
 //        }
         
     }
+
+}
+
+// MARK: Validation
+extension UIView {
+    
+    func specialConstrain(to view: UIView) {
+        
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        
+    }
+    
+    
+}
+
+
+// MARK: Set Up
+
+extension AccountCreationViewController {
 
     func createViews() {
         
@@ -150,17 +180,3 @@ class AccountCreationViewController: UIViewController {
 
 
 
-extension UIView {
-    
-    func specialConstrain(to view: UIView) {
-        
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
-        
-        
-    }
-    
-    
-}
