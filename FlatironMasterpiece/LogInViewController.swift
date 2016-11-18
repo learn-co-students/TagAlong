@@ -137,20 +137,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
         
-//        
-//        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-//
-//        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-//
-//            print("User has logged into Firebase")
-//            
-//            if let error = error {
-//                print(error.localizedDescription)
-//                return
-//            }
 
+
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+
+            print("User has logged into Firebase")
             
-            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+    }
+
         
         print("User has logged in")
         
