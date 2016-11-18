@@ -74,6 +74,67 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
         
         
         }
+
+        switch textField.accessibilityLabel! {
+        case Constants.FIRSTNAME:
+            firstNameConfirmed = true
+        case Constants.LASTNAME:
+            lastNameConfirmed = true
+        case Constants.EMAILCONFIRMATION:
+            emailConfirmed = true
+        case Constants.PASSWORDVERIFICATION:
+            password = true
+        case Constants.INDUSTRY:
+            industry = true
+        case Constants.JOBTITLE:
+            jobtitle = true
+        default:
+            break
+        
+        }
+    
+        func isFormCompleted() -> Bool {
+            return firstNameConfirmed && lastNameConfirmed && emailConfirmed && password && industry && jobtitle
+        }
+        
+        if isFormCompleted() {
+            submitButton.isEnabled = true
+        } else {
+            UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: UIViewKeyframeAnimationOptions.calculationModeLinear, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                    textField.backgroundColor = redColor
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1 / 3) {
+                    textField.transform = CGAffineTransform(translationX: shake, y: 0)
+                }
+                UIView.addKeyframe(withRelativeStartTime: 1 / 3, relativeDuration: 1 / 3) {
+                    textField.transform = CGAffineTransform(translationX: shake * -2, y: 0)
+                }
+                UIView.addKeyframe(withRelativeStartTime: 2 / 3, relativeDuration: 1 / 3) {
+                    textField.transform = unchangedState
+                }
+            }, completion: nil)
+            
+            switch textField.accessibilityLabel! {
+            case Constants.FIRSTNAME:
+                firstNameConfirmed = false
+            case Constants.LASTNAME:
+                lastNameConfirmed = false
+            case Constants.EMAILCONFIRMATION:
+                emailConfirmed = false
+            case Constants.PASSWORDVERIFICATION:
+                password = false
+            case Constants.INDUSTRY:
+                industry = false
+            case Constants.JOBTITLE:
+                jobtitle = false
+            default:
+                break
+            }
+        }
+    
+        
+    
     }
     
     
