@@ -34,6 +34,8 @@ class AccountCreationViewController: UIViewController {
         
         createViews()
         
+        view.backgroundColor = UIColor.white
+        
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
 //        
 //        for specialView in specialViews {
