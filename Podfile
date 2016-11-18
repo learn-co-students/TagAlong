@@ -11,6 +11,11 @@ target 'FlatironMasterpiece' do
   pod 'Firebase'
   pod 'FirebaseAuth'
 
+  
+
+
+  pod 'Firebase/Database'
+
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
 end

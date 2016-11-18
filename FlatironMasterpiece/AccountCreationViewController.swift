@@ -7,6 +7,17 @@
 //
 
 import UIKit
+struct Constants {
+    static let FIRSTNAME = "firstNameTextField"
+    static let LASTNAME = "lastNameTextField"
+    static let EMAILCONFIRMATION = "emailTextField"
+    static let PASSWORD = "password"
+    static let PASSWORDVERIFICATION = "passwordverification"
+    static let INDUSTRY = "industry"
+    static let JOBTITLE = "jobtitle"
+    
+}
+
 
 class AccountCreationViewController: UIViewController {
 
@@ -20,22 +31,60 @@ class AccountCreationViewController: UIViewController {
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
 
+    var firstNameConfirmed = false
+    var lastNameConfirmed = false
+    var emailConfirmed = false
+    var password = false
+    var industry = false
+    var jobtitle = false
     
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createViews()
         
+        view.backgroundColor = UIColor.white
+        firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
+        lastNameEntry.accessibilityLabel = Constants.LASTNAME
+        emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
+        passwordEntry.accessibilityLabel = Constants.PASSWORD
+        passwordVerification.accessibilityLabel = Constants.PASSWORDVERIFICATION
+        industryEntry.accessibilityLabel = Constants.INDUSTRY
+        jobEntry.accessibilityLabel = Constants.JOBTITLE
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
 //        
 //        for specialView in specialViews {
-//            
+//
 //            specialView.specialConstrain(to: view)
 //            
 //        }
         
     }
+
+}
+
+// MARK: Validation
+extension UIView {
+    
+    func specialConstrain(to view: UIView) {
+        
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        
+    }
+    
+    
+}
+
+
+// MARK: Set Up
+
+extension AccountCreationViewController {
 
     func createViews() {
         
@@ -144,23 +193,14 @@ class AccountCreationViewController: UIViewController {
         
         
     }
+    
 
 
 }
 
-
-
-extension UIView {
+extension AccountCreationViewController {
     
-    func specialConstrain(to view: UIView) {
-        
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
-        
-        
-    }
     
     
 }
+

@@ -1,9 +1,14 @@
 {
+<<<<<<< HEAD
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++85280F2",
+=======
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++DA5B67C",
+>>>>>>> master
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+<<<<<<< HEAD
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++85280F2" : 9223372036854775807,
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++13D4FF6" : 9223372036854775807,
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++182D92A" : 9223372036854775807
@@ -13,6 +18,17 @@
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++85280F2" : "ios-0916-team-carrotcoat\/",
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++13D4FF6" : "",
     "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++182D92A" : ""
+=======
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++976AFD0" : 9223372036854775807,
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++DA5B67C" : 9223372036854775807,
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++B849E8E" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2F2C5991-97D5-4A60-9F71-AEA51BECABFC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++976AFD0" : "",
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++DA5B67C" : "ios-0916-team-carrotcoat\/",
+    "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++B849E8E" : ""
+>>>>>>> master
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "FlatironMasterpiece",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -21,17 +37,29 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:learn-co-students\/ios-0916-team-carrotcoat.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+<<<<<<< HEAD
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++13D4FF6"
+=======
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++976AFD0"
+>>>>>>> master
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:learn-co-students\/ios-0916-team-carrotcoat.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+<<<<<<< HEAD
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++182D92A"
+=======
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++B849E8E"
+>>>>>>> master
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:learn-co-students\/ios-0916-team-carrotcoat.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+<<<<<<< HEAD
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++85280F2"
+=======
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0470EAF69C5E300E8E8B3B8DCF89EFF24836B86C+++DA5B67C"
+>>>>>>> master
     }
   ]
 }
