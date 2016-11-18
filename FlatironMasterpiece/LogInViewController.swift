@@ -8,8 +8,10 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
+import FirebaseAuth
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +69,6 @@ class LogInViewController: UIViewController {
         loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
-
-        
         
         view.addSubview(registerButton)
         registerButton.setTitle("Register?", for: UIControlState.normal)
@@ -79,11 +79,15 @@ class LogInViewController: UIViewController {
         registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
-        // Optional: Place the button in the center of your view.
+
+        // FB Log in Button
+        fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        fbLoginButton.delegate = self
         view.addSubview(fbLoginButton)
         fbLoginButton.center = self.view.center
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
 
+        
         
         
         
@@ -101,6 +105,62 @@ class LogInViewController: UIViewController {
     
     
     }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        print("=================\(#function)=============\n\n\n")
+        
+        if let error = error {
+            
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
 
+        
+        if let token = FBSDKAccessToken.current() {
+            
+            print("ALl good")
+            
+            
+            if let tokenString = token.tokenString {
+                
+                print("Token string is here \(tokenString)")
+            }
+            
+        } else {
+            
+            
+        }
+        
+        
+        
+        
+//        
+//        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//
+//        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+//
+//            print("User has logged into Firebase")
+//            
+//            if let error = error {
+//                print(error.localizedDescription)
+//                return
+//            }
+
+            
+            
+        
+        print("User has logged in")
+        
+        print("=====================================================\n\n\n")
+
+        
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User has logged out")
+    }
 
 }
