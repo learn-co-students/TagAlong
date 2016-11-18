@@ -35,11 +35,17 @@ class AccountCreationViewController: UIViewController {
         createViews()
         
         view.backgroundColor = UIColor.white
-        
+        firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
+        lastNameEntry.accessibilityLabel = Constants.LASTNAME
+        emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
+        passwordEntry.accessibilityLabel = Constants.PASSWORD
+        passwordVerification.accessibilityLabel = Constants.PASSWORDVERIFICATION
+        industryEntry.accessibilityLabel = Constants.INDUSTRY
+        jobEntry.accessibilityLabel = Constants.JOBTITLE
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
 //        
 //        for specialView in specialViews {
-//            
+//
 //            specialView.specialConstrain(to: view)
 //            
 //        }
@@ -176,9 +182,14 @@ extension AccountCreationViewController {
         
         
     }
+    
 
 
 }
 
-
+extension AccountCreationViewController {
+    
+    
+    
+}
 
