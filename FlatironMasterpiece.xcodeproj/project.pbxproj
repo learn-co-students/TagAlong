@@ -10,7 +10,8 @@
 		250347BF1DDD1A1B00B896AA /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BD1DDD1A1B00B896AA /* AccountCreationView.swift */; };
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347C21DDD1B8200B896AA /* features:AccountCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347C11DDD1B8200B896AA /* features:AccountCreation.swift */; };
-		250347E81DDF535300B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E71DDF535300B896AA /* FBSDKCoreKit.framework */; };
+		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
+		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		275D177B1DDB8869001CE463 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D177A1DDB8869001CE463 /* User.swift */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
@@ -30,7 +31,8 @@
 		250347BD1DDD1A1B00B896AA /* AccountCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationView.swift; sourceTree = "<group>"; };
 		250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		250347C11DDD1B8200B896AA /* features:AccountCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "features:AccountCreation.swift"; sourceTree = "<group>"; };
-		250347E71DDF535300B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Downloads/FacebookSDKs-iOS-4.17.0 2/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +59,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */,
-				250347E81DDF535300B896AA /* FBSDKCoreKit.framework in Frameworks */,
+				250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */,
+				250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +129,8 @@
 		F47726B9129C6E69575B1848 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				250347E71DDF535300B896AA /* FBSDKCoreKit.framework */,
+				250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */,
+				250347E91DDF597500B896AA /* FBSDKCoreKit.framework */,
 				B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */,
 			);
 			name = Frameworks;
@@ -247,7 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

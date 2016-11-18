@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LogInViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class LogInViewController: UIViewController {
         var registerButton = UIButton()
         var forgotPasswordButton = UIButton()
         var loginButton = UIButton()
+        var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
+
         
         //need to add LOGIN SCREEN label at very top of view
         view.addSubview(loginLabel)
@@ -75,6 +78,13 @@ class LogInViewController: UIViewController {
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Optional: Place the button in the center of your view.
+        view.addSubview(fbLoginButton)
+        fbLoginButton.center = self.view.center
+        fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
+
+        
         
         
         view.addSubview(forgotPasswordButton)
