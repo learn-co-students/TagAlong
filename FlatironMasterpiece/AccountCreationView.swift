@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-struct Constants {
-    static let FIRSTNAME = "firstNameTextField"
-    static let LASTNAME = "lastNameTextField"
-    static let EMAILCONFIRMATION = "emailTextField"
-    static let PASSWORD = "password"
-    static let PASSWORDVERIFICATION = "passwordverification"
-    static let INDUSTRY = "industry"
-    static let JOBTITLE = "jobtitle"
-    
-}
+//struct Constants {
+//    static let FIRSTNAME = "firstNameTextField"
+//    static let LASTNAME = "lastNameTextField"
+//    static let EMAILCONFIRMATION = "emailTextField"
+//    static let PASSWORD = "password"
+//    static let PASSWORDVERIFICATION = "passwordverification"
+//    static let INDUSTRY = "industry"
+//    static let JOBTITLE = "jobtitle"
+//    
+//}
 
 class AccountCreationView: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstNameEntryTextField: UITextField!
@@ -39,7 +39,7 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    firstNameEntryTextField.accessibilityLabel = Constants.FIRSTNAME
+        firstNameEntryTextField.accessibilityLabel = Constants.FIRSTNAME
         lastNameEntryTextField.accessibilityLabel = Constants.LASTNAME
         emailEntryTextField.accessibilityLabel = Constants.EMAILCONFIRMATION
         passwordEntryTextField.accessibilityLabel = Constants.PASSWORD
@@ -138,6 +138,11 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor.white
     }
     
+    @IBAction func firstNameTextFieldEdit(_ sender: AnyObject) {
+//        if !sender.text!.isEmpty {
+//            animateFields(textField: sender as! UITextField, isInputValid: sender.text!.contains())
+//        }
+    }
     
     @IBAction func emailTextFieldEdit(_ sender: AnyObject) {
         if !sender.text!.isEmpty {
@@ -145,7 +150,17 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
         }
     }
    
-
+    @IBAction func passWordTextFieldEdit(_ sender: AnyObject) {
+        if !sender.text!.isEmpty {
+            animateFields(textField: sender as! UITextField, isInputValid: sender.text!.characters.count >= 5)
+        }
+    }
+    
+    @IBAction func passwordConfirmationTextFieldEdit(_ sender: AnyObject) {
+        if !sender.text!.isEmpty {
+            animateFields(textField: sender as! UITextField, isInputValid: sender.text! == passwordEntryTextField.text!)
+        }
+    }
 
 
 

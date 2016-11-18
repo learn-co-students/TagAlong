@@ -7,6 +7,17 @@
 //
 
 import UIKit
+struct Constants {
+    static let FIRSTNAME = "firstNameTextField"
+    static let LASTNAME = "lastNameTextField"
+    static let EMAILCONFIRMATION = "emailTextField"
+    static let PASSWORD = "password"
+    static let PASSWORDVERIFICATION = "passwordverification"
+    static let INDUSTRY = "industry"
+    static let JOBTITLE = "jobtitle"
+    
+}
+
 
 class AccountCreationViewController: UIViewController {
 
