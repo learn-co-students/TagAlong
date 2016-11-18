@@ -114,7 +114,6 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
                     textField.transform = unchangedState
                 }
             }, completion: nil)
-            
             switch textField.accessibilityLabel! {
             case Constants.FIRSTNAME:
                 firstNameConfirmed = false
@@ -132,11 +131,26 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
                 break
             }
         }
-    
-        
-    
     }
     
+    @IBAction func textFieldDidBeginEditing(_ sender: AnyObject) {
+        let textField = sender as! UITextField
+        textField.backgroundColor = UIColor.white
+    }
+    
+    
+    @IBAction func emailTextFieldEdit(_ sender: AnyObject) {
+        if !sender.text!.isEmpty {
+            animateFields(textField: sender as! UITextField, isInputValid: sender.text!.contains("@") && emailEntryTextField.text!.contains("."))
+        }
+    }
+   
+
+
+
+
+}
+
     
     
     
@@ -150,5 +164,4 @@ class AccountCreationView: UIViewController, UITextFieldDelegate {
 //    jobEntry
 //    
     
-    
-}
+  
