@@ -83,6 +83,7 @@ class PreferencesViewController: UIViewController {
         dineWithCompanySwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
     }
     
+    //american, asian, italian, healthy, latin, unhealthy
 
     /*
     // MARK: - Navigation
