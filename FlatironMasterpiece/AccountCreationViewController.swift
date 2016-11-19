@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
     static let LASTNAME = "lastNameTextField"

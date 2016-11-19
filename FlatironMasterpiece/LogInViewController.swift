@@ -27,7 +27,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         createViews()
     
         
-        // Logic for FB Login Button 
+        // Logic for Logging in
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
@@ -36,6 +36,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // Add logout button to user's settings screen
             } else {
                 // No user is signed in.
+                // Display log in screen
+                // createViews()
             }
         }
         
@@ -124,10 +126,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         
     }
+
     
-
-
-
     func loginButtonTapped(sender: UIButton!) {
     
     if self.loginEmail.text == "" || loginPassword.text == "" {
@@ -146,26 +146,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             if error == nil {
                 print("Successful Log In")
-                self.loginButton.alpha = 1.0
                 
+                //TODO: - Send to next screen after logging in
             }
                 
             else {
                 
+                //TODO: - Notify user of error
                 print(error?.localizedDescription)
                 
             }
-            
-            
-            
-            
         })
-        
-        
     }
-
-    
-    
 }
 
     func registerButtonTapped(sender: UIButton!) {
@@ -173,6 +165,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Send to Account Creation Page
         
     }
+    
+    // TODO: - Add register function to segue into account creation page
+    
+    
+    
+    
+    // Facebook - Log in and log out functions
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
@@ -191,7 +190,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             print("ALl good")
             
-            
             if let tokenString = token.tokenString {
                 
                 print("Token string is here \(tokenString)")
@@ -199,17 +197,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         } else {
             
-            
         }
-        
-        
-        
-        
 
 
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
             print("User has logged into Firebase")
+            
+            // TODO: - Segue into home screen after user has logged in
             
             if let error = error {
                 print(error.localizedDescription)
@@ -227,6 +222,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User has logged out")
+        
+        //TODO: - Segue back to login screen after user has logged out
     }
 
 }
