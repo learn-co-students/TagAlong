@@ -8,52 +8,133 @@
 
 import UIKit
 
-class PreferencesViewController: UIViewController {
+//TODO: - adopt UICollectionViewDelegate and UICollectionViewDataSource protocols if we figure out how to use a collectionView
+class PreferencesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
+    
+    let phaedraOliveGreen = UIColor(red: 121, green: 189, blue: 143, alpha: 1)
+    
+    let phaedraLightGreen = UIColor(red: 190, green: 235, blue: 159, alpha: 1)
+    
+    let phaedraYellow = UIColor(red: 255, green: 255, blue: 157, alpha: 1)
+    
+    let phaedraOrange = UIColor(red: 255, green: 97, blue: 56, alpha: 1)
     
     var preferencesLabel = UILabel()
     var dineWithCompanySwitch = UISwitch()
     var dineWithCompanyLabel = UILabel()
     var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-    
-    func findDiningPartner(sender: UISwitch!) {
-        print("Switch value is \(sender.isOn)")
-    }
+    var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
  
+    var cuisineCollectionView:UICollectionView!
+    let cuisineReuseIdentifier = "Cuisine Cell"
+    
+    // TODO: - import images for these cuisines
+    let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
+    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!]
+    let cuisineArray:[String] = ["american", "asian", "italian", "latin", "healthy", "unhealthy" ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         formatSwitch()
         formatLabels()
         formatButtons()
+        layoutCuisineCollectionView()
      }
+    
+    func layoutCuisineCollectionView() {
+        
+        let frame = CGRect.zero
+        let flowLayout = UICollectionViewFlowLayout()
+        cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
+        
+        cuisineCollectionView.delegate = self
+        cuisineCollectionView.dataSource = self
+        
+        cuisineCollectionView.backgroundColor = UIColor.green
+        cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
+        view.addSubview(cuisineCollectionView)
+        cuisineCollectionView.reloadData()
+        
+        cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        cuisineCollectionView.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 100).isActive = true
+        cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cuisineArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cuisineReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
+        
+        cell.imageView.image = cuisineImage[indexPath.item]
+        cell.foodLabel.text = cuisineArray[indexPath.item]
+        
+        // Configure the cell
+        
+        return cell
+    }
     
     // TODO: - write function that displays replayTutorial
     func replayTutorial() {
         print("Replay tutorial requested.")
     }
     
-    func formatButtons() {
+    // TODO: - write function that finds a dining partner
+    func findDiningPartner(sender: UISwitch!) {
+        print("Switch value is \(sender.isOn)")
+    }
+    
+    // TODO: - write function that logs user out of the app
+    func logoutUser() {
+        print("User tapped button to logout.")
+    }
+    
 
+    func formatButtons() {
+        
+        view.addSubview(logoutButton)
+        logoutButton.backgroundColor = phaedraYellow
+        logoutButton.layer.cornerRadius = 5
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.titleLabel?.textAlignment = .center
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
+        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
+        logoutButton.setTitleColor(phaedraDarkGreen, for: .highlighted)
+        
+        
         view.addSubview(replayTutorialButton)
         // TODO: - change button color
         replayTutorialButton.backgroundColor = UIColor.orange
         replayTutorialButton.layer.cornerRadius = 5
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)
         replayTutorialButton.setTitle("Tutorial Played", for: .highlighted)
-        replayTutorialButton.titleLabel?.textColor = UIColor.blue
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
         replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(UIColor.green, for: .highlighted)
-
+        
     }
     
     func formatLabels() {
         view.addSubview(preferencesLabel)
         preferencesLabel.text = "PREFERENCES"
         // TODO: - decide on preferences label font and font size
-//        preferencesLabel.font = UIFont(name: String, size: <#T##CGFloat#>)
+        preferencesLabel.font = UIFont(name: "Avenir Next", size: 20.0)
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300).isActive = true
@@ -82,7 +163,7 @@ class PreferencesViewController: UIViewController {
         dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 85).isActive = true
         dineWithCompanySwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
     }
-    
+
     //american, asian, italian, healthy, latin, unhealthy
 
     /*

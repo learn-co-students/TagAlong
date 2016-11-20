@@ -20,8 +20,6 @@ class AccountCreationViewController: UIViewController {
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
