@@ -139,10 +139,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     } else {
         
+        guard let email = loginEmail.text, let password = loginPassword.text else { return }
         
-        // TODO: - Unwrap login email and password
-        
-        FIRAuth.auth()?.signIn(withEmail: loginEmail.text!, password: loginPassword.text!, completion: { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if error == nil {
                 print("Successful Log In")
@@ -188,7 +187,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if let token = FBSDKAccessToken.current() {
             
-            print("ALl good")
+            print("ALL good")
             
             if let tokenString = token.tokenString {
                 
