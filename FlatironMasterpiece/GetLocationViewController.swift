@@ -32,7 +32,7 @@ class GetLocationViewController: UIViewController {
         
         let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-        //you have to start
+        
         locationManager.startUpdatingLocation()
         
         getLocation()
@@ -65,13 +65,11 @@ class GetLocationViewController: UIViewController {
             self.longitude = place.coordinate.longitude
             
             // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
-//            let restaurantData = APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "asian")
+
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "asian", completion: { (JSON) in
                 self.store.restaurantsInJSON = JSON
                 self.store.filterSearchedRestaurants()
             })
-            print("latitude is NOW \(self.latitude)")
-            //completion(place.coordinate.latitude, place.coordinate.longitude)
             
         })
     }
