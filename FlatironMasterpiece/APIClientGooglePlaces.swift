@@ -14,13 +14,30 @@ typealias json = [String:Any]
 
 class APIClientGooglePlaces {
     
-    class func getRestaurants(lat:Double, long:Double) {
+    class func getRestaurants(lat:Double, long:Double, queryString:String, completion:@escaping(json)-> Void) {
         
         let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(long)&radius=800&types=restaurant&key=\(gpSearchApiKey)"
         
         //https://maps.googleapis.com/maps/api/place/textsearch/json?location=40.748944899999998,-74.0002432&radius=800&type=restaurant&query=mexican&key=AIzaSyCHpMNpmqweioW5MyGZqpqtDEzg8r67Fio
         
-        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=800&type=restaurant&query=mexican&key=\(gpSearchApiKey)"
+        var query = ""
+        
+        switch queryString {
+            case "american":
+            query = "cheeseburger+sandwich+steak+seafood+american"
+            case "asian":
+            query = "chinese+japanese+sushi+thai+korean+asian"
+            case "italian":
+            query = "pizza+pasta+seafood+meatballs+italian"
+            case "healthy":
+            query = "salads+healthy+smoothies+tea"
+            case "latin":
+            query = "latin+mexican+taco+burrito"
+            default:
+            query = "fastfood"
+        }
+        
+        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=800&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"
         
         let url = URL(string: textSearchUrlString)
     
@@ -32,7 +49,7 @@ class APIClientGooglePlaces {
             guard let unwrappedData = data else { print("error at data"); return }
             do {
                 var responseJSON = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! json
-                print(responseJSON)
+                completion(responseJSON)
             } catch {
                 print("error in getting responseJSON")
             }
