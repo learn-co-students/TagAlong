@@ -6,21 +6,21 @@
 ////  Copyright © 2016 Elias Miller. All rights reserved.
 ////
 //
-//import Foundation
-//import UIKit
+import Foundation
+import UIKit
+
+//struct Constants {
+//    static let FIRSTNAME = "firstNameTextField"
+//    static let LASTNAME = "lastNameTextField"
+//    static let EMAILCONFIRMATION = "emailTextField"
+//    static let PASSWORD = "password"
+//    static let PASSWORDVERIFICATION = "passwordverification"
+//    static let INDUSTRY = "industry"
+//    static let JOBTITLE = "jobtitle"
 //
-////struct Constants {
-////    static let FIRSTNAME = "firstNameTextField"
-////    static let LASTNAME = "lastNameTextField"
-////    static let EMAILCONFIRMATION = "emailTextField"
-////    static let PASSWORD = "password"
-////    static let PASSWORDVERIFICATION = "passwordverification"
-////    static let INDUSTRY = "industry"
-////    static let JOBTITLE = "jobtitle"
-////
-////}
-//
-//
+//}
+
+
 //class AccountCreationView: UIViewController, UITextFieldDelegate {
 //
 //
@@ -160,16 +160,16 @@
 //
 //
 //}
+
+
+
+
+
+//    firstNameEntry
+//    lastNameEntry
+//    emailEntry
+//    passwordEntry
+//    passwordVerification
+//    industryEntry
+//    jobEntry
 //
-//
-//
-//
-//
-////    firstNameEntry
-////    lastNameEntry
-////    emailEntry
-////    passwordEntry
-////    passwordVerification
-////    industryEntry
-////    jobEntry
-////
