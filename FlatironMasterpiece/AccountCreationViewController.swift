@@ -8,8 +8,25 @@
 
 import UIKit
 
-class AccountCreationViewController: UIViewController {
+import FirebaseAuth
+import Firebase
+import FirebaseDatabase
 
+
+struct Constants {
+    static let FIRSTNAME = "firstNameTextField"
+    static let LASTNAME = "lastNameTextField"
+    static let EMAILCONFIRMATION = "emailTextField"
+    static let PASSWORD = "password"
+    static let PASSWORDVERIFICATION = "passwordverification"
+    static let INDUSTRY = "industry"
+    static let JOBTITLE = "jobtitle"
+    
+}
+
+
+class AccountCreationViewController: UIViewController {
+let ref = FIRDatabase.database().reference().root
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -20,20 +37,93 @@ class AccountCreationViewController: UIViewController {
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
 
+    var firstNameConfirmed = false
+    var lastNameConfirmed = false
+    var emailConfirmed = false
+    var password = false
+    var industry = false
+    var jobtitle = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createViews()
         
+        view.backgroundColor = UIColor.white
+        firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
+        lastNameEntry.accessibilityLabel = Constants.LASTNAME
+        emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
+        passwordEntry.accessibilityLabel = Constants.PASSWORD
+        passwordVerification.accessibilityLabel = Constants.PASSWORDVERIFICATION
+        industryEntry.accessibilityLabel = Constants.INDUSTRY
+        jobEntry.accessibilityLabel = Constants.JOBTITLE
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
 //        
 //        for specialView in specialViews {
-//            
+//
 //            specialView.specialConstrain(to: view)
 //            
 //        }
         
     }
+
+    
+
+    func createAccountButton(_ sender: UIButton) {
+       print("working")
+        guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
+        guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
+        guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
+        guard let password = passwordEntry.text, !password.isEmpty else { print("Password doesn't meet reqs"); return }
+        guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
+        guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
+        guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
+
+        
+        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
+     //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+        }
+    
+        
+        if email != "" && password != "" {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                if error == nil {
+                    self.ref.child("users").child((user?.uid)!).setValue(email)
+                    self.ref.child("users").child((user?.uid)!).setValue(password)
+                } else {
+                    if error != nil {
+                        print(error!)
+                    }
+                }
+        })
+        
+        
+        
+    }
+
+    }
+}
+
+// MARK: Validation
+extension UIView {
+    
+    func specialConstrain(to view: UIView) {
+        
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        
+        
+    }
+    
+    
+}
+
+
+// MARK: Set Up
+
+extension AccountCreationViewController {
 
     func createViews() {
         
@@ -134,31 +224,62 @@ class AccountCreationViewController: UIViewController {
         
         // Create Account Button
         view.addSubview(createAccountButton)
+        createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
         createAccountButton.setTitle("Create Account", for: UIControlState.normal)
         createAccountButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
         createAccountButton.specialConstrain(to: view)
-        
+        createAccountButton.addTarget(self, action: #selector(AccountCreationViewController.createAccountButton(_:)), for: .touchUpInside)
+        //createAccountButton.addTarget(self, action: "createAccountButton:", for: .touchUpInside)
         
     }
+    
+    func createAccountButtonTapped(sender: UIButton!) {
+        
+        if self.emailEntry.text == "" || passwordEntry.text == "" || passwordVerification.text == "" {
+            
+            
+            //TODO: - Add a check to see if password matches password verification
+            
+            print("Enter email or password")
+        }
+            
+        else {
+            
+            //TODO: Unwrap optionals for email and password
+            
+            FIRAuth.auth()?.createUser(withEmail: emailEntry.text!, password: passwordVerification.text!, completion: { (user, error) in
+                
+                if error == nil {
+                    print("Successful Account Creation")
+
+                    //TODO: - Send user to the next screen after logging in
+                    
+                }
+                    
+                else {
+                    
+                    //TODO: - Notify user of their error
+                    print(error?.localizedDescription)
+                    
+                }
+                
+            })
+        }
+    }
+    
+    
+    
+
+    
 
 
 }
 
-
-
-extension UIView {
+extension AccountCreationViewController {
     
-    func specialConstrain(to view: UIView) {
-        
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
-        
-        
-    }
     
     
 }
+
