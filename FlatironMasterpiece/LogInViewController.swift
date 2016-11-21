@@ -23,7 +23,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.jpg")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
         createViews()
     
         
