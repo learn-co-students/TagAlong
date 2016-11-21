@@ -23,11 +23,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Code needed for Core motion
+        self.becomeFirstResponder()
+       //
         view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.jpg")!)
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
         createViews()
     
         
+
         // Logic for Logging in
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
@@ -42,10 +46,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
         
-    
-    
-    }
         
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if(event?.subtype == UIEventSubtype.motionShake) {
+            print("shaken")
+            loginEmail.text? = "joycematos@gmail.com"
+        }
+        
+    }
+
+    
     func createViews() {
         
         // login label

@@ -16,14 +16,36 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb101919350294942</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>101919350294942</string>
+	<key>FacebookDisplayName</key>
+	<string>CarrotCoat</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We always need your location so we can find you food.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location so we can find you food.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>{human-readable reason for photo access}</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,27 +67,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-<array>
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <string>fb101919350294942</string>
-        </array>
-    </dict>
-</array>
-<key>FacebookAppID</key>
-<string>101919350294942</string>
-<key>FacebookDisplayName</key>
-<string>CarrotCoat</string>
-<key>LSApplicationQueriesSchemes</key>
-<array>
-    <string>fbapi</string>
-    <string>fb-messenger-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-</array>
-<key>NSPhotoLibraryUsageDescription</key>
-<string>{human-readable reason for photo access}</string>
 </dict>
 </plist>
