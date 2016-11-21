@@ -12,7 +12,7 @@ target 'FlatironMasterpiece' do
   pod 'FirebaseAuth'
   pod ‘FBSDKCoreKit’
   pod ‘FBSDKLoginKit’
-  
+  pod 'JSQMessagesViewController'
 
 
   pod 'Firebase/Database'

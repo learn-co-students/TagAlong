@@ -11,6 +11,7 @@
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
 		25C989781DE0ACE5003C993C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989771DE0ACE5003C993C /* Secrets.swift */; };
+		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		2714E7481DE3392A00A7F4A4 /* spreads.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2714E7471DE3392A00A7F4A4 /* spreads.jpg */; };
 		275D177B1DDB8869001CE463 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D177A1DDB8869001CE463 /* User.swift */; };
@@ -37,6 +38,7 @@
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				25C989771DE0ACE5003C993C /* Secrets.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F8AD6A1DDE70A3001BD45C /* PreferencesViewController.swift */,
+				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				275D177A1DDB8869001CE463 /* User.swift */,
 				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
@@ -294,6 +297,7 @@
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				45C84AA91DDE2A3900E623F8 /* Location.swift in Sources */,
+				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				45F8AD6B1DDE70A3001BD45C /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

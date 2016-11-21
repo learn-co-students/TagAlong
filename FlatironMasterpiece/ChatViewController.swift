@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var chatView = UITableView()
+    var messages = ["Message", "Testing", "Tableview"]
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = UIColor.white
+        chatView.frame = CGRect(x: 0, y: 50, width: 320, height: 200)
+        chatView.delegate = self
+        chatView.dataSource = self
+        chatView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.view.addSubview(chatView)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +36,24 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+        cell.textLabel?.text = messages[indexPath.row]
+        
+        return cell
+    }
+    
+    
+
 
 }
