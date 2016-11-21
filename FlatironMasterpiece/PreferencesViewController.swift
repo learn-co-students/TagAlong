@@ -1,32 +1,29 @@
 //
-//  PreferencesViewController.swift
+//  PracticeViewController.swift
 //  FlatironMasterpiece
 //
-//  Created by Erica Millado on 11/17/16.
+//  Created by Erica Millado on 11/20/16.
 //  Copyright © 2016 Elias Miller. All rights reserved.
 //
 
 import UIKit
 
-//TODO: - adopt UICollectionViewDelegate and UICollectionViewDataSource protocols if we figure out how to use a collectionView
-class PreferencesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
+//    let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
+//     let phaedraOliveGreen = UIColor(red: 121, green: 189, blue: 143, alpha: 1)
+//     let phaedraLightGreen = UIColor(red: 190, green: 235, blue: 159, alpha: 1)
+//     let phaedraYellow = UIColor(red: 255, green: 255, blue: 157, alpha: 1)
+//     let phaedraOrange = UIColor(red: 255, green: 97, blue: 56, alpha: 1)
     
-    let phaedraOliveGreen = UIColor(red: 121, green: 189, blue: 143, alpha: 1)
-    
-    let phaedraLightGreen = UIColor(red: 190, green: 235, blue: 159, alpha: 1)
-    
-    let phaedraYellow = UIColor(red: 255, green: 255, blue: 157, alpha: 1)
-    
-    let phaedraOrange = UIColor(red: 255, green: 97, blue: 56, alpha: 1)
+    let store = UsersDataStore.sharedInstance
     
     var preferencesLabel = UILabel()
-    var dineWithCompanySwitch = UISwitch()
+    var budgetLabel = UILabel()
     var dineWithCompanyLabel = UILabel()
-    var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-    var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 50))
- 
+    var dineWithCompanySwitch = UISwitch()
+    var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
+    var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 35))
     var cuisineCollectionView:UICollectionView!
     let cuisineReuseIdentifier = "Cuisine Cell"
     
@@ -34,21 +31,24 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     
     let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!]
     let cuisineArray:[String] = ["american", "asian", "italian", "latin", "healthy", "unhealthy" ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        print("is running")
+        view.backgroundColor = UIColor.gray
+        createSegmentedController()
+        formatPreferenceLabel()
+        formatBudgetLabel()
+        formatDineWithCompanyLabel()
         formatSwitch()
-        formatLabels()
         formatButtons()
         layoutCuisineCollectionView()
-     }
-    
-   
+    }
     
     func layoutCuisineCollectionView() {
         
-        let frame = CGRect.zero
+        let frame = UIScreen.main.bounds
         let flowLayout = UICollectionViewFlowLayout()
         cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
         
@@ -61,7 +61,7 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         cuisineCollectionView.reloadData()
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 100).isActive = true
+        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 400).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
     }
@@ -70,7 +70,7 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         return 1
     }
     
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cuisineArray.count
     }
     
@@ -85,22 +85,93 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         
         return cell
     }
+
+    //MARK: - setup UI
     
-    // TODO: - write function that displays replayTutorial
-    func replayTutorial() {
-        print("Replay tutorial requested.")
+    func formatSwitch() {
+        view.addSubview(dineWithCompanySwitch)
+        dineWithCompanySwitch.center = view.center
+        dineWithCompanySwitch.setOn(false, animated: false)
+        dineWithCompanySwitch.tintColor = UIColor.green
+        dineWithCompanySwitch.onTintColor = UIColor.green
+        dineWithCompanySwitch.thumbTintColor = UIColor.lightGray
+        dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
+        dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
+        dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 95).isActive = true
+        dineWithCompanySwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+        
     }
     
-    // TODO: - write function that finds a dining partner
-    func findDiningPartner(sender: UISwitch!) {
-        print("Switch value is \(sender.isOn)")
+    func formatPreferenceLabel() {
+        view.addSubview(preferencesLabel)
+        preferencesLabel.text = "PREFERENCES"
+        // TODO: - decide on preferences label font and font size
+        preferencesLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        preferencesLabel.textAlignment = .center
+        preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -275).isActive = true
+        preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        preferencesLabel.specialConstrain(to: view)
     }
     
-    // TODO: - write function that logs user out of the app
-    func logoutUser() {
-        print("User tapped button to logout.")
+    func formatBudgetLabel() {
+        view.addSubview(budgetLabel)
+        budgetLabel.text = "Choose your budget"
+        budgetLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        budgetLabel.textAlignment = .center
+        budgetLabel.translatesAutoresizingMaskIntoConstraints = false
+        budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -230).isActive = true
+        budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        //add special constraint functionality
+//        budgetLabel.specialConstrain(to: view)
+
     }
- 
+    
+    func formatDineWithCompanyLabel() {
+        view.addSubview(dineWithCompanyLabel)
+        dineWithCompanyLabel.text = "Dine with company?"
+        dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        // TODO: - decide on dineWithCompany label font and font size
+        dineWithCompanyLabel.textAlignment = .center
+        dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
+        dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
+        dineWithCompanyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+        
+    }
+    
+    func createSegmentedController() {
+        let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
+        let budgetSC = UISegmentedControl(items: budgetArray)
+        budgetSC.selectedSegmentIndex = 0
+        let frame = UIScreen.main.bounds
+        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 140, width: frame.width - 20, height: frame.height * 0.08)
+        
+        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
+        budgetSC.layer.cornerRadius = 5
+        budgetSC.backgroundColor = UIColor.white
+        budgetSC.tintColor = UIColor.green
+        budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
+        
+        self.view.addSubview(budgetSC)
+        
+    }
+    
+    func printChosenBudget(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("user chose 💰")
+        case 1:
+            print("user chose 💰💰")
+        case 2:
+            print("user chose 💰💰💰")
+        case 3:
+            print("user chose 💰💰💰💰")
+        default:
+            print("user chose 💰")
+        }
+    }
+    
     func formatButtons() {
         
         view.addSubview(logoutButton)
@@ -110,7 +181,7 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         logoutButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 75).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 20).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(UIColor.green, for: .highlighted)
@@ -124,60 +195,48 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         replayTutorialButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(UIColor.green, for: .highlighted)
         
     }
     
-    func formatLabels() {
-        view.addSubview(preferencesLabel)
-        preferencesLabel.text = "PREFERENCES"
-        // TODO: - decide on preferences label font and font size
-        preferencesLabel.font = UIFont(name: "Avenir Next", size: 20.0)
-        preferencesLabel.textAlignment = .center
-        preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -275).isActive = true
-        preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        preferencesLabel.specialConstrain(to: view)
-        
-        view.addSubview(dineWithCompanyLabel)
-        dineWithCompanyLabel.text = "Dine with company?"
-        dineWithCompanyLabel.font = UIFont(name: "Avenir Next", size: 20.0)
-        // TODO: - decide on dineWithCompany label font and font size
-        dineWithCompanyLabel.textAlignment = .center
-        dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
-        dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
-        dineWithCompanyLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+    // MARK: - selector functions for buttons
+    
+    // TODO: - write function that finds a dining partner
+    func findDiningPartner(sender: UISwitch!) {
+        if !sender.isOn {print("User wants to dine alone.")} else {
+            print("User wants to dine with a partner!")
+        }
     }
     
-    func formatSwitch() {
-        view.addSubview(dineWithCompanySwitch)
-        dineWithCompanySwitch.center = view.center
-        dineWithCompanySwitch.setOn(false, animated: false)
-        dineWithCompanySwitch.tintColor = UIColor.green
-        dineWithCompanySwitch.onTintColor = UIColor.green
-        dineWithCompanySwitch.thumbTintColor = UIColor.lightGray
-        dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
-        dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
-        dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 85).isActive = true
-        dineWithCompanySwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+    // TODO: - write function that displays replayTutorial
+    func replayTutorial() {
+        print("Replay tutorial requested.")
     }
-
-    //american, asian, italian, healthy, latin, unhealthy
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // TODO: - write function that logs user out of the app
+    func logoutUser() {
+        print("User tapped button to logout.")
     }
-    */
-
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
