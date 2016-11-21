@@ -47,17 +47,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func layoutCuisineCollectionView() {
         
-        let frame = UIScreen.main.bounds
-        let flowLayout = UICollectionViewFlowLayout()
-        cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
-        print("cuisineCollectionView frame assigned")
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 90, height: 120)
+        cuisineCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
-        
-        cuisineCollectionView.backgroundColor = UIColor.green
         cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
+        cuisineCollectionView.backgroundColor = phaedraDarkGreen
         view.addSubview(cuisineCollectionView)
-        cuisineCollectionView.reloadData()
+
+        print("cuisineCollectionView frame assigned")
+        
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 400).isActive = true
@@ -146,6 +147,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
         let budgetSC = UISegmentedControl(items: budgetArray)
         budgetSC.selectedSegmentIndex = 0
+        
         let frame = UIScreen.main.bounds
         budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 140, width: frame.width - 20, height: frame.height * 0.08)
         
