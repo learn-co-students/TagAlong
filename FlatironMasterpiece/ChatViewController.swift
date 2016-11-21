@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JSQMessagesViewController
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -22,7 +23,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         
         view.backgroundColor = UIColor.white
-        chatView.frame = CGRect(x: 0, y: 50, width: 320, height: 200)
+
+        chatView.translatesAutoresizingMaskIntoConstraints = false
+        chatView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        chatView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        chatView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        chatView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.50).isActive = true
+
+        
+        
+        
         chatView.delegate = self
         chatView.dataSource = self
         chatView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
