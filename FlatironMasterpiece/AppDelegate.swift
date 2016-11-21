@@ -20,7 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         GMSPlacesClient.provideAPIKey(gpApiKey)
-
+//     let initialViewController = PreferencesViewController()
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
         return true
     }
 
