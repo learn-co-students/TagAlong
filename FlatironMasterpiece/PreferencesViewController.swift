@@ -81,8 +81,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
         
-        // Configure the cell
-        
         return cell
     }
 

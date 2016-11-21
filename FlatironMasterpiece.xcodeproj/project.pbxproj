@@ -21,11 +21,11 @@
 		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
 		45C84AA91DDE2A3900E623F8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AA81DDE2A3900E623F8 /* Location.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
-		45D104DA1DE25A4800F92C7E /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D104D91DE25A4800F92C7E /* Restaurant.swift */; };
-		45F553441DDCEFCD002E799A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553431DDCEFCD002E799A /* Secrets.swift */; };
+
 		45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */; };
 		45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD6C1DDF5155001BD45C /* Extensions.swift */; };
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
+		45F8AD911DDFB9FB001BD45C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD901DDFB9FB001BD45C /* Secrets.swift */; };
 		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
@@ -46,11 +46,11 @@
 		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		45C84AA81DDE2A3900E623F8 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
-		45D104D91DE25A4800F92C7E /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		45F553431DDCEFCD002E799A /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+
 		45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientGooglePlaces.swift; sourceTree = "<group>"; };
 		45F8AD6C1DDF5155001BD45C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
+		45F8AD901DDFB9FB001BD45C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -105,9 +105,9 @@
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
+				45F8AD901DDFB9FB001BD45C /* Secrets.swift */,
 				275D177A1DDB8869001CE463 /* User.swift */,
 				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
-				45F553431DDCEFCD002E799A /* Secrets.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
@@ -267,11 +267,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
+				45F8AD911DDFB9FB001BD45C /* Secrets.swift in Sources */,
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* LocationDataStore.swift in Sources */,
+
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
 				45F553441DDCEFCD002E799A /* Secrets.swift in Sources */,
+
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
 				250347C21DDD1B8200B896AA /* features:AccountCreation.swift in Sources */,
 				250347BF1DDD1A1B00B896AA /* AccountCreationView.swift in Sources */,
