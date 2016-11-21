@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Get Location View Controller-->
+        <!--Practice View Controller-->
         <scene sceneID="hdI-W9-o6f">
             <objects>
-                <viewController id="fdP-ba-BYt" customClass="GetLocationViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdP-ba-BYt" customClass="PracticeViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zXf-mF-xPN"/>
                         <viewControllerLayoutGuide type="bottom" id="8Ao-CQ-Kn2"/>
@@ -22,10 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cAl-Tv-Yxw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="127-g3-KGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="20"/>
+            <point key="canvasLocation" x="550" y="19"/>
         </scene>
     </scenes>
 </document>

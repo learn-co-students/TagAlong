@@ -9,7 +9,7 @@
 import UIKit
 
 //TODO: - adopt UICollectionViewDelegate and UICollectionViewDataSource protocols if we figure out how to use a collectionView
-class PreferencesViewController: UIViewController{
+class PreferencesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
     
@@ -31,10 +31,9 @@ class PreferencesViewController: UIViewController{
     let cuisineReuseIdentifier = "Cuisine Cell"
     
     // TODO: - import images for these cuisines
-    let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
+    
     let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!]
     let cuisineArray:[String] = ["american", "asian", "italian", "latin", "healthy", "unhealthy" ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,48 +41,50 @@ class PreferencesViewController: UIViewController{
         formatSwitch()
         formatLabels()
         formatButtons()
-//        layoutCuisineCollectionView()
+        layoutCuisineCollectionView()
      }
     
-//    func layoutCuisineCollectionView() {
-//        
-//        let frame = CGRect.zero
-//        let flowLayout = UICollectionViewFlowLayout()
-//        cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
-//        
-//        cuisineCollectionView.delegate = self
-//        cuisineCollectionView.dataSource = self
-//        
-//        cuisineCollectionView.backgroundColor = UIColor.green
-//        cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
-//        view.addSubview(cuisineCollectionView)
-//        cuisineCollectionView.reloadData()
-//        
-//        cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-//        cuisineCollectionView.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 100).isActive = true
-//        cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        
-//    }
-//    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    
-//     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return cuisineArray.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cuisineReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
-//        
-//        cell.imageView.image = cuisineImage[indexPath.item]
-//        cell.foodLabel.text = cuisineArray[indexPath.item]
-//        
-//        // Configure the cell
-//        
-//        return cell
-//    }
+   
+    
+    func layoutCuisineCollectionView() {
+        
+        let frame = CGRect.zero
+        let flowLayout = UICollectionViewFlowLayout()
+        cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
+        
+        cuisineCollectionView.delegate = self
+        cuisineCollectionView.dataSource = self
+        
+        cuisineCollectionView.backgroundColor = UIColor.green
+        cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
+        view.addSubview(cuisineCollectionView)
+        cuisineCollectionView.reloadData()
+        
+        cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        cuisineCollectionView.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 100).isActive = true
+        cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cuisineArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cuisineReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
+        
+        cell.imageView.image = cuisineImage[indexPath.item]
+        cell.foodLabel.text = cuisineArray[indexPath.item]
+        
+        // Configure the cell
+        
+        return cell
+    }
     
     // TODO: - write function that displays replayTutorial
     func replayTutorial() {
@@ -106,13 +107,13 @@ class PreferencesViewController: UIViewController{
         logoutButton.backgroundColor = UIColor.orange
         logoutButton.layer.cornerRadius = 5
         logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 75).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(UIColor.green, for: .highlighted)
-        
         
         view.addSubview(replayTutorialButton)
         // TODO: - change button color
@@ -120,6 +121,7 @@ class PreferencesViewController: UIViewController{
         replayTutorialButton.layer.cornerRadius = 5
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)
         replayTutorialButton.setTitle("Tutorial Played", for: .highlighted)
+        replayTutorialButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
         replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -136,12 +138,13 @@ class PreferencesViewController: UIViewController{
         preferencesLabel.font = UIFont(name: "Avenir Next", size: 20.0)
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300).isActive = true
+        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -275).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
         
         view.addSubview(dineWithCompanyLabel)
         dineWithCompanyLabel.text = "Dine with company?"
+        dineWithCompanyLabel.font = UIFont(name: "Avenir Next", size: 20.0)
         // TODO: - decide on dineWithCompany label font and font size
         dineWithCompanyLabel.textAlignment = .center
         dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false

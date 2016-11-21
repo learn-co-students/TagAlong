@@ -8,63 +8,65 @@
 
 import UIKit
 
-class PracticeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PracticeViewController: UIViewController {
     
-    var cuisineCollectionView:UICollectionView!
-    let cuisineReuseIdentifier = "Cuisine Cell"
-    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!]
-    let cuisineArray:[String] = ["american", "asian", "italian", "latin", "healthy", "unhealthy" ]
+    let store = UsersDataStore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        layoutCuisineCollectionView()
         print("is running")
         view.backgroundColor = UIColor.purple
+        createSegmentedController()
     }
     
-
-    func layoutCuisineCollectionView() {
+    func createSegmentedController() {
+        let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
+        let budgetSC = UISegmentedControl(items: budgetArray)
+        budgetSC.selectedSegmentIndex = 0
+        let frame = UIScreen.main.bounds
+        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 50, width: frame.width - 20, height: frame.height * 0.08)
         
-        let frame = CGRect.zero
-        let flowLayout = UICollectionViewFlowLayout()
-        cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
-        
-        cuisineCollectionView.delegate = self
-        cuisineCollectionView.dataSource = self
-        
-        cuisineCollectionView.backgroundColor = UIColor.green
-        cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
-        view.addSubview(cuisineCollectionView)
-        
-        
-        cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        cuisineCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        cuisineCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        cuisineCollectionView.reloadData()
+        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
+        budgetSC.layer.cornerRadius = 5
+        budgetSC.backgroundColor = UIColor.white
+        budgetSC.tintColor = UIColor.green
+        budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
+        self.view.addSubview(budgetSC)
         
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func printChosenBudget(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("user chose 💰")
+        case 1:
+            print("user chose 💰💰")
+        case 2:
+            print("user chose 💰💰💰")
+        case 3:
+            print("user chose 💰💰💰💰")
+        default:
+            print("error with user chosing budget")
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cuisineArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cuisineReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
-        
-        cell.imageView.image = cuisineImage[indexPath.item]
-        cell.foodLabel.text = cuisineArray[indexPath.item]
-        
-        // Configure the cell
-        
-        return cell
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
