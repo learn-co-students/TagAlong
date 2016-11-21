@@ -10,11 +10,11 @@ import UIKit
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-//    let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
-//     let phaedraOliveGreen = UIColor(red: 121, green: 189, blue: 143, alpha: 1)
-//     let phaedraLightGreen = UIColor(red: 190, green: 235, blue: 159, alpha: 1)
-//     let phaedraYellow = UIColor(red: 255, green: 255, blue: 157, alpha: 1)
-//     let phaedraOrange = UIColor(red: 255, green: 97, blue: 56, alpha: 1)
+    let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
+     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
     
     let store = UsersDataStore.sharedInstance
     
@@ -35,8 +35,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("is running")
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = phaedraYellow
         createSegmentedController()
         formatPreferenceLabel()
         formatBudgetLabel()
@@ -51,7 +50,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         let frame = UIScreen.main.bounds
         let flowLayout = UICollectionViewFlowLayout()
         cuisineCollectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
-        
+        print("cuisineCollectionView frame assigned")
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
         
@@ -92,9 +91,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.addSubview(dineWithCompanySwitch)
         dineWithCompanySwitch.center = view.center
         dineWithCompanySwitch.setOn(false, animated: false)
-        dineWithCompanySwitch.tintColor = UIColor.green
-        dineWithCompanySwitch.onTintColor = UIColor.green
-        dineWithCompanySwitch.thumbTintColor = UIColor.lightGray
+        dineWithCompanySwitch.tintColor = phaedraDarkGreen
+        dineWithCompanySwitch.onTintColor = phaedraDarkGreen
+        dineWithCompanySwitch.thumbTintColor = phaedraLightGreen
         dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
         dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
         dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -108,6 +107,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.text = "PREFERENCES"
         // TODO: - decide on preferences label font and font size
         preferencesLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -275).isActive = true
@@ -119,6 +119,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        budgetLabel.textColor = phaedraOrange
         budgetLabel.textAlignment = .center
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -230).isActive = true
@@ -132,6 +133,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.addSubview(dineWithCompanyLabel)
         dineWithCompanyLabel.text = "Dine with company?"
         dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        dineWithCompanyLabel.textColor = phaedraOrange
         // TODO: - decide on dineWithCompany label font and font size
         dineWithCompanyLabel.textAlignment = .center
         dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -149,8 +151,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
         budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
         budgetSC.layer.cornerRadius = 5
-        budgetSC.backgroundColor = UIColor.white
-        budgetSC.tintColor = UIColor.green
+        budgetSC.backgroundColor = phaedraLightGreen
+        budgetSC.tintColor = phaedraDarkGreen
         budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
         
         self.view.addSubview(budgetSC)
@@ -175,20 +177,22 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func formatButtons() {
         
         view.addSubview(logoutButton)
-        logoutButton.backgroundColor = UIColor.orange
+        logoutButton.backgroundColor = phaedraLightGreen
         logoutButton.layer.cornerRadius = 5
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
+        
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 20).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
-        logoutButton.setTitleColor(UIColor.green, for: .highlighted)
+        logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        logoutButton.setTitleColor(phaedraYellow, for: .highlighted)
         
         view.addSubview(replayTutorialButton)
         // TODO: - change button color
-        replayTutorialButton.backgroundColor = UIColor.orange
+        replayTutorialButton.backgroundColor = phaedraLightGreen
         replayTutorialButton.layer.cornerRadius = 5
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)
         replayTutorialButton.setTitle("Tutorial Played", for: .highlighted)
@@ -198,7 +202,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
-        replayTutorialButton.setTitleColor(UIColor.green, for: .highlighted)
+        replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
         
     }
     
