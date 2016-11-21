@@ -44,8 +44,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     }
-    
-    
+        
     func createViews() {
         
         // login label

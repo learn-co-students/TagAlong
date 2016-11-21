@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = initialViewController
             window.makeKeyAndVisible()
         }
-        
-
+//        
+//
 
         return true
     }

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
 
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
@@ -21,7 +24,7 @@ struct Constants {
 
 
 class AccountCreationViewController: UIViewController {
-
+let ref = FIRDatabase.database().reference().root
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -31,7 +34,6 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
-
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -40,7 +42,6 @@ class AccountCreationViewController: UIViewController {
     var jobtitle = false
     
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +65,41 @@ class AccountCreationViewController: UIViewController {
         
     }
 
+    
+
+    func createAccountButton(_ sender: UIButton) {
+       print("working")
+        guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
+        guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
+        guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
+        guard let password = passwordEntry.text, !password.isEmpty else { print("Password doesn't meet reqs"); return }
+        guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
+        guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
+        guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
+
+        
+        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
+     //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+        }
+    
+        
+        if email != "" && password != "" {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                if error == nil {
+                    self.ref.child("users").child((user?.uid)!).setValue(email)
+                    self.ref.child("users").child((user?.uid)!).setValue(password)
+                } else {
+                    if error != nil {
+                        print(error!)
+                    }
+                }
+        })
+        
+        
+        
+    }
+
+    }
 }
 
 // MARK: Validation
@@ -191,7 +227,8 @@ extension AccountCreationViewController {
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
         createAccountButton.specialConstrain(to: view)
-        
+        createAccountButton.addTarget(self, action: #selector(AccountCreationViewController.createAccountButton(_:)), for: .touchUpInside)
+        //createAccountButton.addTarget(self, action: "createAccountButton:", for: .touchUpInside)
         
     }
     
