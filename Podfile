@@ -10,7 +10,8 @@ target 'FlatironMasterpiece' do
   pod 'GooglePlaces'
   pod 'Firebase'
   pod 'FirebaseAuth'
-
+  pod ‘FBSDKCoreKit’
+  pod ‘FBSDKLoginKit’
   
 
 
