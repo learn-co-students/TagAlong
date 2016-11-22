@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
+
 //        
 //        let initialViewController = AccountCreationViewController()
 //        
@@ -41,6 +42,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        
 //
+
+        // Override point for customization after application launch.
+        
+       
+        let initialViewController = AccountCreationViewController()
+        
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
+
 
 
         return true
