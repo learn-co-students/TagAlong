@@ -18,20 +18,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-
-        GMSPlacesClient.provideAPIKey(gpApiKey)
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         
         FIRApp.configure()
         
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
- 
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Override point for customization after application launch.
-        
-        
-//        let initialViewController = AccountCreationViewController()
+
+
+//        GMSPlacesClient.provideAPIKey(gpApiKey)
+//        
+//        
+//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+// 
+//
+//        // Override point for customization after application launch.
+//        
+//        
+////        let initialViewController = AccountCreationViewController()
+////        
+////        let frame = UIScreen.main.bounds
+////        window = UIWindow(frame: frame)
+////        
+////        if let window = window {
+////            window.rootViewController = initialViewController
+////            window.makeKeyAndVisible()
+////        }
+//        
+//        let initialViewController = ChatViewController()
 //        
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
@@ -40,16 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-        
-        let initialViewController = ChatViewController()
-        
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
 
         
         
@@ -61,9 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        return true
         
-        return handled
+//        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+      //  return handled
         
     }
 //    func application(_ application: UIApplication, open url: URL, options: protocol<UIApplicationOpenURLOptionsKey, Any>) -> Bool {
