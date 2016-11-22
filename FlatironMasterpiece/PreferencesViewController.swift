@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
     
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
      let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
@@ -17,6 +17,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
      let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
     
     let store = UsersDataStore.sharedInstance
+    var usersCuisineSelectionsArray:[String] = []
     
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
@@ -24,13 +25,16 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var dineWithCompanySwitch = UISwitch()
     var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 35))
+    var cuisinePreferencesLabel = UILabel()
     var cuisineCollectionView:UICollectionView!
     let cuisineReuseIdentifier = "Cuisine Cell"
     
     // TODO: - import images for these cuisines
     
-    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!]
-    let cuisineArray:[String] = ["american", "asian", "italian", "latin", "healthy", "unhealthy" ]
+    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy2x")!, UIImage(named: "Italian2x")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    
+    //, "italian", "latin", "unhealthy"
+    let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +47,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         formatSwitch()
         formatButtons()
         layoutCuisineCollectionView()
+        formatCuisinePreferencesLabel()
     }
     
     func layoutCuisineCollectionView() {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 90, height: 120)
+        layout.itemSize = CGSize(width: 90, height: 90)
         cuisineCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         cuisineCollectionView.delegate = self
         cuisineCollectionView.dataSource = self
@@ -59,10 +64,12 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         print("cuisineCollectionView frame assigned")
         
-        
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 400).isActive = true
+        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
+        cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
+        
         
     }
     
@@ -83,8 +90,44 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var tapCount = 0
+        var selectedCuisine = cuisineArray[indexPath.row]
+        print("array before selections is \(usersCuisineSelectionsArray)")
+        
+        var cell = collectionView.cellForItem(at: indexPath)
+        if tapCount == 0 {
+            
+            usersCuisineSelectionsArray.append(selectedCuisine)
+            tapCount += 1
+            print("array after a selection \(usersCuisineSelectionsArray)")
+            
+            cell?.layer.borderWidth = 4
+            cell?.layer.borderColor = phaedraOrange.cgColor
+            cell?.layer.cornerRadius = 5
+        } else {
+                        
+            print("array after a deselection \(usersCuisineSelectionsArray)")
+            cell?.layer.borderWidth = 0
+        }
+        print("final array \(usersCuisineSelectionsArray)")
+        
+    }
+    
     //MARK: - setup UI
+//    func addJohannView(){
+//        var johannView: UIView = {
+//            
+//            var view = UIView()
+//            view.backgroundColor = UIColor.green
+//            
+//            
+//            return view
+//        }()
+//        
+//        self.view.addSubview(johannView)
+//    }
     
     func formatSwitch() {
         view.addSubview(dineWithCompanySwitch)
@@ -128,12 +171,22 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
     
+    func formatCuisinePreferencesLabel() {
+        view.addSubview(cuisinePreferencesLabel)
+        cuisinePreferencesLabel.text = "Select your cuisine preferences"
+        cuisinePreferencesLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        cuisinePreferencesLabel.textColor = phaedraOrange
+        cuisinePreferencesLabel.textAlignment = .center
+        cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60).isActive = true
+    }
+    
     func formatDineWithCompanyLabel() {
         view.addSubview(dineWithCompanyLabel)
         dineWithCompanyLabel.text = "Dine with company?"
         dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
         dineWithCompanyLabel.textColor = phaedraOrange
-        // TODO: - decide on dineWithCompany label font and font size
         dineWithCompanyLabel.textAlignment = .center
         dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
         dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
