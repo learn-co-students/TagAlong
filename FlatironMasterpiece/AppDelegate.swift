@@ -46,13 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
        
-        let initialViewController = AccountCreationViewController()
+//        let initialViewController = AccountCreationViewController()
+        
+        let initialViewController = ShakeInstructionViewController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         
         if let window = window {
+//            window.rootViewController = initialViewController
             window.rootViewController = initialViewController
+            
+            
             window.makeKeyAndVisible()
         }
 

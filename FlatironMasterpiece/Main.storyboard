@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FzU-NF-5Gf">
-
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Preference View Controller-->
+        <!--Shake Instruction View Controller-->
         <scene sceneID="6ef-qc-Ep6">
             <objects>
-                <viewController id="FzU-NF-5Gf" customClass="PreferenceViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FzU-NF-5Gf" customClass="ShakeInstructionViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Itf-ch-WJU"/>
                         <viewControllerLayoutGuide type="bottom" id="2NX-A6-G30"/>
