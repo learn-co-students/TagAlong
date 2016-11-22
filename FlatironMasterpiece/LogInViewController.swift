@@ -52,7 +52,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
-            loginEmail.text? = "joycematos@gmail.com"
+            loginEmail.text? = ""
         }
         
     }
