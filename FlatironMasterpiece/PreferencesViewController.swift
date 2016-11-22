@@ -31,7 +31,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // TODO: - import images for these cuisines
     
-    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy2x")!, UIImage(named: "Italian2x")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
     //, "italian", "latin", "unhealthy"
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
@@ -92,26 +92,46 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var tapCount = 0
-        var selectedCuisine = cuisineArray[indexPath.row]
+        
+        let selectedCuisine = cuisineArray[indexPath.row]
+        var selectedCuisineIsHighlighted:Bool = false
+        
         print("array before selections is \(usersCuisineSelectionsArray)")
         
-        var cell = collectionView.cellForItem(at: indexPath)
-        if tapCount == 0 {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        if !(cell?.isHighlighted)! {
             
             usersCuisineSelectionsArray.append(selectedCuisine)
-            tapCount += 1
-            print("array after a selection \(usersCuisineSelectionsArray)")
-            
-            cell?.layer.borderWidth = 4
-            cell?.layer.borderColor = phaedraOrange.cgColor
+            selectedCuisineIsHighlighted = true
+            cell?.layer.borderWidth = 8
+            cell?.layer.borderColor = self.phaedraLightGreen.cgColor
             cell?.layer.cornerRadius = 5
-        } else {
-                        
-            print("array after a deselection \(usersCuisineSelectionsArray)")
+            
+            print("array after a selection made: \(usersCuisineSelectionsArray)")
+            
+        } else if (cell?.isHighlighted)! {
+            
             cell?.layer.borderWidth = 0
+            usersCuisineSelectionsArray.remove(at: usersCuisineSelectionsArray.count-1)
+            print("array after a deselection is made: \(usersCuisineSelectionsArray)")
+            selectedCuisineIsHighlighted = false
         }
-        print("final array \(usersCuisineSelectionsArray)")
+//        if !isHighlighted {
+//            
+//            usersCuisineSelectionsArray.append(selectedCuisine)
+//            isHighlighted = true
+//
+//            print("array after a selection \(usersCuisineSelectionsArray)")
+//            
+//            cell?.layer.borderWidth = 4
+//            cell?.layer.borderColor = self.phaedraOrange.cgColor
+//            cell?.layer.cornerRadius = 5
+//            
+//        } else if isHighlighted {
+//
+//            cell?.layer.borderWidth = 0
+//            usersCuisineSelectionsArray.append(selectedCuisine)
         
     }
     
