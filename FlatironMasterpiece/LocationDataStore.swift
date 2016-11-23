@@ -13,7 +13,7 @@ class LocationDataStore {
     
     static let sharedInstance = LocationDataStore()
     
-    var location: [Location]!
+    var locationsArray: [Restaurant] = []
     
     var restaurantsInJSON:json!
     
@@ -23,46 +23,25 @@ class LocationDataStore {
         
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
         
-        //make an array of dictionaries
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
+        print(resultsArray)
         
-        let firstArray = resultsArray[0] as! restaurantDictionary
+//        let firstArray = resultsArray[0] as! restaurantDictionary
         
-        guard let restaurantAddress = firstArray["formatted_address"] else { (print("Problem unwrapping restaurantAddress")); return }
-        print("This is the restaurant address \(restaurantAddress)")
+        for array in resultsArray {
+            let newRestaurant = Restaurant(dictionary: array as! json)
+            locationsArray.append(newRestaurant)
+            print("\nrestaurant array count is \(locationsArray.count)\n")
+        }
         
-        let restaurantGeometryDict = firstArray["geometry"] as! restaurantDictionary
-        //print("This is the restaurant geometryDict \(restaurantGeometryDict)")
+       
+
+//        let newLocation = Restaurant(dictionary: firstArray)
         
-        let restaurantLatLongDict = restaurantGeometryDict["location"] as! restaurantDictionary
-        //print("This is the restaurant latlongDict \(restaurantLatLongDict)")
-        
-        guard let restaurantLat = restaurantLatLongDict["lat"] else { return }
-        guard let restaurantLong = restaurantLatLongDict["lng"] else { return }
-        print("This is the restaurantLat \(restaurantLat)")
-        print("This is the restaurantLong \(restaurantLong)")
-        
-        guard let restaurantName = firstArray["name"] else { return }
-        print("This is the restaurant name \(restaurantName)")
-        let restaurantHoursDict = firstArray["opening_hours"] as! restaurantDictionary
-        //print("This is the restaurant's opening_hours dict \(restaurantHoursDict)")
-        guard let restaurantOpenNow = restaurantHoursDict["open_now"] else { return }
-        
-        print("This is the restaurant's open_now \(restaurantOpenNow)")
-        guard let restaurantPriceLevel = firstArray["price_level"] else { return }
-        print("This is the restaurant's price level \(restaurantPriceLevel)")
-        guard let restaurantRating = firstArray["rating"] else { return }
-        print("This is the restaurant's rating \(restaurantRating)")
-        
-        let newLocation = Location(name: restaurantName as! String, priceLevel: restaurantPriceLevel as! Int, latitude: restaurantLat as! Double, longitude: restaurantLong as! Double, timeStampOfLocation: restaurantRating as! Double)
-        
-        location.append(newLocation)
-        
-        
-        
-        
-        
-        
+//        print(newLocation)
+//        dump(newLocation)
+//        locationsArray.append(newLocation)
+//        print(locationsArray.count)
         
     }
 }

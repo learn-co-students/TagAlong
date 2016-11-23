@@ -48,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
 //        let initialViewController = AccountCreationViewController()
         
-        let initialViewController = ShakeInstructionViewController()
+//        let initialViewController = ShakeInstructionViewController()
+        
+        let initialViewController = GetLocationViewController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

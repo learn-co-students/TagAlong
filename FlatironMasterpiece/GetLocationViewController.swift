@@ -17,10 +17,12 @@ class GetLocationViewController: UIViewController {
     var placesClient: GMSPlacesClient?
     
     //TODO: - assign the lat and long to the user's location (via mapkit or google places); practice values for lat and long
-//    var latitude: Double = 0.0
-//    var longitude: Double = 0.0
-    var latitude: Double = 40.748944899999998
-    var longitude: Double = -74.0002432
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    
+    //these are example lat and long for chelsea
+//    var latitude: Double = 40.748944899999998
+//    var longitude: Double = -74.0002432
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,13 +12,13 @@
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
 		25C989781DE0ACE5003C993C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989771DE0ACE5003C993C /* Secrets.swift */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
-		2714E7481DE3392A00A7F4A4 /* spreads.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2714E7471DE3392A00A7F4A4 /* spreads.jpg */; };
 		275D177B1DDB8869001CE463 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D177A1DDB8869001CE463 /* User.swift */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
 		27B9C8021DDE56180054AAE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C8011DDE56180054AAE8 /* Main.storyboard */; };
 		27E72DD91DDEAC14007EC098 /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */; };
+		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		45AB2D821DDD7F9400F5D09A /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB2D811DDD7F9400F5D09A /* LocationDataStore.swift */; };
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
 		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
@@ -40,7 +40,6 @@
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		27AAFE3A1DDAC9AA00C08348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27B9C8011DDE56180054AAE8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationView.swift; sourceTree = "<group>"; };
+		452C59991DE5EABC005884EE /* SelectedRestaurant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedRestaurant.xib; sourceTree = "<group>"; };
 		45AB2D811DDD7F9400F5D09A /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
@@ -102,32 +102,72 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
-				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
-				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
-				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				27B9C8011DDE56180054AAE8 /* Main.storyboard */,
-				45AB2D811DDD7F9400F5D09A /* LocationDataStore.swift */,
-				45C84AA81DDE2A3900E623F8 /* Location.swift */,
+				452C599B1DE61D1D005884EE /* DataStores */,
+				452C599D1DE61D65005884EE /* Models */,
 				45F553471DDCF03A002E799A /* APIClients */,
-				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
-				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
-				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
-				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
+				452C599E1DE61E34005884EE /* Controllers */,
+				452C599C1DE61D4A005884EE /* Xibs */,
+				452C599F1DE61E95005884EE /* View */,
 				25C989771DE0ACE5003C993C /* Secrets.swift */,
-				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
-				275D177A1DDB8869001CE463 /* User.swift */,
-				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
-				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
-				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 			);
 			path = FlatironMasterpiece;
+			sourceTree = "<group>";
+		};
+		452C599B1DE61D1D005884EE /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
+				45AB2D811DDD7F9400F5D09A /* LocationDataStore.swift */,
+			);
+			name = DataStores;
+			sourceTree = "<group>";
+		};
+		452C599C1DE61D4A005884EE /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
+				452C59991DE5EABC005884EE /* SelectedRestaurant.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		452C599D1DE61D65005884EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				45C84AA81DDE2A3900E623F8 /* Location.swift */,
+				275D177A1DDB8869001CE463 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		452C599E1DE61E34005884EE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
+				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
+				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		452C599F1DE61E95005884EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
+				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
+				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
+				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		45F553471DDCF03A002E799A /* APIClients */ = {
@@ -192,7 +232,7 @@
 				TargetAttributes = {
 					27AAFE2A1DDAC9AA00C08348 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = T88J73TZ8D;
+						DevelopmentTeam = 74479ETUA8;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -225,11 +265,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2714E7481DE3392A00A7F4A4 /* spreads.jpg in Resources */,
 				45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */,
 				27B9C8021DDE56180054AAE8 /* Main.storyboard in Resources */,
 				27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */,
 				95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */,
+				452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */,
 				27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T88J73TZ8D;
+				DEVELOPMENT_TEAM = 74479ETUA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -445,7 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T88J73TZ8D;
+				DEVELOPMENT_TEAM = 74479ETUA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
