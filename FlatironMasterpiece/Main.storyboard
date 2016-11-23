@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chat View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="hdI-W9-o6f">
             <objects>
-                <viewController id="fdP-ba-BYt" customClass="ChatViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdP-ba-BYt" customClass="LogInViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zXf-mF-xPN"/>
                         <viewControllerLayoutGuide type="bottom" id="8Ao-CQ-Kn2"/>
@@ -26,6 +26,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="127-g3-KGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="20"/>
+        </scene>
+        <!--Chat App View Controller-->
+        <scene sceneID="hcs-rw-Cby">
+            <objects>
+                <viewController id="IlN-Xc-H4D" customClass="ChatAppViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LhW-Ix-c02"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ed1-cm-EWq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VWp-P5-a8Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5EW-lS-hgb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="5EW-lS-hgb" id="6CB-Gw-0S2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="al8-CR-dSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="19"/>
         </scene>
     </scenes>
 </document>
