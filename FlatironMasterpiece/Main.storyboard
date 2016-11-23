@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chat View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="hdI-W9-o6f">
             <objects>
-                <viewController id="fdP-ba-BYt" customClass="ChatViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdP-ba-BYt" customClass="LogInViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zXf-mF-xPN"/>
                         <viewControllerLayoutGuide type="bottom" id="8Ao-CQ-Kn2"/>

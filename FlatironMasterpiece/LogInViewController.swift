@@ -182,7 +182,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
 
         
         if let token = FBSDKAccessToken.current() {
