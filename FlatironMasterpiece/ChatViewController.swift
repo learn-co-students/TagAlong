@@ -25,9 +25,11 @@ class ChatViewController: JSQMessagesViewController {
     private var messageRef: FIRDatabaseReference!
     private var membersRef: FIRDatabaseReference!
 
-
     private var matchRefHandle: FIRDatabaseHandle?
     private var newMessageRefHandle: FIRDatabaseHandle?
+
+    // Unique ID
+    let uid = UUID().uuidString
 
     
     
@@ -71,7 +73,8 @@ class ChatViewController: JSQMessagesViewController {
         
         
         // Match branch
-        let newMatchRef = matchRef.childByAutoId()
+        let newMatchRef = matchRef.child("\(uid)")
+        
         let message = [
             "name" : senderId,      // This will be the user's username
             "timestamp" : "8:00" // This will be the time the chat started
@@ -82,7 +85,7 @@ class ChatViewController: JSQMessagesViewController {
         }
         
         // Message ref
-        let newMessageRef = messageRef.childByAutoId()
+        let newMessageRef = messageRef.child("\(uid)")
         let messageInfo = [
             "user" : senderId,
             "message" : "Hello"     // This will be taken from textfield
@@ -95,7 +98,7 @@ class ChatViewController: JSQMessagesViewController {
         
         
         // Members ref
-        let newMemberRef = membersRef.childByAutoId()
+        let newMemberRef = membersRef.child("\(uid)")
         let members = [
             "User's unique ID" : true,
             "User 2's unique ID" : true
@@ -109,14 +112,15 @@ class ChatViewController: JSQMessagesViewController {
     
     // Make send button save a message to firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        let itemRef = messageRef.childByAutoId() // 1
+        let itemRef = messageRef.child("\(uid)") // 1
         let messageItem = [ // 2
             "user": senderId!,
             "message": text!,
             ]
+//        let match = matchRef.child("\(uid)")
         
         itemRef.setValue(messageItem) // 3
-        
+//        match.setValue()
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
