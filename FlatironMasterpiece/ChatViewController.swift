@@ -17,13 +17,13 @@ class ChatViewController: JSQMessagesViewController {
     
     // Stores user's name and match
     var userName: String?
-//    var matchChannel = [Match]()
     
-    //
-    //var ref = FIRDatabase.database().reference().root
-    
-    // Creates reference to match channel
+    // References
     private var matchRef: FIRDatabaseReference!
+    private var messageRef: FIRDatabaseReference!
+    private var membersRef: FIRDatabaseReference!
+
+
     private var matchRefHandle: FIRDatabaseHandle?
     
     
@@ -34,6 +34,8 @@ class ChatViewController: JSQMessagesViewController {
         FIRApp.configure()
         
         matchRef = FIRDatabase.database().reference().child("Match")
+        messageRef = FIRDatabase.database().reference().child("Message")
+        membersRef = FIRDatabase.database().reference().child("Members")
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
@@ -51,27 +53,44 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func setupChatDatabase() {
+        //TODO: Set uniqueID's to match
+        
         
         // Match branch
-        
         let newMatchRef = matchRef.childByAutoId()
-        let messageRef = newMatchRef.child("Messages")
-        
-        print(messageRef)
-        
-        let convo = [
+        let message = [
             "name" : senderId,
+            "message" : "Hey what's up", // This will be taken from a textfield
+        ]
+        
+        newMatchRef.setValue(message) { (error, ref) in
+            print("Match: we have a message in our match")
+        }
+        
+        // Message ref
+        let newMessageRef = messageRef.childByAutoId()
+        let messageInfo = [
+            "user" : senderId,
             "message" : "Hello",     // This will be taken from textfield
             "timestamp" : "8:00"    // This will be the time the chat started
             ]
         
-        messageRef.setValue(convo, withCompletionBlock: { error, ref in
-            
-            print("We're success")
-            
-            
-            
+        newMessageRef.setValue(messageInfo, withCompletionBlock: { error, ref in
+            print("Message: We have details in our message ")
         })
+        
+        
+        // Members ref
+        let newMemberRef = membersRef.childByAutoId()
+        let members = [
+            "User's unique ID" : true,
+            "User 2's unique ID" : true
+        ]
+        
+        newMemberRef.setValue(members) { (error, ref) in
+            print("Members: We have member info for our members")
+        }
+        
         
 
     }
