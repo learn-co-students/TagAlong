@@ -16,6 +16,11 @@ class ShakeView: UIView {
     @IBOutlet weak var shakePhoneLabel: UILabel!
     @IBOutlet weak var shakeIcon: UIImageView!
     
+    init(){
+        super.init(frame: CGRect.zero)
+        commonInit()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -27,7 +32,7 @@ class ShakeView: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed("ShakeView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("ShakeGestureView", owner: self, options: nil)
         self.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
