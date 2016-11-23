@@ -9,13 +9,13 @@
 import Foundation
 
 class Restaurant {
-    var name: String?
-    var priceLevel: Int?
-    var openNow: Int?
     var latitude: Double?
     var longitude: Double?
+    var name: String?
+    var openNow: Bool = false
+    var priceLevel: Int?
+    var restaurantRating: Int?
     var timeStampOfLocation: Double?
-    
     
     init(dictionary: json) {
 //        guard let restaurantAddress = dictionary["formatted_address"] else { (print("Problem unwrapping restaurantAddress")); return }
@@ -44,25 +44,40 @@ class Restaurant {
             print("This is the restaurant name \(name)")
         }
         
-        
-        let restaurantHoursDict = dictionary["opening_hours"] as! restaurantDictionary
-        //print("This is the restaurant's opening_hours dict \(restaurantHoursDict)")
+        if let restaurantDict = dictionary["opening_hours"] as? restaurantDictionary {
+            if let restaurantOpenNow = restaurantDict["open_now"] as? Int {
+                if restaurantOpenNow == 1{
+                    self.openNow = true
+                }else{
+                    self.openNow = false
+                }
+                
+                print("restaurant is open now")
+            }
+            
+        }else{
+            print("opening hours doesn't exist")
+            self.openNow = false
+            
+        }
     
-        guard let restaurantOpenNow = restaurantHoursDict["open_now"] else { print("There is no restaurant hours array."); return }
-        print("This is the restaurant's open_now \(restaurantOpenNow)")
+        if let uPriceLevel = dictionary["price_level"] as? Int? {
+            priceLevel = uPriceLevel
+            print("This is the restaurant's price level \(priceLevel)")
+        }
         
-        guard let restaurantPriceLevel = dictionary["price_level"] else { return }
-        print("This is the restaurant's price level \(restaurantPriceLevel)")
+        if let urestaurantRating = dictionary["rating"] as? Int? {
+            restaurantRating = urestaurantRating
+            print("This is the restaurant's rating \(restaurantRating)")
+        }
         
-        guard let restaurantRating = dictionary["rating"] else { return }
-        print("This is the restaurant's rating \(restaurantRating)")
         
-        name = restaurantName as! String
-        priceLevel = restaurantPriceLevel as! Int
-        //    var openNow: Int
-        latitude = restaurantLat as! Double
-        longitude = restaurantLong as! Double
-        timeStampOfLocation = restaurantRating as! Double
+//        name = restaurantName as! String
+//        priceLevel = restaurantPriceLevel as! Int
+//        //    var openNow: Int
+//        latitude = restaurantLat as! Double
+//        longitude = restaurantLong as! Double
+//        timeStampOfLocation = restaurantRating as! Double
         
     }
     

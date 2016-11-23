@@ -9,9 +9,9 @@ import Foundation
 
 typealias restaurantDictionary = [String:Any]
 
-class LocationDataStore {
+class RestaurantDataStore {
     
-    static let sharedInstance = LocationDataStore()
+    static let sharedInstance = RestaurantDataStore()
     
     var locationsArray: [Restaurant] = []
     
@@ -26,22 +26,13 @@ class LocationDataStore {
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
-//        let firstArray = resultsArray[0] as! restaurantDictionary
-        
         for array in resultsArray {
             let newRestaurant = Restaurant(dictionary: array as! json)
             locationsArray.append(newRestaurant)
+            dump(locationsArray)
             print("\nrestaurant array count is \(locationsArray.count)\n")
         }
-        
-       
-
-//        let newLocation = Restaurant(dictionary: firstArray)
-        
-//        print(newLocation)
-//        dump(newLocation)
-//        locationsArray.append(newLocation)
-//        print(locationsArray.count)
+    
         
     }
 }
