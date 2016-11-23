@@ -23,7 +23,7 @@ class ChatViewController: JSQMessagesViewController {
     //var ref = FIRDatabase.database().reference().root
     
     // Creates reference to match channel
-    private lazy var matchRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Match")
+    private var matchRef: FIRDatabaseReference!
     private var matchRefHandle: FIRDatabaseHandle?
     
     
@@ -31,15 +31,22 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
-            
+        FIRApp.configure()
+        
+        matchRef = FIRDatabase.database().reference().child("Match")
+        
+//        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+        
+        self.senderId = "JOHN"
+        self.senderDisplayName = "BLHA"
+        
             
             //Sets the senderId based on the logged in Firebase user.
-            self.senderId = FIRAuth.auth()?.currentUser?.uid
-            self.senderDisplayName = FIRAuth.auth()?.currentUser?.uid
+           // self.senderId = FIRAuth.auth()?.currentUser?.uid
+           // self.senderDisplayName = FIRAuth.auth()?.currentUser?.uid
             
             self.createMatchChannel()
-        })
+//        })
         
     }
     
@@ -53,13 +60,21 @@ class ChatViewController: JSQMessagesViewController {
         
         let convo = ["name" : "Jim"]
         
+        messageRef.setValue(convo, withCompletionBlock: { error, ref in
+            
+            print("We're success")
+            
+            
+            
+        })
+        
         //let uniqueMessageID = UUID().uuidString
         
 //        let convo = [uniqueMessageID : ["name" : "Jim", "message": "YOLO!!!", "Time" : "10000"]]
         
         
         
-        messageRef.updateChildValues(convo)
+     //   messageRef.updateChildValues(convo)
         
     }
     
