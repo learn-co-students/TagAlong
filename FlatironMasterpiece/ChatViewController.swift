@@ -58,7 +58,10 @@ class ChatViewController: JSQMessagesViewController {
         
         print(messageRef)
         
-        let convo = ["name" : "Jim"]
+        let convo = [
+            "name" : senderId,
+            "message" : "Hello"     // This will be taken from textfield
+            ]
         
         messageRef.setValue(convo, withCompletionBlock: { error, ref in
             
