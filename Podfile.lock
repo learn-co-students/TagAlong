@@ -57,6 +57,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - ZLSwipeableViewSwift (0.0.7)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -67,6 +68,16 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - ZLSwipeableViewSwift (from `git@github.com:zhxnlai/ZLSwipeableViewSwift.git`)
+
+EXTERNAL SOURCES:
+  ZLSwipeableViewSwift:
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
+
+CHECKOUT OPTIONS:
+  ZLSwipeableViewSwift:
+    :commit: 159dada69b1586577b5f2d1c97985336968f5665
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -85,7 +96,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: de4e57f64ab139ab729804714c4115cca06e7df7
+PODFILE CHECKSUM: 343a8e97df306c805299071d3b89bda1f34e50d3
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.0.1

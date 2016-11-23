@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CardViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:FlatironMasterpiece.xcodeproj">
    </FileRef>
    <FileRef
