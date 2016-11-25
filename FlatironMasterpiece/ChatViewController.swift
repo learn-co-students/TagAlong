@@ -31,8 +31,7 @@ class ChatViewController: JSQMessagesViewController {
 
     // Unique ID
     let uid = UUID().uuidString
-
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +42,6 @@ class ChatViewController: JSQMessagesViewController {
         messageRef = FIRDatabase.database().reference().child("Message")
         membersRef = FIRDatabase.database().reference().child("Members")
         
-        
-        
-
-        
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
         self.senderId = "John" // This will be the user's username
@@ -54,12 +49,12 @@ class ChatViewController: JSQMessagesViewController {
 //        })
         
         self.setupChatDatabase()
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
         observeMessages()
 
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,8 +68,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func setupChatDatabase() {
-        //TODO: Set uniqueID's to match
-        
         
         // Match branch
         let newMatchRef = matchRef.child("\(uid)")
@@ -119,13 +112,19 @@ class ChatViewController: JSQMessagesViewController {
     // Saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
+        //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members'). 
+        
+        
         let itemRef = messageRef.child("\(uid)") // 1
         let messageItem = [ // 2
-            "user": senderId!,
-            "message": text!,
+            "senderId": senderId!,
+            "senderName": senderDisplayName!,
+            "text": text!,
+//            "user": senderId!,
+//            "message": text!,
             ]
     
-        itemRef.setValue(messageItem) // 3
+        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
         
 //        let convoRef = messageRef.child("\(uid)")
 //
@@ -139,27 +138,6 @@ class ChatViewController: JSQMessagesViewController {
 //            ]
 //        
 //        newMessageRef.setValue(messageItem)
-        
-//        let convoRef = messageRef.child("\(uid)")
-//        messageRef.setValue(convoRef) { (error, ref) in
-//            print("Message: We now have a convo in our messages")
-//        }
-//        
-//        let newMessageRef = convoRef.childByAutoId()
-//        
-//        convoRef.setValue(newMessageRef, withCompletionBlock: { error, ref in
-//            print("Convo: We now have new messages in our convo ")
-//        })
-//        
-//        let messageInfo = [
-//            "user": senderId!,
-//            "message": text!,
-//            "timestamp": date!
-//            ] as [String : Any]
-//        
-//        newMessageRef.setValue(messageInfo) { (error, ref) in
-//            print("New Message: We have message info in our convo")
-//        }
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
