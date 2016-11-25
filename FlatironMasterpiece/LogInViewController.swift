@@ -224,5 +224,22 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         //TODO: - Segue back to login screen after user has logged out
     }
+    
+    
+    
+    // Testing Segue to chat
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+////        super.prepare(for: segue, sender: sender)
+//        if segue.identifier == "showChat" {
+//        let destination = segue.destination as! ChatViewController
+//        let user = FIRAuth.auth()?.currentUser?.email
+//        destination.userName = user
+//        
+//        }
+    
+//    }
+    
+    
 
 }

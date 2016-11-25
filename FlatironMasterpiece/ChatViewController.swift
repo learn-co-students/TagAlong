@@ -27,11 +27,12 @@ class ChatViewController: JSQMessagesViewController {
 
     private var matchRefHandle: FIRDatabaseHandle?
     private var newMessageRefHandle: FIRDatabaseHandle?
+    
 
     // Unique ID
     let uid = UUID().uuidString
 
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,20 +43,20 @@ class ChatViewController: JSQMessagesViewController {
         messageRef = FIRDatabase.database().reference().child("Message")
         membersRef = FIRDatabase.database().reference().child("Members")
         
+        
+        
+
+        
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
-        self.senderId = "JOHN"
-        self.senderDisplayName = "BLHA"
-        
-        
+        self.senderId = "John" // This will be the user's username
+        self.senderDisplayName = "John" // This will be the user
 //        })
         
         self.setupChatDatabase()
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        
-        
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +75,6 @@ class ChatViewController: JSQMessagesViewController {
         
         // Match branch
         let newMatchRef = matchRef.child("\(uid)")
-        
         let message = [
             "name" : senderId,      // This will be the user's username
             "timestamp" : "8:00" // This will be the time the chat started
@@ -84,24 +84,27 @@ class ChatViewController: JSQMessagesViewController {
             print("Match: we have a message in our match")
         }
         
-        // Message ref
-        let newMessageRef = messageRef.child("\(uid)")
-        let messageInfo = [
-            "user" : senderId,
-            "message" : "Hello"     // This will be taken from textfield
-
-            ]
         
-        newMessageRef.setValue(messageInfo, withCompletionBlock: { error, ref in
-            print("Message: We have details in our message ")
-        })
+        // Message ref
+//        let newMessageRef = messageRef.child("\(uid)")
+//        let messageInfo = [
+//            "user" : senderId,
+//            "message" : "Hello"     // This will be taken from textfield
+//
+//            ]
+//        
+//        newMessageRef.setValue(messageInfo, withCompletionBlock: { error, ref in
+//            print("Message: We have details in our message ")
+//        })
+//        
+
         
         
         // Members ref
         let newMemberRef = membersRef.child("\(uid)")
         let members = [
-            "User's unique ID" : true,
-            "User 2's unique ID" : true
+            "User's unique ID" : true,  // This will be the user's unid
+            "User 2's unique ID" : true     // This will be the user's unid
         ]
         
         newMemberRef.setValue(members) { (error, ref) in
@@ -110,17 +113,50 @@ class ChatViewController: JSQMessagesViewController {
 
     }
     
-    // Make send button save a message to firebase
+    // Saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        
         let itemRef = messageRef.child("\(uid)") // 1
         let messageItem = [ // 2
             "user": senderId!,
             "message": text!,
             ]
-//        let match = matchRef.child("\(uid)")
-        
+    
         itemRef.setValue(messageItem) // 3
-//        match.setValue()
+        
+//        let convoRef = messageRef.child("\(uid)")
+//
+//        let newMessageRef = convoRef.childByAutoId() // 1
+//        convoRef.setValue(newMessageRef) // 3
+//
+//        let messageItem = [ // 2
+//            "senderId": senderId!,
+//            "senderName": senderDisplayName!,
+//            "text": text!,
+//            ]
+//        
+//        newMessageRef.setValue(messageItem)
+        
+//        let convoRef = messageRef.child("\(uid)")
+//        messageRef.setValue(convoRef) { (error, ref) in
+//            print("Message: We now have a convo in our messages")
+//        }
+//        
+//        let newMessageRef = convoRef.childByAutoId()
+//        
+//        convoRef.setValue(newMessageRef, withCompletionBlock: { error, ref in
+//            print("Convo: We now have new messages in our convo ")
+//        })
+//        
+//        let messageInfo = [
+//            "user": senderId!,
+//            "message": text!,
+//            "timestamp": date!
+//            ] as [String : Any]
+//        
+//        newMessageRef.setValue(messageInfo) { (error, ref) in
+//            print("New Message: We have message info in our convo")
+//        }
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
