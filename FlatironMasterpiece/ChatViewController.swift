@@ -38,8 +38,8 @@ class ChatViewController: JSQMessagesViewController {
         
         FIRApp.configure()
         
+        // TODO: - These three branches will be moved from viewdidload and will be created after an action is performed, ie: A match is made
         matchRef = FIRDatabase.database().reference().child("Match")
-        messageRef = FIRDatabase.database().reference().child("Message")
         membersRef = FIRDatabase.database().reference().child("Members")
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
@@ -81,22 +81,7 @@ class ChatViewController: JSQMessagesViewController {
         }
         
         
-        // Message ref
-//        let newMessageRef = messageRef.child("\(uid)")
-//        let messageInfo = [
-//            "user" : senderId,
-//            "message" : "Hello"     // This will be taken from textfield
-//
-//            ]
-//        
-//        newMessageRef.setValue(messageInfo, withCompletionBlock: { error, ref in
-//            print("Message: We have details in our message ")
-//        })
-//        
-
-        
-        
-        // Members ref
+        // Members branch
         let newMemberRef = membersRef.child("\(uid)")
         let members = [
             "User's unique ID" : true,  // This will be the user's unid
@@ -109,35 +94,21 @@ class ChatViewController: JSQMessagesViewController {
 
     }
     
-    // Saves a message to Firebase
+    // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members'). 
         
-        
-        let itemRef = messageRef.child("\(uid)") // 1
+        messageRef = FIRDatabase.database().reference().child("Message")
+        let itemRef = messageRef.childByAutoId() // 1
         let messageItem = [ // 2
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
-//            "user": senderId!,
-//            "message": text!,
+
             ]
     
         itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
-        
-//        let convoRef = messageRef.child("\(uid)")
-//
-//        let newMessageRef = convoRef.childByAutoId() // 1
-//        convoRef.setValue(newMessageRef) // 3
-//
-//        let messageItem = [ // 2
-//            "senderId": senderId!,
-//            "senderName": senderDisplayName!,
-//            "text": text!,
-//            ]
-//        
-//        newMessageRef.setValue(messageItem)
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
@@ -219,17 +190,14 @@ class ChatViewController: JSQMessagesViewController {
         let messageQuery = messageRef.queryLimited(toLast:25)
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
-        
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
             
             // 3. Extract the messageData from the snapshot
-            
             let messageData = snapshot.value as! [String : String]
             
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
                 
                 // 4. Add the new message to the data source
-                
                 self.addMessage(withId: id, name: name, text: text)
                 
                 // 5. Inform JSQMessagesViewController that a message has been received.
