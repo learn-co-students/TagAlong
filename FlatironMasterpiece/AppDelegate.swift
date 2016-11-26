@@ -50,13 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let initialViewController = ShakeInstructionViewController()
         
-        let initialViewController = GetLocationViewController()
+        let initialViewController = SelectedRestaurantViewController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         
         if let window = window {
-//            window.rootViewController = initialViewController
             window.rootViewController = initialViewController
             
             
