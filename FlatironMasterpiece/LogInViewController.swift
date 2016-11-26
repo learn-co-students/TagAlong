@@ -21,6 +21,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Code needed for Core motion
@@ -154,15 +155,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         guard let email = loginEmail.text, let password = loginPassword.text else { return }
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            
             if error == nil {
                 print("Successful Log In")
-                
                 //TODO: - Send to next screen after logging in
             }
                 
             else {
-                
                 //TODO: - Notify user of error
                 print(error?.localizedDescription)
                 
@@ -240,18 +238,25 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     // Testing Segue to chat
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        super.prepare(for: segue, sender: sender)
-//        if segue.identifier == "showChat" {
-//        let destination = segue.destination as! ChatViewController
-//        let user = FIRAuth.auth()?.currentUser?.email
-//        destination.userName = user
+//    
+//    @IBAction func chatButtonPressed(_ sender: Any) {
 //        
-//        }
-    
+//        
+//        
+//        
+//        
 //    }
-    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showChat" {
+//            
+//            let chatVC = segue.destination as! ChatViewController
+//            
+//        }
+//    }
+//
+//    
+//    
     
 
 }

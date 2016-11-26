@@ -15,6 +15,7 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
+    var username: String?
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
@@ -43,16 +44,20 @@ class ChatViewController: JSQMessagesViewController {
         
         
         // MARK: Setting the senderID and testing with anonymous login
-        
-        // TODO: - Set the user ID to their actual UID
+            // TODO: - Set the user ID to their actual UID
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
         self.senderId = "John" // This will be the user's username
         self.senderDisplayName = "John" // This will be the user
-//        })
+////        }
         
         
+        // Testing on a real user
+       self.senderId = FIRAuth.auth()?.currentUser?.email
+        self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+        
+        // Create references for 'match' and 'members' branch
         self.setupChatDatabase()
         
         
