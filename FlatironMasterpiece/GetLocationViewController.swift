@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  GetLocationViewController.swift
 //  FlatironMasterpiece
 //
-//  Created by Elias Miller on 11/14/16.
+//  Created by Erica Millado on 11/20/16.
 //  Copyright © 2016 Elias Miller. All rights reserved.
 //
 
@@ -10,13 +10,19 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
-
-class ViewController: UIViewController {
+class GetLocationViewController: UIViewController {
+    
+    let store = RestaurantDataStore.sharedInstance
     
     var placesClient: GMSPlacesClient?
     
+    //TODO: - assign the lat and long to the user's location (via mapkit or google places); practice values for lat and long
     var latitude: Double = 0.0
     var longitude: Double = 0.0
+    
+    //these are example lat and long for chelsea
+//    var latitude: Double = 40.748944899999998
+//    var longitude: Double = -74.0002432
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,24 +34,17 @@ class ViewController: UIViewController {
         
         let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-        //you have to start
+        
         locationManager.startUpdatingLocation()
-//        getLocation { (placelatitude, placelongitude) in
-//            self.latitude = placelatitude
-//            self.longitude = placelongitude
-// 
-//            print("data store lat is \(placelatitude) and data store long is \(placelongitude)")
-//        }
+        
         getLocation()
         
     }
     
     func getLocation() {
-        print("working after button pressed")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
             
             if let error = error {
-                print("pick place error:\(error.localizedDescription)")
                 return
             }
             
@@ -66,12 +65,15 @@ class ViewController: UIViewController {
             print("Place coordinates are \(placeCoordinates)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
-            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude)
-            print("latitude is NOW \(self.latitude)")
-//            completion(place.coordinate.latitude, place.coordinate.longitude)
             
-         })
-     }
+            // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
 
+            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "american", completion: { (JSON) in
+                self.store.restaurantsInJSON = JSON
+                self.store.filterSearchedRestaurants()
+            })
+            
+        })
+    }
+    
 }
-

@@ -1,4 +1,4 @@
-//
+
 //  AppDelegate.swift
 //  FlatironMasterpiece
 //
@@ -17,62 +17,80 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
+<<<<<<< HEAD
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        
+
         FIRApp.configure()
-        
+
     }
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        // Override point for customization after application launch.
+        GMSPlacesClient.provideAPIKey(gpApiKey)
 
+        FIRApp.configure()
 
-//        GMSPlacesClient.provideAPIKey(gpApiKey)
-//        
-//        
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-// 
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
 //
-//        // Override point for customization after application launch.
-//        
-//        
+//
 ////        let initialViewController = AccountCreationViewController()
-////        
+////
 ////        let frame = UIScreen.main.bounds
 ////        window = UIWindow(frame: frame)
-////        
+////
 ////        if let window = window {
 ////            window.rootViewController = initialViewController
 ////            window.makeKeyAndVisible()
 ////        }
-//        
+//
 //        let initialViewController = ChatViewController()
-//        
+//
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
-//        
+//
+
 //        if let window = window {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
 
-        
-        
-        
+
+        // Override point for customization after application launch.
+
+
+//        let initialViewController = AccountCreationViewController()
+
+//        let initialViewController = ShakeInstructionViewController()
+
+        let initialViewController = SelectedRestaurantViewController()
+
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+
+        if let window = window {
+            window.rootViewController = initialViewController
+
+
+            window.makeKeyAndVisible()
+        }
+
 
 
         return true
     }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return true
-        
+
 //        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        
+
       //  return handled
-        
+
     }
 //    func application(_ application: UIApplication, open url: URL, options: protocol<UIApplicationOpenURLOptionsKey, Any>) -> Bool {
 //        var handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey], annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
@@ -106,4 +124,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

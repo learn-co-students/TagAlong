@@ -36,6 +36,7 @@ let ref = FIRDatabase.database().reference().root
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -43,7 +44,6 @@ let ref = FIRDatabase.database().reference().root
     var industry = false
     var jobtitle = false
     
- 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,8 +88,22 @@ let ref = FIRDatabase.database().reference().root
         if email != "" && password != "" {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
-                    self.ref.child("users").child((user?.uid)!).setValue(email)
-                    self.ref.child("users").child((user?.uid)!).setValue(password)
+                 //   self.ref.child("UID").child((user?.uid)!).setValue(email)
+                   
+                   // self.ref.child("users").child((user?.uid)!).setValue(email)
+                    self.ref.child("users").child((user?.uid)!).child("email").setValue(email)
+                    self.ref.child("users").child((user?.uid)!).child("firstName").setValue(firstName)
+                    self.ref.child("users").child((user?.uid)!).child("lastName").setValue(lastName)
+                    self.ref.child("users").child((user?.uid)!).child("jobTitle").setValue(job)
+                    self.ref.child("users").child((user?.uid)!).child("industry").setValue(industry)
+                
+                    print(email)
+                    print(firstName)
+                    print(lastName)
+                    print(job)
+                    print(industry)
+                    
+                    
                 } else {
                     if error != nil {
                         print(error!)

@@ -13,12 +13,15 @@ class UsersDataStore {
     
     var users: [User] = []
     
+    var userBudgetChoice:Int = 1
+    
     //get this from firebase user login data
     //    func getUsersFromDatabase {
     //firstname
     //industry
     //jobtitle
     //}
+    
     
     
     
