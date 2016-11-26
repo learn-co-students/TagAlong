@@ -20,7 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-    // References
+    // Reference properties
     private var matchRef: FIRDatabaseReference!
     private var messageRef: FIRDatabaseReference!
     private var membersRef: FIRDatabaseReference!
@@ -28,10 +28,9 @@ class ChatViewController: JSQMessagesViewController {
     private var matchRefHandle: FIRDatabaseHandle?
     private var newMessageRefHandle: FIRDatabaseHandle?
     
-
     // Unique ID
     let uid = UUID().uuidString
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +57,8 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // Dummy Data
+        
 //        // messages from someone else
 //        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
 //        // messages sent from local sender
@@ -181,8 +182,8 @@ class ChatViewController: JSQMessagesViewController {
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
-    // Observe Messages
     
+    // Observe Messages
     private func observeMessages() {
         messageRef = FIRDatabase.database().reference().child("Message")
         
@@ -207,7 +208,5 @@ class ChatViewController: JSQMessagesViewController {
             }
         })
     }
-
-    
     
 }
