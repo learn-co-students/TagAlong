@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-<<<<<<< HEAD
     func applicationDidFinishLaunching(_ application: UIApplication) {
 
         FIRApp.configure()
@@ -37,15 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 //
-////        let initialViewController = AccountCreationViewController()
-////
-////        let frame = UIScreen.main.bounds
-////        window = UIWindow(frame: frame)
-////
-////        if let window = window {
-////            window.rootViewController = initialViewController
-////            window.makeKeyAndVisible()
-////        }
+//        let initialViewController = AccountCreationViewController()
+//
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
 //
 //        let initialViewController = ChatViewController()
 //
@@ -66,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        let initialViewController = ShakeInstructionViewController()
 
-        let initialViewController = SelectedRestaurantViewController()
+        let initialViewController = ChatViewController()
 
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

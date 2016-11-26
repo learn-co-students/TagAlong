@@ -15,7 +15,6 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
-    var userName: String?
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
@@ -35,11 +34,17 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FIRApp.configure()
+ //       FIRApp.configure()
         
         // TODO: - These three branches will be moved from viewdidload and will be created after an action is performed, ie: A match is made
         matchRef = FIRDatabase.database().reference().child("Match")
         membersRef = FIRDatabase.database().reference().child("Members")
+        
+        
+        
+        // MARK: Setting the senderID and testing with anonymous login
+        
+        // TODO: - Set the user ID to their actual UID
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
@@ -47,8 +52,11 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = "John" // This will be the user
 //        })
         
+        
         self.setupChatDatabase()
         
+        
+        // Removing avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
@@ -94,6 +102,7 @@ class ChatViewController: JSQMessagesViewController {
         }
 
     }
+    
     
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
@@ -143,7 +152,7 @@ class ChatViewController: JSQMessagesViewController {
     
     
     // Here you retrieve the message.
-    // If the message was sent by the local user, return the outgoing image view.
+    // If the message was sent by current user, return the outgoing image view.
     // Otherwise, return the incoming image view.
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
@@ -154,6 +163,7 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    // Does not display avatar
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
