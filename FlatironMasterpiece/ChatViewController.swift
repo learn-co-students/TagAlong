@@ -42,9 +42,7 @@ class ChatViewController: JSQMessagesViewController {
         membersRef = FIRDatabase.database().reference().child("Members")
         
         
-        
-        // MARK: Setting the senderID and testing with anonymous login
-            // TODO: - Set the user ID to their actual UID
+        // Setting the senderID and testing with anonymous login
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
@@ -57,7 +55,7 @@ class ChatViewController: JSQMessagesViewController {
        self.senderId = FIRAuth.auth()?.currentUser?.email
         self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
         
-        // Create references for 'match' and 'members' branch
+        // Creates references for 'match' and 'members' branch
         self.setupChatDatabase()
         
         
@@ -115,6 +113,7 @@ class ChatViewController: JSQMessagesViewController {
         //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members'). 
         
         messageRef = FIRDatabase.database().reference().child("Message")
+
         let itemRef = messageRef.childByAutoId() // 1
         let messageItem = [ // 2
             "senderId": senderId!,
@@ -122,8 +121,11 @@ class ChatViewController: JSQMessagesViewController {
             "text": text!,
 
             ]
+        
+//        messageRef.child("\(uid)").child("Conversation").setValue(messageItem)
+
     
-        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
+//        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
