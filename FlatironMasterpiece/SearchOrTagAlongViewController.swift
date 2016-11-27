@@ -19,6 +19,7 @@ class SearchOrTagAlongViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = phaedraOliveGreen
         setupViews()
+        self.title = "Search or Tag Along"
      }
     
     override func viewWillAppear(_ animated: Bool) {

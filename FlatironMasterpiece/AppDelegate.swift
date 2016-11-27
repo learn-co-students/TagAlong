@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
 //        let initialViewController = GetLocationViewController()
         
-        let initialViewController = SearchOrTagAlongViewController()
+        let initialViewController = TabBarController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

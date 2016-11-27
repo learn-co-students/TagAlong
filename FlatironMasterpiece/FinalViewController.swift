@@ -1,29 +1,30 @@
 //
-//  SelectedRestaurantViewController.swift
+//  FinalViewController.swift
 //  FlatironMasterpiece
 //
-//  Created by Erica Millado on 11/25/16.
+//  Created by Erica Millado on 11/27/16.
 //  Copyright © 2016 Elias Miller. All rights reserved.
 //
 
 import UIKit
 
-class SelectedRestaurantViewController: UIViewController {
+class FinalViewController: UIViewController {
     
-    var restaurantView: RestaurantView!
-    
+    var tagAlongUserArray:[User] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Restaurant Detail View"
-        view.backgroundColor = UIColor.blue
+
+        // Do any additional setup after loading the view.
+    }
+
+    // MARK: - set up tableview
+    func layoutTableView() {
+        
     }
     
-    override func loadView() {
-        super.loadView()
-        restaurantView = RestaurantView()
-        self.view = restaurantView
-    }
-   
+    
+    
 
     /*
     // MARK: - Navigation
