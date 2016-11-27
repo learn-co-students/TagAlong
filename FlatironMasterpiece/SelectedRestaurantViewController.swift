@@ -22,6 +22,7 @@ class SelectedRestaurantViewController: UIViewController {
         restaurantView = RestaurantView()
         self.view = restaurantView
     }
+   
 
     /*
     // MARK: - Navigation

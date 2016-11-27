@@ -32,6 +32,7 @@
 		45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */; };
 		45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD6C1DDF5155001BD45C /* Extensions.swift */; };
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
+		45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */; };
 		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientGooglePlaces.swift; sourceTree = "<group>"; };
 		45F8AD6C1DDF5155001BD45C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
+		45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOrTagAlongViewController.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		452C599E1DE61E34005884EE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
@@ -351,6 +354,7 @@
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
 				45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
+				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				45C84AA91DDE2A3900E623F8 /* Restaurant.swift in Sources */,
 			);
