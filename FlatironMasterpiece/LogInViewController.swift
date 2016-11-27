@@ -238,25 +238,23 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     // Testing Segue to chat
-//    
-//    @IBAction func chatButtonPressed(_ sender: Any) {
-//        
-//        
-//        
-//        
-//        
-//    }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showChat" {
-//            
-//            let chatVC = segue.destination as! ChatViewController
-//            
-//        }
-//    }
-//
-//    
-//    
+    
+    @IBAction func chatButtonPressed(_ sender: Any) {
+                
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChat" {
+            
+            let chatVC = segue.destination as! ChatViewController
+            
+        }
+    }
+
+    
+    
     
 
 }

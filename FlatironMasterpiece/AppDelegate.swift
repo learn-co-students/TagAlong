@@ -65,17 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        let initialViewController = ShakeInstructionViewController()
 
-        let initialViewController = ChatViewController()
-
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-
-        if let window = window {
-            window.rootViewController = initialViewController
-
-
-            window.makeKeyAndVisible()
-        }
+//        let initialViewController = AccountCreationViewController()
+//
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//
+//
+//            window.makeKeyAndVisible()
+//        }
 
 
 

@@ -48,8 +48,8 @@ class ChatViewController: JSQMessagesViewController {
         
 //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
         
-        self.senderId = "John" // This will be the user's username
-        self.senderDisplayName = "John" // This will be the user
+//        self.senderId = "John" // This will be the user's username
+//        self.senderDisplayName = "John" // This will be the user
 ////        }
         
         
