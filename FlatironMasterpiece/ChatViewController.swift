@@ -122,10 +122,11 @@ class ChatViewController: JSQMessagesViewController {
 
             ]
         
+        // Test new branch 
 //        messageRef.child("\(uid)").child("Conversation").setValue(messageItem)
 
     
-//        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
+        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
