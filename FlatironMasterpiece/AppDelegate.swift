@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
+        
 
 //        
 //        let initialViewController = AccountCreationViewController()
@@ -46,9 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
        
-//        let initialViewController = GetLocationViewController()
-        
-        let initialViewController = TabBarController()
+        let initialViewController = TagAlongViewController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
