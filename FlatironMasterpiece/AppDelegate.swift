@@ -48,19 +48,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
 //        let initialViewController = AccountCreationViewController()
         
-        let initialViewController = ShakeInstructionViewController()
-        
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        
-        if let window = window {
-//            window.rootViewController = initialViewController
-            window.rootViewController = initialViewController
-            
-            
-            window.makeKeyAndVisible()
-        }
-
+       // let initialViewController = ShakeInstructionViewController()
+//        
+//        
+//        let cardViewController = CardViewController()
+//        
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        
+//        if let window = window {
+////            window.rootViewController = initialViewController
+//            window.rootViewController = cardViewController
+//            
+//            
+//            window.makeKeyAndVisible()
+//        }
+//
 
 
         return true

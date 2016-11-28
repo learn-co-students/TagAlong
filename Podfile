@@ -20,6 +20,8 @@ target 'FlatironMasterpiece' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'ZLSwipeableViewSwift', :git => 'git@github.com:zhxnlai/ZLSwipeableViewSwift.git'
+  pod 'Cartography'
+
   
 
 
