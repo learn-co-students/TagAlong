@@ -10,15 +10,17 @@ import UIKit
 
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var tableView: UIView!
-    
     var tagAlongUserArray:[User] = []
+    
+    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = phaedraDarkGreen
+        view.backgroundColor = phaedraOliveGreen
+    
         createFakeUsers()
         layoutTableView()
+        layoutScrollView()
     }
     
     func createFakeUsers() {
@@ -34,15 +36,41 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         tagAlongUserArray.append(user5)
     }
 
+    
+    
+    func layoutScrollView() {
+        var myImageView: UIImageView!
+        var aspectRatio: NSLayoutConstraint?
+        let burger = UIImage(named: "american")
+        myImageView = UIImageView(image: burger)
+        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
+        myImageView.addConstraint(aspectRatio!)
+        
+        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 470, width: 380, height: 180))
+        myScrollView.backgroundColor = phaedraOrange
+        myScrollView.addSubview(myImageView)
+//        myScrollView.contentSize = (myImageView.frame.size)
+        
+        
+        view.addSubview(myScrollView)
+        
+    
+    }
+    
+    
+    
+    
     // MARK: - set up tableview
     func layoutTableView() {
         var myTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.backgroundColor = phaedraDarkGreen
+        myTableView.backgroundColor = phaedraOliveGreen
+        
         //this determines the size of the tableview
-        myTableView.frame = CGRect(x: 10, y: 50, width: 350, height: 400)
-        myTableView.layer.cornerRadius = 6
+        myTableView.frame = CGRect(x: 0, y: 50, width: 380, height: 400)
+//        myTableView.layer.cornerRadius = 8
+        
         
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tagAlongCell")
         self.view.addSubview(myTableView)
@@ -53,8 +81,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: - 5 is a default value, we can change this number of cells
-        return 5
+        //TODO: - 4 is a default value, we can change this number of cells
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,7 +93,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         myCell.restNameLabel.text = "Applebees"
         myCell.restDistLabel.text = "0.4"
         myCell.diningTimeLabel.text = "1:00pm"
-        myCell.userImageView?.image = UIImage(named: "asian.png")
+        myCell.userImageView?.image = UIImage(named: "rock.png")
     
         return myCell
     }
