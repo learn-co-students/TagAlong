@@ -96,8 +96,8 @@ class ChatViewController: JSQMessagesViewController {
         // Members branch
         let newMemberRef = membersRef.child("\(uid)")
         let members = [
-            "User's unique ID" : true,  // This will be the user's unid
-            "User 2's unique ID" : true     // This will be the user's unid
+            "User 1" : true,  // This will be the user's unid
+            "User 2" : true     // This will be the user's unid
         ]
         
         newMemberRef.setValue(members) { (error, ref) in
@@ -112,21 +112,30 @@ class ChatViewController: JSQMessagesViewController {
         
         //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members'). 
         
-        messageRef = FIRDatabase.database().reference().child("Message")
+        messageRef = FIRDatabase.database().reference().child("Chat")
 
-        let itemRef = messageRef.childByAutoId() // 1
+//        let itemRef = messageRef.childByAutoId() // 1
+        
         let messageItem = [ // 2
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
+            "timestamp": String(Int(Date().timeIntervalSince1970))
 
             ]
         
-        // Test new branch 
-//        messageRef.child("\(uid)").child("Conversation").setValue(messageItem)
+        // Test new branch
+        
+        messageRef.child("\(uid)").observeSingleEvent(of: .value, with: { snapshot in
+            
+            self.messageRef.child("\(self.uid)").updateChildValues(["\(snapshot.childrenCount)": messageItem])
+        
+        })
+        
+        
 
     
-        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
+//        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
@@ -203,7 +212,7 @@ class ChatViewController: JSQMessagesViewController {
     
     // Observe Messages
     private func observeMessages() {
-        messageRef = FIRDatabase.database().reference().child("Message")
+        messageRef = FIRDatabase.database().reference().child("Chat")
         
         // 1. Creating a query that limits the synchronization to the last 25 messages
         let messageQuery = messageRef.queryLimited(toLast:25)
@@ -211,19 +220,41 @@ class ChatViewController: JSQMessagesViewController {
         // 2. Observe every child item that has been added, and will be added, at the messages location.
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
             
-            // 3. Extract the messageData from the snapshot
-            let messageData = snapshot.value as! [String : String]
+            print("--------------------GETTING CALLED------------------")
             
-            if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
+            // 3. Extract the messageData from the snapshot
+            
+            print("messageQuery snapshot: \(snapshot.value)")
+            let messageData = snapshot.value as! [[String: String]]
+            
+//            let
+            
+            
+            for message in messageData {
                 
-                // 4. Add the new message to the data source
-                self.addMessage(withId: id, name: name, text: text)
+                print(message)
+                print("\n\n\n")
                 
-                // 5. Inform JSQMessagesViewController that a message has been received.
-                self.finishReceivingMessage()
-            } else {
-                print("Error! Could not decode message data")
+    if let id = message["senderId"] as String!, let name = message["senderName"] as String!, let text = message["text"] as String!, text.characters.count > 0 {
+                
+        // 4. Add the new message to the data source
+        self.addMessage(withId: id, name: name, text: text)
+                
+        // 5. Inform JSQMessagesViewController that a message has been received.
+            self.finishReceivingMessage()
+                } else {
+            print("Error! Could not decode message data")
+                }
+                
+                
             }
+            
+            print(messageData)
+            
+            
+            
+            
+            print("----------------------------------------------\n\n\n")
         })
     }
     

@@ -27,7 +27,7 @@
                                 <state key="normal" title="Chat"/>
                                 <connections>
                                     <action selector="chatButtonPressed:" destination="eXa-zo-Mef" eventType="touchUpInside" id="7yF-is-m8g"/>
-                                    <segue destination="6fI-ic-X3e" kind="show" identifier="showChat" id="e5i-Dy-Kbr"/>
+                                    <segue destination="6fI-ic-X3e" kind="show" identifier="showChat" id="CWE-ox-x3W"/>
                                 </connections>
                             </button>
                         </subviews>
