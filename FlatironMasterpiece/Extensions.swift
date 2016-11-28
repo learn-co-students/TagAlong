@@ -9,20 +9,11 @@
 import Foundation
 import UIKit
 
-//MARK: - custom Phaedra colors
-enum PhaedraColors {
-    case phaedraDarkGreen, phaedraOliveGreen, phaedraLightGreen, phaedraYellow, phaedraOrange
-}
-
-//let phaedraDarkGreen = UIColor(red: 0, green: 163, blue: 136, alpha: 1)
-//
-//let phaedraOliveGreen = UIColor(red: 121, green: 189, blue: 143, alpha: 1)
-//
-//let phaedraLightGreen = UIColor(red: 190, green: 235, blue: 159, alpha: 1)
-//
-//let phaedraYellow = UIColor(red: 255, green: 255, blue: 157, alpha: 1)
-//
-//let phaedraOrange = UIColor(red: 255, green: 97, blue: 56, alpha: 1)
+let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
+let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
 
 
 

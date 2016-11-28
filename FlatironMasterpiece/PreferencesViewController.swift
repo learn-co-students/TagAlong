@@ -117,22 +117,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             print("array after a deselection is made: \(usersCuisineSelectionsArray)")
             selectedCuisineIsHighlighted = false
         }
-//        if !isHighlighted {
-//            
-//            usersCuisineSelectionsArray.append(selectedCuisine)
-//            isHighlighted = true
-//
-//            print("array after a selection \(usersCuisineSelectionsArray)")
-//            
-//            cell?.layer.borderWidth = 4
-//            cell?.layer.borderColor = self.phaedraOrange.cgColor
-//            cell?.layer.cornerRadius = 5
-//            
-//        } else if isHighlighted {
-//
-//            cell?.layer.borderWidth = 0
-//            usersCuisineSelectionsArray.append(selectedCuisine)
-        
+
     }
     
     //MARK: - setup UI
