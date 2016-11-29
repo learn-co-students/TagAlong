@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FzU-NF-5Gf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SZc-KD-83e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,33 +9,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shake Instruction View Controller-->
-        <scene sceneID="6ef-qc-Ep6">
+        <!--Card View Controller-->
+        <scene sceneID="feq-cz-RvU">
             <objects>
-                <viewController id="FzU-NF-5Gf" customClass="ShakeInstructionViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SZc-KD-83e" customClass="CardViewController" customModule="FlatironMasterpiece" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Itf-ch-WJU"/>
-                        <viewControllerLayoutGuide type="bottom" id="2NX-A6-G30"/>
+                        <viewControllerLayoutGuide type="top" id="gPk-6h-Kh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="AQa-Tr-1jK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZSf-PQ-MgH">
+                    <view key="view" contentMode="scaleToFill" id="Y17-qp-nat">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUn-uu-lcq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="contentView" destination="VUn-uu-lcq" id="urr-BD-NKy"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r2k-Tr-Ved" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSe-VR-34a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424.80000000000001" y="-173.16341829085459"/>
+            <point key="canvasLocation" x="251" y="-224"/>
         </scene>
     </scenes>
 </document>

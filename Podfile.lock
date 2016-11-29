@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Cartography (1.0.1)
   - FBSDKCoreKit (4.17.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.17.0):
@@ -57,8 +58,10 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - ZLSwipeableViewSwift (0.0.7)
 
 DEPENDENCIES:
+  - Cartography
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase
@@ -67,9 +70,20 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - ZLSwipeableViewSwift (from `git@github.com:zhxnlai/ZLSwipeableViewSwift.git`)
+
+EXTERNAL SOURCES:
+  ZLSwipeableViewSwift:
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
+
+CHECKOUT OPTIONS:
+  ZLSwipeableViewSwift:
+    :commit: 159dada69b1586577b5f2d1c97985336968f5665
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
   FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -85,7 +99,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: de4e57f64ab139ab729804714c4115cca06e7df7
+PODFILE CHECKSUM: d68c42254664c59faa041b9effdf5ac4879bdc29
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.0.1

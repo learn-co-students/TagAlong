@@ -10,7 +10,6 @@
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
-		25C989781DE0ACE5003C993C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989771DE0ACE5003C993C /* Secrets.swift */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		275D177B1DDB8869001CE463 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D177A1DDB8869001CE463 /* User.swift */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
@@ -32,9 +31,17 @@
 		45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */; };
 		45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD6C1DDF5155001BD45C /* Extensions.swift */; };
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
+<<<<<<< HEAD
 		45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */; };
+=======
+		950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C681DE5FF3E001F2145 /* CardView.swift */; };
+		950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6A1DE61C57001F2145 /* CardViewController.swift */; };
+		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
+		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
+>>>>>>> feature/deckview
 		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
+		95C0F5C61DE5EEE600577412 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0F5C51DE5EEE600577412 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +49,11 @@
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+=======
+		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
+>>>>>>> feature/deckview
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,8 +78,13 @@
 		45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
 		45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOrTagAlongViewController.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
+		950A2C681DE5FF3E001F2145 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		950A2C6A1DE61C57001F2145 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardViewController.swift; path = ../CardViewController.swift; sourceTree = "<group>"; };
+		950A2C6C1DE9F95D001F2145 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		950A2C6E1DEC9F01001F2145 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		95C0F5C51DE5EEE600577412 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../../../Downloads/Secrets.swift; sourceTree = "<group>"; };
 		B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +124,7 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				27B9C8011DDE56180054AAE8 /* Main.storyboard */,
@@ -123,6 +140,36 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
+=======
+				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
+				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
+				950A2C681DE5FF3E001F2145 /* CardView.swift */,
+				45F553471DDCF03A002E799A /* APIClients */,
+				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
+				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
+				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
+				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
+				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
+				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
+				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
+				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
+				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
+				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
+				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
+				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
+				45C84AA81DDE2A3900E623F8 /* Location.swift */,
+				45AB2D811DDD7F9400F5D09A /* LocationDataStore.swift */,
+				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				27B9C8011DDE56180054AAE8 /* Main.storyboard */,
+				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
+				95C0F5C51DE5EEE600577412 /* Secrets.swift */,
+				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
+				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
+				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
+				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
+				275D177A1DDB8869001CE463 /* User.swift */,
+				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
+>>>>>>> feature/deckview
 			);
 			path = FlatironMasterpiece;
 			sourceTree = "<group>";
@@ -328,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -339,8 +386,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
+				95C0F5C61DE5EEE600577412 /* Secrets.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
-				25C989781DE0ACE5003C993C /* Secrets.swift in Sources */,
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */,
 				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
@@ -353,10 +400,19 @@
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
 				45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */,
+				950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */,
+				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				45C84AA91DDE2A3900E623F8 /* Restaurant.swift in Sources */,
+=======
+				950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */,
+				275D177B1DDB8869001CE463 /* User.swift in Sources */,
+				950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */,
+				45C84AA91DDE2A3900E623F8 /* Location.swift in Sources */,
+>>>>>>> feature/deckview
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
