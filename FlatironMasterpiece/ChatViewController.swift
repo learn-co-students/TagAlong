@@ -17,7 +17,6 @@ class ChatViewController: JSQMessagesViewController {
     
     var username: String?
     var messages = [JSQMessage]()
-    var messagesCount = 0
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
@@ -116,31 +115,14 @@ class ChatViewController: JSQMessagesViewController {
         
         //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members').
         
-        //        messageRef = FIRDatabase.database().reference().child("Chat")
-        
-        //        let itemRef = messageRef.childByAutoId() // 1
-        
         let messageItem = [ // 2
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             "timestamp": String(Int(Date().timeIntervalSince1970))
-            
         ]
         
-        // Test new branch
-        
-        //        chatRef.observeSingleEvent(of: .value, with: { snapshot in
-        
-        
-        //        })
-        
         self.chatRef.updateChildValues(["\(messages.count)": messageItem])
-        
-        
-        
-        
-        
         
         //        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
         
@@ -237,11 +219,6 @@ class ChatViewController: JSQMessagesViewController {
             print("messageQuery snapshot: \(snapshot.value)")
             let messageData = snapshot.value as! [String: Any]
             
-            
-            
-            //                print(message)
-            //                print("\n\n\n")
-            
             if let id = messageData["senderId"] as! String!,
                 let name = messageData["senderName"] as! String!,
                 let text = messageData["text"] as! String!,
@@ -255,13 +232,6 @@ class ChatViewController: JSQMessagesViewController {
             } else {
                 print("Error! Could not decode message data")
             }
-            
-            
-            
-            //            print(messageData)
-            
-            
-            
             
             print("----------------------------------------------\n\n\n")
         })
