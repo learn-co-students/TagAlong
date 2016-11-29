@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Cartography (1.0.1)
   - FBSDKCoreKit (4.17.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.17.0):
@@ -60,8 +61,10 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - ZLSwipeableViewSwift (0.0.7)
 
 DEPENDENCIES:
+  - Cartography
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase
@@ -71,9 +74,20 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - JSQMessagesViewController
+  - ZLSwipeableViewSwift (from `git@github.com:zhxnlai/ZLSwipeableViewSwift.git`)
+
+EXTERNAL SOURCES:
+  ZLSwipeableViewSwift:
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
+
+CHECKOUT OPTIONS:
+  ZLSwipeableViewSwift:
+    :commit: 159dada69b1586577b5f2d1c97985336968f5665
+    :git: git@github.com:zhxnlai/ZLSwipeableViewSwift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
   FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -93,5 +107,8 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
 
 PODFILE CHECKSUM: bfa00696532a2df0a4cf1617ead675f44af1c891
+  ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
+
+PODFILE CHECKSUM: d68c42254664c59faa041b9effdf5ac4879bdc29
 
 COCOAPODS: 1.1.0.rc.3

@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FIRApp.configure()
 
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
 
 //
 //
@@ -62,9 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-//        let initialViewController = GetLocationViewController()
 
-        let initialViewController = SearchOrTagAlongViewController()
+
+ //       let initialViewController = SearchOrTagAlongViewController()
+
+
+       // let initialViewController = ShakeInstructionViewController()
+//
+//
+//        let cardViewController = CardViewController()
+//
+
+//        let initialViewController = SelectedRestaurantViewController()
+//       let initialViewController = GetLocationViewController()
+        let initialViewController = TagAlongViewController()
 
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
@@ -72,10 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let window = window {
             window.rootViewController = initialViewController
 
-
             window.makeKeyAndVisible()
         }
-
 
 
         return true
