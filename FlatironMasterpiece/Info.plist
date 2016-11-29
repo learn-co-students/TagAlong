@@ -67,5 +67,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>YanoneKaffeesatz-Bold.ttf</string>
+		<string>YanoneKaffeesatz-ExtraLight.ttf</string>
+		<string>YanoneKaffeesatz-Light.ttf</string>
+		<string>YanoneKaffeesatz-Regular.ttf</string>
+	</array>
 </dict>
 </plist>
