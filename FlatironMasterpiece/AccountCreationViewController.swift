@@ -79,12 +79,6 @@ let ref = FIRDatabase.database().reference().root
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
 
-        
-        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
-     //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
-        }
-    
-        
         if email != "" && password != "" {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
@@ -103,14 +97,17 @@ let ref = FIRDatabase.database().reference().root
                     print(job)
                     print(industry)
                     
+                    // Send to Preferences VC
+                    let preferencesVC = PreferenceViewController()
+                    self.navigationController?.pushViewController(preferencesVC, animated: true)
                     
                 } else {
+                    //TODO: - create alert controller that says enter a password and email
                     if error != nil {
                         print(error!)
                     }
                 }
         })
-        
         
         
     }

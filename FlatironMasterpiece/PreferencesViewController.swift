@@ -29,11 +29,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var cuisineCollectionView:UICollectionView!
     let cuisineReuseIdentifier = "Cuisine Cell"
     
-    // TODO: - import images for these cuisines
-    
     let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
-    //, "italian", "latin", "unhealthy"
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
 
     override func viewDidLoad() {
@@ -44,8 +41,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         createSegmentedController()
         formatPreferenceLabel()
         formatBudgetLabel()
-        formatDineWithCompanyLabel()
-        formatSwitch()
         formatButtons()
         layoutCuisineCollectionView()
         formatCuisinePreferencesLabel()
@@ -66,12 +61,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("cuisineCollectionView frame assigned")
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200).isActive = true
+        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 225).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
-        
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,7 +101,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             cell?.layer.borderWidth = 8
             cell?.layer.borderColor = self.phaedraLightGreen.cgColor
             cell?.layer.cornerRadius = 5
-            
             print("array after a selection made: \(usersCuisineSelectionsArray)")
             
         } else if (cell?.isHighlighted)! {
@@ -120,20 +112,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
 
     }
-    
-    //MARK: - setup UI
-//    func addJohannView(){
-//        var johannView: UIView = {
-//            
-//            var view = UIView()
-//            view.backgroundColor = UIColor.green
-//            
-//            
-//            return view
-//        }()
-//        
-//        self.view.addSubview(johannView)
-//    }
     
     func formatSwitch() {
         view.addSubview(dineWithCompanySwitch)
@@ -147,7 +125,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 95).isActive = true
         dineWithCompanySwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-        
     }
     
     func formatPreferenceLabel() {
@@ -185,7 +162,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60).isActive = true
+        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
     }
     
     func formatDineWithCompanyLabel() {
@@ -197,7 +174,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
         dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         dineWithCompanyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-        
     }
     
     func createSegmentedController() {
@@ -206,7 +182,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.selectedSegmentIndex = 0
         
         let frame = UIScreen.main.bounds
-        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 140, width: frame.width - 20, height: frame.height * 0.08)
+        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 240, width: frame.width - 20, height: frame.height * 0.08)
         
         budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
         budgetSC.layer.cornerRadius = 5
@@ -243,7 +219,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 20).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 55).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
@@ -258,7 +234,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
+        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)

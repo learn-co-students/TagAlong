@@ -17,6 +17,7 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -27,27 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-
-//        
-//        let initialViewController = AccountCreationViewController()
-//        
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        
-
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
-
-//        
-//
-
-        // Override point for customization after application launch.
+        //MARK: - sets up the navigation controller for our app
+//        navController = UINavigationController()
+//        var loginVC = LogInViewController()
+//        self.navController?.pushViewController(loginVC, animated: false)
+//        self.window?.rootViewController = navController
+//        self.window?.backgroundColor = phaedraDarkGreen
+//        self.window?.makeKeyAndVisible()
+        
+        //MARK: - sets the initial view controller
         
 //        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
-        let initialViewController = TagAlongViewController()
+        let initialViewController = PreferenceViewController()
+//        let initialViewController = LogInViewController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
@@ -57,9 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window.makeKeyAndVisible()
         }
-
-
-
+//
         return true
     }
     
