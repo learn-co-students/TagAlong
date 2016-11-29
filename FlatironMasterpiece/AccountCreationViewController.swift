@@ -26,7 +26,8 @@ struct Constants {
 
 
 class AccountCreationViewController: UIViewController {
-let ref = FIRDatabase.database().reference().root
+    var ref: FIRDatabaseReference!
+
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -46,6 +47,8 @@ let ref = FIRDatabase.database().reference().root
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ref = FIRDatabase.database().reference().root
         
         createViews()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
