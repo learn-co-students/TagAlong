@@ -49,14 +49,11 @@
 		45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */; };
 		45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD6C1DDF5155001BD45C /* Extensions.swift */; };
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
-<<<<<<< HEAD
 		45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */; };
-=======
 		950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C681DE5FF3E001F2145 /* CardView.swift */; };
 		950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6A1DE61C57001F2145 /* CardViewController.swift */; };
 		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
 		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
->>>>>>> feature/deckview
 		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
 		95C0F5C61DE5EEE600577412 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0F5C51DE5EEE600577412 /* Secrets.swift */; };
@@ -67,11 +64,8 @@
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-=======
 		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
->>>>>>> feature/deckview
 		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +155,6 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				27B9C8011DDE56180054AAE8 /* Main.storyboard */,
@@ -177,7 +170,6 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
-=======
 				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				950A2C681DE5FF3E001F2145 /* CardView.swift */,
@@ -206,7 +198,6 @@
 				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
 				275D177A1DDB8869001CE463 /* User.swift */,
 				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
->>>>>>> feature/deckview
 			);
 			path = FlatironMasterpiece;
 			sourceTree = "<group>";
@@ -482,18 +473,15 @@
 				950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */,
 				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				45C84AA91DDE2A3900E623F8 /* Restaurant.swift in Sources */,
-=======
 				950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */,
 				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */,
 				45C84AA91DDE2A3900E623F8 /* Location.swift in Sources */,
->>>>>>> feature/deckview
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
