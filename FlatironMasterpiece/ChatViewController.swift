@@ -29,8 +29,6 @@ class ChatViewController: JSQMessagesViewController {
     private var newMessageRefHandle: FIRDatabaseHandle?
     
     
-    
-    
     // Unique ID
     let uid = UUID().uuidString
     
@@ -38,7 +36,6 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //       FIRApp.configure()
         
         // TODO: - These three branches will be moved from viewdidload and will be created after an action is performed, ie: A match is made
         matchRef = FIRDatabase.database().reference().child("Match")
@@ -56,6 +53,7 @@ class ChatViewController: JSQMessagesViewController {
         
         // Testing on a real user
         self.senderId = FIRAuth.auth()?.currentUser?.email
+        //TODO: - change this displayName to the currentUser's name
         self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
         
         // Creates references for 'match' and 'members' branch
