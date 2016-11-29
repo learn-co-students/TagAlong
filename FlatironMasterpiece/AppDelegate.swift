@@ -77,16 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
-        let initialViewController = TagAlongViewController()
-
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-
-        if let window = window {
-            window.rootViewController = initialViewController
-
-            window.makeKeyAndVisible()
-        }
+//        let initialViewController = TagAlongViewController()
+//
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//
+//            window.makeKeyAndVisible()
+//        }
 
 
         return true

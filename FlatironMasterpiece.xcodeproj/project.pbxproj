@@ -10,9 +10,8 @@
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
-		25C989781DE0ACE5003C993C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C989771DE0ACE5003C993C /* Secrets.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
-		25E4F4A91DEA107B00CFDE32 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AA81DDE2A3900E623F8 /* Restaurant.swift */; };
+		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		2726A7DC1DEE049E00ABE4BA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */; };
@@ -70,7 +69,6 @@
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		275D177A1DDB8869001CE463 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
 		2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2726A7DB1DEE049E00ABE4BA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
-				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
 				452C599B1DE61D1D005884EE /* DataStores */,
@@ -171,7 +168,6 @@
 				25C989771DE0ACE5003C993C /* Secrets.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
@@ -184,7 +180,6 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				278E32AA1DEDEAFA00D35576 /* Secrets.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
-				27B9C8011DDE56180054AAE8 /* Main.storyboard */,
 			);
 			path = FlatironMasterpiece;
 			sourceTree = "<group>";
@@ -220,12 +215,10 @@
 		452C599E1DE61E34005884EE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
 				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
 				453921341DEB8E5100D19A45 /* TabBarController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
-				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
@@ -366,7 +359,6 @@
 			files = (
 				45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */,
 				25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */,
-				27B9C8021DDE56180054AAE8 /* Main.storyboard in Resources */,
 				4539213F1DEC777300D19A45 /* TableViewCell.xib in Resources */,
 				27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */,
 				95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */,
@@ -444,7 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25E4F4A91DEA107B00CFDE32 /* Restaurant.swift in Sources */,
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				2726A7DD1DEE049E00ABE4BA /* User.swift in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
@@ -468,7 +460,6 @@
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
-				275D177B1DDB8869001CE463 /* User.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
 				950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */,
