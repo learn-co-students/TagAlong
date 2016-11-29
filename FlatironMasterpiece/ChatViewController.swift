@@ -17,16 +17,20 @@ class ChatViewController: JSQMessagesViewController {
     
     var username: String?
     var messages = [JSQMessage]()
+    var messagesCount = 0
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     // Reference properties
     private var matchRef: FIRDatabaseReference!
-    private var messageRef: FIRDatabaseReference!
+    var chatRef: FIRDatabaseReference!
     private var membersRef: FIRDatabaseReference!
     
     private var matchRefHandle: FIRDatabaseHandle?
     private var newMessageRefHandle: FIRDatabaseHandle?
+    
+    
+    
     
     // Unique ID
     let uid = UUID().uuidString
@@ -126,15 +130,13 @@ class ChatViewController: JSQMessagesViewController {
         
         // Test new branch
         
-        messageRef.child("\(uid)").observeSingleEvent(of: .value, with: { snapshot in
-            
-            self.messageRef.child("\(self.uid)").updateChildValues(["\(snapshot.childrenCount)": messageItem])
-            
-        })
+        //        chatRef.observeSingleEvent(of: .value, with: { snapshot in
         
-        //        messageRef.child("\(uid)").observe(.value) { (snapshot) in
-        //            self.messageRef.child("\(self.uid)").updateChildValues(["\(snapshot.childrenCount)": messageItem])
-        //        }
+        
+        //        })
+        
+        self.chatRef.updateChildValues(["\(messages.count)": messageItem])
+        
         
         
         
@@ -156,7 +158,7 @@ class ChatViewController: JSQMessagesViewController {
     
     deinit {
         if let refHandle = newMessageRefHandle {
-            messageRef.removeObserver(withHandle: refHandle)
+            chatRef.removeObserver(withHandle: refHandle)
         }
     }
     
@@ -221,42 +223,42 @@ class ChatViewController: JSQMessagesViewController {
     
     // Observe Messages
     private func observeMessages() {
-        messageRef = FIRDatabase.database().reference().child("Chat")
         
         // 1. Creating a query that limits the synchronization to the last 25 messages
-                let messageQuery = messageRef.queryLimited(toLast:25)
+        //        let messageQuery = chatRef.queryLimited(toLast:25)
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
+        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
             
             print("--------------------GETTING CALLED------------------")
             
             // 3. Extract the messageData from the snapshot
             
             print("messageQuery snapshot: \(snapshot.value)")
-            let messageData = snapshot.value as! [[String: String]]
+            let messageData = snapshot.value as! [String: Any]
             
             
-            for message in messageData {
+            
+            //                print(message)
+            //                print("\n\n\n")
+            
+            if let id = messageData["senderId"] as! String!,
+                let name = messageData["senderName"] as! String!,
+                let text = messageData["text"] as! String!,
+                text.characters.count > 0 {
                 
-//                print(message)
-//                print("\n\n\n")
+                // 4. Add the new message to the data source
+                self.addMessage(withId: id, name: name, text: text)
                 
-                if let id = message["senderId"] as String!, let name = message["senderName"] as String!, let text = message["text"] as String!, text.characters.count > 0 {
-                    
-                    // 4. Add the new message to the data source
-                    self.addMessage(withId: id, name: name, text: text)
-                    
-                    // 5. Inform JSQMessagesViewController that a message has been received.
-                    self.finishReceivingMessage()
-                } else {
-                    print("Error! Could not decode message data")
-                }
-                
-                
+                // 5. Inform JSQMessagesViewController that a message has been received.
+                self.finishReceivingMessage()
+            } else {
+                print("Error! Could not decode message data")
             }
             
-//            print(messageData)
+            
+            
+            //            print(messageData)
             
             
             
