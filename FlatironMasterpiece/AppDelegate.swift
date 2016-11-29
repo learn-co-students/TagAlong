@@ -38,6 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: - sets the initial view controller
         
+
+       
+
+ //       let initialViewController = SearchOrTagAlongViewController()
+     
+
+       // let initialViewController = ShakeInstructionViewController()
+//        
+//        
+//        let cardViewController = CardViewController()
+//        
+
 //        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
         let initialViewController = PreferenceViewController()
@@ -51,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window.makeKeyAndVisible()
         }
-//
+
         return true
     }
     

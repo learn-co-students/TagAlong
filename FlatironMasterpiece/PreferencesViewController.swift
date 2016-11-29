@@ -135,7 +135,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -275).isActive = true
+        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
     }
@@ -147,7 +147,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.textColor = phaedraOrange
         budgetLabel.textAlignment = .center
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
-        budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -230).isActive = true
+        budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -125).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         //add special constraint functionality
 //        budgetLabel.specialConstrain(to: view)
@@ -197,15 +197,19 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func printChosenBudget(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
+            UserDefaults.standard.set(1, forKey: "Budget")
             print("user chose 💰")
         case 1:
+            UserDefaults.standard.set(2, forKey: "Budget")
             print("user chose 💰💰")
         case 2:
+            UserDefaults.standard.set(3, forKey: "Budget")
             print("user chose 💰💰💰")
         case 3:
+            UserDefaults.standard.set(4, forKey: "Budget")
             print("user chose 💰💰💰💰")
         default:
-            print("user chose 💰")
+            print("user chose 💰💰")
         }
     }
     
