@@ -14,6 +14,7 @@ class SelectedRestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Restaurant Detail View"
         view.backgroundColor = UIColor.blue
     }
     

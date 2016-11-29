@@ -68,7 +68,7 @@ class GetLocationViewController: UIViewController {
             
             // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
 
-            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "american", completion: { (JSON) in
+            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "italian", completion: { (JSON) in
                 self.store.restaurantsInJSON = JSON
                 self.store.filterSearchedRestaurants()
             })
