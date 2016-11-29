@@ -38,6 +38,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Preferences View"
 
         view.backgroundColor = phaedraYellow
         createSegmentedController()
