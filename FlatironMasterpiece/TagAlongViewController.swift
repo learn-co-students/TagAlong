@@ -10,6 +10,8 @@ import UIKit
 
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var tagAlongUsersLabel: UILabel = UILabel()
+    
     var tagAlongUserArray:[User] = []
     
     let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
@@ -17,10 +19,23 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraOliveGreen
-    
+        formatLabels()
         createFakeUsers()
         layoutTableView()
         layoutScrollView()
+    }
+    
+    func formatLabels() {
+        view.addSubview(tagAlongUsersLabel)
+        tagAlongUsersLabel.text = "Choose a Tag Along"
+        // TODO: - decide on preferences label font and font size
+        tagAlongUsersLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        tagAlongUsersLabel.textColor = phaedraYellow
+        tagAlongUsersLabel.textAlignment = .center
+        tagAlongUsersLabel.translatesAutoresizingMaskIntoConstraints = false
+        tagAlongUsersLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300).isActive = true
+        tagAlongUsersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        tagAlongUsersLabel.specialConstrain(to: view)
     }
     
     func createFakeUsers() {
@@ -36,24 +51,53 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         tagAlongUserArray.append(user5)
     }
 
-    
-    
     func layoutScrollView() {
-        var myImageView: UIImageView!
-        var aspectRatio: NSLayoutConstraint?
-        let burger = UIImage(named: "american")
-        myImageView = UIImageView(image: burger)
-        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
-        myImageView.addConstraint(aspectRatio!)
+//        var myImageView: UIImageView!
+//        var aspectRatio: NSLayoutConstraint?
+//        let burger = UIImage(named: "american")
+//        myImageView = UIImageView(image: burger)
+//        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
+//        myImageView.addConstraint(aspectRatio!)
         
-        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 470, width: 380, height: 180))
-        myScrollView.backgroundColor = phaedraOrange
-        myScrollView.addSubview(myImageView)
-//        myScrollView.contentSize = (myImageView.frame.size)
+//        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
+//        myScrollView.backgroundColor = phaedraOrange
+//        myScrollView.addSubview(myImageView)
+//        myScrollView.contentSize = myImageView.frame.size
+//        view.addSubview(myScrollView)
         
+        let myScrollView: UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
+        let imageWidth: CGFloat = 355
+        let imageHeight: CGFloat = 180
+        var xPosition: CGFloat = 10
+        var yPosition: CGFloat = 0
+        var scrollViewContentSize: CGFloat = 0
+        
+        for image in cuisineImage {
+            let myImage: UIImage = image
+            let myImageView: UIImageView = UIImageView()
+            myImageView.image = myImage
+            
+            myImageView.contentMode = UIViewContentMode.scaleAspectFit
+            myImageView.frame.size.width = imageWidth
+            myImageView.frame.size.height = imageHeight
+            myImageView.center = self.view.center
+            myImageView.frame.origin.x = xPosition
+            myImageView.frame.origin.y = yPosition
+            
+            myScrollView.addSubview(myImageView)
+            
+            let spacer: CGFloat = 30
+//            yPosition += imageHeight + spacer
+            xPosition += imageWidth + spacer
+//            scrollViewContentSize += imageHeight
+            scrollViewContentSize += imageWidth
+            
+            
+            myScrollView.contentSize = CGSize(width: imageWidth, height: scrollViewContentSize)
+            myScrollView.contentSize = CGSize(width: scrollViewContentSize + 175, height: imageHeight)
+        }
         
         view.addSubview(myScrollView)
-        
     
     }
     

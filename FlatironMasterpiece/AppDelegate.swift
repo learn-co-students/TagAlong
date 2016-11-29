@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         
-       
+//       let initialViewController = GetLocationViewController()
         let initialViewController = TagAlongViewController()
         
         let frame = UIScreen.main.bounds
@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let window = window {
             window.rootViewController = initialViewController
-            
             
             window.makeKeyAndVisible()
         }
