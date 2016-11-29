@@ -45,12 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         
-<<<<<<< HEAD
-       
-//        let initialViewController = GetLocationViewController()
-        
 
-        let initialViewController = SearchOrTagAlongViewController()
+       
+
+ //       let initialViewController = SearchOrTagAlongViewController()
      
 
        // let initialViewController = ShakeInstructionViewController()
@@ -58,18 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        let cardViewController = CardViewController()
 //        
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        
-//        if let window = window {
-////            window.rootViewController = initialViewController
-//            window.rootViewController = cardViewController
-//            
-//            
-//            window.makeKeyAndVisible()
-//        }
-//
-=======
+
 //        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
         let initialViewController = TagAlongViewController()
@@ -82,8 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window.makeKeyAndVisible()
         }
->>>>>>> 74fc3b0de38d1df5b8c6be947606984b744e8eb8
-
 
 
         return true
