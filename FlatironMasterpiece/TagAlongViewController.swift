@@ -29,7 +29,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         view.addSubview(tagAlongUsersLabel)
         tagAlongUsersLabel.text = "Choose a Tag Along"
         // TODO: - decide on preferences label font and font size
-        tagAlongUsersLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        tagAlongUsersLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         tagAlongUsersLabel.textColor = phaedraYellow
         tagAlongUsersLabel.textAlignment = .center
         tagAlongUsersLabel.translatesAutoresizingMaskIntoConstraints = false

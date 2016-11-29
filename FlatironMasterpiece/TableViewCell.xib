@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="YanoneKaffeesatz-Bold.ttf">
-            <string>YanoneKaffeesatz-Bold</string>
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
         </array>
-        <array key="YanoneKaffeesatz-Regular.ttf">
-            <string>YanoneKaffeesatz-Regular</string>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
         </array>
     </customFonts>
     <objects>
@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="405" height="97"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="405" height="96.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="405" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZM-ic-XvY">
@@ -36,104 +36,65 @@
                             <constraint firstAttribute="height" constant="80.5" id="hOu-6J-b87"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Industry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-p9-3Be">
-                        <rect key="frame" x="99" y="28.5" width="39.5" height="19"/>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="16"/>
-                        <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AN-f3-Zns">
-                        <rect key="frame" x="96" y="44.5" width="169" height="20"/>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AN-f3-Zns">
+                        <rect key="frame" x="96" y="49" width="169" height="23.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expected Dining Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT8-w6-x10">
-                        <rect key="frame" x="96" y="67" width="108.5" height="20"/>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expected Dining Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT8-w6-x10">
+                        <rect key="frame" x="96" y="67.5" width="188" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfZ-dG-S2U">
-                        <rect key="frame" x="279" y="44" width="29" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="35" id="Ra0-ln-rdc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfZ-dG-S2U">
+                        <rect key="frame" x="262" y="50" width="29" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t6-Qn-zgQ">
-                        <rect key="frame" x="209.5" y="67.5" width="46" height="20"/>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t6-Qn-zgQ">
+                        <rect key="frame" x="288.5" y="67" width="71.5" height="23.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miles away" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsj-md-vmZ">
-                        <rect key="frame" x="315" y="46.5" width="70" height="17.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="69.5" id="EsW-JU-AJ3"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Regular" family="Yanone Kaffeesatz" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="leQ-Qo-qMM">
-                        <rect key="frame" x="103" y="4" width="28" height="20"/>
+                        <rect key="frame" x="103" y="4" width="13" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jT2-hH-qDs">
-                                <rect key="frame" x="0.0" y="0.0" width="28" height="20"/>
-                                <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dwayne Johnson" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G1-bS-9cX">
-                        <rect key="frame" x="177" y="4.5" width="208" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="208" id="xt3-Ap-zja"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Entertainment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-Tt-vYj">
+                        <rect key="frame" x="96" y="30" width="301" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                         <color key="textColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entertainment" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-Tt-vYj">
-                        <rect key="frame" x="177" y="23.5" width="208" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="2bJ-fs-fRg"/>
-                            <constraint firstAttribute="width" constant="208" id="GLE-4Q-fU6"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="YanoneKaffeesatz-Bold" family="Yanone Kaffeesatz" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dwayne Johnson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G1-bS-9cX">
+                        <rect key="frame" x="97" y="8" width="300" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                         <color key="textColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miles away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsj-md-vmZ">
+                        <rect key="frame" x="307" y="51" width="90" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="0.97647058823529409" green="0.98431372549019602" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="5G1-bS-9cX" secondAttribute="trailing" constant="12" id="1l3-Tb-msc"/>
-                    <constraint firstItem="hv3-p9-3Be" firstAttribute="leading" secondItem="dZM-ic-XvY" secondAttribute="trailing" constant="10" id="7bF-BC-eUI"/>
-                    <constraint firstItem="iIF-Tt-vYj" firstAttribute="top" secondItem="5G1-bS-9cX" secondAttribute="bottom" constant="-2.5" id="7gc-Ev-nku"/>
-                    <constraint firstItem="jT2-hH-qDs" firstAttribute="top" secondItem="dZM-ic-XvY" secondAttribute="top" id="8LU-l7-Ylo"/>
-                    <constraint firstItem="zsj-md-vmZ" firstAttribute="top" secondItem="iIF-Tt-vYj" secondAttribute="bottom" constant="2" id="8pR-YD-9YM"/>
-                    <constraint firstItem="7AN-f3-Zns" firstAttribute="leading" secondItem="dZM-ic-XvY" secondAttribute="trailing" constant="7.5" id="FDX-7m-3aM"/>
-                    <constraint firstItem="7AN-f3-Zns" firstAttribute="top" secondItem="hv3-p9-3Be" secondAttribute="bottom" constant="-3" id="J0d-Qt-WZr"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="zsj-md-vmZ" secondAttribute="trailing" constant="12" id="Mdf-nU-jyD"/>
                     <constraint firstItem="dZM-ic-XvY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="RBR-yY-SZp"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="7t6-Qn-zgQ" secondAttribute="bottom" constant="2" id="Se8-Dj-c83"/>
-                    <constraint firstItem="zsj-md-vmZ" firstAttribute="leading" secondItem="kfZ-dG-S2U" secondAttribute="trailing" constant="7" id="WwR-ou-vFz"/>
                     <constraint firstItem="dZM-ic-XvY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Yu0-fz-sG3"/>
-                    <constraint firstItem="kfZ-dG-S2U" firstAttribute="top" secondItem="iIF-Tt-vYj" secondAttribute="bottom" constant="2" id="ZuX-Ib-H1Z"/>
-                    <constraint firstItem="7t6-Qn-zgQ" firstAttribute="leading" secondItem="aT8-w6-x10" secondAttribute="trailing" constant="5" id="d2f-1E-hxG"/>
-                    <constraint firstItem="aT8-w6-x10" firstAttribute="leading" secondItem="dZM-ic-XvY" secondAttribute="trailing" constant="7.5" id="feM-5E-CN3"/>
-                    <constraint firstItem="jT2-hH-qDs" firstAttribute="leading" secondItem="dZM-ic-XvY" secondAttribute="trailing" constant="10" id="h94-TW-3XM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="aT8-w6-x10" secondAttribute="bottom" constant="2.5" id="ksi-06-tFW"/>
-                    <constraint firstItem="hv3-p9-3Be" firstAttribute="top" secondItem="jT2-hH-qDs" secondAttribute="bottom" id="nJx-hA-X7M"/>
-                    <constraint firstItem="5G1-bS-9cX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="qPz-3y-B01"/>
                     <constraint firstAttribute="bottomMargin" secondItem="dZM-ic-XvY" secondAttribute="bottom" id="rwp-p9-vZS"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="iIF-Tt-vYj" secondAttribute="trailing" constant="12" id="xhD-0L-VOr"/>
-                    <constraint firstItem="kfZ-dG-S2U" firstAttribute="leading" secondItem="7AN-f3-Zns" secondAttribute="trailing" constant="8" id="z2F-KJ-WjR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -144,7 +105,7 @@
                 <outlet property="userIndustryLabel" destination="iIF-Tt-vYj" id="N3w-gf-gbU"/>
                 <outlet property="userNameLabel" destination="5G1-bS-9cX" id="0JX-FF-0YQ"/>
             </connections>
-            <point key="canvasLocation" x="-145" y="-100"/>
+            <point key="canvasLocation" x="-145.5" y="-100.5"/>
         </tableViewCell>
     </objects>
 </document>

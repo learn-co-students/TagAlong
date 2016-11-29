@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         
+//        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
         let initialViewController = TagAlongViewController()
         
