@@ -162,12 +162,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if error == nil {
                     print("Successful Log In")
                      //TODO: - Send to next screen after logging in
+                    // Send to preferences (for now)
+                    let preferencesVC = PreferenceViewController()
+                    self.navigationController?.pushViewController(preferencesVC, animated: true)
                 }
                  else {
                      //TODO: - Notify user of error
                     print(error?.localizedDescription)
                  }
             })
+            
+            
         }
     }
 
@@ -179,7 +184,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    // TODO: - Add register function to segue into account creation page
     
     
     
@@ -211,13 +215,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             
         }
-
+        
+        
 
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
             print("User has logged into Firebase")
             
             // TODO: - Segue into home screen after user has logged in
+            // Send to preferences (for now)
+            let preferencesVC = PreferenceViewController()
+            self.navigationController?.pushViewController(preferencesVC, animated: true)
             
             if let error = error {
                 print(error.localizedDescription)

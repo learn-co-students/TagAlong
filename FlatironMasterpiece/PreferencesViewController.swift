@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
     
@@ -263,6 +264,20 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     // TODO: - write function that logs user out of the app
     func logoutUser() {
         print("User tapped button to logout.")
+        // Send to loginview
+        //TODO: - 
+        
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            print("successfully logged out of firebase")
+        } catch {
+            print("Logout of app error")
+        }
+        
+        let loginVC = LogInViewController()
+        
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
 }

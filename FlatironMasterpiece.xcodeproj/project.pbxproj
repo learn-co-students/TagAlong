@@ -19,6 +19,20 @@
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
 		27B9C8021DDE56180054AAE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C8011DDE56180054AAE8 /* Main.storyboard */; };
 		27E72DD91DDEAC14007EC098 /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */; };
+		451C01AA1DEE432A007B1388 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019C1DEE13E6007B1388 /* OpenSans-Bold.ttf */; };
+		451C01AB1DEE4331007B1388 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019D1DEE13E6007B1388 /* OpenSans-BoldItalic.ttf */; };
+		451C01AC1DEE4333007B1388 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019E1DEE13E6007B1388 /* OpenSans-ExtraBold.ttf */; };
+		451C01AD1DEE4335007B1388 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019F1DEE13E6007B1388 /* OpenSans-ExtraBoldItalic.ttf */; };
+		451C01AE1DEE4337007B1388 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A01DEE13E6007B1388 /* OpenSans-Italic.ttf */; };
+		451C01AF1DEE4342007B1388 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A11DEE13E6007B1388 /* OpenSans-Light.ttf */; };
+		451C01B01DEE4344007B1388 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A21DEE13E6007B1388 /* OpenSans-LightItalic.ttf */; };
+		451C01B11DEE4347007B1388 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A31DEE13E6007B1388 /* OpenSans-Regular.ttf */; };
+		451C01B21DEE4349007B1388 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A41DEE13E6007B1388 /* OpenSans-Semibold.ttf */; };
+		451C01B31DEE434B007B1388 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A51DEE13E6007B1388 /* OpenSans-SemiboldItalic.ttf */; };
+		451C01B41DEE4356007B1388 /* YanoneKaffeesatz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A61DEE13F8007B1388 /* YanoneKaffeesatz-Bold.ttf */; };
+		451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */; };
+		451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */; };
+		451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */; };
 		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */; };
 		453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921341DEB8E5100D19A45 /* TabBarController.swift */; };
@@ -344,6 +358,20 @@
 				95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */,
 				452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */,
 				27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */,
+				451C01AA1DEE432A007B1388 /* OpenSans-Bold.ttf in Resources */,
+				451C01AB1DEE4331007B1388 /* OpenSans-BoldItalic.ttf in Resources */,
+				451C01AC1DEE4333007B1388 /* OpenSans-ExtraBold.ttf in Resources */,
+				451C01AD1DEE4335007B1388 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				451C01AE1DEE4337007B1388 /* OpenSans-Italic.ttf in Resources */,
+				451C01AF1DEE4342007B1388 /* OpenSans-Light.ttf in Resources */,
+				451C01B01DEE4344007B1388 /* OpenSans-LightItalic.ttf in Resources */,
+				451C01B11DEE4347007B1388 /* OpenSans-Regular.ttf in Resources */,
+				451C01B21DEE4349007B1388 /* OpenSans-Semibold.ttf in Resources */,
+				451C01B31DEE434B007B1388 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				451C01B41DEE4356007B1388 /* YanoneKaffeesatz-Bold.ttf in Resources */,
+				451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */,
+				451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */,
+				451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
