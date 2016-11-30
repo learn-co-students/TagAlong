@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        if let window = window {
 //            window.rootViewController = initialViewController
+
 //
 //
 //            window.makeKeyAndVisible()
@@ -62,24 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  //       let initialViewController = SearchOrTagAlongViewController()
 
 
+
        // let initialViewController = ShakeInstructionViewController()
 //
 //
 //        let cardViewController = CardViewController()
 //
 
+
 //        let initialViewController = SelectedRestaurantViewController()
 //       let initialViewController = GetLocationViewController()
 //        let initialViewController = TagAlongViewController()
-//
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//
-//            window.makeKeyAndVisible()
-//        }
+
 
 
         return true

@@ -53,6 +53,8 @@ class AccountCreationViewController: UIViewController {
 
         createViews()
 
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         view.backgroundColor = UIColor.white
         firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
         lastNameEntry.accessibilityLabel = Constants.LASTNAME
@@ -69,6 +71,10 @@ class AccountCreationViewController: UIViewController {
 //
 //        }
 
+    }
+
+    func dismissKeyboard() {
+     view.endEditing(true)
     }
 
 

@@ -324,7 +324,7 @@
 				TargetAttributes = {
 					27AAFE2A1DDAC9AA00C08348 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 74479ETUA8;
+						DevelopmentTeam = T88J73TZ8D;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -583,7 +583,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74479ETUA8;
+				DEVELOPMENT_TEAM = T88J73TZ8D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -592,6 +592,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -604,7 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74479ETUA8;
+				DEVELOPMENT_TEAM = T88J73TZ8D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -613,6 +614,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
