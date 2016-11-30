@@ -29,39 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         //MARK: - sets up the navigation controller for our app
-        navController = UINavigationController()
-        var loginVC = LogInViewController()
-        self.navController?.pushViewController(loginVC, animated: false)
-        self.window?.rootViewController = navController
-        self.window?.backgroundColor = phaedraDarkGreen
-        self.window?.makeKeyAndVisible()
+//        navController = UINavigationController()
+//        var loginVC = LogInViewController()
+//        self.navController?.pushViewController(loginVC, animated: false)
+//        self.window?.rootViewController = navController
+//        self.window?.backgroundColor = phaedraDarkGreen
+//        self.window?.makeKeyAndVisible()
         
         //MARK: - sets the initial view controller
         
+        let initialViewController = PreferenceViewController()
 
-       
-
-//        let initialViewController = SearchOrTagAlongViewController()
-     
-
-       // let initialViewController = ShakeInstructionViewController()
-//        
-//        
-//        let cardViewController = CardViewController()
-//        
-//        let initialViewController = TagAlongViewController()
-//        let initialViewController = SelectedRestaurantViewController()
-//       let initialViewController = GetLocationViewController()
-//        let initialViewController = PreferenceViewController()
-//        let initialViewController = LogInViewController()
-//        
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
 
         return true
     }

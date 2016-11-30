@@ -33,6 +33,7 @@
 		451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */; };
 		451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */; };
 		451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */; };
+		451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */; };
 		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */; };
 		453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921341DEB8E5100D19A45 /* TabBarController.swift */; };
@@ -89,6 +90,7 @@
 		451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-ExtraLight.ttf"; sourceTree = "<group>"; };
 		451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Regular.ttf"; sourceTree = "<group>"; };
+		451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Abel-Regular.ttf"; path = "../Abel-Regular.ttf"; sourceTree = "<group>"; };
 		452C59991DE5EABC005884EE /* SelectedRestaurant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedRestaurant.xib; sourceTree = "<group>"; };
 		453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAlongViewController.swift; sourceTree = "<group>"; };
 		453921341DEB8E5100D19A45 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -163,7 +165,6 @@
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
-				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
@@ -230,6 +231,7 @@
 				453E06B11DE8E8C6007EE25A /* RestaurantView.swift */,
 				950A2C681DE5FF3E001F2145 /* CardView.swift */,
 				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
+				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -237,6 +239,7 @@
 		45F19AE01DEDCE0C007EAACD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */,
 				451C019C1DEE13E6007B1388 /* OpenSans-Bold.ttf */,
 				451C019D1DEE13E6007B1388 /* OpenSans-BoldItalic.ttf */,
 				451C019E1DEE13E6007B1388 /* OpenSans-ExtraBold.ttf */,
@@ -372,6 +375,7 @@
 				451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */,
 				451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */,
 				451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */,
+				451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

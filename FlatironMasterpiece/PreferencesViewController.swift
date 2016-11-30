@@ -62,7 +62,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("cuisineCollectionView frame assigned")
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 225).isActive = true
+        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 145).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
@@ -114,29 +114,29 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
     
-    func formatSwitch() {
-        view.addSubview(dineWithCompanySwitch)
-        dineWithCompanySwitch.center = view.center
-        dineWithCompanySwitch.setOn(false, animated: false)
-        dineWithCompanySwitch.tintColor = phaedraDarkGreen
-        dineWithCompanySwitch.onTintColor = phaedraDarkGreen
-        dineWithCompanySwitch.thumbTintColor = phaedraLightGreen
-        dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
-        dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
-        dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 95).isActive = true
-        dineWithCompanySwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-    }
+//    func formatSwitch() {
+//        view.addSubview(dineWithCompanySwitch)
+//        dineWithCompanySwitch.center = view.center
+//        dineWithCompanySwitch.setOn(false, animated: false)
+//        dineWithCompanySwitch.tintColor = phaedraDarkGreen
+//        dineWithCompanySwitch.onTintColor = phaedraDarkGreen
+//        dineWithCompanySwitch.thumbTintColor = phaedraLightGreen
+//        dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
+//        dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
+//        dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+//        dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 95).isActive = true
+//        dineWithCompanySwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+//    }
     
     func formatPreferenceLabel() {
         view.addSubview(preferencesLabel)
         preferencesLabel.text = "PREFERENCES"
         // TODO: - decide on preferences label font and font size
-        preferencesLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        preferencesLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160).isActive = true
+        preferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
     }
@@ -144,11 +144,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func formatBudgetLabel() {
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
-        budgetLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        budgetLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
         budgetLabel.textColor = phaedraOrange
         budgetLabel.textAlignment = .center
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
-        budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -125).isActive = true
+        budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -170).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         //add special constraint functionality
 //        budgetLabel.specialConstrain(to: view)
@@ -158,24 +158,24 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func formatCuisinePreferencesLabel() {
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Select your cuisine preferences"
-        cuisinePreferencesLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+        cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
+        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 35).isActive = true
     }
     
-    func formatDineWithCompanyLabel() {
-        view.addSubview(dineWithCompanyLabel)
-        dineWithCompanyLabel.text = "Dine with company?"
-        dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
-        dineWithCompanyLabel.textColor = phaedraOrange
-        dineWithCompanyLabel.textAlignment = .center
-        dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
-        dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
-        dineWithCompanyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-    }
+//    func formatDineWithCompanyLabel() {
+//        view.addSubview(dineWithCompanyLabel)
+//        dineWithCompanyLabel.text = "Dine with company?"
+//        dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
+//        dineWithCompanyLabel.textColor = phaedraOrange
+//        dineWithCompanyLabel.textAlignment = .center
+//        dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
+//        dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
+//        dineWithCompanyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+//    }
     
     func createSegmentedController() {
         let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
@@ -183,7 +183,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.selectedSegmentIndex = 0
         
         let frame = UIScreen.main.bounds
-        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 240, width: frame.width - 20, height: frame.height * 0.08)
+        budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 140, width: frame.width - 20, height: frame.height * 0.08)
         
         budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
         budgetSC.layer.cornerRadius = 5
@@ -220,11 +220,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.backgroundColor = phaedraLightGreen
         logoutButton.layer.cornerRadius = 5
         logoutButton.setTitle("Logout", for: .normal)
-        logoutButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
+        logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 20.0)
         
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 55).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -10).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
@@ -236,10 +236,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.layer.cornerRadius = 5
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)
         replayTutorialButton.setTitle("Tutorial Played", for: .highlighted)
-        replayTutorialButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 20.0)
+        replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 20.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -65).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)

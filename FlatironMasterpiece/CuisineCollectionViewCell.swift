@@ -21,7 +21,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     var foodLabel: UILabel = {
         let label = UILabel()
         label.text = "Cuisine Type"
-        label.font = UIFont(name: "AvenirNext-Bold", size: 15.0)
+        label.font = UIFont(name: "OpenSans-Bold", size: 15.0)
         label.textAlignment = .center
         label.textColor = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
         label.translatesAutoresizingMaskIntoConstraints = false
