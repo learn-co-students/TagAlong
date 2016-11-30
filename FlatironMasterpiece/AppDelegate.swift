@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
         
         //MARK: - sets up the navigation controller for our app
 //        navController = UINavigationController()
@@ -45,12 +46,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print("app delegate working")
         //MARK: - sets the initial view controller
         
+
+
+
+
+//
+//
+
         // Override point for customization after application launch.
 
       let initialViewController = PreferenceViewController()
 
+
        let frame = UIScreen.main.bounds
        window = UIWindow(frame: frame)
+
+   //     let initialViewController = LogInViewController()
+
+
+        // let initialViewController = ShakeInstructionViewController()
+        //
+        //
+        //        let cardViewController = CardViewController()
+        //
+
+
+        //        let initialViewController = SelectedRestaurantViewController()
+        //       let initialViewController = GetLocationViewController()
+        //        let initialViewController = TagAlongViewController()
+
+let initialViewController = PreferenceViewController()
+//
+//        let initialViewController = ChatViewController()
+//
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+
 
 
         if let window = window {
