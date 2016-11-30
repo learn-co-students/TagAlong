@@ -22,35 +22,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to choose a random cuisine?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A03-3o-OpX">
-                    <rect key="frame" x="16" y="29" width="343" height="123"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="123" id="B3q-PL-8Zn"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="39"/>
-                    <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAo-df-fsi">
-                    <rect key="frame" x="16" y="180" width="343" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shake your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAo-df-fsi">
+                    <rect key="frame" x="16" y="313" width="343" height="41"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake" translatesAutoresizingMaskIntoConstraints="NO" id="ckk-kr-Qlh">
-                    <rect key="frame" x="87.5" y="245" width="200" height="200"/>
+                    <rect key="frame" x="87" y="374" width="200" height="200"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to choose a random cuisine?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A03-3o-OpX">
+                    <rect key="frame" x="16" y="127" width="325" height="123"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="325" id="0AD-Tp-EQD"/>
+                        <constraint firstAttribute="height" constant="123" id="cZq-IR-Ef2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="37"/>
+                    <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.74509803921568629" green="0.92156862745098034" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="centerX" secondItem="ckk-kr-Qlh" secondAttribute="centerX" id="E98-ZJ-qEy"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="trailing" secondItem="vAo-df-fsi" secondAttribute="trailing" id="J5r-E4-E4G"/>
-                <constraint firstItem="vAo-df-fsi" firstAttribute="top" secondItem="A03-3o-OpX" secondAttribute="bottom" constant="28" id="MZt-LY-yNc"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="UcE-h8-qkF"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="chN-i9-2nX"/>
-                <constraint firstItem="ckk-kr-Qlh" firstAttribute="top" secondItem="vAo-df-fsi" secondAttribute="bottom" constant="24" id="gIn-uI-icX"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="leading" secondItem="vAo-df-fsi" secondAttribute="leading" id="pHy-KE-X8P"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yOT-oS-b5D"/>
+                <constraint firstItem="ckk-kr-Qlh" firstAttribute="top" secondItem="vAo-df-fsi" secondAttribute="bottom" constant="20" id="2Jf-Ff-t2B"/>
+                <constraint firstItem="A03-3o-OpX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="L8A-eT-Kuz"/>
+                <constraint firstItem="ckk-kr-Qlh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="87" id="M1n-a5-QX9"/>
+                <constraint firstItem="A03-3o-OpX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="127" id="NaQ-D3-QEl"/>
+                <constraint firstItem="vAo-df-fsi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="b7H-pi-hH5"/>
+                <constraint firstItem="vAo-df-fsi" firstAttribute="top" secondItem="A03-3o-OpX" secondAttribute="bottom" constant="63" id="itK-EM-4W9"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="106.5"/>
         </view>

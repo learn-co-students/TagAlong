@@ -24,15 +24,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var budgetLabel = UILabel()
     var dineWithCompanyLabel = UILabel()
     var dineWithCompanySwitch = UISwitch()
-    var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
-    var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 35))
+    var replayTutorialButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
+    var logoutButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
     var cuisinePreferencesLabel = UILabel()
     var cuisineCollectionView:UICollectionView!
     let cuisineReuseIdentifier = "Cuisine Cell"
+    var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
     
     let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +60,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.dataSource = self
         cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
         cuisineCollectionView.backgroundColor = phaedraDarkGreen
+        cuisineCollectionView.allowsMultipleSelection = true
         view.addSubview(cuisineCollectionView)
 
         print("cuisineCollectionView frame assigned")
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 145).isActive = true
+        cuisineCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 135).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
@@ -89,30 +93,65 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedCuisine = cuisineArray[indexPath.row]
-        var selectedCuisineIsHighlighted:Bool = false
         
-        print("array before selections is \(usersCuisineSelectionsArray)")
+        var americanPicked:Bool = false
+        var asianPicked:Bool = false
+        var healthyPicked:Bool = false
+        var italianPicked:Bool = false
+        var latinPicked:Bool = false
+        var unhealthyPicked:Bool = false
         
-        let cell = collectionView.cellForItem(at: indexPath)
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
-        if !(cell?.isHighlighted)! {
+        if !americanPicked && !asianPicked && !healthyPicked && !italianPicked && !latinPicked && !unhealthyPicked {
             
             usersCuisineSelectionsArray.append(selectedCuisine)
-            selectedCuisineIsHighlighted = true
-            cell?.layer.borderWidth = 8
-            cell?.layer.borderColor = self.phaedraLightGreen.cgColor
-            cell?.layer.cornerRadius = 5
             print("array after a selection made: \(usersCuisineSelectionsArray)")
             
-        } else if (cell?.isHighlighted)! {
+            switch selectedCuisine {
+                case "american":
+                    americanPicked = true
+                case "asian":
+                    asianPicked = true
+                case "healthy":
+                    healthyPicked = true
+                case "italian":
+                    italianPicked = true
+                case "latin":
+                    latinPicked = true
+                case "unhealthy":
+                    unhealthyPicked = true
+                default:
+                    break
+            }
             
-            cell?.layer.borderWidth = 0
+        }
+        else if americanPicked || asianPicked || healthyPicked || italianPicked || latinPicked || unhealthyPicked {
+            
+            switch selectedCuisine {
+            case "american":
+                americanPicked = false
+                cell.layer.borderWidth = 0
+            case "asian":
+                asianPicked = false
+            case "healthy":
+                healthyPicked = false
+            case "italian":
+                italianPicked = false
+            case "latin":
+                latinPicked = false
+            case "unhealthy":
+                unhealthyPicked = false
+            default:
+                break
+            }
+            
             usersCuisineSelectionsArray.remove(at: usersCuisineSelectionsArray.count-1)
             print("array after a deselection is made: \(usersCuisineSelectionsArray)")
-            selectedCuisineIsHighlighted = false
         }
 
     }
+    
     
 //    func formatSwitch() {
 //        view.addSubview(dineWithCompanySwitch)
@@ -163,7 +202,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 35).isActive = true
+        cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 25).isActive = true
     }
     
 //    func formatDineWithCompanyLabel() {
@@ -224,8 +263,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -10).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
+        logoutButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
         logoutButton.setTitleColor(phaedraYellow, for: .highlighted)
@@ -241,9 +282,27 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
         replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -65).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
+        
+        
+        view.addSubview(savePreferencesButton)
+        savePreferencesButton.backgroundColor = phaedraLightGreen
+        savePreferencesButton.layer.cornerRadius = 5
+        savePreferencesButton.setTitle("Save", for: .normal)
+        savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 20.0)
+        savePreferencesButton.titleLabel?.textAlignment = .center
+        savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
+        savePreferencesButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant:245).isActive = true
+        savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.20).isActive = true
+        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
+        savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        savePreferencesButton.setTitleColor(phaedraYellow, for: .highlighted)
         
     }
     
@@ -278,6 +337,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         let loginVC = LogInViewController()
         
         self.navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+    // TODO: -
+    func savePreferences() {
+        // Send to shake instruction view controller
+        print("Save preferences tapped")
+        let shakeInstructionVC = ShakeInstructionViewController()
+        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
     
 }
