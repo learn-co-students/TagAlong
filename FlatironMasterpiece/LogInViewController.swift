@@ -150,6 +150,21 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         print("Enter email or password")
         
+        //For testing purposes
+        FIRAuth.auth()?.signIn(withEmail: "joyce@gmail.com", password: "123456", completion: { (user, error) in
+            if error == nil {
+                print("Successful Log In")
+                //TODO: - Send to next screen after logging in
+            }
+                
+            else {
+                //TODO: - Notify user of error
+                print(error?.localizedDescription)
+                
+            }
+        })
+
+        
         
     } else {
         
@@ -264,11 +279,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         if segue.identifier == "showChat" {
             
             let chatVC = segue.destination as! ChatViewController
+            let allChatsRef = FIRDatabase.database().reference().child("chats")
+            // chatRef should point to only one single chat --- eventually Auto ID
+            chatVC.chatRef = allChatsRef.child("testChat")
             
         }
     }
 
     
+
     
     
 
