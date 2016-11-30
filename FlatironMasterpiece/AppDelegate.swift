@@ -39,8 +39,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 //
-       let initialViewController = AccountCreationViewController()
+      let initialViewController = AccountCreationViewController()
 //
+       //        let initialViewController = SearchOrTagAlongViewController()
+        
+   //     let initialViewController = LogInViewController()
+        
+        // let initialViewController = ShakeInstructionViewController()
+        //
+        //
+        //        let cardViewController = CardViewController()
+        //
+        
+        
+        //        let initialViewController = SelectedRestaurantViewController()
+        //       let initialViewController = GetLocationViewController()
+        //        let initialViewController = TagAlongViewController()
+        
 
 //
 //        let initialViewController = ChatViewController()
@@ -61,21 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-
- //       let initialViewController = SearchOrTagAlongViewController()
-
-
-
-       // let initialViewController = ShakeInstructionViewController()
-//
-//
-//        let cardViewController = CardViewController()
-//
-
-
-//        let initialViewController = SelectedRestaurantViewController()
-//       let initialViewController = GetLocationViewController()
-//        let initialViewController = TagAlongViewController()
 
 
 

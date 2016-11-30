@@ -258,6 +258,21 @@ extension AccountCreationViewController {
         //createAccountButton.addTarget(self, action: "createAccountButton:", for: .touchUpInside)
         
     }
+
+    func sendEmail() {
+        FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+            if error == nil {
+                print("Email sent")
+            }
+            else {
+                print(error?.localizedDescription)
+            }
+        })
+        
+    }
+    
+    
+    
     
     func createAccountButtonTapped(sender: UIButton!) {
         
@@ -277,7 +292,7 @@ extension AccountCreationViewController {
                 
                 if error == nil {
                     print("Successful Account Creation")
-
+                   self.sendEmail()
                     //TODO: - Send user to the next screen after logging in
                     
                 }
@@ -291,13 +306,9 @@ extension AccountCreationViewController {
                 
             })
         }
+
+    
     }
-    
-    
-    
-
-    
-
 
 }
 
