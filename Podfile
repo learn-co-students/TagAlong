@@ -12,7 +12,9 @@ target 'FlatironMasterpiece' do
   pod 'FirebaseAuth'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
-  
+  pod 'JSQMessagesViewController'
+
+
 
 
   pod 'Firebase/Database'
@@ -22,7 +24,7 @@ target 'FlatironMasterpiece' do
   pod 'ZLSwipeableViewSwift', :git => 'git@github.com:zhxnlai/ZLSwipeableViewSwift.git'
   pod 'Cartography'
 
-  
+
 
 
 
@@ -33,6 +35,6 @@ post_install do |installer|
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '3.0'
         end
-        
+
     end
 end

@@ -1,3 +1,4 @@
+
 //
 //  LogInViewController.swift
 //  FlatironMasterpiece
@@ -20,6 +21,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var forgotPasswordButton = UIButton()
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +154,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func loginButtonTapped(sender: UIButton!) {
     
+
         if self.loginEmail.text == "" || loginPassword.text == "" {
              // TODO: - Create action
              print("Enter email or password")
@@ -174,6 +177,46 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             
         }
+
+    if self.loginEmail.text == "" || loginPassword.text == "" {
+        
+        // TODO: - Create action
+        
+        print("Enter email or password")
+        
+        //For testing purposes
+        FIRAuth.auth()?.signIn(withEmail: "joyce@gmail.com", password: "123456", completion: { (user, error) in
+            if error == nil {
+                print("Successful Log In")
+                //TODO: - Send to next screen after logging in
+            }
+                
+            else {
+                //TODO: - Notify user of error
+                print(error?.localizedDescription)
+                
+            }
+        })
+
+        
+        
+    } else {
+        
+        guard let email = loginEmail.text, let password = loginPassword.text else { return }
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            if error == nil {
+                print("Successful Log In")
+                //TODO: - Send to next screen after logging in
+            }
+                
+            else {
+                //TODO: - Notify user of error
+                print(error?.localizedDescription)
+                
+            }
+        })
+
     }
 
     func registerButtonTapped(sender: UIButton!) {
@@ -185,7 +228,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
-    
+//    func forgotPasswordTapped(sender: UIButton!) {
+//        FIRAuth.sendPasswordReset(<#T##FIRAuth#>)
+//    }
     
     
     // Facebook - Log in and log out functions
@@ -200,7 +245,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
 
         
         if let token = FBSDKAccessToken.current() {
@@ -247,8 +292,36 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         //TODO: - Segue back to login screen after user has logged out
     }
     
+
     func forgotPassword(sender: UIButton!) {
         print("user forgot password")
     }
+
+    
+    
+    // Testing Segue to chat
+    
+    @IBAction func chatButtonPressed(_ sender: Any) {
+                
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChat" {
+            
+            let chatVC = segue.destination as! ChatViewController
+            let allChatsRef = FIRDatabase.database().reference().child("chats")
+            // chatRef should point to only one single chat --- eventually Auto ID
+            chatVC.chatRef = allChatsRef.child("testChat")
+            
+        }
+    }
+
+    
+
+    
+    
+s
 
 }
