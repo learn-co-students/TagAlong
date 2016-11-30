@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 //
-      let initialViewController = AccountCreationViewController()
+//      let initialViewController = AccountCreationViewController()
 //
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)

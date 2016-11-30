@@ -13,20 +13,11 @@ target 'FlatironMasterpiece' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'JSQMessagesViewController'
-
-
-
-
   pod 'Firebase/Database'
-
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'ZLSwipeableViewSwift', :git => 'git@github.com:zhxnlai/ZLSwipeableViewSwift.git'
   pod 'Cartography'
-
-
-
-
 
 end
 

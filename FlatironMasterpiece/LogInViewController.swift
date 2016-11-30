@@ -31,7 +31,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "foodWoodenTable.jpg")!)
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
     
         self.view.backgroundColor = UIColor(patternImage: image)
@@ -153,8 +153,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func loginButtonTapped(sender: UIButton!) {
-    
-
+ 
         if self.loginEmail.text == "" || loginPassword.text == "" {
              // TODO: - Create action
              print("Enter email or password")
@@ -194,8 +193,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             else {
                 //TODO: - Notify user of error
                 print(error?.localizedDescription)
-                
-            }
+             }
         })
 
         
@@ -209,8 +207,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("Successful Log In")
                 //TODO: - Send to next screen after logging in
             }
-                
-            else {
+             else {
                 //TODO: - Notify user of error
                 print(error?.localizedDescription)
                 
@@ -224,8 +221,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Send to Account Creation Page
         let accountCreationVC = AccountCreationViewController()
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
-        
-    }
+     }
     
     
 //    func forgotPasswordTapped(sender: UIButton!) {
@@ -301,27 +297,22 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // Testing Segue to chat
     
-    @IBAction func chatButtonPressed(_ sender: Any) {
-                
-        
-        
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showChat" {
+//            
+//            let chatVC = segue.destination as! ChatViewController
+//            let allChatsRef = FIRDatabase.database().reference().child("chats")
+//            // chatRef should point to only one single chat --- eventually Auto ID
+//            chatVC.chatRef = allChatsRef.child("testChat")
+//            
+//        }
+//    }
+
+    
+
+    
+    
+
+
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showChat" {
-            
-            let chatVC = segue.destination as! ChatViewController
-            let allChatsRef = FIRDatabase.database().reference().child("chats")
-            // chatRef should point to only one single chat --- eventually Auto ID
-            chatVC.chatRef = allChatsRef.child("testChat")
-            
-        }
-    }
-
-    
-
-    
-    
-s
-
 }
