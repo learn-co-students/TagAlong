@@ -39,20 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 //
-//        let initialViewController = AccountCreationViewController()
+       let initialViewController = AccountCreationViewController()
 //
 
 //
 //        let initialViewController = ChatViewController()
 //
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
 
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
+
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
 
 
 
