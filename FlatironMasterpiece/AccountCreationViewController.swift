@@ -60,7 +60,9 @@ class AccountCreationViewController: UIViewController {
         lastNameEntry.accessibilityLabel = Constants.LASTNAME
         emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
         passwordEntry.accessibilityLabel = Constants.PASSWORD
+        passwordEntry.isSecureTextEntry = true
         passwordVerification.accessibilityLabel = Constants.PASSWORDVERIFICATION
+        passwordVerification.isSecureTextEntry = true
         industryEntry.accessibilityLabel = Constants.INDUSTRY
         jobEntry.accessibilityLabel = Constants.JOBTITLE
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
@@ -259,6 +261,22 @@ extension AccountCreationViewController {
 
     }
 
+
+    func sendEmail() {
+        FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+            if error == nil {
+                print("Email sent")
+            }
+            else {
+                print(error?.localizedDescription)
+            }
+        })
+
+    }
+
+
+
+
     func createAccountButtonTapped(sender: UIButton!) {
 
         if self.emailEntry.text == "" || passwordEntry.text == "" || passwordVerification.text == "" {
@@ -277,7 +295,7 @@ extension AccountCreationViewController {
 
                 if error == nil {
                     print("Successful Account Creation")
-
+                   self.sendEmail()
                     //TODO: - Send user to the next screen after logging in
 
                 }
@@ -291,13 +309,9 @@ extension AccountCreationViewController {
 
             })
         }
+
+
     }
-
-
-
-
-
-
 
 }
 

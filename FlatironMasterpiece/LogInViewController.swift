@@ -192,7 +192,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // TODO: - Add register function to segue into account creation page
     
-    
+//    func forgotPasswordTapped(sender: UIButton!) {
+//        FIRAuth.sendPasswordReset(<#T##FIRAuth#>)
+//    }
     
     
     // Facebook - Log in and log out functions

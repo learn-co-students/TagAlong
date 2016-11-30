@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 //
-//        let initialViewController = AccountCreationViewController()
+      let initialViewController = AccountCreationViewController()
 //
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
@@ -55,25 +55,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         // Override point for customization after application launch.
+       //        let initialViewController = SearchOrTagAlongViewController()
+
+   //     let initialViewController = LogInViewController()
+
+        // let initialViewController = ShakeInstructionViewController()
+        //
+        //
+        //        let cardViewController = CardViewController()
+        //
 
 
+        //        let initialViewController = SelectedRestaurantViewController()
+        //       let initialViewController = GetLocationViewController()
+        //        let initialViewController = TagAlongViewController()
 
 
-
- //       let initialViewController = SearchOrTagAlongViewController()
-
-
-
-       // let initialViewController = ShakeInstructionViewController()
 //
+//        let initialViewController = ChatViewController()
 //
-//        let cardViewController = CardViewController()
-//
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
 
 
-//        let initialViewController = SelectedRestaurantViewController()
-//       let initialViewController = GetLocationViewController()
-//        let initialViewController = TagAlongViewController()
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
+
+
+
+        // Override point for customization after application launch.
+
+
+
+
 
 
 
