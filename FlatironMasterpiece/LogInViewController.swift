@@ -142,6 +142,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Forgot Password Button
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         forgotPasswordButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 120).isActive = true
@@ -149,7 +150,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-        
+        forgotPasswordButton.backgroundColor = UIColor.cyan
     }
 
     func loginButtonTapped(sender: UIButton!) {
@@ -224,9 +225,21 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
      }
     
     
-//    func forgotPasswordTapped(sender: UIButton!) {
-//        FIRAuth.sendPasswordReset(<#T##FIRAuth#>)
-//    }
+    func forgotPasswordTapped(sender: UIButton!) {
+      print("buttonpress")
+//        if loginEmail.text == "" {
+//            print("please type your registered email address")
+//        }
+        guard let email = loginEmail.text else { return }
+        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+            if error == nil {
+                print("reset email sent")
+            }
+            else {
+                print(error?.localizedDescription)
+            }
+            })
+    }
     
     
     // Facebook - Log in and log out functions
