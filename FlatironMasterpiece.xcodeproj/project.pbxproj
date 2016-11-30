@@ -595,8 +595,7 @@
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -617,8 +616,7 @@
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

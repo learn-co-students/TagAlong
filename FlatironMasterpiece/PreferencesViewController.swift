@@ -35,6 +35,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
     
+//    var isSelected: Bool = false {
+//        didSet {
+//            cuisineCollectionView.allowsMultipleSelection = isSelected
+//            cuisineCollectionView.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition()
+//            cuisineImage.remove(keepingCapa
+//        }
+//    }
     
 
     override func viewDidLoad() {
@@ -60,7 +67,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.dataSource = self
         cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
         cuisineCollectionView.backgroundColor = phaedraDarkGreen
-        cuisineCollectionView.allowsMultipleSelection = true
+        //cuisineCollectionView.allowsMultipleSelection = true
         view.addSubview(cuisineCollectionView)
 
         print("cuisineCollectionView frame assigned")
@@ -90,65 +97,90 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+   
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Hey SELECTING ME!!")
+       let selectedCuisine = cuisineArray[indexPath.row]
+//        var americanPicked:Bool = false
+//        var asianPicked:Bool = false
+//        var healthyPicked:Bool = false
+//        var italianPicked:Bool = false
+//        var latinPicked:Bool = false
+//        var unhealthyPicked:Bool = false
         
-        let selectedCuisine = cuisineArray[indexPath.row]
         
-        var americanPicked:Bool = false
-        var asianPicked:Bool = false
-        var healthyPicked:Bool = false
-        var italianPicked:Bool = false
-        var latinPicked:Bool = false
-        var unhealthyPicked:Bool = false
         
+        //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        if usersCuisineSelectionsArray.contains(selectedCuisine){
+            print("already exists dont add any more")
+            cell.toggledSelectedState()
+            let index = usersCuisineSelectionsArray.index(of: selectedCuisine)
+            guard let unwrappedindex = index else { return }
+            usersCuisineSelectionsArray.remove(at: unwrappedindex)
+        }else{
+            if cell.isHighlighted == false {
+                usersCuisineSelectionsArray.append(selectedCuisine)
+                print(usersCuisineSelectionsArray)
+                cell.isHighlighted = true
+                cell.toggledSelectedState()
+                
+            }
+            
+        }
+//
+        // Johann end
         
-        if !americanPicked && !asianPicked && !healthyPicked && !italianPicked && !latinPicked && !unhealthyPicked {
-            
-            usersCuisineSelectionsArray.append(selectedCuisine)
-            print("array after a selection made: \(usersCuisineSelectionsArray)")
-            
-            switch selectedCuisine {
-                case "american":
-                    americanPicked = true
-                case "asian":
-                    asianPicked = true
-                case "healthy":
-                    healthyPicked = true
-                case "italian":
-                    italianPicked = true
-                case "latin":
-                    latinPicked = true
-                case "unhealthy":
-                    unhealthyPicked = true
-                default:
-                    break
-            }
-            
-        }
-        else if americanPicked || asianPicked || healthyPicked || italianPicked || latinPicked || unhealthyPicked {
-            
-            switch selectedCuisine {
-            case "american":
-                americanPicked = false
-                cell.layer.borderWidth = 0
-            case "asian":
-                asianPicked = false
-            case "healthy":
-                healthyPicked = false
-            case "italian":
-                italianPicked = false
-            case "latin":
-                latinPicked = false
-            case "unhealthy":
-                unhealthyPicked = false
-            default:
-                break
-            }
-            
-            usersCuisineSelectionsArray.remove(at: usersCuisineSelectionsArray.count-1)
-            print("array after a deselection is made: \(usersCuisineSelectionsArray)")
-        }
+//        if !americanPicked && !asianPicked && !healthyPicked && !italianPicked && !latinPicked && !unhealthyPicked {
+//            
+//            cell.layer.borderWidth = 4
+//            cell.layer.borderColor = phaedraOrange.cgColor
+//            
+//            usersCuisineSelectionsArray.append(selectedCuisine)
+//            print("array after a selection made: \(usersCuisineSelectionsArray)")
+//            
+//            switch selectedCuisine {
+//                case "american":
+//                    americanPicked = true
+//                case "asian":
+//                    asianPicked = true
+//                case "healthy":
+//                    healthyPicked = true
+//                case "italian":
+//                    italianPicked = true
+//                case "latin":
+//                    latinPicked = true
+//                case "unhealthy":
+//                    unhealthyPicked = true
+//                default:
+//                    break
+//            }
+//            
+//        }
+//        else if americanPicked || asianPicked || healthyPicked || italianPicked || latinPicked || unhealthyPicked {
+//            
+//            switch selectedCuisine {
+//            case "american":
+//                americanPicked = false
+//                cell.layer.borderWidth = 0
+//            case "asian":
+//                asianPicked = false
+//            case "healthy":
+//                healthyPicked = false
+//            case "italian":
+//                italianPicked = false
+//            case "latin":
+//                latinPicked = false
+//            case "unhealthy":
+//                unhealthyPicked = false
+//            default:
+//                break
+//            }
+//            
+//            usersCuisineSelectionsArray.remove(at: usersCuisineSelectionsArray.count-1)
+//            print("array after a deselection is made: \(usersCuisineSelectionsArray)")
+//        }
 
     }
     

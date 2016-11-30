@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension UICollectionViewCell {
+    func toggledSelectedState() {
+        if isHighlighted == true {
+            self.layer.borderColor = phaedraLightGreen.cgColor
+            self.layer.borderWidth = 5
+            self.layer.cornerRadius = 5
+        } else if !isHighlighted {
+            self.layer.borderWidth = 0
+        }
+    }
+}
+
 class CuisineCollectionViewCell: UICollectionViewCell {
     
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
@@ -17,7 +29,15 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
     
     var imageView: UIImageView!
+    
     var isHighighted: Bool = false
+    
+    
+    
+    
+    
+    
+    
     var foodLabel: UILabel = {
         let label = UILabel()
         label.text = "Cuisine Type"
@@ -32,8 +52,6 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
     }
-    
-    
     
     func setupViews() {
         
