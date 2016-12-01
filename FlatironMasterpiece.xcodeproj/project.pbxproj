@@ -10,6 +10,7 @@
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
+		250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
 		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
@@ -66,6 +67,7 @@
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
+		250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomTestViewController.swift; sourceTree = "<group>"; };
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				25C989771DE0ACE5003C993C /* Secrets.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
+				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
@@ -452,6 +455,7 @@
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
 				27E72DD91DDEAC14007EC098 /* AccountCreationView.swift in Sources */,
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
+				250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */,
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
 				45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */,
@@ -591,8 +595,7 @@
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -613,8 +616,7 @@
 				INFOPLIST_FILE = FlatironMasterpiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FlatironSchool-CarrotCoat";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironSchool-CarrotCoatE";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -278,11 +278,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChat" {
             
-            let chatVC = segue.destination as! ChatViewController
-            let allChatsRef = FIRDatabase.database().reference().child("chats")
-            // chatRef should point to only one single chat --- eventually Auto ID
-            chatVC.chatRef = allChatsRef.child("testChat")
-            
+            let destination = segue.destination as! ChatroomTestViewController
+//
+//            let chatVC = segue.destination as! ChatViewController
+//            let allChatsRef = FIRDatabase.database().reference().child("chats")
+//            // chatRef should point to only one single chat --- eventually Auto ID
+//            chatVC.chatRef = allChatsRef.child("testChat")
+//            
         }
     }
 
