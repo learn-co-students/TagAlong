@@ -18,6 +18,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
      let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
     
     let store = UsersDataStore.sharedInstance
+    
     var usersCuisineSelectionsArray:[String] = []
     
     var preferencesLabel = UILabel()
@@ -105,16 +106,21 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
         //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        if usersCuisineSelectionsArray.contains(selectedCuisine){
-            print("already exists dont add any more")
+        if store.preferredCuisineArray.contains(selectedCuisine) {
+            
             cell.toggledSelectedState()
-            let index = usersCuisineSelectionsArray.index(of: selectedCuisine)
+            
+            let index = store.preferredCuisineArray.index(of: selectedCuisine)
             guard let unwrappedindex = index else { return }
-            usersCuisineSelectionsArray.remove(at: unwrappedindex)
+            
+            store.preferredCuisineArray.remove(at: unwrappedindex)
+            UserDefaults.standard.set(store.preferredCuisineArray, forKey: "UserCuisineArray")
+            print("array is now \(store.preferredCuisineArray)")
         }else{
             if cell.isHighlighted == false {
-                usersCuisineSelectionsArray.append(selectedCuisine)
-                print(usersCuisineSelectionsArray)
+                store.preferredCuisineArray.append(selectedCuisine)
+                UserDefaults.standard.set(store.preferredCuisineArray, forKey: "UserCuisineArray")
+                print("array is now \(store.preferredCuisineArray)")
                 cell.isHighlighted = true
                 cell.toggledSelectedState()
             }
@@ -159,9 +165,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         budgetLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -170).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        //add special constraint functionality
-//        budgetLabel.specialConstrain(to: view)
-
     }
     
     func formatCuisinePreferencesLabel() {
@@ -175,32 +178,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisinePreferencesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 25).isActive = true
     }
     
-//    func formatDineWithCompanyLabel() {
-//        view.addSubview(dineWithCompanyLabel)
-//        dineWithCompanyLabel.text = "Dine with company?"
-//        dineWithCompanyLabel.font = UIFont(name: "AvenirNext-Regular", size: 20.0)
-//        dineWithCompanyLabel.textColor = phaedraOrange
-//        dineWithCompanyLabel.textAlignment = .center
-//        dineWithCompanyLabel.translatesAutoresizingMaskIntoConstraints = false
-//        dineWithCompanyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
-//        dineWithCompanyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-//    }
-    
     func createSegmentedController() {
         let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
         let budgetSC = UISegmentedControl(items: budgetArray)
         budgetSC.selectedSegmentIndex = 0
-        
         let frame = UIScreen.main.bounds
         budgetSC.frame = CGRect(x: frame.minX + 10, y: frame.minY + 140, width: frame.width - 20, height: frame.height * 0.08)
-        
         budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
         budgetSC.layer.cornerRadius = 5
         budgetSC.backgroundColor = phaedraLightGreen
         budgetSC.tintColor = phaedraDarkGreen
         budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
-        
-        self.view.addSubview(budgetSC)
+         self.view.addSubview(budgetSC)
         
     }
     
@@ -224,13 +213,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func formatButtons() {
-        
         view.addSubview(logoutButton)
         logoutButton.backgroundColor = phaedraLightGreen
         logoutButton.layer.cornerRadius = 5
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 20.0)
-        
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
@@ -240,9 +227,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
         logoutButton.setTitleColor(phaedraYellow, for: .highlighted)
-        
         view.addSubview(replayTutorialButton)
-        // TODO: - change button color
         replayTutorialButton.backgroundColor = phaedraLightGreen
         replayTutorialButton.layer.cornerRadius = 5
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)

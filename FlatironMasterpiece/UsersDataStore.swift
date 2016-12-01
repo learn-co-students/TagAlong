@@ -13,6 +13,8 @@ class UsersDataStore {
     
     var users: [User] = []
     
+    var preferredCuisineArray:[String] = []
+    
     var userBudgetChoice:Int = 1
     
     //get this from firebase user login data

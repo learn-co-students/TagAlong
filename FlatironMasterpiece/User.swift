@@ -11,7 +11,6 @@ class User {
     let lastName: String
     let emailAddress: String
     let passWord: String
-    
     let industry: String
     let jobTitle: String
     

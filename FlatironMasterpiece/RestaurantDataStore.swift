@@ -15,6 +15,8 @@ class RestaurantDataStore {
     
     var locationsArray: [Restaurant] = []
     
+   
+    
     var restaurantsInJSON:json!
     
     fileprivate init() {}
