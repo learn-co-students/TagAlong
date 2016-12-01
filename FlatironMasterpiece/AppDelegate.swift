@@ -55,16 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
 
-      let initialViewController = PreferenceViewController()
+ //     let initialViewController = PreferenceViewController()
 
 
 
-       let frame = UIScreen.main.bounds
-       window = UIWindow(frame: frame)
+//       let frame = UIScreen.main.bounds
+//       window = UIWindow(frame: frame)
 
    //     let initialViewController = LogInViewController()
 
-
+ let initialViewController = AccountCreationViewController()
         // let initialViewController = ShakeInstructionViewController()
         //
         //
