@@ -14,7 +14,9 @@ class UserTagAlongsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +47,11 @@ class UserTagAlongsTableViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        let tagAlong = allTagAlongs[indexPath.row]
+        let chatVC = ChatViewController()
+        chatVC.chatID = tagAlong
+        present(chatVC, animated: true, completion: nil)
+        
     }
 
 }
