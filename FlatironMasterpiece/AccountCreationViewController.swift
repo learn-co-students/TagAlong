@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
-
 
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
@@ -28,7 +27,8 @@ struct Constants {
 class AccountCreationViewController: UIViewController {
 
     var ref: FIRDatabaseReference!
-
+    
+    
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -38,7 +38,8 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
-
+    
+    
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -81,8 +82,20 @@ class AccountCreationViewController: UIViewController {
      view.endEditing(true)
     }
 
+    func tapCreateButtonOnce() {
+        self.createAccountButton.isEnabled = false 
+        let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
+        tap.numberOfTapsRequired = 1
+        createAccountButton.addGestureRecognizer(tap)
+ //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
+        //createAccountButton.addGestureRecognizer(tap)
 
+    }
 
+    func enableButton() {
+        createAccountButton.isEnabled = true
+    }
     func createAccountButton(_ sender: UIButton) {
        print("working")
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
