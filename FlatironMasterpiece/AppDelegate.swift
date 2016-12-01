@@ -45,57 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.backgroundColor = phaedraDarkGreen
 //        self.window?.makeKeyAndVisible()
 //        print("app delegate working")
-        //MARK: - sets the initial view controller
-
-
-
-
-
-//
-//
-
-        // Override point for customization after application launch.
-
-//      let initialViewController = PreferenceViewController()
-//
-//
-//       let frame = UIScreen.main.bounds
-//       window = UIWindow(frame: frame)
-
-   //     let initialViewController = LogInViewController()
-
-
-        // let initialViewController = ShakeInstructionViewController()
-        //
-        //
-        //        let cardViewController = CardViewController()
-        //
-
-
-        //        let initialViewController = SelectedRestaurantViewController()
-        //       let initialViewController = GetLocationViewController()
-        //        let initialViewController = TagAlongViewController()
-
-//let initialViewController = PreferenceViewController()
-////
-////        let initialViewController = ChatViewController()
-////
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//
-//
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
-
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-
+  
         //MARK: - sets the initial view controller
 
       let initialViewController = UserTagAlongsTableViewController()

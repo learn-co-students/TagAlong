@@ -13,8 +13,8 @@ import Firebase
 import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
-    
+
+
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()
@@ -23,12 +23,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var forgotPasswordButton = UIButton()
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
-    
-    
-    
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login view controller working")
+
         //Code needed for Core motion
         self.becomeFirstResponder()
         //
@@ -37,12 +38,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
+
         self.view.backgroundColor = UIColor(patternImage: image)
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
         createViews()
-        
-        
+
+
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
         self.imageView = UIImageView(frame: CGRect.zero)
@@ -51,10 +52,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.alpha = 1.0
         self.view.addSubview(imageView)
         createViews()
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         loginEmail.becomeFirstResponder()
-        
+        view.addGestureRecognizer(tap)
+
         // Logic for Logging in
-        
+
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
                 // User is signed in.
@@ -66,25 +69,31 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // createViews()
             }
         }
-        
+
     }
-    
-    
+
+
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.imageView.frame = self.view.bounds
     }
-    
+
+
+
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
             loginEmail.text? = ""
         }
-        
+
     }
-    
-    
-    
+
+
+
     func createViews() {
         // login label
         view.addSubview(loginLabel)
@@ -100,12 +109,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // login email Textfield
         view.addSubview(loginEmail)
         loginEmail.placeholder = "  Email Address"
         loginEmail.textAlignment = .center
-        loginEmail.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginEmail.font = UIFont(name: "OpenSans-Light", size: 14.0)
         loginEmail.layer.borderWidth = 2
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
@@ -115,15 +124,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginEmail.backgroundColor = UIColor.white
-        
+
         loginEmail.autocapitalizationType = .none
-        
-        
+
+
         // login password textfield
         view.addSubview(loginPassword)
-        loginPassword.placeholder = "  App Password"
+        loginPassword.placeholder = "Password"
         loginPassword.textAlignment = .center
-        loginPassword.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginPassword.font = UIFont(name: "OpenSans-Light", size: 14.0)
         loginPassword.layer.borderWidth = 2
         loginPassword.layer.cornerRadius = 5
         loginPassword.layer.borderColor = phaedraDarkGreen.cgColor
@@ -133,10 +142,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginPassword.backgroundColor = UIColor.white
-        
+
         loginPassword.isSecureTextEntry = true
         loginPassword.autocapitalizationType = .none
-        
+
         // login button
         view.addSubview(loginButton)
         loginButton.backgroundColor = phaedraYellow
@@ -146,7 +155,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.setTitle("Enter", for: UIControlState.normal)
         loginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         loginButton.titleLabel?.textAlignment = .center
-        
+
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
         loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
@@ -155,7 +164,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Register Button
         view.addSubview(registerButton)
         registerButton.setTitle("Create An Account", for: UIControlState.normal)
@@ -172,19 +181,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // FB Log in Button
         fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
         fbLoginButton.delegate = self
         view.addSubview(fbLoginButton)
         fbLoginButton.center = self.view.center
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
-        
+
         fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50).isActive = true
         fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        
-        
+
+
         // Forgot Password Button
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
@@ -197,26 +206,28 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         forgotPasswordButton.backgroundColor = UIColor.cyan
-        
+
     }
-    
+
     func loginButtonTapped(sender: UIButton!) {
-        
+
         if self.loginEmail.text == "" || loginPassword.text == "" {
             // TODO: - Create action
             print("Enter email or password")
         } else {
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                
+
                 if error == nil {
                     print("Successful Log In")
-                    //TODO: - Send to next screen after logging in
+
                     // Send to preferences (for now)
                     let preferencesVC = PreferenceViewController()
-                    self.navigationController?.pushViewController(preferencesVC, animated: true)
+
+                    let nav = UINavigationController(rootViewController: preferencesVC)
+                    self.present(nav, animated: true, completion: nil)
                 }
                 else {
                     //TODO: - Notify user of error
@@ -224,24 +235,24 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             })
         }
-        
+
         if self.loginEmail.text == "" || loginPassword.text == "" {
-            
+
             // TODO: - Create action
-            
+
             print("Enter email or password")
-            
+
             //For testing purposes
             FIRAuth.auth()?.signIn(withEmail: "joyce@gmail.com", password: "123456", completion: { (user, error) in
                 if error == nil {
                     print("Successful Log In")
                     //TODO: - Send to next screen after logging in
-                    
-                    
-                    
-                    
+
+
+
+
                 }
-                    
+
                 else {
                     //TODO: - Notify user of error
                     print(error?.localizedDescription)
@@ -249,13 +260,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     //                    show(alert, sender: self)
                 }
             })
-            
-            
-            
+
+
+
         } else {
-            
+
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
-            
+
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
                     print("Successful Log In")
@@ -264,35 +275,63 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 else {
                     //TODO: - Notify user of error
                     print(error?.localizedDescription)
-                    
+
                 }
             })
-            
+
         }
-        
+
     }
-    
+
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
         let accountCreationVC = AccountCreationViewController()
-        present(accountCreationVC, animated: true, completion: nil)
+
+        self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
-    
+
     func forgotPasswordTapped(sender: UIButton!) {
-        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Your password has been emailed to you.", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            print("User pushed OK on alertController")
+
+        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("User cancelled in alertController")
         }
-        forgotPasswordAlert.addAction(alertAction)
+
+
+
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("User pushed OK on alertController")
+            let emailField = forgotPasswordAlert.textFields![0] as UITextField
+            print("the user entered \(emailField)")
+            guard let email = emailField.text else { return }
+            FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+                if error == nil {
+                    print("reset email sent")
+                }
+                else {
+                    print(error?.localizedDescription)
+                }
+            })
+        }
+
+        forgotPasswordAlert.addTextField { (textField) in
+            textField.placeholder = "Email address"
+        }
+        forgotPasswordAlert.addAction(cancelAction)
+        forgotPasswordAlert.addAction(okAction)
+
+
+
         self.present(forgotPasswordAlert, animated: true, completion: nil)
-        
+
         print("buttonpress")
         //        if loginEmail.text == "" {
         //            print("please type your registered email address")
         //        }
         print("user forgot password")
-        
-        
+
+
         guard let email = loginEmail.text else { return }
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             if error == nil {
@@ -302,84 +341,86 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print(error)
             }
         })
+
     }
-    
-    
+
+
     // Facebook - Log in and log out functions
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("=================\(#function)=============\n\n\n")
-        
+
         if let error = error {
-            
+
             print(error.localizedDescription)
             return
         }
-        
+
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        
-        
+        print("credential is \(credential)")
+
+
         if let token = FBSDKAccessToken.current() {
-            
+
             print("ALL good")
-            
+
             if let tokenString = token.tokenString {
-                
-                
+
+
                 if let token = FBSDKAccessToken.current() {
                     print("ALL good")
                     if let tokenString = token.tokenString {
                         print("Token string is here \(tokenString)")
                     }
-                    
+
                 }
             }
-            
+
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                
+
                 print("User has logged into Firebase")
-                
+
                 // TODO: - Segue into home screen after user has logged in
                 // Send to preferences (for now)
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
-                
+
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
             }
-            
-            
+
+
             print("User has logged in")
-            
+
             print("=====================================================\n\n\n")
-            
-            
-            
+
+
+
             print("User has logged in")
             print("=====================================================\n\n\n")
-            
+
         }
-        
+
     }
-    
+
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User has logged out")
-        
+
         //TODO: - Segue back to login screen after user has logged out
     }
-    
-    
+
+
     func forgotPassword(sender: UIButton!) {
         print("user forgot password")
     }
-    
+
     // Testing Segue to chat
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChat" {
-            
+
             let destination = segue.destination as! TabBarController
             //
             //            let chatVC = segue.destination as! ChatViewController
@@ -389,5 +430,5 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             //
         }
     }
-    
+
 }

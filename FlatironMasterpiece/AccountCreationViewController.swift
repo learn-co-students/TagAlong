@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
-
 
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
@@ -29,6 +28,7 @@ class AccountCreationViewController: UIViewController {
 
     var ref: FIRDatabaseReference!
 
+
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -38,6 +38,7 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+
 
     var firstNameConfirmed = false
     var lastNameConfirmed = false
@@ -81,8 +82,20 @@ class AccountCreationViewController: UIViewController {
      view.endEditing(true)
     }
 
+    func tapCreateButtonOnce() {
+        self.createAccountButton.isEnabled = false
+        let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
+        tap.numberOfTapsRequired = 1
+        createAccountButton.addGestureRecognizer(tap)
+ //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
+        //createAccountButton.addGestureRecognizer(tap)
 
+    }
 
+    func enableButton() {
+        createAccountButton.isEnabled = true
+    }
     func createAccountButton(_ sender: UIButton) {
        print("working")
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
@@ -100,22 +113,22 @@ class AccountCreationViewController: UIViewController {
         
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
-        
+
         FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-            
+
             if success {
-                
+
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
-                
+
             } else {
-                
+
                 // TODO: Handle error? Maybe
             }
-            
-            
+
+
         })
-        
+
 
 
     }
@@ -294,6 +307,22 @@ extension AccountCreationViewController {
 
                     //TODO: - Notify user of their error
                     print(error?.localizedDescription)
+                    print("account alreaday exists")
+                    let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with the above information.  Please login.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                        print("User canceled alert controller")
+                    })
+                    let loginAction = UIAlertAction(title: "Login", style: .default, handler: { (action) in
+                        // Send to preferences (for now)
+                        let loginVC = LogInViewController()
+
+                        let nav = UINavigationController(rootViewController: loginVC)
+                        self.present(nav, animated: true, completion: nil)
+                        print("User wants to login")
+                    })
+                    accountExistsAlert.addAction(cancelAction)
+                    accountExistsAlert.addAction(loginAction)
+                    self.present(accountExistsAlert, animated: true, completion: nil)
 
                 }
 

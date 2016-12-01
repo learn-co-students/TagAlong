@@ -18,6 +18,7 @@ target 'FlatironMasterpiece' do
   pod 'GoogleMaps'
   pod 'ZLSwipeableViewSwift', :git => 'git@github.com:zhxnlai/ZLSwipeableViewSwift.git'
   pod 'Cartography'
+  pod 'Firebase/Storage'
 
 end
 
