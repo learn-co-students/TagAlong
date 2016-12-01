@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
+
         
         //MARK: - sets up the navigation controller for our app
         
@@ -55,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //      let initialViewController = ShakeInstructionViewController()
 // 
 let initialViewController = CardViewController()
+
         
         
         let frame = UIScreen.main.bounds
@@ -64,6 +66,7 @@ let initialViewController = CardViewController()
             window.rootViewController = initialViewController
             window.makeKeyAndVisible()
         }
+
 
         return true
     }

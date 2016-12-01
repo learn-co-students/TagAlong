@@ -11,8 +11,8 @@ import ZLSwipeableViewSwift
 import Cartography
 
 
-var testArray1 = ["", "De Mole", "Mexican", "$$", ".4 miles", "Wednesday 11AM-11:30PM"]
-var testArray2 = ["", "Rizzo's Pizza", "Italian", "$$", ".1 miles", "Wednesday 11AM-10PM"]
+var testArray1 = ["spreads", "De Mole", "Mexican", "$$", ".4 miles", "11AM-11:30PM"]
+var testArray2 = ["spreads.jpg", "Rizzo's Pizza", "Italian", "$$", ".1 miles", "11AM-10PM"]
 
 
 class CardViewController: UIViewController {
@@ -60,6 +60,8 @@ class CardViewController: UIViewController {
             print("Did disappear swiping view")
         }
         
+        // +50 -50 +120 -100
+        
         constrain(swipeableView, view) { view1, view2 in
             view1.left == view2.left+50
             view1.right == view2.right-50
@@ -93,82 +95,3 @@ class CardViewController: UIViewController {
     
     
 }
-
-
-
-//class CardViewController: UIViewController {
-//    
-//    var swipeableView: ZLSwipeableView!
-//    
-//    var restaurantImageView = UIImageView()
-//    var restaurantNameLabel = UILabel()
-//    var restaurantCuisineLabel = UILabel()
-//    var restaurantCostLabel = UILabel()
-//    var restaurantDistanceLabel = UILabel()
-//    var restaurantHoursLabek = UILabel()
-//    
-//    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        swipeableView.nextView = {
-//            return self.nextCardView()
-//        }
-//    }
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    //        super.viewDidLayoutSubviews()
-//    //        swipeableView.nextView = {
-//    //
-//    //            var customView = UIView()
-//    //            customView.backgroundColor = UIColor.random
-//    //
-//    //            return customView
-//    //        }
-//    //
-//    //
-//    //    }
-//    //
-//    //    override func viewDidLoad() {
-//    //        var cardSize = CGRect(x: 100, y: 100, width: 100, height: 100)
-//    //        swipeableView = ZLSwipeableView(frame: cardSize)
-//    //        view.addSubview(swipeableView)
-//    //
-//    //
-//    //    }
-//    //
-//    //
-//    //}
-//    //
-//    //
-//    //
-//    //
-//    //extension UIColor{
-//    //    class var random: UIColor{
-//    //        let red = CGFloat(drand48())
-//    //        let green = CGFloat(drand48())
-//    //        let blue = CGFloat(drand48())
-//    //
-//    //        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-//    //    }
-//    //}
-//    //
-//    //
-//    ////class CardViewController: UIViewController {
-//    ////
-//    ////    override func viewDidLoad() {
-//    ////        super.viewDidLoad()
-//    ////
-//    ////        var swipeableView = ZLSwipeableView(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
-//    ////        view.addSubview(swipeableView)
-//    ////    }
-//    ////
-//    ////
-//    ////   
-//    ////}
-//}
