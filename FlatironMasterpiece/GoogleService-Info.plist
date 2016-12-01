@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>316649471598-i59ibhj4v17651u9ib5rat915602v454.apps.googleusercontent.com</string>
+	<string>1038217839011-69o933ltcovfess4ohk4rrd2q7fvnmkm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.316649471598-i59ibhj4v17651u9ib5rat915602v454</string>
+	<string>com.googleusercontent.apps.1038217839011-69o933ltcovfess4ohk4rrd2q7fvnmkm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD08G_ApNiXtK8hMJcvD9_BrKHCHdH-1RU</string>
+	<string>AIzaSyDiV4kFyTvUsueRa-gbQsDYVXp1dyHp-2w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>316649471598</string>
+	<string>1038217839011</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.FlatironSchool-CarrotCoat</string>
+	<string>com.flatironschool.team-carrot-coat</string>
 	<key>PROJECT_ID</key>
-	<string>carrotcoat-9dd0f</string>
+	<string>newcarrots</string>
 	<key>STORAGE_BUCKET</key>
-	<string>carrotcoat-9dd0f.appspot.com</string>
+	<string>newcarrots.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:316649471598:ios:12512393996743b9</string>
+	<string>1:1038217839011:ios:348eb6822d402b25</string>
 	<key>DATABASE_URL</key>
-	<string>https://carrotcoat-9dd0f.firebaseio.com</string>
+	<string>https://newcarrots.firebaseio.com</string>
 </dict>
 </plist>

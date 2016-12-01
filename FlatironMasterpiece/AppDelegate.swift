@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let initialViewController = PreferenceViewController()
 
 
+
        let frame = UIScreen.main.bounds
        window = UIWindow(frame: frame)
 
@@ -75,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //       let initialViewController = GetLocationViewController()
         //        let initialViewController = TagAlongViewController()
 
-let initialViewController = PreferenceViewController()
+//let initialViewController = PreferenceViewController()
 //
 //        let initialViewController = ChatViewController()
 //
