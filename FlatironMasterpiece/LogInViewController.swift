@@ -173,7 +173,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:15).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.23).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
     }
@@ -181,9 +181,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonTapped(sender: UIButton!) {
         
         if self.loginEmail.text == "" || loginPassword.text == "" {
-            // TODO: - Create action
+            
+            //loginAlert is called
+            let loginAlert = UIAlertController(title: "Incomplete Login Information", message: "Enter your complete email and password.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    print("User closed alert controller")
+                })
+            loginAlert.addAction(okAction)
+            self.present(loginAlert, animated: true, completion: nil)
             print("Enter email or password")
+            
         } else {
+            
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 
@@ -192,65 +201,29 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     // Send to preferences (for now)
                     let preferencesVC = PreferenceViewController()
-                    
                     let nav = UINavigationController(rootViewController: preferencesVC)
                     self.present(nav, animated: true, completion: nil)
-                }
-                else {
-                    //TODO: - Notify user of error
-                    print(error?.localizedDescription)
-                }
-            })
-        }
-        
-        if self.loginEmail.text == "" || loginPassword.text == "" {
-            
-            // TODO: - Create action
-            
-            print("Enter email or password")
-            
-            //For testing purposes
-            FIRAuth.auth()?.signIn(withEmail: "joyce@gmail.com", password: "123456", completion: { (user, error) in
-                if error == nil {
-                    print("Successful Log In")
-                    //TODO: - Send to next screen after logging in
-                }
                     
-                else {
-                    //TODO: - Notify user of error
-                    print(error?.localizedDescription)
-//                    let alert = UIAlertController(title: "Invalid credentials", message: "Please enter a valid email and password", preferredStyle: .alert)
-//                    show(alert, sender: self)
-                }
-            })
-            
-            
-            
-        } else {
-            
-            guard let email = loginEmail.text, let password = loginPassword.text else { return }
-            
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                    print("Successful Log In")
-                    //TODO: - Send to next screen after logging in
-                }
-                else {
-                    //TODO: - Notify user of error
-                    print(error?.localizedDescription)
-                    
-                }
-            })
-            
-        }
+                } else {
         
+                        //TODO: - Notify user of error
+                        print(error?.localizedDescription)
+                        let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            print("User closed alert controller")
+                        })
+                        loginErrorAlert.addAction(okAction)
+                        self.present(loginErrorAlert, animated: true, completion: nil)
+                    }
+                })
+            }
     }
     
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
         let accountCreationVC = AccountCreationViewController()
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
-    }
+     }
     
     func forgotPasswordTapped(sender: UIButton!) {
         
