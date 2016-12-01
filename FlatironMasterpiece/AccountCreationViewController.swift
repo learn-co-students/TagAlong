@@ -126,6 +126,12 @@ class AccountCreationViewController: UIViewController {
                     //TODO: - create alert controller that says enter a password and email
                     if error != nil {
                         print(error!)
+                        let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            print("User clicked alert controller")
+                        })
+                        invalidCredentialsAlert.addAction(okAction)
+                        self.present(invalidCredentialsAlert, animated: true, completion: nil)
                     }
                 }
         })
@@ -309,7 +315,8 @@ extension AccountCreationViewController {
 
                     //TODO: - Notify user of their error
                     print(error?.localizedDescription)
-
+                    print("account alreaday exists")
+                    let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with these credentials.  Please login", preferredStyle: .alert)
                 }
 
             })

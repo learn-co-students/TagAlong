@@ -189,10 +189,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 if error == nil {
                     print("Successful Log In")
-                    //TODO: - Send to next screen after logging in
+                    
                     // Send to preferences (for now)
                     let preferencesVC = PreferenceViewController()
-                    self.navigationController?.pushViewController(preferencesVC, animated: true)
+                    
+                    let nav = UINavigationController(rootViewController: preferencesVC)
+                    self.present(nav, animated: true, completion: nil)
                 }
                 else {
                     //TODO: - Notify user of error
@@ -252,18 +254,34 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func forgotPasswordTapped(sender: UIButton!) {
         
-        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Your password has been emailed to you.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            print("User pushed OK on alertController")
-        }
+        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             print("User cancelled in alertController")
         }
-        forgotPasswordAlert.addAction(OKAction)
-        forgotPasswordAlert.addAction(cancelAction)
-        forgotPasswordAlert.addTextField { (<#UITextField#>) in
-            <#code#>
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("User pushed OK on alertController")
+            let emailField = forgotPasswordAlert.textFields![0] as UITextField
+            print("the user entered \(emailField)")
+            guard let email = emailField.text else { return }
+            FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+                if error == nil {
+                    print("reset email sent")
+                }
+                else {
+                    print(error?.localizedDescription)
+                }
+            })
         }
+        
+        forgotPasswordAlert.addTextField { (textField) in
+            textField.placeholder = "Email address"
+        }
+        forgotPasswordAlert.addAction(cancelAction)
+        forgotPasswordAlert.addAction(okAction)
+        
+        
         self.present(forgotPasswordAlert, animated: true, completion: nil)
     
         print("buttonpress")
@@ -273,15 +291,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("user forgot password")
         
         
-        guard let email = loginEmail.text else { return }
-        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
-            if error == nil {
-                print("reset email sent")
-            }
-            else {
-                print(error?.localizedDescription)
-            }
-        })
+        
     }
     
     
@@ -295,16 +305,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        print("credential is \(credential)")
         
-        if let token = FBSDKAccessToken.current() {
-            print("ALL good")
-            if let tokenString = token.tokenString {
-                print("Token string is here \(tokenString)")
-            }
-            
-        } else {
-        }
-        
+//        if let token = FBSDKAccessToken.current() {
+//            print("ALL good")
+//            if let tokenString = token.tokenString {
+//                print("Token string is here \(tokenString)")
+//            }
+//            
+//        } else {
+//        }
+//        
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             
             print("User has logged into Firebase")

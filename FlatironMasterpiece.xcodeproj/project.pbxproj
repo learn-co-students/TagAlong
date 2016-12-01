@@ -21,7 +21,6 @@
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
-		27E72DD91DDEAC14007EC098 /* AccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */; };
 		451C01AA1DEE432A007B1388 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019C1DEE13E6007B1388 /* OpenSans-Bold.ttf */; };
 		451C01AB1DEE4331007B1388 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019D1DEE13E6007B1388 /* OpenSans-BoldItalic.ttf */; };
 		451C01AC1DEE4333007B1388 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C019E1DEE13E6007B1388 /* OpenSans-ExtraBold.ttf */; };
@@ -80,7 +79,6 @@
 		27AAFE351DDAC9AA00C08348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27AAFE381DDAC9AA00C08348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27AAFE3A1DDAC9AA00C08348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationView.swift; sourceTree = "<group>"; };
 		451C019C1DEE13E6007B1388 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		451C019D1DEE13E6007B1388 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		451C019E1DEE13E6007B1388 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				452C599C1DE61D4A005884EE /* Xibs */,
 				452C599F1DE61E95005884EE /* View */,
 				25C989771DE0ACE5003C993C /* Secrets.swift */,
-				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
@@ -225,6 +222,7 @@
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -232,7 +230,6 @@
 		452C599F1DE61E95005884EE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
 				453921401DEC778700D19A45 /* TableViewCell.swift */,
 				453E06B11DE8E8C6007EE25A /* RestaurantView.swift */,
 				950A2C681DE5FF3E001F2145 /* CardView.swift */,
@@ -381,20 +378,6 @@
 				451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */,
 				451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */,
 				451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */,
-				45F19ADC1DED2B36007EAACD /* YanoneKaffeesatz-Bold.ttf in Resources */,
-				45F19ADD1DED2B36007EAACD /* YanoneKaffeesatz-ExtraLight.ttf in Resources */,
-				45F19ADE1DED2B36007EAACD /* YanoneKaffeesatz-Light.ttf in Resources */,
-				45F19ADF1DED2B36007EAACD /* YanoneKaffeesatz-Regular.ttf in Resources */,
-				45F19AEB1DEDCE33007EAACD /* OpenSans-Bold.ttf in Resources */,
-				45F19AEC1DEDCE33007EAACD /* OpenSans-BoldItalic.ttf in Resources */,
-				45F19AED1DEDCE33007EAACD /* OpenSans-ExtraBold.ttf in Resources */,
-				45F19AEE1DEDCE33007EAACD /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				45F19AEF1DEDCE33007EAACD /* OpenSans-Italic.ttf in Resources */,
-				45F19AF01DEDCE33007EAACD /* OpenSans-Light.ttf in Resources */,
-				45F19AF11DEDCE33007EAACD /* OpenSans-LightItalic.ttf in Resources */,
-				45F19AF21DEDCE33007EAACD /* OpenSans-Regular.ttf in Resources */,
-				45F19AF31DEDCE33007EAACD /* OpenSans-Semibold.ttf in Resources */,
-				45F19AF41DEDCE33007EAACD /* OpenSans-SemiboldItalic.ttf in Resources */,
 				270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,7 +451,6 @@
 				278E32AB1DEDEAFA00D35576 /* Secrets.swift in Sources */,
 				2726A7DC1DEE049E00ABE4BA /* Restaurant.swift in Sources */,
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
-				27E72DD91DDEAC14007EC098 /* AccountCreationView.swift in Sources */,
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
