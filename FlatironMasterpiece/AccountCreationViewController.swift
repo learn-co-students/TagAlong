@@ -97,40 +97,26 @@ class AccountCreationViewController: UIViewController {
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
      //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
+        
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
-
-        if email != "" && password != "" {
-            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                 //   self.ref.child("UID").child((user?.uid)!).setValue(email)
-
-                   // self.ref.child("users").child((user?.uid)!).setValue(email)
-                    self.ref.child("users").child((user?.uid)!).child("email").setValue(email)
-                    self.ref.child("users").child((user?.uid)!).child("firstName").setValue(firstName)
-                    self.ref.child("users").child((user?.uid)!).child("lastName").setValue(lastName)
-                    self.ref.child("users").child((user?.uid)!).child("jobTitle").setValue(job)
-                    self.ref.child("users").child((user?.uid)!).child("industry").setValue(industry)
-
-                    print(email)
-                    print(firstName)
-                    print(lastName)
-                    print(job)
-                    print(industry)
-
-                    
-                    // Send to Preferences VC
-                    let preferencesVC = PreferenceViewController()
-                    self.navigationController?.pushViewController(preferencesVC, animated: true)
-
-                } else {
-                    //TODO: - create alert controller that says enter a password and email
-                    if error != nil {
-                        print(error!)
-                    }
-                }
+        
+        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
+            
+            if success {
+                
+                let preferencesVC = PreferenceViewController()
+                self.navigationController?.pushViewController(preferencesVC, animated: true)
+                
+            } else {
+                
+                // TODO: Handle error? Maybe
+            }
+            
+            
         })
+        
 
-    }
 
     }
 }

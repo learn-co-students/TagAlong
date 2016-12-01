@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let initialViewController = UserTagAlongsTableViewController()
 
        let frame = UIScreen.main.bounds
-       window = UIWindow(frame: frame)
+        window = UIWindow(frame: frame)
 
         if let window = window {
             window.rootViewController = initialViewController
