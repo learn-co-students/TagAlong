@@ -88,7 +88,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(loginEmail)
         loginEmail.placeholder = "  Email Address"
         loginEmail.textAlignment = .center
-        loginEmail.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginEmail.font = UIFont(name: "OpenSans-Light", size: 14.0)
         loginEmail.layer.borderWidth = 2
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
@@ -98,15 +98,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginEmail.backgroundColor = UIColor.white
-
         loginEmail.autocapitalizationType = .none
 
    
         // login password textfield
         view.addSubview(loginPassword)
-        loginPassword.placeholder = "  App Password"
+        loginPassword.placeholder = "Password"
         loginPassword.textAlignment = .center
-        loginPassword.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginPassword.font = UIFont(name: "OpenSans-Light", size: 14.0)
         loginPassword.layer.borderWidth = 2
         loginPassword.layer.cornerRadius = 5
         loginPassword.layer.borderColor = phaedraDarkGreen.cgColor
@@ -247,16 +246,24 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
-//        let accountCreationVC = AccountCreationViewController()
-//        self.navigationController?.pushViewController(accountCreationVC, animated: true)
+        let accountCreationVC = AccountCreationViewController()
+        self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     
     func forgotPasswordTapped(sender: UIButton!) {
+        
         let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Your password has been emailed to you.", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
             print("User pushed OK on alertController")
         }
-        forgotPasswordAlert.addAction(alertAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("User cancelled in alertController")
+        }
+        forgotPasswordAlert.addAction(OKAction)
+        forgotPasswordAlert.addAction(cancelAction)
+        forgotPasswordAlert.addTextField { (<#UITextField#>) in
+            <#code#>
+        }
         self.present(forgotPasswordAlert, animated: true, completion: nil)
     
         print("buttonpress")
