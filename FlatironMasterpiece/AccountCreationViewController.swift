@@ -316,7 +316,22 @@ extension AccountCreationViewController {
                     //TODO: - Notify user of their error
                     print(error?.localizedDescription)
                     print("account alreaday exists")
-                    let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with these credentials.  Please login", preferredStyle: .alert)
+                    let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with the above information.  Please login.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                        print("User canceled alert controller")
+                    })
+                    let loginAction = UIAlertAction(title: "Login", style: .default, handler: { (action) in
+                        // Send to preferences (for now)
+                        let loginVC = LogInViewController()
+                        
+                        let nav = UINavigationController(rootViewController: loginVC)
+                        self.present(nav, animated: true, completion: nil)
+                        print("User wants to login")
+                    })
+                    accountExistsAlert.addAction(cancelAction)
+                    accountExistsAlert.addAction(loginAction)
+                    self.present(accountExistsAlert, animated: true, completion: nil)
+                    
                 }
 
             })

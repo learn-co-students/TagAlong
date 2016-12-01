@@ -307,15 +307,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
         
-//        if let token = FBSDKAccessToken.current() {
-//            print("ALL good")
-//            if let tokenString = token.tokenString {
-//                print("Token string is here \(tokenString)")
-//            }
-//            
-//        } else {
-//        }
-//        
+        if let token = FBSDKAccessToken.current() {
+            print("ALL good")
+            if let tokenString = token.tokenString {
+                print("Token string is here \(tokenString)")
+            }
+            
+        } else {
+        }
+        
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             
             print("User has logged into Firebase")
