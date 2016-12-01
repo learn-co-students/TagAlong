@@ -115,15 +115,18 @@ class AccountCreationViewController: UIViewController {
                     print(job)
                     print(industry)
 
+                    
+                    // Send to Preferences VC
+                    let preferencesVC = PreferenceViewController()
+                    self.navigationController?.pushViewController(preferencesVC, animated: true)
 
                 } else {
+                    //TODO: - create alert controller that says enter a password and email
                     if error != nil {
                         print(error!)
                     }
                 }
         })
-
-
 
     }
 
