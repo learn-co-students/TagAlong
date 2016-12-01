@@ -13,7 +13,12 @@ import Firebase
 import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
+<<<<<<< HEAD
 
+=======
+    
+    var imageView: UIImageView!
+>>>>>>> master
     var loginLabel = UILabel()
     var loginEmail = UITextField()
     var loginPassword = UITextField()
@@ -21,12 +26,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var forgotPasswordButton = UIButton()
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
+<<<<<<< HEAD
 
         override func viewDidLoad() {
+=======
+    
+    override func viewDidLoad() {
+>>>>>>> master
         super.viewDidLoad()
         print("login view controller working")
         //Code needed for Core motion
         self.becomeFirstResponder()
+<<<<<<< HEAD
         //
         view.backgroundColor = UIColor(patternImage: UIImage(named: "foodWoodenTable.jpg")!)
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -38,6 +49,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
         createViews()
 
+=======
+        
+        //sets background image
+        let backgroundImage = UIImage(named: "foodWoodenTable")
+        self.imageView = UIImageView(frame: CGRect.zero)
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.image = backgroundImage
+        self.imageView.alpha = 1.0
+        self.view.addSubview(imageView)
+        createViews()
+        loginEmail.becomeFirstResponder()
+        
+>>>>>>> master
         // Logic for Logging in
 
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
@@ -53,23 +77,39 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
 
     }
+<<<<<<< HEAD
 
+=======
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.imageView.frame = self.view.bounds
+    }
+    
+>>>>>>> master
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
             loginEmail.text? = ""
         }
+<<<<<<< HEAD
 
     }
 
     func createViews() {
 
+=======
+    }
+    
+    
+    func createViews() {
+>>>>>>> master
         // login label
         view.addSubview(loginLabel)
         loginLabel.text = "Log In"
-        loginLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
-        loginLabel.textColor = phaedraYellow
-        //        loginLabel.backgroundColor = phaedraYellow
+        loginLabel.font = UIFont(name: "OpenSans-Bold", size: 30.0)
+        loginLabel.textColor = UIColor.white
+        loginLabel.backgroundColor = UIColor.clear
         loginLabel.layer.cornerRadius = 6
         loginLabel.layer.masksToBounds = true
         loginLabel.textAlignment = .center
@@ -82,54 +122,79 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // login email Textfield
         view.addSubview(loginEmail)
         loginEmail.placeholder = "  Email Address"
-        loginEmail.layer.borderWidth = 1
+        loginEmail.textAlignment = .center
+        loginEmail.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginEmail.layer.borderWidth = 2
         loginEmail.layer.cornerRadius = 5
-        loginEmail.layer.borderColor = UIColor.lightGray.cgColor
+        loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
         loginEmail.translatesAutoresizingMaskIntoConstraints = false
-        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 30).isActive = true
+        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 150).isActive = true
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginEmail.backgroundColor = UIColor.white
+
+        loginEmail.autocapitalizationType = .none
+
+   
         // login password textfield
         view.addSubview(loginPassword)
         loginPassword.placeholder = "  App Password"
-        loginPassword.layer.borderWidth = 1
+        loginPassword.textAlignment = .center
+        loginPassword.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        loginPassword.layer.borderWidth = 2
         loginPassword.layer.cornerRadius = 5
-        loginPassword.layer.borderColor = UIColor.lightGray.cgColor
+        loginPassword.layer.borderColor = phaedraDarkGreen.cgColor
         loginPassword.translatesAutoresizingMaskIntoConstraints = false
         loginPassword.topAnchor.constraint(equalTo: loginEmail.bottomAnchor, constant: 5).isActive = true
         loginPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginPassword.backgroundColor = UIColor.white
+<<<<<<< HEAD
 
+=======
+        loginPassword.isSecureTextEntry = true
+        loginPassword.autocapitalizationType = .none
+        
+>>>>>>> master
         // login button
         view.addSubview(loginButton)
-        loginButton.backgroundColor = phaedraBeige
+        loginButton.backgroundColor = phaedraYellow
+        loginButton.layer.borderColor = phaedraLightGreen.cgColor
+        loginButton.layer.borderWidth = 2
         loginButton.layer.cornerRadius = 5
         loginButton.setTitle("Enter", for: UIControlState.normal)
         loginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         loginButton.titleLabel?.textAlignment = .center
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        loginButton.setTitleColor(phaedraOliveGreen, for: .normal)
-        loginButton.setTitleColor(phaedraDarkGreen, for: .highlighted)
+        loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 20).isActive = true
+        loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 150).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
         // Register Button
         view.addSubview(registerButton)
-        registerButton.setTitle("Register?", for: UIControlState.normal)
-        registerButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        registerButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        registerButton.setTitle("Create An Account", for: UIControlState.normal)
+        registerButton.layer.borderColor = phaedraLightGreen.cgColor
+        registerButton.layer.borderWidth = 2
+        registerButton.layer.cornerRadius = 5
+        registerButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15)
+        registerButton.backgroundColor = phaedraYellow
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        registerButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
+        registerButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
         // FB Log in Button
@@ -137,20 +202,34 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         fbLoginButton.delegate = self
         view.addSubview(fbLoginButton)
         fbLoginButton.center = self.view.center
+<<<<<<< HEAD
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
 
+=======
+        fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50).isActive = true
+        fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+
+        
+>>>>>>> master
         // Forgot Password Button
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
-        forgotPasswordButton.addTarget(self, action: #selector(getter: forgotPasswordButton), for: .touchUpInside)
-        forgotPasswordButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 10)
+        forgotPasswordButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        forgotPasswordButton.backgroundColor = UIColor.clear
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 120).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:15).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+<<<<<<< HEAD
 
         forgotPasswordButton.backgroundColor = UIColor.cyan
+=======
+        
+>>>>>>> master
     }
 
     func loginButtonTapped(sender: UIButton!) {
@@ -192,6 +271,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 else {
                     //TODO: - Notify user of error
                     print(error?.localizedDescription)
+//                    let alert = UIAlertController(title: "Invalid credentials", message: "Please enter a valid email and password", preferredStyle: .alert)
+//                    show(alert, sender: self)
                 }
             })
 
@@ -219,17 +300,30 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
-        // Send to Account Creation Page
-        let accountCreationVC = AccountCreationViewController()
-        self.navigationController?.pushViewController(accountCreationVC, animated: true)
+//        let accountCreationVC = AccountCreationViewController()
+//        self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> master
     func forgotPasswordTapped(sender: UIButton!) {
+        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Your password has been emailed to you.", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("User pushed OK on alertController")
+        }
+        forgotPasswordAlert.addAction(alertAction)
+        self.present(forgotPasswordAlert, animated: true, completion: nil)
+    
         print("buttonpress")
         //        if loginEmail.text == "" {
         //            print("please type your registered email address")
         //        }
+        print("user forgot password")
+        
+        
         guard let email = loginEmail.text else { return }
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             if error == nil {
@@ -243,21 +337,29 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 
     // Facebook - Log in and log out functions
+<<<<<<< HEAD
 
 
 
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
 
+=======
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+>>>>>>> master
         print("=================\(#function)=============\n\n\n")
 
         if let error = error {
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             print(error.localizedDescription)
             return
         }
 
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+<<<<<<< HEAD
 
 
         if let token = FBSDKAccessToken.current() {
@@ -266,29 +368,47 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
             if let tokenString = token.tokenString {
 
+=======
+        
+        if let token = FBSDKAccessToken.current() {
+            print("ALL good")
+            if let tokenString = token.tokenString {
+>>>>>>> master
                 print("Token string is here \(tokenString)")
             }
 
         } else {
+<<<<<<< HEAD
 
         }
 
 
 
+=======
+        }
+        
+>>>>>>> master
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
             print("User has logged into Firebase")
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             // TODO: - Segue into home screen after user has logged in
             // Send to preferences (for now)
             let preferencesVC = PreferenceViewController()
             self.navigationController?.pushViewController(preferencesVC, animated: true)
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
         }
+<<<<<<< HEAD
 
 
         print("User has logged in")
@@ -296,6 +416,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("=====================================================\n\n\n")
 
 
+=======
+        
+        print("User has logged in")
+        print("=====================================================\n\n\n")
+        
+>>>>>>> master
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -303,6 +429,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         //TODO: - Segue back to login screen after user has logged out
     }
+<<<<<<< HEAD
 
 
     func forgotPassword(sender: UIButton!) {
@@ -311,6 +438,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 
 
+=======
+    
+    
+    
+>>>>>>> master
     // Testing Segue to chat
 
 

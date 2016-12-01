@@ -15,6 +15,7 @@
 		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
+		270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */; };
 		2726A7DC1DEE049E00ABE4BA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */; };
 		2726A7DD1DEE049E00ABE4BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2726A7DB1DEE049E00ABE4BA /* User.swift */; };
 		278E32AB1DEDEAFA00D35576 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E32AA1DEDEAFA00D35576 /* Secrets.swift */; };
@@ -59,7 +60,6 @@
 		950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6A1DE61C57001F2145 /* CardViewController.swift */; };
 		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
 		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
-		95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +72,7 @@
 		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
 		2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2726A7DB1DEE049E00ABE4BA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		950A2C6A1DE61C57001F2145 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardViewController.swift; path = ../CardViewController.swift; sourceTree = "<group>"; };
 		950A2C6C1DE9F95D001F2145 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		950A2C6E1DEC9F01001F2145 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
-		95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,11 +179,11 @@
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
-				95948B901DDE4FA100C94BB4 /* GoogleService-Info.plist */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				278E32AA1DEDEAFA00D35576 /* Secrets.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
+				270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */,
 			);
 			path = FlatironMasterpiece;
 			sourceTree = "<group>";
@@ -367,7 +367,6 @@
 				25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */,
 				4539213F1DEC777300D19A45 /* TableViewCell.xib in Resources */,
 				27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */,
-				95948B911DDE4FA100C94BB4 /* GoogleService-Info.plist in Resources */,
 				452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */,
 				27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */,
 				451C01AA1DEE432A007B1388 /* OpenSans-Bold.ttf in Resources */,
@@ -385,6 +384,21 @@
 				451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */,
 				451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */,
 				451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */,
+				45F19ADC1DED2B36007EAACD /* YanoneKaffeesatz-Bold.ttf in Resources */,
+				45F19ADD1DED2B36007EAACD /* YanoneKaffeesatz-ExtraLight.ttf in Resources */,
+				45F19ADE1DED2B36007EAACD /* YanoneKaffeesatz-Light.ttf in Resources */,
+				45F19ADF1DED2B36007EAACD /* YanoneKaffeesatz-Regular.ttf in Resources */,
+				45F19AEB1DEDCE33007EAACD /* OpenSans-Bold.ttf in Resources */,
+				45F19AEC1DEDCE33007EAACD /* OpenSans-BoldItalic.ttf in Resources */,
+				45F19AED1DEDCE33007EAACD /* OpenSans-ExtraBold.ttf in Resources */,
+				45F19AEE1DEDCE33007EAACD /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				45F19AEF1DEDCE33007EAACD /* OpenSans-Italic.ttf in Resources */,
+				45F19AF01DEDCE33007EAACD /* OpenSans-Light.ttf in Resources */,
+				45F19AF11DEDCE33007EAACD /* OpenSans-LightItalic.ttf in Resources */,
+				45F19AF21DEDCE33007EAACD /* OpenSans-Regular.ttf in Resources */,
+				45F19AF31DEDCE33007EAACD /* OpenSans-Semibold.ttf in Resources */,
+				45F19AF41DEDCE33007EAACD /* OpenSans-SemiboldItalic.ttf in Resources */,
+				270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

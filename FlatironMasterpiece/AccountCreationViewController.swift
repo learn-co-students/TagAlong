@@ -61,8 +61,10 @@ class AccountCreationViewController: UIViewController {
         emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
         passwordEntry.accessibilityLabel = Constants.PASSWORD
         passwordEntry.isSecureTextEntry = true
+        passwordEntry.autocapitalizationType = .none
         passwordVerification.accessibilityLabel = Constants.PASSWORDVERIFICATION
         passwordVerification.isSecureTextEntry = true
+        passwordVerification.autocapitalizationType = .none
         industryEntry.accessibilityLabel = Constants.INDUSTRY
         jobEntry.accessibilityLabel = Constants.JOBTITLE
 //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
