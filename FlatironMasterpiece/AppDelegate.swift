@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        //        let initialViewController = SearchOrTagAlongViewController()
 
 
-   //     let initialViewController = LogInViewController()
+        let initialViewController = LogInViewController()
 
 
         // let initialViewController = ShakeInstructionViewController()
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //       let initialViewController = GetLocationViewController()
         //        let initialViewController = TagAlongViewController()
 
-let initialViewController = PreferenceViewController()
+//let initialViewController = PreferenceViewController()
 //
 //        let initialViewController = ChatViewController()
 //
