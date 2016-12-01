@@ -26,6 +26,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login view controller working")
+        
         //Code needed for Core motion
         self.becomeFirstResponder()
         
@@ -37,8 +38,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.alpha = 1.0
         self.view.addSubview(imageView)
         createViews()
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         loginEmail.becomeFirstResponder()
-        
+        view.addGestureRecognizer(tap)
+
         // Logic for Logging in
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
@@ -55,10 +58,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.imageView.frame = self.view.bounds
     }
+    
+    
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
@@ -261,9 +271,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         forgotPasswordAlert.addAction(OKAction)
         forgotPasswordAlert.addAction(cancelAction)
-        forgotPasswordAlert.addTextField { (<#UITextField#>) in
-            <#code#>
-        }
+//        forgotPasswordAlert.addTextField { (<#UITextField#>) in
+//            <#code#>
+//        }
         self.present(forgotPasswordAlert, animated: true, completion: nil)
     
         print("buttonpress")
