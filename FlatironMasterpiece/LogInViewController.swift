@@ -91,6 +91,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginEmail.backgroundColor = UIColor.white
+        loginEmail.autocapitalizationType = .none
+        
         // login password textfield
         view.addSubview(loginPassword)
         loginPassword.placeholder = "  App Password"
@@ -103,6 +105,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginPassword.backgroundColor = UIColor.white
+        loginPassword.isSecureTextEntry = true
+        loginPassword.autocapitalizationType = .none
         
         // login button
         view.addSubview(loginButton)
