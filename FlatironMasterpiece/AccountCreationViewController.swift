@@ -79,44 +79,7 @@ class AccountCreationViewController: UIViewController {
 
 
 
-    func createAccountButton(_ sender: UIButton) {
-       print("working")
-//        guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
-//        guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
-//        guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
-//        guard let password = passwordEntry.text, !password.isEmpty else { print("Password doesn't meet reqs"); return }
-//        guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
-//        guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
-//        guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-//
-//
-//        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
-//     //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
-//        }
-//        
-//        //1 - create an instance of a user
-//        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-//
-//        //2 - called on FirebaseManger to create a user based on the above currentUser
-//        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-//            
-//            if success {
-//                
-//                let preferencesVC = PreferenceViewController()
-//                self.navigationController?.pushViewController(preferencesVC, animated: true)
-//                
-//            } else {
-//                
-//                // TODO: Handle error? Maybe
-//            }
-//            
-//            
-//        })
-        
-
-
-    }
-}
+  }
 
 // MARK: Validation
 extension UIView {

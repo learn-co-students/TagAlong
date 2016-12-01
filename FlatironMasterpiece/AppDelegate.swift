@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-      let initialViewController = AccountCreationViewController()
+      let initialViewController = LogInViewController()
 
        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

@@ -46,9 +46,41 @@ final class FirebaseManager {
                 print(error?.localizedDescription)
             }
         })
+    }
+    
+    func listenForLogIn() {
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is signed in.
+                // Move to next screen
+                // Add logout button to user's settings screen
+            } else {
+                // No user is signed in.
+                // Display log in screen
+                // createViews()
+            }
+        }
+ 
+    }
+    
+    func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            
+            guard error == nil else { completion(false); return }
+            
+            completion(true)
+        })
+    }
+    
+    func sendPasswordReset(email: String, completion: @escaping (Bool) -> Void) {
+        
+        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+            guard error == nil else { completion(false); return }
+                        
+            completion(true)
+        })
 
-        
-        
         
     }
     
