@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-      let initialViewController = ChatViewController()
+      let initialViewController = UserTagAlongsTableViewController()
 
        let frame = UIScreen.main.bounds
        window = UIWindow(frame: frame)
