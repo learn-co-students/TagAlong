@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //       let initialViewController = GetLocationViewController()
         //        let initialViewController = TagAlongViewController()
 
-let initialViewController = PreferenceViewController()
+//let initialViewController = PreferenceViewController()
 ////
 ////        let initialViewController = ChatViewController()
 ////
@@ -89,24 +89,24 @@ let initialViewController = PreferenceViewController()
 //            window.makeKeyAndVisible()
 //        }
 
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        self.navController?.pushViewController(loginVC, animated: false)
-        self.window?.rootViewController = navController
-        self.window?.backgroundColor = phaedraDarkGreen
-        self.window?.makeKeyAndVisible()
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        self.navController?.pushViewController(loginVC, animated: false)
+//        self.window?.rootViewController = navController
+//        self.window?.backgroundColor = phaedraDarkGreen
+//        self.window?.makeKeyAndVisible()
 
         //MARK: - sets the initial view controller
 
-//      let initialViewController = PreferenceViewController()
-//
-//       let frame = UIScreen.main.bounds
-//       window = UIWindow(frame: frame)
-//
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
+      let initialViewController = ChatViewController()
+
+       let frame = UIScreen.main.bounds
+       window = UIWindow(frame: frame)
+
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
 
         return true
     }

@@ -301,8 +301,7 @@ extension AccountCreationViewController {
                 if error == nil {
                     print("Successful Account Creation")
                    self.sendEmail()
-                    //TODO: - Send user to the next screen after logging in
-
+                    self.dismiss(animated: true, completion: nil)
                 }
 
                 else {
