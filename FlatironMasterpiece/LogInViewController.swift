@@ -140,7 +140,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         registerButton.layer.cornerRadius = 5
         registerButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15)
         registerButton.backgroundColor = phaedraYellow
-        registerButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         registerButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         registerButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
@@ -162,7 +162,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Forgot Password Button
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
-        forgotPasswordButton.addTarget(self, action: #selector(getter: forgotPasswordButton), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         forgotPasswordButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 10)
         forgotPasswordButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         forgotPasswordButton.backgroundColor = UIColor.clear
@@ -213,6 +213,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 else {
                     //TODO: - Notify user of error
                     print(error?.localizedDescription)
+//                    let alert = UIAlertController(title: "Invalid credentials", message: "Please enter a valid email and password", preferredStyle: .alert)
+//                    show(alert, sender: self)
                 }
             })
             
@@ -240,17 +242,25 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
-        // Send to Account Creation Page
-        let accountCreationVC = AccountCreationViewController()
-        self.navigationController?.pushViewController(accountCreationVC, animated: true)
+//        let accountCreationVC = AccountCreationViewController()
+//        self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     
-    
     func forgotPasswordTapped(sender: UIButton!) {
+        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Your password has been emailed to you.", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("User pushed OK on alertController")
+        }
+        forgotPasswordAlert.addAction(alertAction)
+        self.present(forgotPasswordAlert, animated: true, completion: nil)
+    
         print("buttonpress")
         //        if loginEmail.text == "" {
         //            print("please type your registered email address")
         //        }
+        print("user forgot password")
+        
+        
         guard let email = loginEmail.text else { return }
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             if error == nil {
@@ -264,58 +274,40 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     // Facebook - Log in and log out functions
-    
-    
-    
-    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
         print("=================\(#function)=============\n\n\n")
         
         if let error = error {
-            
             print(error.localizedDescription)
             return
         }
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        
         if let token = FBSDKAccessToken.current() {
-            
             print("ALL good")
-            
             if let tokenString = token.tokenString {
-                
                 print("Token string is here \(tokenString)")
             }
             
         } else {
-            
         }
-        
-        
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             
             print("User has logged into Firebase")
-            
             // TODO: - Segue into home screen after user has logged in
             // Send to preferences (for now)
             let preferencesVC = PreferenceViewController()
             self.navigationController?.pushViewController(preferencesVC, animated: true)
-            
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
         }
         
-        
         print("User has logged in")
-        
         print("=====================================================\n\n\n")
-        
         
     }
     
@@ -323,11 +315,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User has logged out")
         
         //TODO: - Segue back to login screen after user has logged out
-    }
-    
-    
-    func forgotPassword(sender: UIButton!) {
-        print("user forgot password")
     }
     
     
