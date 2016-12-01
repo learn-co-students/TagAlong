@@ -83,7 +83,15 @@ class ChatroomTestViewController: UIViewController {
             let chatVC = segue.destination as! ChatViewController
             let allChatsRef = FIRDatabase.database().reference().child("chats")
             // chatRef should point to only one single chat --- eventually Auto ID
-            chatVC.chatRef = allChatsRef.child("nickChat")
+            let key = allChatsRef.childByAutoId()
+            chatVC.chatRef = allChatsRef.child("\(key)")
+            
+            
+            
+            
+            // Pseudo code: if user in database has a tagalong that matches this key && is < 12 hours ,
+               // segue back into this chat using this key
+            
             
         }
         

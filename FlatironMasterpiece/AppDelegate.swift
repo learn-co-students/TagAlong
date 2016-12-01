@@ -55,11 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
 
-      let initialViewController = PreferenceViewController()
-
-
-       let frame = UIScreen.main.bounds
-       window = UIWindow(frame: frame)
+//      let initialViewController = PreferenceViewController()
+//
+//
+//       let frame = UIScreen.main.bounds
+//       window = UIWindow(frame: frame)
 
    //     let initialViewController = LogInViewController()
 
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //       let initialViewController = GetLocationViewController()
         //        let initialViewController = TagAlongViewController()
 
-//let initialViewController = PreferenceViewController()
+let initialViewController = PreferenceViewController()
 ////
 ////        let initialViewController = ChatViewController()
 ////
