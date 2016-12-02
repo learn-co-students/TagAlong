@@ -15,23 +15,19 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
+    let store = FirebaseManager.shared
+    
     var username: String?
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-    // Reference properties
-    private var matchRef: FIRDatabaseReference!
-    var chatRef: FIRDatabaseReference!
-    let allChatsRef = FIRDatabase.database().reference().child("chats")
-    private var membersRef: FIRDatabaseReference!
-    
-    private var matchRefHandle: FIRDatabaseHandle?
-    private var newMessageRefHandle: FIRDatabaseHandle?
+//    // Reference properties
+//    var chatRef: FIRDatabaseReference!
+//    let allChatsRef = FIRDatabase.database().reference().child("chats")
+//    private var newMessageRefHandle: FIRDatabaseHandle?
     
     var chatID: String?
-    
-    
     
     
     // Unique ID
@@ -40,35 +36,17 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let chatID = chatID {
-        chatRef = allChatsRef.child("\(chatID)")
-        }
+//        if let chatID = chatID {
+//        chatRef = allChatsRef.child("\(chatID)")
+//        }
         
-    
-        
-        
-        
-        // TODO: - These three branches will be moved from viewdidload and will be created after an action is performed, ie: A match is made
-        matchRef = FIRDatabase.database().reference().child("Match")
-        membersRef = FIRDatabase.database().reference().child("Members")
-        
-        
-        // Setting the senderID and testing with anonymous login
-        
-        //        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
-        
-        //        self.senderId = "John" // This will be the user's username
-        //        self.senderDisplayName = "John" // This will be the user
-        ////        }
+        store.chatRef = store.allChatsRef.child("\(chatID)")
         
         
         // Testing on a real user
         self.senderId = FIRAuth.auth()?.currentUser?.email
         //TODO: - change this displayName to the currentUser's name
         self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
-        
-        // Creates references for 'match' and 'members' branch
-        self.setupChatDatabase()
         
         
         // Removing avatars
@@ -89,33 +67,6 @@ class ChatViewController: JSQMessagesViewController {
         //        addMessage(withId: senderId, name: "Me", text: "I like to run!")
         //        // animates the receiving of a new message on the view
         //        finishReceivingMessage()
-    }
-    
-    func setupChatDatabase() {
-        
-        // Match branch
-        let newMatchRef = matchRef.child("\(uid)")
-        let message = [
-            "name" : senderId,      // This will be the user's username
-            "timestamp" : "8:00" // This will be the time the chat started
-        ]
-        
-        newMatchRef.setValue(message) { (error, ref) in
-            print("Match: we have a message in our match")
-        }
-        
-        
-        // Members branch
-        let newMemberRef = membersRef.child("\(uid)")
-        let members = [
-            "User 1" : true,  // This will be the user's unid
-            "User 2" : true     // This will be the user's unid
-        ]
-        
-        newMemberRef.setValue(members) { (error, ref) in
-            print("Members: We have member info for our members")
-        }
-        
     }
     
     

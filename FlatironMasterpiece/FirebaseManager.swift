@@ -8,15 +8,22 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 import FBSDKLoginKit
 
 
 final class FirebaseManager {
     
     static let shared = FirebaseManager()
-    
+
+    // Reference properties
     let ref = FIRDatabase.database().reference().root
+    var chatRef: FIRDatabaseReference!
+    let allChatsRef = FIRDatabase.database().reference().child("chats")
+    private var newMessageRefHandle: FIRDatabaseHandle?
+
     
+//    FIRAuth.auth()?.currentUser?.email
     
     private init() {}
     
