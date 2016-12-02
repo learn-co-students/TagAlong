@@ -207,6 +207,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
+            
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
 
                 if error == nil {
@@ -253,6 +254,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             let emailField = forgotPasswordAlert.textFields![0] as UITextField
             print("the user entered \(emailField)")
             guard let email = emailField.text else { return }
+            
             FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
                 if error == nil {
                     print("reset email sent")
@@ -310,14 +312,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         print("=================\(#function)=============\n\n\n")
 
+        //1 - unwrapping any errors
         if let error = error {
             print(error.localizedDescription)
             return
         }
 
+        //2 - creates a facebook credential to receive a token back facebook
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
 
+        //3 - unwrapping the received token
         if let token = FBSDKAccessToken.current() {
             print("ALL good")
             if let tokenString = token.tokenString {
@@ -326,14 +331,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if let tokenString = token.tokenString {
                         print("Token string is here \(tokenString)")
                     }
-
                 }
             }
 
+            //4 - using the facebook credential to login
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
                 print("User has logged into Firebase")
-
                 // TODO: - Segue into home screen after user has logged in
                 // Send to preferences (for now)
                 let preferencesVC = PreferenceViewController()
@@ -344,8 +348,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     return
                 }
             }
-            print("User has logged in")
-            print("=====================================================\n\n\n")
             print("User has logged in")
             print("=====================================================\n\n\n")
         }

@@ -31,9 +31,6 @@ class ChatViewController: JSQMessagesViewController {
     
     var chatID: String?
     
-    
-    
-    
     // Unique ID
     let uid = UUID().uuidString
     
