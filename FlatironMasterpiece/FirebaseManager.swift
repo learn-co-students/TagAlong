@@ -18,11 +18,11 @@ final class FirebaseManager {
 
     // Reference properties
     let ref = FIRDatabase.database().reference().root
-//    var chatRef: FIRDatabaseReference!
-//    let allChatsRef = FIRDatabase.database().reference().child("chats")
-//    private var newMessageRefHandle: FIRDatabaseHandle?
-    var currentUser = FIRAuth.auth()?.currentUser
-
+    var chatRef: FIRDatabaseReference!
+    let allChatsRef = FIRDatabase.database().reference().child("chats")
+    private var newMessageRefHandle: FIRDatabaseHandle?
+    var currentUser = FIRAuth.auth()?.currentUser?.uid
+    var currentUserEmail = FIRAuth.auth()?.currentUser?.email
     
 //    FIRAuth.auth()?.currentUser?.email
     
@@ -47,28 +47,29 @@ final class FirebaseManager {
     
 //    func createTagalong() {
 //        //1 - create the tagalong branch
-//        
+    //          //////////////
+    //create a new child under chats
+//    allChatsRef.child(id).setValue(chatMessage) { (error, ref) in
+//    //
+//    }
 //        //2 - sending the tagalong id to be the child of the chat
+
 //    }
-//    
-//    func sendMessage(with senderId:String, senderDisplayName: String, text: String, date: Date, chatMessage:String, completion: ) {
-//        
-//        let messageItem = [ // 2
-//            "senderId": senderId!,
-//            "senderName": senderDisplayName!,
-//            "text": text!,
-//            "timestamp": String(Int(Date().timeIntervalSince1970))
-//        ]
-//        
-//        
-//        
-//        //////////////
-//        //create a new child under chats
-//        allChatsRef.child(id).setValue(chatMessage) { (error, ref) in
-//            //
-//        }
-//        
-//    }
+//
+    func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
+        
+        let messageItem = [ // 2
+            "senderId": senderId,
+            "senderName": senderDisplayName,
+            "text": text,
+            "timestamp": String(Int(Date().timeIntervalSince1970))
+        ]
+        
+        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
+        
+    
+        
+    }
     
     func sendEmailVerification() {
         

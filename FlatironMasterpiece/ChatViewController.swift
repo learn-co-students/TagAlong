@@ -46,9 +46,9 @@ class ChatViewController: JSQMessagesViewController {
         // Testing on a real user
         self.senderId = store.currentUser
 
-        
+
         //TODO: - change this displayName to the currentUser's name
-        self.senderDisplayName = store.currentUser.email
+        self.senderDisplayName = store.currentUserEmail
         
         // Removing avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
@@ -73,19 +73,10 @@ class ChatViewController: JSQMessagesViewController {
     
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+    
         
-        //TODO: Set UID for the 'messages' branch to match 'match' and 'members' branch, and keep the UID for each individual message seperate from the main branches ('messages', 'match', 'members').
-        
-        let messageItem = [ // 2
-            "senderId": senderId!,
-            "senderName": senderDisplayName!,
-            "text": text!,
-            "timestamp": String(Int(Date().timeIntervalSince1970))
-        ]
-        
-        self.chatRef.updateChildValues(["\(messages.count)": messageItem])
-        
-        //        itemRef.setValue(messageItem) // 3 - This can be done with closure to check for error
+        FirebaseManager.shared.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: messages.count)
+    
         
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
