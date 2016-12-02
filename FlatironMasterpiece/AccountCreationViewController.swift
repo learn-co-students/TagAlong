@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  CreationAccount
@@ -89,6 +90,7 @@ class AccountCreationViewController: UIViewController {
     }
 
   }
+
 
 
 // MARK: Validation
@@ -233,7 +235,6 @@ extension AccountCreationViewController {
 
     func createAccountButtonTapped(sender: UIButton!) {
 
-<<<<<<< HEAD
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
         guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
