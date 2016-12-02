@@ -27,8 +27,8 @@ struct Constants {
 class AccountCreationViewController: UIViewController {
 
     var ref: FIRDatabaseReference!
-    
-    
+
+
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -38,8 +38,8 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
-    
-    
+
+
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -83,7 +83,7 @@ class AccountCreationViewController: UIViewController {
     }
 
     func tapCreateButtonOnce() {
-        self.createAccountButton.isEnabled = false 
+        self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
         tap.numberOfTapsRequired = 1
         createAccountButton.addGestureRecognizer(tap)
@@ -110,46 +110,26 @@ class AccountCreationViewController: UIViewController {
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
      //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
+        
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
 
-        if email != "" && password != "" {
-            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                 //   self.ref.child("UID").child((user?.uid)!).setValue(email)
+        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
 
-                   // self.ref.child("users").child((user?.uid)!).setValue(email)
-                    self.ref.child("users").child((user?.uid)!).child("email").setValue(email)
-                    self.ref.child("users").child((user?.uid)!).child("firstName").setValue(firstName)
-                    self.ref.child("users").child((user?.uid)!).child("lastName").setValue(lastName)
-                    self.ref.child("users").child((user?.uid)!).child("jobTitle").setValue(job)
-                    self.ref.child("users").child((user?.uid)!).child("industry").setValue(industry)
+            if success {
 
-                    print(email)
-                    print(firstName)
-                    print(lastName)
-                    print(job)
-                    print(industry)
+                let preferencesVC = PreferenceViewController()
+                self.navigationController?.pushViewController(preferencesVC, animated: true)
 
-                    
-                    // Send to Preferences VC
-                    let preferencesVC = PreferenceViewController()
-                    self.navigationController?.pushViewController(preferencesVC, animated: true)
+            } else {
 
-                } else {
-                    //TODO: - create alert controller that says enter a password and email
-                    if error != nil {
-                        print(error!)
-                        let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                            print("User clicked alert controller")
-                        })
-                        invalidCredentialsAlert.addAction(okAction)
-                        self.present(invalidCredentialsAlert, animated: true, completion: nil)
-                    }
-                }
+                // TODO: Handle error? Maybe
+            }
+
+
         })
 
-    }
+
 
     }
 }
@@ -320,8 +300,7 @@ extension AccountCreationViewController {
                 if error == nil {
                     print("Successful Account Creation")
                    self.sendEmail()
-                    //TODO: - Send user to the next screen after logging in
-
+                    self.dismiss(animated: true, completion: nil)
                 }
 
                 else {
@@ -336,7 +315,7 @@ extension AccountCreationViewController {
                     let loginAction = UIAlertAction(title: "Login", style: .default, handler: { (action) in
                         // Send to preferences (for now)
                         let loginVC = LogInViewController()
-                        
+
                         let nav = UINavigationController(rootViewController: loginVC)
                         self.present(nav, animated: true, completion: nil)
                         print("User wants to login")
@@ -344,7 +323,7 @@ extension AccountCreationViewController {
                     accountExistsAlert.addAction(cancelAction)
                     accountExistsAlert.addAction(loginAction)
                     self.present(accountExistsAlert, animated: true, completion: nil)
-                    
+
                 }
 
             })

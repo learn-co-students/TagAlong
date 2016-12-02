@@ -23,18 +23,29 @@ class ChatViewController: JSQMessagesViewController {
     // Reference properties
     private var matchRef: FIRDatabaseReference!
     var chatRef: FIRDatabaseReference!
+    let allChatsRef = FIRDatabase.database().reference().child("chats")
     private var membersRef: FIRDatabaseReference!
     
     private var matchRefHandle: FIRDatabaseHandle?
     private var newMessageRefHandle: FIRDatabaseHandle?
     
+    var chatID: String?
+    
+    
+    
     
     // Unique ID
     let uid = UUID().uuidString
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let chatID = chatID {
+        chatRef = allChatsRef.child("\(chatID)")
+        }
+        
+    
+        
         
         
         // TODO: - These three branches will be moved from viewdidload and will be created after an action is performed, ie: A match is made

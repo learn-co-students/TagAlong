@@ -26,6 +26,18 @@ class User {
         self.industry = industry
         self.jobTitle = jobTitle
     }
+    
+    func serialize() -> [String : String] {
+        
+        return [
+            "email" : emailAddress,
+            "firstName" : firstName,
+            "lastName" : lastName,
+            "jobTitle" : jobTitle,
+            "industry" : industry
+        ]
+            
+    }
 
     
 }

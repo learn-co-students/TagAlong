@@ -10,6 +10,9 @@
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
+		250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */; };
+		250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */; };
+		250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CC1DF0CC770090AC68 /* FirebaseManager.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
 		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
@@ -66,6 +69,10 @@
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
+		250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomTestViewController.swift; sourceTree = "<group>"; };
+		250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTagAlongsTableViewController.swift; sourceTree = "<group>"; };
+		250501CC1DF0CC770090AC68 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -161,6 +168,9 @@
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
+				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
+				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
+				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
@@ -212,6 +222,9 @@
 			children = (
 				279BBC741DF0E236008020D4 /* Restaurant.swift */,
 				279BBC701DF0E217008020D4 /* User.swift */,
+				2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */,
+				2726A7DB1DEE049E00ABE4BA /* User.swift */,
+				250501CC1DF0CC770090AC68 /* FirebaseManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -444,13 +457,16 @@
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
 				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
+				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */,
 				45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */,
 				279BBC731DF0E21F008020D4 /* Secrets.swift in Sources */,
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
+				250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */,
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
+				250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */,
 				45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */,
 				950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */,
 				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
