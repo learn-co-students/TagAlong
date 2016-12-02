@@ -70,13 +70,21 @@ class CardView: UIView {
  //       restImageView.bottomAnchor.constraint(equalTo: restNameLabel.topAnchor, constant: 5).isActive = true
 
 //
-        self.addSubview(restNameLabel)
+       
         self.addSubview(restCuisineLabel)
         self.addSubview(restCostLabel)
         self.addSubview(restDistanceLabel)
         self.addSubview(restHoursLabel)
         
-//        restNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        let frame = CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.05)
+        let newFrame = CGRect(x: 350, y: 350, width: 200, height: 200)
+        
+        restNameLabel = UILabel(frame: frame)
+        
+        restNameLabel.backgroundColor = UIColor.yellow
+        
+         self.addSubview(restNameLabel)
+        //        restNameLabel.translatesAutoresizingMaskIntoConstraints = false
 //        restCuisineLabel.translatesAutoresizingMaskIntoConstraints = false
 //        restHoursLabel.translatesAutoresizingMaskIntoConstraints = false
 //        restCostLabel.translatesAutoresizingMaskIntoConstraints = false
