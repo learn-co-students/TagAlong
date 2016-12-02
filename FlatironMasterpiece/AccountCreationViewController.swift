@@ -93,18 +93,21 @@ class AccountCreationViewController: UIViewController {
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
 
-
+        //NOTE: - this code is a check that values are entered in text fields
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
      //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
 
 
         if email != "" && password != "" {
+            
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
                  //   self.ref.child("UID").child((user?.uid)!).setValue(email)
 
                    // self.ref.child("users").child((user?.uid)!).setValue(email)
+                    self.ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(email)
+                    
                     self.ref.child("users").child((user?.uid)!).child("email").setValue(email)
                     self.ref.child("users").child((user?.uid)!).child("firstName").setValue(firstName)
                     self.ref.child("users").child((user?.uid)!).child("lastName").setValue(lastName)
