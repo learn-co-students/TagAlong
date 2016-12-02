@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var navController: UINavigationController?
-    
+
     func applicationDidFinishLaunching(_ application: UIApplication) {
         FIRApp.configure()
     }
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
@@ -33,9 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        
+
         //MARK: - sets up the navigation controller for our app
-        
 
 //        navController = UINavigationController()
 //        var loginVC = LogInViewController()
@@ -45,13 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.rootViewController = navController
 //        self.window?.backgroundColor = phaedraDarkGreen
 //        self.window?.makeKeyAndVisible()
-        
+
+//        print("app delegate working")
+  
         //MARK: - sets the initial view controller
-   
-      let initialViewController = SplashLogoViewController()
- 
+
+      let initialViewController = UserTagAlongsTableViewController()
+
        let frame = UIScreen.main.bounds
-       window = UIWindow(frame: frame)
+        window = UIWindow(frame: frame)
 
         if let window = window {
             window.rootViewController = initialViewController

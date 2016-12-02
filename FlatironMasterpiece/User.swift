@@ -6,6 +6,9 @@
 //  Copyright © 2016 Elias Miller. All rights reserved.
 //
 import Foundation
+import Firebase
+
+
 class User {
     let firstName: String
     let lastName: String
@@ -13,6 +16,7 @@ class User {
     let passWord: String
     let industry: String
     let jobTitle: String
+    let storage = FIRStorage.storage().reference()
     
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
         self.firstName = firstName
@@ -21,6 +25,18 @@ class User {
         self.passWord = passWord
         self.industry = industry
         self.jobTitle = jobTitle
+    }
+    
+    func serialize() -> [String : String] {
+        
+        return [
+            "email" : emailAddress,
+            "firstName" : firstName,
+            "lastName" : lastName,
+            "jobTitle" : jobTitle,
+            "industry" : industry
+        ]
+            
     }
 
     
