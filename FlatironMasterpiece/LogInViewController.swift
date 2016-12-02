@@ -210,7 +210,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 } else {
         
                         //TODO: - Notify user of error
-                        print(error?.localizedDescription)
+                        print("error!")
                         let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                             print("User closed alert controller")
@@ -283,7 +283,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         guard let email = loginEmail.text else { return }
 
-        FirebaseManager.shared.sendPasswordReset(email: emails) { (success) in
+        FirebaseManager.shared.sendPasswordReset(email: email) { (success) in
 
             if success {
                 print("Reset email sent")

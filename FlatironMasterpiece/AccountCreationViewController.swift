@@ -21,12 +21,12 @@ struct Constants {
     static let PASSWORDVERIFICATION = "passwordverification"
     static let INDUSTRY = "industry"
     static let JOBTITLE = "jobtitle"
-
+    
 }
 
 
 class AccountCreationViewController: UIViewController {
-
+    
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -42,12 +42,12 @@ class AccountCreationViewController: UIViewController {
     var password = false
     var industry = false
     var jobtitle = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         createViews()
-
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         view.backgroundColor = UIColor.white
@@ -62,39 +62,162 @@ class AccountCreationViewController: UIViewController {
         passwordVerification.autocapitalizationType = .none
         industryEntry.accessibilityLabel = Constants.INDUSTRY
         jobEntry.accessibilityLabel = Constants.JOBTITLE
-//        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
-//
-//        for specialView in specialViews {
-//
-//            specialView.specialConstrain(to: view)
-//
-//        }
-
+        //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
+        //
+        //        for specialView in specialViews {
+        //
+        //            specialView.specialConstrain(to: view)
+        //
+        //        }
     }
-
+    
     func dismissKeyboard() {
-     view.endEditing(true)
+        view.endEditing(true)
     }
-
+    
     func tapCreateButtonOnce() {
         self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
         tap.numberOfTapsRequired = 1
         createAccountButton.addGestureRecognizer(tap)
- //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
+        //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
         //createAccountButton.addGestureRecognizer(tap)
-
     }
-
+    
     func enableButton() {
         createAccountButton.isEnabled = true
     }
     
-    func createAccountButton(_ sender: UIButton) {
+}
+
+
+// MARK: Validation
+extension UIView {
+    func specialConstrain(to view: UIView) {
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+    }
+}
+
+
+// MARK: Set Up
+extension AccountCreationViewController {
+    
+    func createViews() {
         
-       print("working")
-        //NOTE: - this code is a check that values are entered in text fields
+        // Create Account Label
+        view.addSubview(createAccountLabel)
+        createAccountLabel.text = "Create Account"
+        createAccountLabel.textAlignment = .center
+        createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
+        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // First Name Textfield
+        view.addSubview(firstNameEntry)
+        firstNameEntry.placeholder = "  First Name"
+        firstNameEntry.layer.borderWidth = 1
+        firstNameEntry.layer.cornerRadius = 5
+        firstNameEntry.layer.borderColor = UIColor.lightGray.cgColor
+        firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
+        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 30).isActive = true
+        firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Last Name Textfield
+        view.addSubview(lastNameEntry)
+        lastNameEntry.placeholder = "  Last Name"
+        lastNameEntry.layer.borderWidth = 1
+        lastNameEntry.layer.cornerRadius = 5
+        lastNameEntry.layer.borderColor = UIColor.lightGray.cgColor
+        lastNameEntry.translatesAutoresizingMaskIntoConstraints = false
+        lastNameEntry.topAnchor.constraint(equalTo: firstNameEntry.bottomAnchor, constant: 10).isActive = true
+        lastNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        lastNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        lastNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Email Address Texfield
+        view.addSubview(emailEntry)
+        emailEntry.placeholder = "  Email Address"
+        emailEntry.layer.borderWidth = 1
+        emailEntry.layer.cornerRadius = 5
+        emailEntry.layer.borderColor = UIColor.lightGray.cgColor
+        emailEntry.translatesAutoresizingMaskIntoConstraints = false
+        emailEntry.topAnchor.constraint(equalTo: lastNameEntry.bottomAnchor, constant: 10).isActive = true
+        emailEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        emailEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        emailEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Password Textfield
+        view.addSubview(passwordEntry)
+        passwordEntry.placeholder = "  Password"
+        passwordEntry.layer.borderWidth = 1
+        passwordEntry.layer.cornerRadius = 5
+        passwordEntry.layer.borderColor = UIColor.lightGray.cgColor
+        passwordEntry.translatesAutoresizingMaskIntoConstraints = false
+        passwordEntry.topAnchor.constraint(equalTo: emailEntry.bottomAnchor, constant: 10).isActive = true
+        passwordEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        passwordEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        passwordEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Password Verification Textfield
+        view.addSubview(passwordVerification)
+        passwordVerification.placeholder = "  Verify Password"
+        passwordVerification.layer.borderWidth = 1
+        passwordVerification.layer.cornerRadius = 5
+        passwordVerification.layer.borderColor = UIColor.lightGray.cgColor
+        passwordVerification.translatesAutoresizingMaskIntoConstraints = false
+        passwordVerification.topAnchor.constraint(equalTo: passwordEntry.bottomAnchor, constant: 10).isActive = true
+        passwordVerification.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        passwordVerification.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        passwordVerification.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Industry Textfield
+        view.addSubview(industryEntry)
+        industryEntry.placeholder = "  Industry"
+        industryEntry.layer.borderWidth = 1
+        industryEntry.layer.cornerRadius = 5
+        industryEntry.layer.borderColor = UIColor.lightGray.cgColor
+        industryEntry.translatesAutoresizingMaskIntoConstraints = false
+        industryEntry.topAnchor.constraint(equalTo: passwordVerification.bottomAnchor, constant: 10).isActive = true
+        industryEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        industryEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        industryEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Job Title Textfield
+        view.addSubview(jobEntry)
+        jobEntry.placeholder = "  Job Title"
+        jobEntry.layer.borderWidth = 1
+        jobEntry.layer.cornerRadius = 5
+        jobEntry.layer.borderColor = UIColor.lightGray.cgColor
+        jobEntry.translatesAutoresizingMaskIntoConstraints = false
+        jobEntry.topAnchor.constraint(equalTo: industryEntry.bottomAnchor, constant: 10).isActive = true
+        jobEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        jobEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        jobEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        
+        // Create Account Button
+        view.addSubview(createAccountButton)
+        createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
+        createAccountButton.setTitle("Create Account", for: UIControlState.normal)
+        createAccountButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        createAccountButton.translatesAutoresizingMaskIntoConstraints = false
+        createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
+        createAccountButton.specialConstrain(to: view)
+    }
+    
+    
+    func sendEmail() {
+        FirebaseManager.shared.sendEmailVerification()
+    }
+    
+    func createAccountButtonTapped(sender: UIButton!) {
+        
         if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
             let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
@@ -113,229 +236,45 @@ class AccountCreationViewController: UIViewController {
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
         
+        //TODO: - Add a check to see if password matches password verification
+        print("Enter email or password")
+        
+        
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
         
-        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-
-        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-
-            if success {
-
-                let preferencesVC = PreferenceViewController()
-                self.navigationController?.pushViewController(preferencesVC, animated: true)
-
-            } else {
-
-                print("Error")
-                
-                //MARK: - invalidCredentialsAlert - if user left a textfield in form empty
-                    let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        print("User clicked alert controller")
-                    })
-                    invalidCredentialsAlert.addAction(okAction)
-                    self.present(invalidCredentialsAlert, animated: true, completion: nil)
-            }
-
-        })
-    }
-
-  }
-
-
-// MARK: Validation
-extension UIView {
-    func specialConstrain(to view: UIView) {
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-    }
-}
-
-
-// MARK: Set Up
-
-extension AccountCreationViewController {
-
-    func createViews() {
-
-        // Create Account Label
-        view.addSubview(createAccountLabel)
-        createAccountLabel.text = "Create Account"
-        createAccountLabel.textAlignment = .center
-        createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
-        createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // First Name Textfield
-        view.addSubview(firstNameEntry)
-        firstNameEntry.placeholder = "  First Name"
-        firstNameEntry.layer.borderWidth = 1
-        firstNameEntry.layer.cornerRadius = 5
-        firstNameEntry.layer.borderColor = UIColor.lightGray.cgColor
-        firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 30).isActive = true
-        firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-
-        // Last Name Textfield
-        view.addSubview(lastNameEntry)
-        lastNameEntry.placeholder = "  Last Name"
-        lastNameEntry.layer.borderWidth = 1
-        lastNameEntry.layer.cornerRadius = 5
-        lastNameEntry.layer.borderColor = UIColor.lightGray.cgColor
-        lastNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        lastNameEntry.topAnchor.constraint(equalTo: firstNameEntry.bottomAnchor, constant: 10).isActive = true
-        lastNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        lastNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        lastNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Email Address Texfield
-        view.addSubview(emailEntry)
-        emailEntry.placeholder = "  Email Address"
-        emailEntry.layer.borderWidth = 1
-        emailEntry.layer.cornerRadius = 5
-        emailEntry.layer.borderColor = UIColor.lightGray.cgColor
-        emailEntry.translatesAutoresizingMaskIntoConstraints = false
-        emailEntry.topAnchor.constraint(equalTo: lastNameEntry.bottomAnchor, constant: 10).isActive = true
-        emailEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        emailEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        emailEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Password Textfield
-        view.addSubview(passwordEntry)
-        passwordEntry.placeholder = "  Password"
-        passwordEntry.layer.borderWidth = 1
-        passwordEntry.layer.cornerRadius = 5
-        passwordEntry.layer.borderColor = UIColor.lightGray.cgColor
-        passwordEntry.translatesAutoresizingMaskIntoConstraints = false
-        passwordEntry.topAnchor.constraint(equalTo: emailEntry.bottomAnchor, constant: 10).isActive = true
-        passwordEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        passwordEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        passwordEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Password Verification Textfield
-        view.addSubview(passwordVerification)
-        passwordVerification.placeholder = "  Verify Password"
-        passwordVerification.layer.borderWidth = 1
-        passwordVerification.layer.cornerRadius = 5
-        passwordVerification.layer.borderColor = UIColor.lightGray.cgColor
-        passwordVerification.translatesAutoresizingMaskIntoConstraints = false
-        passwordVerification.topAnchor.constraint(equalTo: passwordEntry.bottomAnchor, constant: 10).isActive = true
-        passwordVerification.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        passwordVerification.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        passwordVerification.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Industry Textfield
-        view.addSubview(industryEntry)
-        industryEntry.placeholder = "  Industry"
-        industryEntry.layer.borderWidth = 1
-        industryEntry.layer.cornerRadius = 5
-        industryEntry.layer.borderColor = UIColor.lightGray.cgColor
-        industryEntry.translatesAutoresizingMaskIntoConstraints = false
-        industryEntry.topAnchor.constraint(equalTo: passwordVerification.bottomAnchor, constant: 10).isActive = true
-        industryEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        industryEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        industryEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Job Title Textfield
-        view.addSubview(jobEntry)
-        jobEntry.placeholder = "  Job Title"
-        jobEntry.layer.borderWidth = 1
-        jobEntry.layer.cornerRadius = 5
-        jobEntry.layer.borderColor = UIColor.lightGray.cgColor
-        jobEntry.translatesAutoresizingMaskIntoConstraints = false
-        jobEntry.topAnchor.constraint(equalTo: industryEntry.bottomAnchor, constant: 10).isActive = true
-        jobEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        jobEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        jobEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-        // Create Account Button
-        view.addSubview(createAccountButton)
-        createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
-        createAccountButton.setTitle("Create Account", for: UIControlState.normal)
-        createAccountButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
-        createAccountButton.translatesAutoresizingMaskIntoConstraints = false
-        createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
-        createAccountButton.specialConstrain(to: view)
-        createAccountButton.addTarget(self, action: #selector(AccountCreationViewController.createAccountButton(_:)), for: .touchUpInside)
-
-    }
-
-
-    func sendEmail() {
-
-        FirebaseManager.shared.sendEmailVerification()
-
-    }
-
-    func createAccountButtonTapped(sender: UIButton!) {
-
-        guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
-        guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
-        guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
-        guard let password = passwordEntry.text, !password.isEmpty else { print("Password doesn't meet reqs"); return }
-        guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
-        guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
-        guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-
-            //TODO: - Add a check to see if password matches password verification
-            print("Enter email or password")
-
-
-        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
-            //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
-
-        }
-
         //1 - create an instance of a user
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-
+        
         //2 - called on FirebaseManger to create a user based on the above currentUser
         FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-
+            
             if success {
-
+                
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
-
-
-                    //TODO: - Notify user of their error
-                    print(error?.localizedDescription)
-                    print("account alreaday exists")
-                    
-                    let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with the above information.  Please login.", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
-                        print("User canceled alert controller")
-
+                
             } else {
                     print("error!")
                     let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        print("User clicked alert controller")
-
-                    })
+                    print("User clicked alert controller")})
                     invalidCredentialsAlert.addAction(okAction)
                     self.present(invalidCredentialsAlert, animated: true, completion: nil)
-
             }
-
-
+                
+                
         })
-
-
-    }
+            
+      
+        
+    }//end of createAccountButtonTapped
 
 }
-
+    
 extension AccountCreationViewController {
-
-
-
+        
+        
+        
 }
