@@ -338,8 +338,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             print("User has logged in")
             print("=====================================================\n\n\n")
-            print("User has logged in")
-            print("=====================================================\n\n\n")
+
         }
     }
 
