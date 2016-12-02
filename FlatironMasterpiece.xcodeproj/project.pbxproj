@@ -73,7 +73,6 @@
 		250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomTestViewController.swift; sourceTree = "<group>"; };
 		250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTagAlongsTableViewController.swift; sourceTree = "<group>"; };
 		250501CC1DF0CC770090AC68 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		25C989771DE0ACE5003C993C /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -172,7 +171,6 @@
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
-				27E72DD81DDEAC14007EC098 /* AccountCreationView.swift */,
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
@@ -224,8 +222,6 @@
 			children = (
 				279BBC741DF0E236008020D4 /* Restaurant.swift */,
 				279BBC701DF0E217008020D4 /* User.swift */,
-				2726A7DA1DEE049E00ABE4BA /* Restaurant.swift */,
-				2726A7DB1DEE049E00ABE4BA /* User.swift */,
 				250501CC1DF0CC770090AC68 /* FirebaseManager.swift */,
 			);
 			name = Models;
@@ -240,10 +236,6 @@
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */,
-				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
-				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
-				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
-				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

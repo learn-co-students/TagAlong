@@ -20,7 +20,7 @@ class SplashLogoViewController: UIViewController {
     }
 
     func setupImage() {
-        logoImageView.image = UIImageView(image: <#T##UIImage?#>)
+        
     }
     
 

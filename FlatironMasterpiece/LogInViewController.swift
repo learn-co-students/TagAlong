@@ -14,7 +14,6 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
-
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()
@@ -24,15 +23,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login view controller working")
 
         //Code needed for Core motion
         self.becomeFirstResponder()
-        //
+        
         view.backgroundColor = UIColor(patternImage: UIImage(named: "foodWoodenTable.jpg")!)
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
@@ -40,9 +37,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         UIGraphicsEndImageContext()
 
         self.view.backgroundColor = UIColor(patternImage: image)
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spreads.png")!)
         createViews()
-
 
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
@@ -91,8 +86,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
 
     }
-
-
 
     func createViews() {
         // login label
@@ -207,7 +200,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.23).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-        forgotPasswordButton.backgroundColor = UIColor.cyan
+        forgotPasswordButton.backgroundColor = UIColor.clear
 
     }
 
@@ -257,6 +250,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let accountCreationVC = AccountCreationViewController()
 
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
+    }
 
     func forgotPasswordTapped(sender: UIButton!) {
 
@@ -265,8 +259,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             print("User cancelled in alertController")
         }
-
-
 
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             print("User pushed OK on alertController")
@@ -288,9 +280,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         forgotPasswordAlert.addAction(cancelAction)
         forgotPasswordAlert.addAction(okAction)
-
-
-
+        
         self.present(forgotPasswordAlert, animated: true, completion: nil)
 
         print("buttonpress")
@@ -298,7 +288,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         //            print("please type your registered email address")
         //        }
         print("user forgot password")
-
 
         guard let email = loginEmail.text else { return }
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
@@ -310,16 +299,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         })
 
+    
     }
 
 
     // Facebook - Log in and log out functions
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
         print("=================\(#function)=============\n\n\n")
 
         if let error = error {
-
             print(error.localizedDescription)
             return
         }
@@ -327,14 +317,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
 
-
         if let token = FBSDKAccessToken.current() {
-
             print("ALL good")
-
             if let tokenString = token.tokenString {
-
-
                 if let token = FBSDKAccessToken.current() {
                     print("ALL good")
                     if let tokenString = token.tokenString {
@@ -358,19 +343,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     return
                 }
             }
-
-
-            print("User has logged in")
-
-            print("=====================================================\n\n\n")
-
-
-
             print("User has logged in")
             print("=====================================================\n\n\n")
-
+            print("User has logged in")
+            print("=====================================================\n\n\n")
         }
-
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -386,17 +363,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     // Testing Segue to chat
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showChat" {
-
-            let destination = segue.destination as! TabBarController
-            //
-            //            let chatVC = segue.destination as! ChatViewController
-            //            let allChatsRef = FIRDatabase.database().reference().child("chats")
-            //            // chatRef should point to only one single chat --- eventually Auto ID
-            //            chatVC.chatRef = allChatsRef.child("testChat")
-            //
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showChat" {
+//
+//            let destination = segue.destination as! TabBarController
+//            //
+//            //            let chatVC = segue.destination as! ChatViewController
+//            //            let allChatsRef = FIRDatabase.database().reference().child("chats")
+//            //            // chatRef should point to only one single chat --- eventually Auto ID
+//            //            chatVC.chatRef = allChatsRef.child("testChat")
+//            //
+//        }
+//    }
 
 }
