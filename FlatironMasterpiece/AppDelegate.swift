@@ -49,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 //        print("app delegate working")
-  
+
+
         //MARK: - sets the initial view controller
 
       let initialViewController = CardViewController()

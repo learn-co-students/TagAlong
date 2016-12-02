@@ -27,8 +27,6 @@ struct Constants {
 
 class AccountCreationViewController: UIViewController {
 
-    var ref: FIRDatabaseReference!
-
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -47,8 +45,6 @@ class AccountCreationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.ref = FIRDatabase.database().reference().root
 
         createViews()
 
@@ -145,7 +141,9 @@ class AccountCreationViewController: UIViewController {
 
         })
     }
-}
+
+  }
+
 
 // MARK: Validation
 extension UIView {
@@ -267,44 +265,46 @@ extension AccountCreationViewController {
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
         createAccountButton.specialConstrain(to: view)
         createAccountButton.addTarget(self, action: #selector(AccountCreationViewController.createAccountButton(_:)), for: .touchUpInside)
-        //createAccountButton.addTarget(self, action: "createAccountButton:", for: .touchUpInside)
 
     }
 
 
     func sendEmail() {
-        FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
-            if error == nil {
-                print("Email sent")
-            }
-            else {
-                print(error?.localizedDescription)
-            }
-        })
+
+        FirebaseManager.shared.sendEmailVerification()
 
     }
 
     func createAccountButtonTapped(sender: UIButton!) {
 
-        if self.emailEntry.text == "" || passwordEntry.text == "" || passwordVerification.text == "" {
+        guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
+        guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
+        guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
+        guard let password = passwordEntry.text, !password.isEmpty else { print("Password doesn't meet reqs"); return }
+        guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
+        guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
+        guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
 
             //TODO: - Add a check to see if password matches password verification
             print("Enter email or password")
+
+
+        if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
+            //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+
         }
 
-        else {
+        //1 - create an instance of a user
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
-            //TODO: Unwrap optionals for email and password
+        //2 - called on FirebaseManger to create a user based on the above currentUser
+        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
 
-            FIRAuth.auth()?.createUser(withEmail: emailEntry.text!, password: passwordVerification.text!, completion: { (user, error) in
+            if success {
 
-                if error == nil {
-                    print("Successful Account Creation")
-                   self.sendEmail()
-                    self.dismiss(animated: true, completion: nil)
-                }
+                let preferencesVC = PreferenceViewController()
+                self.navigationController?.pushViewController(preferencesVC, animated: true)
 
-                else {
 
                     //TODO: - Notify user of their error
                     print(error?.localizedDescription)
@@ -313,23 +313,21 @@ extension AccountCreationViewController {
                     let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with the above information.  Please login.", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                         print("User canceled alert controller")
+
+            } else {
+                    print("error!")
+                    let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        print("User clicked alert controller")
+
                     })
-                    let loginAction = UIAlertAction(title: "Login", style: .default, handler: { (action) in
-                        // Send to preferences (for now)
-                        let loginVC = LogInViewController()
+                    invalidCredentialsAlert.addAction(okAction)
+                    self.present(invalidCredentialsAlert, animated: true, completion: nil)
 
-                        let nav = UINavigationController(rootViewController: loginVC)
-                        self.present(nav, animated: true, completion: nil)
-                        print("User wants to login")
-                    })
-                    accountExistsAlert.addAction(cancelAction)
-                    accountExistsAlert.addAction(loginAction)
-                    self.present(accountExistsAlert, animated: true, completion: nil)
+            }
 
-                }
 
-            })
-        }
+        })
 
 
     }

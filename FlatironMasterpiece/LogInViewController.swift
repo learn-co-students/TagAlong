@@ -44,20 +44,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         // Logic for Logging in
 
-        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
-            if let user = user {
-                // User is signed in.
-                // Move to next screen
-                // Add logout button to user's settings screen
-            } else {
-                // No user is signed in.
-                // Display log in screen
-                // createViews()
-            }
-        }
+        FirebaseManager.shared.listenForLogIn()
+
 
     }
-
 
     func dismissKeyboard() {
         view.endEditing(true)
@@ -192,7 +182,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func loginButtonTapped(sender: UIButton!) {
-
         if self.loginEmail.text == "" || loginPassword.text == "" {
             
             //loginAlert is called
@@ -207,16 +196,16 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
-            
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
 
-                if error == nil {
+            FirebaseManager.shared.loginToFirebase(email: email, password: password, completion: { (success) in
+                if success {
                     print("Successful Log In")
 
                     // Send to preferences (for now)
                     let preferencesVC = PreferenceViewController()
                     let nav = UINavigationController(rootViewController: preferencesVC)
                     self.present(nav, animated: true, completion: nil)
+
                     
                 } else {
         
@@ -293,16 +282,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("user forgot password")
 
         guard let email = loginEmail.text else { return }
-        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
-            if error == nil {
-                print("reset email sent")
+
+        FirebaseManager.shared.sendPasswordReset(email: emails) { (success) in
+
+            if success {
+                print("Reset email sent")
             }
             else {
-                print(error)
+                print("error")
             }
-        })
 
-    
+        }
+  
+
     }
 
 
@@ -350,6 +342,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             print("User has logged in")
             print("=====================================================\n\n\n")
+
         }
     }
 
