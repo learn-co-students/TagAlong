@@ -71,18 +71,19 @@ class CardView: UIView {
 
 //
        
-        self.addSubview(restCuisineLabel)
+        
         self.addSubview(restCostLabel)
         self.addSubview(restDistanceLabel)
         self.addSubview(restHoursLabel)
         
-        let frame = CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.05)
-        let newFrame = CGRect(x: 350, y: 350, width: 200, height: 200)
-        
-        restNameLabel = UILabel(frame: frame)
-        
+//        let frame = CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.05)
+//        let newFrame = CGRect(x: 350, y: 350, width: 200, height: 200)
+//        
+//        restNameLabel = UILabel(frame: frame)
+        restNameLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
         restNameLabel.backgroundColor = UIColor.yellow
-        
+        restNameLabel.text = "Restaurant Name"
+        restNameLabel.textAlignment = .center
          self.addSubview(restNameLabel)
         //        restNameLabel.translatesAutoresizingMaskIntoConstraints = false
 //        restCuisineLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +103,12 @@ class CardView: UIView {
 //        restNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -40).isActive = true
 //        restNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 //
-//        
+        //        restNameLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
+        restCuisineLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.50, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
+        restCuisineLabel.backgroundColor = UIColor.yellow
+        restCuisineLabel.text = "cuisine name"
+        restCuisineLabel.textAlignment = .center
+        self.addSubview(restCuisineLabel)
 //        restCuisineLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        restCuisineLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
 //        restCuisineLabel.backgroundColor = UIColor.yellow
