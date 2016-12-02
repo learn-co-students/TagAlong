@@ -209,7 +209,6 @@
 			children = (
 				279BBC741DF0E236008020D4 /* Restaurant.swift */,
 				279BBC701DF0E217008020D4 /* User.swift */,
-				250501CC1DF0CC770090AC68 /* FirebaseManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -274,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */,
+				250501CC1DF0CC770090AC68 /* FirebaseManager.swift */,
 			);
 			name = APIClients;
 			sourceTree = "<group>";

@@ -26,7 +26,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Code needed for Core motion
         self.becomeFirstResponder()
         
         //sets background image
