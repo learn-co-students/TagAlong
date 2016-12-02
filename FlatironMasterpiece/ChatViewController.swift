@@ -44,13 +44,11 @@ class ChatViewController: JSQMessagesViewController {
         }
         
         // Testing on a real user
-        self.senderId = FIRAuth.auth()?.currentUser?.email
-//        self.senderId = store.currentUser
-        
+        self.senderId = store.currentUser
+
         
         //TODO: - change this displayName to the currentUser's name
-        self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
-        
+        self.senderDisplayName = store.currentUser.email
         
         // Removing avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
