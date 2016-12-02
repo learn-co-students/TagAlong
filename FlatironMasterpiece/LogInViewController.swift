@@ -235,8 +235,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
+        
         let accountCreationVC = AccountCreationViewController()
-
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
 

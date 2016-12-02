@@ -96,7 +96,19 @@ class AccountCreationViewController: UIViewController {
     }
     
     func createAccountButton(_ sender: UIButton) {
+        
        print("working")
+        //NOTE: - this code is a check that values are entered in text fields
+        if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
+            //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+            let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("User clicked alert controller")
+            })
+            invalidCredentialsAlert.addAction(okAction)
+            self.present(invalidCredentialsAlert, animated: true, completion: nil)
+        }
+        
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
         guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
@@ -104,10 +116,9 @@ class AccountCreationViewController: UIViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-
-        //NOTE: - this code is a check that values are entered in text fields
+        
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
-     //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+            //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
         
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
@@ -122,7 +133,8 @@ class AccountCreationViewController: UIViewController {
             } else {
 
                 print("Error")
-
+                
+                //MARK: - invalidCredentialsAlert - if user left a textfield in form empty
                     let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         print("User clicked alert controller")
