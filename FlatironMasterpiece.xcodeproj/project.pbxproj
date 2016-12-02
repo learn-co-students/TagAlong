@@ -218,20 +218,20 @@
 			isa = PBXGroup;
 			children = (
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
-				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
-				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
-				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
+				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
+				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
+				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
-				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
-				453921341DEB8E5100D19A45 /* TabBarController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
-				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
-				45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
+				45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */,
+				453921341DEB8E5100D19A45 /* TabBarController.swift */,
+				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
+				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

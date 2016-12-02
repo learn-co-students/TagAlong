@@ -275,9 +275,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         } catch {
             print("Logout of app error")
         }
-        let loginVC = LogInViewController()
         
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        let loginVC = LogInViewController()
+        let nav = UINavigationController(rootViewController: loginVC)
+        self.present(nav, animated: true, completion: nil)
         
     }
     

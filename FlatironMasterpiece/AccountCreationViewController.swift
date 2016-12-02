@@ -29,7 +29,6 @@ class AccountCreationViewController: UIViewController {
 
     var ref: FIRDatabaseReference!
 
-
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -39,8 +38,6 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
-
-
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false

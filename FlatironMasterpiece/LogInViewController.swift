@@ -25,20 +25,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("login view controller working")
 
         //Code needed for Core motion
         self.becomeFirstResponder()
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "foodWoodenTable.jpg")!)
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        self.view.backgroundColor = UIColor(patternImage: image)
-        createViews()
-
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
         self.imageView = UIImageView(frame: CGRect.zero)
@@ -47,6 +37,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.alpha = 1.0
         self.view.addSubview(imageView)
         createViews()
+        
+        //dismisses keyboard
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         loginEmail.becomeFirstResponder()
         view.addGestureRecognizer(tap)
@@ -77,14 +69,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.frame = self.view.bounds
     }
 
-
-
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
-           
         }
-
     }
 
     func createViews() {
@@ -254,10 +242,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func forgotPasswordTapped(sender: UIButton!) {
 
+        //MARK: - forgotPasswordAlert code
         let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            print("User cancelled in alertController")
+            print("User cancelled in forgotPasswordAlertController")
         }
 
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -271,6 +260,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
                 else {
                     print(error?.localizedDescription)
+                    
+                    //MARK: - user isn't in database, so create a new account alert
+                    print("user isn't even in firebase!")
+                    let noUserRecordAlert = UIAlertController(title: "Account Not Found", message: "The email entered could not be found in our database.  Login again or create a new account.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                        print("User cancelled in noUserRecordAlertController")
+                    })
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        print("user clicked OK")
+                    })
+                    noUserRecordAlert.addAction(cancelAction)
+                    noUserRecordAlert.addAction(okAction)
+                    self.present(noUserRecordAlert, animated: true, completion: nil)
                 }
             })
         }
