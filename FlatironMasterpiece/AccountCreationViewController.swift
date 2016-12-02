@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
-
 
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
@@ -36,6 +35,7 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+
 
     var firstNameConfirmed = false
     var lastNameConfirmed = false
@@ -77,9 +77,19 @@ class AccountCreationViewController: UIViewController {
      view.endEditing(true)
     }
 
+    func tapCreateButtonOnce() {
+        self.createAccountButton.isEnabled = false
+        let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
+        tap.numberOfTapsRequired = 1
+        createAccountButton.addGestureRecognizer(tap)
+ //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
+        //createAccountButton.addGestureRecognizer(tap)
 
+    }
 
   }
+
 
 // MARK: Validation
 extension UIView {
@@ -213,9 +223,9 @@ extension AccountCreationViewController {
 
 
     func sendEmail() {
-     
+
         FirebaseManager.shared.sendEmailVerification()
-        
+
     }
 
 
@@ -223,6 +233,7 @@ extension AccountCreationViewController {
 
     func createAccountButtonTapped(sender: UIButton!) {
 
+<<<<<<< HEAD
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
         guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
@@ -230,23 +241,24 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-        
-        
+
+
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+
         }
-        
+
         //1 - create an instance of a user
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-        
+
         //2 - called on FirebaseManger to create a user based on the above currentUser
         FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-            
+
             if success {
-                
+
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
-                
+
             } else {
                     print("error!")
                     let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
@@ -255,12 +267,12 @@ extension AccountCreationViewController {
                     })
                     invalidCredentialsAlert.addAction(okAction)
                     self.present(invalidCredentialsAlert, animated: true, completion: nil)
-                
+
             }
-            
-            
+
+
         })
-        
+
 
     }
 

@@ -45,13 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.backgroundColor = phaedraDarkGreen
 //        self.window?.makeKeyAndVisible()
 //        print("app delegate working")
-      
+
+
         //MARK: - sets the initial view controller
 
-
-
-
-      let initialViewController = LogInViewController()
+      let initialViewController = UserTagAlongsTableViewController()
 
        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

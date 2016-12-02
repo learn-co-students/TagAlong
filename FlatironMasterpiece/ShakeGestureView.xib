@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="chooseCuisineLabel" destination="A03-3o-OpX" id="WZ6-YL-nZx"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="f3q-QA-YBS"/>
-                <outlet property="shakeIcon" destination="ckk-kr-Qlh" id="0Eq-ij-3kG"/>
                 <outlet property="shakePhoneLabel" destination="vAo-df-fsi" id="b6z-hW-pgi"/>
             </connections>
         </placeholder>
@@ -22,39 +21,39 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shake your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAo-df-fsi">
-                    <rect key="frame" x="16" y="313" width="343" height="41"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" misplaced="YES" text="Want to choose a random cuisine?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A03-3o-OpX">
+                    <rect key="frame" x="25" y="110" width="325" height="123"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="37"/>
                     <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake" translatesAutoresizingMaskIntoConstraints="NO" id="ckk-kr-Qlh">
-                    <rect key="frame" x="87" y="374" width="200" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="shake" translatesAutoresizingMaskIntoConstraints="NO" id="EPn-wS-iJI">
+                    <rect key="frame" x="62" y="381" width="250" height="250"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to choose a random cuisine?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A03-3o-OpX">
-                    <rect key="frame" x="16" y="127" width="325" height="123"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="325" id="0AD-Tp-EQD"/>
-                        <constraint firstAttribute="height" constant="123" id="cZq-IR-Ef2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="37"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAo-df-fsi">
+                    <rect key="frame" x="16" y="266.5" width="343" height="41"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.74509803921568629" green="0.92156862745098034" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ckk-kr-Qlh" firstAttribute="top" secondItem="vAo-df-fsi" secondAttribute="bottom" constant="20" id="2Jf-Ff-t2B"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="L8A-eT-Kuz"/>
-                <constraint firstItem="ckk-kr-Qlh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="87" id="M1n-a5-QX9"/>
-                <constraint firstItem="A03-3o-OpX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="127" id="NaQ-D3-QEl"/>
-                <constraint firstItem="vAo-df-fsi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="b7H-pi-hH5"/>
-                <constraint firstItem="vAo-df-fsi" firstAttribute="top" secondItem="A03-3o-OpX" secondAttribute="bottom" constant="63" id="itK-EM-4W9"/>
+                <constraint firstItem="vAo-df-fsi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="9FW-J3-Uog"/>
+                <constraint firstItem="A03-3o-OpX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="110" id="K4B-BN-TT8"/>
+                <constraint firstAttribute="trailing" secondItem="EPn-wS-iJI" secondAttribute="trailing" constant="63" id="OrU-HF-vyM"/>
+                <constraint firstAttribute="bottom" secondItem="EPn-wS-iJI" secondAttribute="bottom" constant="36" id="Pjr-I1-Xda"/>
+                <constraint firstItem="A03-3o-OpX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="cYC-w5-V6U"/>
+                <constraint firstItem="EPn-wS-iJI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="62" id="fKm-Ef-DfM"/>
+                <constraint firstItem="EPn-wS-iJI" firstAttribute="top" secondItem="vAo-df-fsi" secondAttribute="bottom" constant="52" id="gHJ-K1-zd4"/>
+                <constraint firstAttribute="trailing" secondItem="vAo-df-fsi" secondAttribute="trailing" constant="16" id="pEb-db-ab4"/>
+                <constraint firstItem="vAo-df-fsi" firstAttribute="top" secondItem="A03-3o-OpX" secondAttribute="bottom" constant="55" id="vrc-bm-dlq"/>
+                <constraint firstAttribute="trailing" secondItem="A03-3o-OpX" secondAttribute="trailing" constant="25" id="zCo-fS-Feu"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="106.5"/>
         </view>
     </objects>
     <resources>
-        <image name="shake" width="200" height="200"/>
+        <image name="shake" width="2604" height="3600"/>
     </resources>
 </document>

@@ -14,7 +14,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var tagAlongUserArray:[User] = []
     
-    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
 
     override func viewDidLoad() {
         super.viewDidLoad()
