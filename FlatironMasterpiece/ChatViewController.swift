@@ -23,28 +23,31 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
 //    // Reference properties
-//    var chatRef: FIRDatabaseReference!
-//    let allChatsRef = FIRDatabase.database().reference().child("chats")
-//    private var newMessageRefHandle: FIRDatabaseHandle?
     
+    //1 - create a "chat" entity in firebase
+    let allChatsRef = FIRDatabase.database().reference().child("chats")
+    
+    //2 - creating a tagalongID
+        var chatRef: FIRDatabaseReference!
+    
+    //3 - creates an observation of our tagalongID attributes
+    private var newMessageRefHandle: FIRDatabaseHandle?
+    
+    //4 - prop that represents the tagalong id
     var chatID: String?
-    
-    
-    // Unique ID
-    let uid = UUID().uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let chatID = chatID {
-//        chatRef = allChatsRef.child("\(chatID)")
-//        }
-        
-        store.chatRef = store.allChatsRef.child("\(chatID)")
-        
+        if let chatID = chatID {
+        chatRef = allChatsRef.child("\(chatID)")
+        }
         
         // Testing on a real user
         self.senderId = FIRAuth.auth()?.currentUser?.email
+//        self.senderId = store.currentUser
+        
+        
         //TODO: - change this displayName to the currentUser's name
         self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
         
