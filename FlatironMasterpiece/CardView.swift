@@ -32,18 +32,19 @@ class CardView: UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
 
-        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.40, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
-        self.addSubview(dumblabel)
-
-
-        
-        dumblabel.text = "LOOGIT THEM CARDS"
- //       dumblabel.translatesAutoresizingMaskIntoConstraints = false
-        dumblabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        dumblabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        dumblabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        dumblabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-
+//        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.28, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
+//        self.addSubview(dumblabel)
+//
+//
+//        
+//        dumblabel.text = "LOOGIT THEM CARRRRRRRRRDS"
+// //       dumblabel.translatesAutoresizingMaskIntoConstraints = false
+//        dumblabel.backgroundColor = UIColor.red
+//        dumblabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        dumblabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        dumblabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        dumblabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//
         
         var restImageView = UIImageView()
         var restNameLabel = UILabel()
@@ -52,23 +53,23 @@ class CardView: UIView {
         var restDistanceLabel = UILabel()
         var restHoursLabel = UILabel()
 //
-//        restImageView = UIImageView(frame: CGRect(x: self.bounds.width, y: self.bounds.height, width: self.bounds.width * 0.25, height: self.bounds.width))
-////      restImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5));
-//        restImageView.image = UIImage(named: testArray1[0])
-//        self.addSubview(restImageView)
-//        restImageView.backgroundColor = UIColor.yellow
+        restImageView = UIImageView(frame: CGRect(x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.50))
+//      restImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5));
+        restImageView.image = UIImage(named: testArray1[0])
+        self.addSubview(restImageView)
+        restImageView.backgroundColor = UIColor.yellow
 //        restImageView.translatesAutoresizingMaskIntoConstraints = false
 //        restImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
 //        restImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
 //        restImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
 //        restImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3).isActive = true
-//        
+        
+
+        //       restImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
+ //       restImageView.bottomAnchor.constraint(equalTo: restNameLabel.topAnchor, constant: 5).isActive = true
+
 //
-//        //       restImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-//        
-// //       restImageView.bottomAnchor.constraint(equalTo: restNameLabel.topAnchor, constant: 5).isActive = true
-//
-//        
         self.addSubview(restNameLabel)
         self.addSubview(restCuisineLabel)
         self.addSubview(restCostLabel)
@@ -121,8 +122,13 @@ class CardView: UIView {
 //        restHoursLabel.backgroundColor = UIColor.yellow
 //        restHoursLabel.topAnchor.constraint(equalTo: restCostLabel.bottomAnchor, constant: 20).isActive = true
 //        restHoursLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-
-//
+//        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.45, y: self.bounds.height * 0.25, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
+//            restHoursLabel.backgroundColor = UIColor.red
+//            restHoursLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//            restHoursLabel.centerYAnchor.constraint(equalTo: dumblabel.bottomAnchor).isActive = true
+//            restHoursLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//            restHoursLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            //
 //        
         
         
