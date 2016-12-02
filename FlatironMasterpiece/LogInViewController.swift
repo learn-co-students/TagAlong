@@ -307,39 +307,41 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
 
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        print("credential is \(credential)")
-
-        if let token = FBSDKAccessToken.current() {
-            print("ALL good")
-            if let tokenString = token.tokenString {
-                if let token = FBSDKAccessToken.current() {
-                    print("ALL good")
-                    if let tokenString = token.tokenString {
-                        print("Token string is here \(tokenString)")
-                    }
-
-                }
-            }
-
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-
-                print("User has logged into Firebase")
-
-                // TODO: - Segue into home screen after user has logged in
-                // Send to preferences (for now)
-                let preferencesVC = PreferenceViewController()
-                self.navigationController?.pushViewController(preferencesVC, animated: true)
-
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-            }
-            print("User has logged in")
-            print("=====================================================\n\n\n")
-
-        }
+        FirebaseManager.shared
+        
+//        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//        print("credential is \(credential)")
+//
+//        if let token = FBSDKAccessToken.current() {
+//            print("ALL good")
+//            if let tokenString = token.tokenString {
+//                if let token = FBSDKAccessToken.current() {
+//                    print("ALL good")
+//                    if let tokenString = token.tokenString {
+//                        print("Token string is here \(tokenString)")
+//                    }
+//
+//                }
+//            }
+//
+//            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+//
+//                print("User has logged into Firebase")
+//
+//                // TODO: - Segue into home screen after user has logged in
+//                // Send to preferences (for now)
+//                let preferencesVC = PreferenceViewController()
+//                self.navigationController?.pushViewController(preferencesVC, animated: true)
+//
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//            }
+//            print("User has logged in")
+//            print("=====================================================\n\n\n")
+//
+//        }
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
