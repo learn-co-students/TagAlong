@@ -76,9 +76,8 @@
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2714E7471DE3392A00A7F4A4 /* spreads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spreads.jpg; sourceTree = "<group>"; };
 		279BBC701DF0E217008020D4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		279BBC721DF0E21F008020D4 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		279BBC721DF0E21F008020D4 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../Secrets.swift; sourceTree = "<group>"; };
 		279BBC741DF0E236008020D4 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,7 +150,6 @@
 				F47726B9129C6E69575B1848 /* Frameworks */,
 				F21936DC72EBB2F540AE7ED2 /* Pods */,
 				27AAFE2C1DDAC9AA00C08348 /* Products */,
-				279BBC721DF0E21F008020D4 /* Secrets.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,33 +166,18 @@
 			children = (
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
-				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
-				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
-				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
-				45F553471DDCF03A002E799A /* APIClients */,
-				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
-				950A2C681DE5FF3E001F2145 /* CardView.swift */,
-				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
-				452C599E1DE61E34005884EE /* Controllers */,
-				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
-				452C599B1DE61D1D005884EE /* DataStores */,
+				279BBC721DF0E21F008020D4 /* Secrets.swift */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
-				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
+				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
-				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */,
-				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
+				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
+				45F553471DDCF03A002E799A /* APIClients */,
+				452C599E1DE61E34005884EE /* Controllers */,
+				452C599B1DE61D1D005884EE /* DataStores */,
 				452C599D1DE61D65005884EE /* Models */,
-				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
-				45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */,
-				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
-				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
-				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
-				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
-				2714E7471DE3392A00A7F4A4 /* spreads.jpg */,
-				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
 				452C599F1DE61E95005884EE /* View */,
 				452C599C1DE61D4A005884EE /* Xibs */,
 			);
@@ -204,6 +187,8 @@
 		452C599B1DE61D1D005884EE /* DataStores */ = {
 			isa = PBXGroup;
 			children = (
+				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
+				45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */,
 			);
 			name = DataStores;
 			sourceTree = "<group>";
@@ -211,6 +196,8 @@
 		452C599C1DE61D4A005884EE /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
+				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				4539213E1DEC777300D19A45 /* TableViewCell.xib */,
 				452C59991DE5EABC005884EE /* SelectedRestaurant.xib */,
 			);
@@ -230,12 +217,21 @@
 		452C599E1DE61E34005884EE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
+				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
+				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
+				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
+				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
+				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
+				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
 				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
 				453921341DEB8E5100D19A45 /* TabBarController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */,
+				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +239,8 @@
 		452C599F1DE61E95005884EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				950A2C681DE5FF3E001F2145 /* CardView.swift */,
+				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
 				453921401DEC778700D19A45 /* TableViewCell.swift */,
 				453E06B11DE8E8C6007EE25A /* RestaurantView.swift */,
 			);
