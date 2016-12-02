@@ -196,21 +196,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func loginButtonTapped(sender: UIButton!) {
         if self.loginEmail.text == "" || loginPassword.text == "" {
-<<<<<<< HEAD
-
-            //loginAlert is called
-            let loginAlert = UIAlertController(title: "Incomplete Login Information", message: "Enter your complete email and password.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                print("User closed alert controller")
-            })
-            loginAlert.addAction(okAction)
-            self.present(loginAlert, animated: true, completion: nil)
-            print("Enter email or password")
-
-
-        } else {
-
-=======
             
             //loginAlert is called
             let loginAlert = UIAlertController(title: "Incomplete Login Information", message: "Enter your complete email and password.", preferredStyle: .alert)
@@ -223,7 +208,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         } else {
             
->>>>>>> eabac88b4ddb93e545b7f54a24f4ba97c75e0b17
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
 
             FirebaseManager.shared.loginToFirebase(email: email, password: password, completion: { (success) in
@@ -234,23 +218,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let preferencesVC = PreferenceViewController()
                     let nav = UINavigationController(rootViewController: preferencesVC)
                     self.present(nav, animated: true, completion: nil)
-<<<<<<< HEAD
-                } else {
-                    //TODO: - Notify user of error
-                    print(error?.localizedDescription)
-                    let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        print("User closed alert controller")
-                    })
-                    loginErrorAlert.addAction(okAction)
-                    self.present(loginErrorAlert, animated: true, completion: nil)
 
-                }
-            })
-
-
-        }
-=======
                     
                 } else {
         
@@ -265,7 +233,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }
                 })
             }
->>>>>>> eabac88b4ddb93e545b7f54a24f4ba97c75e0b17
     }
 
     func registerButtonTapped(sender: UIButton!) {
@@ -323,12 +290,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("error")
             }
 
-<<<<<<< HEAD
         }
   
-=======
-    
->>>>>>> eabac88b4ddb93e545b7f54a24f4ba97c75e0b17
+
     }
 
 
