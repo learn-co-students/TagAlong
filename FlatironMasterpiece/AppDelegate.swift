@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
         //MARK: - sets the initial view controller
 
-      let initialViewController = UserTagAlongsTableViewController()
-
+ //     let initialViewController = UserTagAlongsTableViewController()
+let initialViewController = CardViewController()
        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
 
