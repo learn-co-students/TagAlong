@@ -94,6 +94,7 @@ class AccountCreationViewController: UIViewController {
     func enableButton() {
         createAccountButton.isEnabled = true
     }
+    
     func createAccountButton(_ sender: UIButton) {
        print("working")
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
@@ -111,7 +112,6 @@ class AccountCreationViewController: UIViewController {
         
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
-
         FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
 
             if success {
@@ -120,8 +120,6 @@ class AccountCreationViewController: UIViewController {
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
 
             } else {
-
-                // TODO: Handle error? Maybe
 
                 print("Error")
 
@@ -139,18 +137,11 @@ class AccountCreationViewController: UIViewController {
 
 // MARK: Validation
 extension UIView {
-
     func specialConstrain(to view: UIView) {
-
         self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-
-
     }
-
-
 }
 
 
@@ -281,16 +272,11 @@ extension AccountCreationViewController {
 
     }
 
-
-
-
     func createAccountButtonTapped(sender: UIButton!) {
 
         if self.emailEntry.text == "" || passwordEntry.text == "" || passwordVerification.text == "" {
 
-
             //TODO: - Add a check to see if password matches password verification
-
             print("Enter email or password")
         }
 
@@ -311,6 +297,7 @@ extension AccountCreationViewController {
                     //TODO: - Notify user of their error
                     print(error?.localizedDescription)
                     print("account alreaday exists")
+                    
                     let accountExistsAlert = UIAlertController(title: "Account Already Exists", message: "An account already exists with the above information.  Please login.", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
                         print("User canceled alert controller")
