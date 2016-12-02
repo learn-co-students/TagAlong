@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
+typealias tagalongInfoDict = [String:Any]
 
 final class FirebaseManager {
     
@@ -24,12 +25,13 @@ final class FirebaseManager {
     var currentUser = FIRAuth.auth()?.currentUser?.uid
     var currentUserEmail = FIRAuth.auth()?.currentUser?.email
     
-//    FIRAuth.auth()?.currentUser?.email
     
+
     private init() {}
     
+    //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
-    func create(currentUser: User, completion: @escaping (Bool) -> Void) {
+    func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
         // 1 - create a new user in Firebase
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
             
@@ -43,32 +45,6 @@ final class FirebaseManager {
                 
             })
         })
-    }
-    
-//    func createTagalong() {
-//        //1 - create the tagalong branch
-    //          //////////////
-    //create a new child under chats
-//    allChatsRef.child(id).setValue(chatMessage) { (error, ref) in
-//    //
-//    }
-//        //2 - sending the tagalong id to be the child of the chat
-
-//    }
-//
-    func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
-        
-        let messageItem = [ // 2
-            "senderId": senderId,
-            "senderName": senderDisplayName,
-            "text": text,
-            "timestamp": String(Int(Date().timeIntervalSince1970))
-        ]
-        
-        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
-        
-    
-        
     }
     
     func sendEmailVerification() {
@@ -119,6 +95,7 @@ final class FirebaseManager {
         
     }
     
+    //MARK: - Firebase Facebook Methods
     func facebookLogIn(completion: @escaping (Bool) -> Void) {
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -156,12 +133,64 @@ final class FirebaseManager {
     }
     
     
-    
-    func createChatData(completion: (Bool) -> Void) {
+    //MARK: - Firebase chat methods
+  
+    //1 - call this when a tagalong is created (restaurant card review) and
+    func createTagAlong(with tagAlongInfo: tagalongInfoDict, completion:@escaping (String)-> Void) {
         
+        // Outline of what the code should look like:
+        let tagAlongsRef = FIRDatabase.database().reference().child("tagalongs")
+        
+        //this is created when BOTH users in a tagalong have confirmed being in a tagalong
+//        let tagAlongInfo = [
+//            "host" : "UserID", <-- should be collected when host confirms
+//            "location" : [     <-- should be collected from host
+//                "name" : "taco bell", <-- should be collected from host / restaurant conf card
+//                "latitude" : "30",
+//                "longitude" : "30"
+//            ],
+//            "guests" : [   <-- should be collected when guest confirms, these are people who have clicked to initiate a tagalong w/ or w/o host confirmation
+//                "UserID3" : true, <-- when this is true then create this dictionary and this createTagAlong() should be called
+//                "UserID2" : false,
+//                "UserID3" : false
+//            ],
+//            "date-time" : "figure out formatting here"
+//        ] as [String : Any]
+        
+        let tagAlongIDRef = tagAlongsRef.childByAutoId()
+        
+        let tagAlongIDKey = tagAlongsRef.key
+        
+        tagAlongIDRef.updateChildValues(tagAlongInfo)
+        
+        completion(tagAlongIDKey)
+    
+    }
+    
+    //2 - update user with tagalong id
+    func updateUserWithTagAlongKey() {
+        
+//        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
+//            <#code#>
+//        }
+    }
+    
+    //MARK: - Tagalong Message Methods
+    func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
+        
+        let messageItem = [ // 2
+            "senderId": senderId,
+            "senderName": senderDisplayName,
+            "text": text,
+            "timestamp": String(Int(Date().timeIntervalSince1970))
+        ]
+        
+        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
         
         
     }
+    
+    
     
     
     

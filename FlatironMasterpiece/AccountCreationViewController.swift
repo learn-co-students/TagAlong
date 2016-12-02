@@ -252,12 +252,13 @@ extension AccountCreationViewController {
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
         //2 - called on FirebaseManger to create a user based on the above currentUser
-        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
+        FirebaseManager.shared.createNewUser(currentUser: currentUser, completion: { success in
 
             if success {
 
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
+                
 
             } else {
                     print("error!")

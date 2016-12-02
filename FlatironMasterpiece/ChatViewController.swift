@@ -28,19 +28,19 @@ class ChatViewController: JSQMessagesViewController {
     let allChatsRef = FIRDatabase.database().reference().child("chats")
     
     //2 - creating a tagalongID
-        var chatRef: FIRDatabaseReference!
+    var tagAlongRef: FIRDatabaseReference!
     
     //3 - creates an observation of our tagalongID attributes
     private var newMessageRefHandle: FIRDatabaseHandle?
     
     //4 - prop that represents the tagalong id
-    var chatID: String?
+    var tagAlongID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let chatID = chatID {
-        chatRef = allChatsRef.child("\(chatID)")
+        if let tagAlongID = tagAlongID {
+        tagAlongRef = allChatsRef.child("\(tagAlongID)")
         }
         
         // Testing on a real user
@@ -92,7 +92,7 @@ class ChatViewController: JSQMessagesViewController {
     
     deinit {
         if let refHandle = newMessageRefHandle {
-            chatRef.removeObserver(withHandle: refHandle)
+            tagAlongRef.removeObserver(withHandle: refHandle)
         }
     }
     
@@ -162,7 +162,7 @@ class ChatViewController: JSQMessagesViewController {
         //        let messageQuery = chatRef.queryLimited(toLast:25)
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
+        newMessageRefHandle = tagAlongRef.observe(.childAdded, with: { (snapshot) -> Void in
             
             print("--------------------GETTING CALLED------------------")
             
