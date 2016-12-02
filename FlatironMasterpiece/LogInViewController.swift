@@ -13,7 +13,7 @@ import Firebase
 import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()
@@ -22,11 +22,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var forgotPasswordButton = UIButton()
     var loginButton = UIButton()
     var fbLoginButton: FBSDKLoginButton =  FBSDKLoginButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login view controller working")
-
+        
         //Code needed for Core motion
         self.becomeFirstResponder()
         
@@ -35,10 +35,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         self.view.backgroundColor = UIColor(patternImage: image)
         createViews()
-
+        
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
         self.imageView = UIImageView(frame: CGRect.zero)
@@ -47,36 +47,36 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.alpha = 1.0
         self.view.addSubview(imageView)
         createViews()
-       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         loginEmail.becomeFirstResponder()
         view.addGestureRecognizer(tap)
-
+        
         // Logic for Logging in
-
+        
         FirebaseManager.shared.listenForLogIn()
-
-
+        
+        
     }
-
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.imageView.frame = self.view.bounds
     }
-
-
-
+    
+    
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
-           
+            
         }
-
+        
     }
-
+    
     func createViews() {
         // login label
         view.addSubview(loginLabel)
@@ -92,7 +92,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
+        
         // login email Textfield
         view.addSubview(loginEmail)
         loginEmail.placeholder = "  Email Address"
@@ -107,10 +107,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginEmail.backgroundColor = UIColor.white
-
+        
         loginEmail.autocapitalizationType = .none
-
-
+        
+        
         // login password textfield
         view.addSubview(loginPassword)
         loginPassword.placeholder = "Password"
@@ -125,10 +125,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         loginPassword.backgroundColor = UIColor.white
-
+        
         loginPassword.isSecureTextEntry = true
         loginPassword.autocapitalizationType = .none
-
+        
         // login button
         view.addSubview(loginButton)
         loginButton.backgroundColor = phaedraYellow
@@ -138,7 +138,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.setTitle("Enter", for: UIControlState.normal)
         loginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         loginButton.titleLabel?.textAlignment = .center
-
+        
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
         loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
@@ -147,7 +147,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
+        
         // Register Button
         view.addSubview(registerButton)
         registerButton.setTitle("Create An Account", for: UIControlState.normal)
@@ -164,19 +164,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
+        
         // FB Log in Button
         fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
         fbLoginButton.delegate = self
         view.addSubview(fbLoginButton)
         fbLoginButton.center = self.view.center
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
-
+        
         fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
         fbLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 50).isActive = true
         fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-
-
+        
+        
         // Forgot Password Button
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
@@ -189,19 +189,19 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.23).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
+        
         forgotPasswordButton.backgroundColor = UIColor.clear
-
+        
     }
-
+    
     func loginButtonTapped(sender: UIButton!) {
         if self.loginEmail.text == "" || loginPassword.text == "" {
             
             //loginAlert is called
             let loginAlert = UIAlertController(title: "Incomplete Login Information", message: "Enter your complete email and password.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    print("User closed alert controller")
-                })
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("User closed alert controller")
+            })
             loginAlert.addAction(okAction)
             self.present(loginAlert, animated: true, completion: nil)
             print("Enter email or password")
@@ -209,62 +209,55 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
-
+            
             FirebaseManager.shared.loginToFirebase(email: email, password: password, completion: { (success) in
                 if success {
                     print("Successful Log In")
-
+                    
                     // Send to preferences (for now)
                     let preferencesVC = PreferenceViewController()
                     let nav = UINavigationController(rootViewController: preferencesVC)
                     self.present(nav, animated: true, completion: nil)
-
+                    
                     
                 } else {
-        
-                        //TODO: - Notify user of error
-                        print(error?.localizedDescription)
-                        let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                            print("User closed alert controller")
-                        })
-                        loginErrorAlert.addAction(okAction)
-                        self.present(loginErrorAlert, animated: true, completion: nil)
-                    }
-                })
-            }
+                    
+                    //TODO: - Notify user of error
+                    print("error")
+                    let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        print("User closed alert controller")
+                    })
+                    loginErrorAlert.addAction(okAction)
+                    self.present(loginErrorAlert, animated: true, completion: nil)
+                }
+            })
+        }
     }
-
+    
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
         let accountCreationVC = AccountCreationViewController()
-
+        
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
-
+    
     func forgotPasswordTapped(sender: UIButton!) {
-
+        
         let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             print("User cancelled in alertController")
         }
-
+        
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             print("User pushed OK on alertController")
             let emailField = forgotPasswordAlert.textFields![0] as UITextField
             print("the user entered \(emailField)")
             guard let email = emailField.text else { return }
-            FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
-                if error == nil {
-                    print("reset email sent")
-                }
-                else {
-                    print(error?.localizedDescription)
-                }
-            })
         }
-
+        
+        
         forgotPasswordAlert.addTextField { (textField) in
             textField.placeholder = "Email address"
         }
@@ -272,70 +265,82 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordAlert.addAction(okAction)
         
         self.present(forgotPasswordAlert, animated: true, completion: nil)
-
+        
         print("buttonpress")
         //        if loginEmail.text == "" {
         //            print("please type your registered email address")
         //        }
         print("user forgot password")
-
+        
         guard let email = loginEmail.text else { return }
-
-        FirebaseManager.shared.sendPasswordReset(email: emails) { (success) in
-
+        
+        FirebaseManager.shared.sendPasswordReset(email: email) { (success) in
+            
             if success {
                 print("Reset email sent")
             }
             else {
                 print("error")
             }
-
+            
         }
-  
-
+        
+        
     }
-
-
+    
+    
     // Facebook - Log in and log out functions
-
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
         print("=================\(#function)=============\n\n\n")
-
+        
         if let error = error {
             print(error.localizedDescription)
             return
         }
-
-        FirebaseManager.shared.facebookLogIn()
         
-
+        FirebaseManager.shared.facebookLogIn { (success) in
+            
+            if success {
+                let preferencesVC = PreferenceViewController()
+                self.navigationController?.pushViewController(preferencesVC, animated: true)
+            }
+                
+            else {
+                print("error")
+            }
+            
+            
+        }
+        
+        
     }
-
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User has logged out")
-
+        
         //TODO: - Segue back to login screen after user has logged out
     }
-
-
+    
+    
     func forgotPassword(sender: UIButton!) {
         print("user forgot password")
     }
-
+    
     // Testing Segue to chat
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showChat" {
-//
-//            let destination = segue.destination as! TabBarController
-//            //
-//            //            let chatVC = segue.destination as! ChatViewController
-//            //            let allChatsRef = FIRDatabase.database().reference().child("chats")
-//            //            // chatRef should point to only one single chat --- eventually Auto ID
-//            //            chatVC.chatRef = allChatsRef.child("testChat")
-//            //
-//        }
-//    }
-
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "showChat" {
+    //
+    //            let destination = segue.destination as! TabBarController
+    //            //
+    //            //            let chatVC = segue.destination as! ChatViewController
+    //            //            let allChatsRef = FIRDatabase.database().reference().child("chats")
+    //            //            // chatRef should point to only one single chat --- eventually Auto ID
+    //            //            chatVC.chatRef = allChatsRef.child("testChat")
+    //            //
+    //        }
+    //    }
+    
 }

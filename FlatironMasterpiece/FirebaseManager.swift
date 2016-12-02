@@ -85,7 +85,7 @@ final class FirebaseManager {
         
     }
     
-    func facebookLogIn() {
+    func facebookLogIn(completion: @escaping (Bool) -> Void) {
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
@@ -106,15 +106,11 @@ final class FirebaseManager {
                 
                 print("User has logged into Firebase")
                 
-                // TODO: - Segue into home screen after user has logged in
-                // Send to preferences (for now)
-                let preferencesVC = PreferenceViewController()
-                self.navigationController?.pushViewController(preferencesVC, animated: true)
+                guard error == nil else { completion(false); return }
                 
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
+                completion(true)
+                
+            
             }
             print("User has logged in")
             print("=====================================================\n\n\n")
