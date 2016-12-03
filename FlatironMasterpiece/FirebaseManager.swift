@@ -198,7 +198,7 @@ final class FirebaseManager {
         
         print("\n\nFirebaseManager sendMessage:\nchatRef: \(self.chatRef)\n\n")
         
-        self.allChatsRef.updateChildValues(["\(messageCount)": messageItem])
+        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
         
     }
     
@@ -218,9 +218,9 @@ final class FirebaseManager {
             print("messageQuery snapshot: \(snapshot.value)")
             let messageData = snapshot.value as! [String: Any]
             
-            if let id = messageData["senderId"] as! String!,
-                let name = messageData["senderName"] as! String!,
-                let text = messageData["text"] as! String!,
+            if let id = messageData["senderId"] as? String,
+                let name = messageData["senderName"] as? String,
+                let text = messageData["text"] as? String,
                 text.characters.count > 0 {
                 
                 completion(id, name, text)

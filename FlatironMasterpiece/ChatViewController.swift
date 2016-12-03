@@ -106,6 +106,7 @@ class ChatViewController: JSQMessagesViewController {
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
+            self.collectionView.reloadData()
         }
     }
     
