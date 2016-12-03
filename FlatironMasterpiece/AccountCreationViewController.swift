@@ -36,8 +36,6 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
-
-
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -64,18 +62,17 @@ class AccountCreationViewController: UIViewController {
         passwordVerification.autocapitalizationType = .none
         industryEntry.accessibilityLabel = Constants.INDUSTRY
         jobEntry.accessibilityLabel = Constants.JOBTITLE
-//        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
-//
-//        for specialView in specialViews {
-//
-//            specialView.specialConstrain(to: view)
-//
-//        }
-
+        //        let specialViews: [UIView] = [createAccountLabel, firstNameEntry, lastNameEntry, emailEntry]
+        //
+        //        for specialView in specialViews {
+        //
+        //            specialView.specialConstrain(to: view)
+        //
+        //        }
     }
 
     func dismissKeyboard() {
-     view.endEditing(true)
+        view.endEditing(true)
     }
 
     func tapCreateButtonOnce() {
@@ -83,35 +80,29 @@ class AccountCreationViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
         tap.numberOfTapsRequired = 1
         createAccountButton.addGestureRecognizer(tap)
- //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
+        //       Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: <#T##(Timer) -> Void#>)
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
         //createAccountButton.addGestureRecognizer(tap)
-
     }
 
-  }
-
-
-
-// MARK: Validation
-extension UIView {
-
-    func specialConstrain(to view: UIView) {
-
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
-
-
+    func enableButton() {
+        createAccountButton.isEnabled = true
     }
-
 
 }
 
 
-// MARK: Set Up
+// MARK: Validation
+extension UIView {
+    func specialConstrain(to view: UIView) {
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+    }
+}
 
+
+// MARK: Set Up
 extension AccountCreationViewController {
 
     func createViews() {
@@ -137,7 +128,6 @@ extension AccountCreationViewController {
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-
 
         // Last Name Textfield
         view.addSubview(lastNameEntry)
@@ -227,12 +217,20 @@ extension AccountCreationViewController {
 
         FirebaseManager.sendEmailVerification()
 
+
     }
 
-
-
-
     func createAccountButtonTapped(sender: UIButton!) {
+
+        if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
+            //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+            let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("User clicked alert controller")
+            })
+            invalidCredentialsAlert.addAction(okAction)
+            self.present(invalidCredentialsAlert, animated: true, completion: nil)
+        }
 
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
@@ -242,10 +240,12 @@ extension AccountCreationViewController {
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
 
+        //TODO: - Add a check to see if password matches password verification
+        print("Enter email or password")
+
 
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
-
         }
 
         //1 - create an instance of a user
@@ -259,23 +259,21 @@ extension AccountCreationViewController {
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
                 
-
             } else {
                     print("error!")
                     let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        print("User clicked alert controller")
-                    })
+                    print("User clicked alert controller")})
                     invalidCredentialsAlert.addAction(okAction)
                     self.present(invalidCredentialsAlert, animated: true, completion: nil)
-
             }
 
 
         })
 
 
-    }
+
+    }//end of createAccountButtonTapped
 
 }
 

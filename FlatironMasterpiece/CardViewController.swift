@@ -19,8 +19,6 @@ class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
     
-    
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         swipeableView.nextView = {
@@ -49,6 +47,10 @@ class CardViewController: UIViewController {
         }
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
+            if direction.description == "Right" {
+                let selectedRestVC = SelectedRestaurantViewController()
+                self.navigationController?.pushViewController(selectedRestVC, animated: true)
+            }
         }
         swipeableView.didCancel = {view in
             print("Did cancel swiping view")
@@ -58,6 +60,7 @@ class CardViewController: UIViewController {
         }
         swipeableView.didDisappear = { view in
             print("Did disappear swiping view")
+            
         }
         
         // +50 -50 +120 -100
@@ -70,19 +73,14 @@ class CardViewController: UIViewController {
         }
     }
     
-    
+
     
     // MARK: ()
     func nextCardView() -> UIView? {
-        
         let cardView = CardView(frame: swipeableView.bounds)
         cardView.backgroundColor = getRandomColor()
-        
         return cardView
     }
-    
-    
-    
     
     func getRandomColor() -> UIColor{
         let red = CGFloat(drand48())

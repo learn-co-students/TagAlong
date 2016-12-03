@@ -25,7 +25,9 @@ App Architecture
 
 Resources/Technologies 
 
-●	Yelp API/Foursquare API
+●	Google Places API
 ●	Core Location
 ●	Core Motion
 ●	Database (Firebase)
+●	Chat (Firebase)
+

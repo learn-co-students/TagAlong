@@ -1,4 +1,5 @@
 
+
 //
 //  LogInViewController.swift
 //  FlatironMasterpiece
@@ -25,20 +26,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         print("login view controller working")
         
         //Code needed for Core motion
         self.becomeFirstResponder()
-        
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "foodWoodenTable.jpg")!)
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "foodWoodenTable.jpg")?.draw(in: self.view.bounds)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        self.view.backgroundColor = UIColor(patternImage: image)
-        createViews()
-        
+
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
         self.imageView = UIImageView(frame: CGRect.zero)
@@ -47,7 +41,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.alpha = 1.0
         self.view.addSubview(imageView)
         createViews()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
+        
+        //dismisses keyboard
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
         loginEmail.becomeFirstResponder()
         view.addGestureRecognizer(tap)
         
@@ -67,16 +65,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.imageView.frame = self.view.bounds
     }
     
-    
-    
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if(event?.subtype == UIEventSubtype.motionShake) {
-            print("shaken")
-            
-        }
-        
-    }
-    
     func createViews() {
         // login label
         view.addSubview(loginLabel)
@@ -88,10 +76,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginLabel.layer.masksToBounds = true
         loginLabel.textAlignment = .center
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10).isActive = true
         
         // login email Textfield
         view.addSubview(loginEmail)
@@ -102,7 +90,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
         loginEmail.translatesAutoresizingMaskIntoConstraints = false
-        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 150).isActive = true
+        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 80).isActive = true
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -187,7 +175,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:15).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.23).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
         forgotPasswordButton.backgroundColor = UIColor.clear
@@ -221,6 +209,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     
                 } else {
+
                     
                     //TODO: - Notify user of error
                     print("error")
@@ -233,21 +222,26 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             })
         }
+
     }
     
     func registerButtonTapped(sender: UIButton!) {
         print("register button tapped")
-        let accountCreationVC = AccountCreationViewController()
         
+        let accountCreationVC = AccountCreationViewController()
+
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     
     func forgotPasswordTapped(sender: UIButton!) {
-        
+
+
+        //MARK: - forgotPasswordAlert code
+
         let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            print("User cancelled in alertController")
+            print("User cancelled in forgotPasswordAlertController")
         }
         
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -255,6 +249,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             let emailField = forgotPasswordAlert.textFields![0] as UITextField
             print("the user entered \(emailField)")
             guard let email = emailField.text else { return }
+
         }
         
         
@@ -273,9 +268,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("user forgot password")
         
         guard let email = loginEmail.text else { return }
+<<<<<<< HEAD
         
         FirebaseManager.sendPasswordReset(email: email) { (success) in
             
+=======
+
+        FirebaseManager.shared.sendPasswordReset(email: email) { (success) in
+
+>>>>>>> master
             if success {
                 print("Reset email sent")
             }
@@ -285,7 +286,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }
         
-        
     }
     
     
@@ -294,15 +294,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
         print("=================\(#function)=============\n\n\n")
-        
+
         if let error = error {
             print(error.localizedDescription)
             return
         }
+
         
         FirebaseManager.facebookLogIn { (success) in
             
             if success {
+
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
             }

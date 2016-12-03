@@ -22,6 +22,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
+<<<<<<< HEAD
 //    // Reference properties
 //    
 //    //1 - create a "chat" entity in firebase
@@ -35,6 +36,21 @@ class ChatViewController: JSQMessagesViewController {
     
     //4 - prop that represents the tagalong id
     var tagAlongID: String?
+=======
+    // Reference properties
+    private var matchRef: FIRDatabaseReference!
+    var chatRef: FIRDatabaseReference!
+    let allChatsRef = FIRDatabase.database().reference().child("chats")
+    private var membersRef: FIRDatabaseReference!
+    
+    private var matchRefHandle: FIRDatabaseHandle?
+    private var newMessageRefHandle: FIRDatabaseHandle?
+    
+    var chatID: String?
+    
+    // Unique ID
+    let uid = UUID().uuidString
+>>>>>>> master
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -41,28 +41,12 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         view.backgroundColor = phaedraBeige
         createSegmentedController()
-        formatPreferenceLabel()
-        formatBudgetLabel()
-        formatButtons()
         layoutCuisineCollectionView()
-        formatCuisinePreferencesLabel()
+        formatButtons()
+        formatLabels()
     }
     
-//    func formatSwitch() {
-//        view.addSubview(dineWithCompanySwitch)
-//        dineWithCompanySwitch.center = view.center
-//        dineWithCompanySwitch.setOn(false, animated: false)
-//        dineWithCompanySwitch.tintColor = phaedraDarkGreen
-//        dineWithCompanySwitch.onTintColor = phaedraDarkGreen
-//        dineWithCompanySwitch.thumbTintColor = phaedraLightGreen
-//        dineWithCompanySwitch.addTarget(self, action: #selector(findDiningPartner), for: UIControlEvents.valueChanged)
-//        dineWithCompanySwitch.translatesAutoresizingMaskIntoConstraints = false
-//        dineWithCompanySwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-//        dineWithCompanySwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 95).isActive = true
-//        dineWithCompanySwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
-//    }
-    
-    func formatPreferenceLabel() {
+    func formatLabels() {
         view.addSubview(preferencesLabel)
         preferencesLabel.text = "PREFERENCES"
         preferencesLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
@@ -72,47 +56,45 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-    }
-    
-    func formatBudgetLabel() {
+        
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
-        budgetLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
+        budgetLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
         budgetLabel.textColor = phaedraOrange
         budgetLabel.textAlignment = .center
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
-        budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 15).isActive = true
+        budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 10).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        
+        view.addSubview(cuisinePreferencesLabel)
+        cuisinePreferencesLabel.text = "Choose Your Cuisines"
+        cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
+        cuisinePreferencesLabel.textColor = phaedraOrange
+        cuisinePreferencesLabel.textAlignment = .center
+        cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cuisinePreferencesLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 165).isActive = true
     }
+
     
     func createSegmentedController() {
         let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
         let budgetSC = UISegmentedControl(items: budgetArray)
         budgetSC.selectedSegmentIndex = 0
         budgetSC.frame = CGRect.zero
-        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 16.0)! ], for: .normal)
+        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12.0)! ], for: .normal)
         budgetSC.layer.cornerRadius = 5
         budgetSC.backgroundColor = phaedraLightGreen
         budgetSC.tintColor = phaedraDarkGreen
         budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
         self.view.addSubview(budgetSC)
         budgetSC.translatesAutoresizingMaskIntoConstraints = false
-        budgetSC.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 140).isActive = true
+        budgetSC.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 125).isActive = true
         budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
     }
-    
-    func formatCuisinePreferencesLabel() {
-        view.addSubview(cuisinePreferencesLabel)
-        cuisinePreferencesLabel.text = "Choose Your Cuisines"
-        cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
-        cuisinePreferencesLabel.textColor = phaedraOrange
-        cuisinePreferencesLabel.textAlignment = .center
-        cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisinePreferencesLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 210).isActive = true
-    }
+
     
     func layoutCuisineCollectionView() {
         
@@ -127,7 +109,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.addSubview(cuisineCollectionView)
         
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 240).isActive = true
+        cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 185).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
@@ -207,11 +189,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.layer.borderColor = phaedraDarkGreen.cgColor
         replayTutorialButton.setTitle("Replay Tutorial", for: UIControlState.normal)
         replayTutorialButton.setTitle("Tutorial Played", for: .highlighted)
-        replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 16.0)
+        replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-     
-        replayTutorialButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 500).isActive = true
+        replayTutorialButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
@@ -220,22 +201,22 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
         
         view.addSubview(logoutButton)
-        logoutButton.backgroundColor = phaedraLightGreen
+        logoutButton.backgroundColor = phaedraOrange
         logoutButton.layer.cornerRadius = 5
         logoutButton.layer.borderWidth = 1
         logoutButton.layer.borderColor = phaedraDarkGreen.cgColor
         logoutButton.setTitle("Logout", for: .normal)
-        logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
-        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 580).isActive = true
+        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 460).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         logoutButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
-        logoutButton.setTitleColor(phaedraDarkGreen, for: .normal)
-        logoutButton.setTitleColor(phaedraYellow, for: .highlighted)
+        logoutButton.setTitleColor(phaedraYellow, for: .normal)
+        logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         view.addSubview(replayTutorialButton)
         
         view.addSubview(savePreferencesButton)
@@ -244,10 +225,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.layer.borderColor = phaedraDarkGreen.cgColor
         savePreferencesButton.layer.borderWidth = 1
         savePreferencesButton.setTitle("Save Preferences", for: .normal)
-        savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 20.0)
+        savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 14.0)
         savePreferencesButton.titleLabel?.textAlignment = .center
         savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 675).isActive = true
+        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 520).isActive = true
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -275,9 +256,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         } catch {
             print("Logout of app error")
         }
-        let loginVC = LogInViewController()
         
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        let loginVC = LogInViewController()
+        let nav = UINavigationController(rootViewController: loginVC)
+        self.present(nav, animated: true, completion: nil)
         
     }
     
