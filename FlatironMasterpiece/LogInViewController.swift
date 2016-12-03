@@ -64,15 +64,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLayoutSubviews()
         self.imageView.frame = self.view.bounds
     }
-
-        
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if(event?.subtype == UIEventSubtype.motionShake) {
-            print("shaken")
-            
-        }
-
-    }
     
     func createViews() {
         // login label

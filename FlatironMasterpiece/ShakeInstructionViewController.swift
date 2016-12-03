@@ -29,6 +29,8 @@ class ShakeInstructionViewController: UIViewController {
             print("shaken")
             
             //TODO: 1) segue to deck view 2) have the phone vibrate/pulsate 3) shaking sounds
+            let deckView = CardViewController()
+            self.navigationController?.pushViewController(deckView, animated: false)
         }
     }
     /*
