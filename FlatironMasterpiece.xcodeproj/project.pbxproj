@@ -172,6 +172,7 @@
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 				270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
+				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				452C599E1DE61E34005884EE /* Controllers */,
@@ -196,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
-				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				4539213E1DEC777300D19A45 /* TableViewCell.xib */,
 				452C59991DE5EABC005884EE /* SelectedRestaurant.xib */,
 			);
