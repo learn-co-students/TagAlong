@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         //MARK: - sets the initial view controller
-//      let initialViewController = CardViewController()
+//      let initialViewController = SearchingForTagAlongViewController()
 //
 //       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)

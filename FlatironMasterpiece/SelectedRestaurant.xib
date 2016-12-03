@@ -47,7 +47,7 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cuisine" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-H1-E9A">
-                    <rect key="frame" x="42" y="11" width="290" height="46"/>
+                    <rect key="frame" x="42" y="71" width="290" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,7 +65,7 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price Level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zct-o0-103">
-                    <rect key="frame" x="16" y="444" width="179" height="46"/>
+                    <rect key="frame" x="16" y="390" width="179" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,30 +74,32 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="💰💰💰💰" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-Ne-Fu2">
-                    <rect key="frame" x="180" y="444" width="179" height="46"/>
+                    <rect key="frame" x="180" y="390" width="179" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOn-Wo-gO3">
-                    <rect key="frame" x="310" y="522" width="51" height="31"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-wz-m3m">
+                    <rect key="frame" x="29" y="533" width="119" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="onTintColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="thumbTintColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Search Again"/>
                     <connections>
-                        <action selector="tagAlongSwitch:" destination="-1" eventType="valueChanged" id="vhu-xc-aBl"/>
+                        <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="IoH-cE-pWz"/>
                     </connections>
-                </switch>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Want to Tag Along?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojr-U5-NSl">
-                    <rect key="frame" x="0.0" y="514" width="296" height="46"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPa-U5-LKg">
+                    <rect key="frame" x="180" y="533" width="135" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="27"/>
-                    <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                    <size key="shadowOffset" width="3" height="2"/>
-                </label>
+                    <color key="backgroundColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Host A Tag Along">
+                        <color key="titleColor" red="1" green="1" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="hostTagAlongTapped:" destination="-1" eventType="touchUpInside" id="oPX-BX-34Q"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.63921568627450975" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="105.5" y="164.5"/>
