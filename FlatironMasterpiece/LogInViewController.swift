@@ -53,7 +53,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // Logic for Logging in
         
-        FirebaseManager.shared.listenForLogIn()
+        FirebaseManager.listenForLogIn()
         
         
     }
@@ -210,7 +210,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             guard let email = loginEmail.text, let password = loginPassword.text else { return }
             
-            FirebaseManager.shared.loginToFirebase(email: email, password: password, completion: { (success) in
+            FirebaseManager.loginToFirebase(email: email, password: password, completion: { (success) in
                 if success {
                     print("Successful Log In")
                     
@@ -274,7 +274,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         guard let email = loginEmail.text else { return }
         
-        FirebaseManager.shared.sendPasswordReset(email: email) { (success) in
+        FirebaseManager.sendPasswordReset(email: email) { (success) in
             
             if success {
                 print("Reset email sent")
@@ -300,7 +300,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         
-        FirebaseManager.shared.facebookLogIn { (success) in
+        FirebaseManager.facebookLogIn { (success) in
             
             if success {
                 let preferencesVC = PreferenceViewController()

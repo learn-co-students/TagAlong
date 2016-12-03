@@ -18,12 +18,12 @@ final class FirebaseManager {
     static let shared = FirebaseManager()
     
     // Reference properties
-    let ref = FIRDatabase.database().reference().root
-    var chatRef: FIRDatabaseReference!
-    let allChatsRef = FIRDatabase.database().reference().child("chats")
-    private var newMessageRefHandle: FIRDatabaseHandle?
-    var currentUser = FIRAuth.auth()?.currentUser?.uid
-    var currentUserEmail = FIRAuth.auth()?.currentUser?.email
+    static let ref = FIRDatabase.database().reference().root
+    static var chatRef: FIRDatabaseReference!
+    static let allChatsRef = FIRDatabase.database().reference().child("chats")
+    static var newMessageRefHandle: FIRDatabaseHandle?
+    static var currentUser = FIRAuth.auth()?.currentUser?.uid
+    static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
     
     
     
@@ -31,7 +31,7 @@ final class FirebaseManager {
     
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
-    func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
+    static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
         // 1 - create a new user in Firebase
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
             
@@ -47,7 +47,7 @@ final class FirebaseManager {
         })
     }
     
-    func sendEmailVerification() {
+    static func sendEmailVerification() {
         
         FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
             if error == nil {
@@ -59,7 +59,7 @@ final class FirebaseManager {
         })
     }
     
-    func listenForLogIn() {
+    static func listenForLogIn() {
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
                 // User is signed in.
@@ -74,7 +74,7 @@ final class FirebaseManager {
         
     }
     
-    func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
+    static func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
@@ -84,7 +84,7 @@ final class FirebaseManager {
         })
     }
     
-    func sendPasswordReset(email: String, completion: @escaping (Bool) -> Void) {
+    static func sendPasswordReset(email: String, completion: @escaping (Bool) -> Void) {
         
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
@@ -96,7 +96,7 @@ final class FirebaseManager {
     }
     
     //MARK: - Firebase Facebook Methods
-    func facebookLogIn(completion: @escaping (Bool) -> Void) {
+    static func facebookLogIn(completion: @escaping (Bool) -> Void) {
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
@@ -136,7 +136,7 @@ final class FirebaseManager {
     //MARK: - Firebase chat methods
     
     //1 - call this when a tagalong is created (restaurant card review) and
-    func createTagAlong(with tagAlongInfo: tagalongInfoDict, completion:@escaping (String)-> Void) {
+    static func createTagAlong(with tagAlongInfo: tagalongInfoDict, completion:@escaping (String)-> Void) {
         
         // Outline of what the code should look like:
         let tagAlongsRef = FIRDatabase.database().reference().child("tagalongs")
@@ -178,14 +178,14 @@ final class FirebaseManager {
     
     //MARK: - Tagalong Message Methods
     
-    func createChatWithTagID() {
+    static func createChatWithTagID() {
         
         //Using dummy tagalong key
-       chatRef = allChatsRef.child("TagalongID0")
+       self.chatRef = allChatsRef.child("TagalongID0")
         
     }
     
-    func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
+    static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
         
         print("\n\nFirebaseManager sendMessage:\nsenderId: \(senderId)\nsenderDisplayName: \(senderDisplayName)\ntext: \(text)\ndate: \(date)\nself.messages.count: \(messageCount)\n\n")
         
@@ -202,7 +202,7 @@ final class FirebaseManager {
         
     }
     
-    func observeMessages(completion:@escaping (String, String, String)-> Void) {
+    static func observeMessages(completion:@escaping (String, String, String)-> Void) {
         
         
         // 1. Creating a query that limits the synchronization to the last 25 messages

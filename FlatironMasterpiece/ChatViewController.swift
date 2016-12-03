@@ -45,23 +45,21 @@ class ChatViewController: JSQMessagesViewController {
         
         
         //Testing FirebaseManager 
-        store.createChatWithTagID()
-        
-        
-        
+        FirebaseManager.createChatWithTagID()
         
         // Testing on a real user
-        self.senderId = store.currentUser
-
+        self.senderId = FirebaseManager.currentUser
 
         //TODO: - change this displayName to the currentUser's name
-        self.senderDisplayName = store.currentUserEmail
+        self.senderDisplayName = FirebaseManager.currentUserEmail
         
         // Removing avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
+        
         observeMessages()
+
         
     }
     
@@ -83,7 +81,7 @@ class ChatViewController: JSQMessagesViewController {
         
         print("\n\nChatViewController\ndidPressSend\nbutton: \(button)\ntext: \(text)\nsenderId: \(senderId)\nsenderDisplayName: \(senderDisplayName)\ndate: \(date)\nself.messages.count: \(self.messages.count)\n\n")
         
-        FirebaseManager.shared.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: self.messages.count)
+        FirebaseManager.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: self.messages.count)
     
         
         // message sent sound
@@ -166,7 +164,7 @@ class ChatViewController: JSQMessagesViewController {
     // Observe Messages
     private func observeMessages() {
         
-        store.observeMessages { (id, name, text) in
+        FirebaseManager.observeMessages { (id, name, text) in
             
             print(id)
             print(name)
