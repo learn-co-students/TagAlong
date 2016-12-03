@@ -16,7 +16,7 @@ typealias tagalongInfoDict = [String:Any]
 final class FirebaseManager {
     
     static let shared = FirebaseManager()
-
+    
     // Reference properties
     let ref = FIRDatabase.database().reference().root
     var chatRef: FIRDatabaseReference!
@@ -26,7 +26,7 @@ final class FirebaseManager {
     var currentUserEmail = FIRAuth.auth()?.currentUser?.email
     
     
-
+    
     private init() {}
     
     //MARK: - Firebase user methods
@@ -71,7 +71,7 @@ final class FirebaseManager {
                 // createViews()
             }
         }
- 
+        
     }
     
     func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
@@ -88,10 +88,10 @@ final class FirebaseManager {
         
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
-                        
+            
             completion(true)
         })
-
+        
         
     }
     
@@ -121,20 +121,20 @@ final class FirebaseManager {
                 
                 completion(true)
                 
-            
+                
             }
             print("User has logged in")
             print("=====================================================\n\n\n")
             
         }
-
+        
         
         
     }
     
     
     //MARK: - Firebase chat methods
-  
+    
     //1 - call this when a tagalong is created (restaurant card review) and
     func createTagAlong(with tagAlongInfo: tagalongInfoDict, completion:@escaping (String)-> Void) {
         
@@ -142,20 +142,20 @@ final class FirebaseManager {
         let tagAlongsRef = FIRDatabase.database().reference().child("tagalongs")
         
         //this is created when BOTH users in a tagalong have confirmed being in a tagalong
-//        let tagAlongInfo = [
-//            "host" : "UserID", <-- should be collected when host confirms
-//            "location" : [     <-- should be collected from host
-//                "name" : "taco bell", <-- should be collected from host / restaurant conf card
-//                "latitude" : "30",
-//                "longitude" : "30"
-//            ],
-//            "guests" : [   <-- should be collected when guest confirms, these are people who have clicked to initiate a tagalong w/ or w/o host confirmation
-//                "UserID3" : true, <-- when this is true then create this dictionary and this createTagAlong() should be called
-//                "UserID2" : false,
-//                "UserID3" : false
-//            ],
-//            "date-time" : "figure out formatting here"
-//        ] as [String : Any]
+        //        let tagAlongInfo = [
+        //            "host" : "UserID", <-- should be collected when host confirms
+        //            "location" : [     <-- should be collected from host
+        //                "name" : "taco bell", <-- should be collected from host / restaurant conf card
+        //                "latitude" : "30",
+        //                "longitude" : "30"
+        //            ],
+        //            "guests" : [   <-- should be collected when guest confirms, these are people who have clicked to initiate a tagalong w/ or w/o host confirmation
+        //                "UserID3" : true, <-- when this is true then create this dictionary and this createTagAlong() should be called
+        //                "UserID2" : false,
+        //                "UserID3" : false
+        //            ],
+        //            "date-time" : "figure out formatting here"
+        //        ] as [String : Any]
         
         let tagAlongIDRef = tagAlongsRef.childByAutoId()
         
@@ -164,18 +164,27 @@ final class FirebaseManager {
         tagAlongIDRef.updateChildValues(tagAlongInfo)
         
         completion(tagAlongIDKey)
-    
+        
     }
     
     //2 - update user with tagalong id
     func updateUserWithTagAlongKey() {
         
-//        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
-//            <#code#>
-//        }
+        //        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
+        //            <#code#>
+        //        }
     }
     
+    
     //MARK: - Tagalong Message Methods
+    
+    func createChatWithTagID() {
+        
+        //Using dummy tagalong key
+        allChatsRef.child("TagalongID0")
+        
+    }
+    
     func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
         
         let messageItem = [ // 2
@@ -187,7 +196,40 @@ final class FirebaseManager {
         
         self.chatRef.updateChildValues(["\(messageCount)": messageItem])
         
+    }
+    
+    func observeMessages() {
         
+        
+        // 1. Creating a query that limits the synchronization to the last 25 messages
+        //        let messageQuery = chatRef.queryLimited(toLast:25)
+        
+        // 2. Observe every child item that has been added, and will be added, at the messages location.
+        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
+            
+            print("--------------------GETTING CALLED------------------")
+            
+            // 3. Extract the messageData from the snapshot
+            
+            print("messageQuery snapshot: \(snapshot.value)")
+            let messageData = snapshot.value as! [String: Any]
+            
+            if let id = messageData["senderId"] as! String!,
+                let name = messageData["senderName"] as! String!,
+                let text = messageData["text"] as! String!,
+                text.characters.count > 0 {
+                
+                // 4. Add the new message to the data source
+                self.addMessage(withId: id, name: name, text: text)
+                
+                // 5. Inform JSQMessagesViewController that a message has been received.
+                self.finishReceivingMessage()
+            } else {
+                print("Error! Could not decode message data")
+            }
+            
+            print("----------------------------------------------\n\n\n")
+        }) 
     }
     
     
@@ -195,5 +237,5 @@ final class FirebaseManager {
     
     
     
-
+    
 }

@@ -25,9 +25,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let tabOne = ChatViewController()
         let tabOneBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "ic_speaker_notes.png"), selectedImage: UIImage(named: "ic_speaker_notes.png"))
         tabOne.tabBarItem = tabOneBarItem
-        let allChatsRef = FIRDatabase.database().reference().child("chats")
+//        let allChatsRef = FIRDatabase.database().reference().child("chats")
         // chatRef should point to only one single chat --- eventually Auto ID
-        tabOne.chatRef = allChatsRef.child("christinaChat")
+//        tabOne.chatRef = allChatsRef.child("christinaChat")
         
         //create tab 2 - restaurant detail view
         let tabTwo = SelectedRestaurantViewController()
@@ -50,7 +50,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             let vc = viewController as! ChatViewController
             let allChatsRef = FIRDatabase.database().reference().child("chats")
             // chatRef should point to only one single chat --- eventually Auto ID
-            vc.chatRef = allChatsRef.child("christinaChat")
+//            vc.chatRef = allChatsRef.child("christinaChat")
             present(vc, animated: true, completion: nil)
         }
         

@@ -49,7 +49,7 @@ class UserTagAlongsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tagAlong = allTagAlongs[indexPath.row]
         let chatVC = ChatViewController()
-        chatVC.chatID = tagAlong
+        chatVC.tagAlongID = tagAlong
         present(chatVC, animated: true, completion: nil)
         
     }

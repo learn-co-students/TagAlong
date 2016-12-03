@@ -39,9 +39,16 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let tagAlongID = tagAlongID {
-        tagAlongRef = allChatsRef.child("\(tagAlongID)")
-        }
+//        if let tagAlongID = tagAlongID {
+//        tagAlongRef = allChatsRef.child("\(tagAlongID)")
+//        }
+        
+        
+        //Testing FirebaseManager 
+        
+        
+        
+        
         
         // Testing on a real user
         self.senderId = store.currentUser
