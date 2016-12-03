@@ -85,10 +85,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginLabel.layer.masksToBounds = true
         loginLabel.textAlignment = .center
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        loginLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10).isActive = true
         
         // login email Textfield
         view.addSubview(loginEmail)
@@ -184,7 +184,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:15).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.23).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
         forgotPasswordButton.backgroundColor = UIColor.clear
