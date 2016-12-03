@@ -70,14 +70,12 @@ class CardViewController: UIViewController {
         }
     }
     
-    
+
     
     // MARK: ()
     func nextCardView() -> UIView? {
-        
         let cardView = CardView(frame: swipeableView.bounds)
         cardView.backgroundColor = getRandomColor()
-        
         return cardView
     }
     

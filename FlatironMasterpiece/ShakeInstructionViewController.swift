@@ -24,6 +24,13 @@ class ShakeInstructionViewController: UIViewController {
         self.view = shakeView
     }
 
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if(event?.subtype == UIEventSubtype.motionShake) {
+            print("shaken")
+            
+            //TODO: 1) segue to deck view 2) have the phone vibrate/pulsate 3) shaking sounds
+        }
+    }
     /*
     // MARK: - Navigation
 
