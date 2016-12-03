@@ -52,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
  //     let initialViewController = UserTagAlongsTableViewController()
-let initialViewController = CardViewController()
+//let initialViewController = CardViewController()
+        let initialViewController = AccountCreationViewController()
+        
 
        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

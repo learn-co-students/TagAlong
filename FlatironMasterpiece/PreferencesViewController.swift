@@ -46,6 +46,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         formatButtons()
         layoutCuisineCollectionView()
         formatCuisinePreferencesLabel()
+        
+        
+        
     }
     
 //    func formatSwitch() {
