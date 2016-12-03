@@ -187,6 +187,8 @@ final class FirebaseManager {
     
     func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
         
+        print("\n\nFirebaseManager sendMessage:\nsenderId: \(senderId)\nsenderDisplayName: \(senderDisplayName)\ntext: \(text)\ndate: \(date)\nself.messages.count: \(messageCount)\n\n")
+        
         let messageItem = [ // 2
             "senderId": senderId,
             "senderName": senderDisplayName,
@@ -194,7 +196,9 @@ final class FirebaseManager {
             "timestamp": String(Int(Date().timeIntervalSince1970))
         ]
         
-        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
+        print("\n\nFirebaseManager sendMessage:\nchatRef: \(self.chatRef)\n\n")
+        
+        self.allChatsRef.updateChildValues(["\(messageCount)": messageItem])
         
     }
     
@@ -205,7 +209,7 @@ final class FirebaseManager {
         //        let messageQuery = chatRef.queryLimited(toLast:25)
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
+        newMessageRefHandle = allChatsRef.observe(.childAdded, with: { (snapshot) -> Void in
 
             print("--------------------GETTING CALLED------------------")
             

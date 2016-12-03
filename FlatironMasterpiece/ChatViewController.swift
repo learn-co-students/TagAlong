@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseDatabase
+//import Firebase
+//import FirebaseAuth
+//import FirebaseDatabase
 import JSQMessagesViewController
 
 
@@ -23,15 +23,15 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
 //    // Reference properties
-    
-    //1 - create a "chat" entity in firebase
-    let allChatsRef = FIRDatabase.database().reference().child("chats")
-    
-    //2 - creating a tagalongID
-    var tagAlongRef: FIRDatabaseReference!
-    
-    //3 - creates an observation of our tagalongID attributes
-    private var newMessageRefHandle: FIRDatabaseHandle?
+//    
+//    //1 - create a "chat" entity in firebase
+//    let allChatsRef = FIRDatabase.database().reference().child("chats")
+//    
+//    //2 - creating a tagalongID
+//    var tagAlongRef: FIRDatabaseReference!
+//    
+//    //3 - creates an observation of our tagalongID attributes
+//    private var newMessageRefHandle: FIRDatabaseHandle?
     
     //4 - prop that represents the tagalong id
     var tagAlongID: String?
@@ -45,7 +45,7 @@ class ChatViewController: JSQMessagesViewController {
         
         
         //Testing FirebaseManager 
-        
+        store.createChatWithTagID()
         
         
         
@@ -80,9 +80,10 @@ class ChatViewController: JSQMessagesViewController {
     
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-    
         
-        FirebaseManager.shared.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: messages.count)
+        print("\n\nChatViewController\ndidPressSend\nbutton: \(button)\ntext: \(text)\nsenderId: \(senderId)\nsenderDisplayName: \(senderDisplayName)\ndate: \(date)\nself.messages.count: \(self.messages.count)\n\n")
+        
+        FirebaseManager.shared.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: self.messages.count)
     
         
         // message sent sound
@@ -97,11 +98,11 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
-    deinit {
-        if let refHandle = newMessageRefHandle {
-            tagAlongRef.removeObserver(withHandle: refHandle)
-        }
-    }
+//    deinit {
+//        if let refHandle = newMessageRefHandle {
+//            tagAlongRef.removeObserver(withHandle: refHandle)
+//        }
+//    }
     
     // MARK: Create Messages/ Create JSQMessage objects and append to array
     private func addMessage(withId id: String, name: String, text: String) {
