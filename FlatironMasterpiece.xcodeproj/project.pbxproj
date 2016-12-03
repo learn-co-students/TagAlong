@@ -38,7 +38,6 @@
 		451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */; };
 		451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */; };
 		451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */; };
-		451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */; };
 		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */; };
 		453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921341DEB8E5100D19A45 /* TabBarController.swift */; };
@@ -51,6 +50,7 @@
 		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
 		45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */; };
+		45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F196A41DF2A87F00BD24E9 /* CardViewController.swift */; };
 		45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */; };
 		45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */; };
 		45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */; };
@@ -59,7 +59,6 @@
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
 		45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */; };
 		950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C681DE5FF3E001F2145 /* CardView.swift */; };
-		950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6A1DE61C57001F2145 /* CardViewController.swift */; };
 		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
 		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
@@ -98,7 +97,6 @@
 		451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-ExtraLight.ttf"; sourceTree = "<group>"; };
 		451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Regular.ttf"; sourceTree = "<group>"; };
-		451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Abel-Regular.ttf"; path = "../Abel-Regular.ttf"; sourceTree = "<group>"; };
 		452C59991DE5EABC005884EE /* SelectedRestaurant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedRestaurant.xib; sourceTree = "<group>"; };
 		453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAlongViewController.swift; sourceTree = "<group>"; };
 		453921341DEB8E5100D19A45 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -111,6 +109,8 @@
 		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
 		45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashLogoViewController.swift; sourceTree = "<group>"; };
+		45F196A41DF2A87F00BD24E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Abel-Regular.ttf"; sourceTree = "<group>"; };
 		45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeInstructionViewController.swift; sourceTree = "<group>"; };
 		45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShakeGestureView.xib; sourceTree = "<group>"; };
 		45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
@@ -120,7 +120,6 @@
 		45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOrTagAlongViewController.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		950A2C681DE5FF3E001F2145 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		950A2C6A1DE61C57001F2145 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardViewController.swift; path = ../CardViewController.swift; sourceTree = "<group>"; };
 		950A2C6C1DE9F95D001F2145 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		950A2C6E1DEC9F01001F2145 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
-				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
+				45F196A41DF2A87F00BD24E9 /* CardViewController.swift */,
 				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
@@ -249,7 +248,7 @@
 		45F19AE01DEDCE0C007EAACD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				451C01B91DEE5DC6007B1388 /* Abel-Regular.ttf */,
+				45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */,
 				451C019C1DEE13E6007B1388 /* OpenSans-Bold.ttf */,
 				451C019D1DEE13E6007B1388 /* OpenSans-BoldItalic.ttf */,
 				451C019E1DEE13E6007B1388 /* OpenSans-ExtraBold.ttf */,
@@ -385,7 +384,6 @@
 				451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */,
 				451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */,
 				451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */,
-				451C01BA1DEE5DC6007B1388 /* Abel-Regular.ttf in Resources */,
 				270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +455,7 @@
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
 				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */,
+				45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */,
 				45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */,
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
 				27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */,
@@ -473,7 +472,6 @@
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
-				950A2C6B1DE61C57001F2145 /* CardViewController.swift in Sources */,
 				950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */,
 				279BBC751DF0E236008020D4 /* Restaurant.swift in Sources */,
 			);
