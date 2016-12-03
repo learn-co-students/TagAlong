@@ -32,7 +32,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let cuisineReuseIdentifier = "Cuisine Cell"
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
     
-    let cuisineImage:[UIImage] = [UIImage(named: "american")!, UIImage(named:"asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
 
