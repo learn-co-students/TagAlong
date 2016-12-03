@@ -99,7 +99,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
         loginEmail.translatesAutoresizingMaskIntoConstraints = false
-        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 150).isActive = true
+        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 80).isActive = true
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
