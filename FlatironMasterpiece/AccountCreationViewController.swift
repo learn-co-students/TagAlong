@@ -209,6 +209,7 @@ extension AccountCreationViewController {
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
         createAccountButton.specialConstrain(to: view)
+
     }
     
     

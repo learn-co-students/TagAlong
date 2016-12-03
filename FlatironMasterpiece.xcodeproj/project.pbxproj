@@ -18,8 +18,8 @@
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */; };
+		27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27513FDE1DF1D73C00C87495 /* Secrets.swift */; };
 		279BBC711DF0E217008020D4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC701DF0E217008020D4 /* User.swift */; };
-		279BBC731DF0E21F008020D4 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC721DF0E21F008020D4 /* Secrets.swift */; };
 		279BBC751DF0E236008020D4 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC741DF0E236008020D4 /* Restaurant.swift */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
@@ -76,8 +76,8 @@
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27513FDE1DF1D73C00C87495 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		279BBC701DF0E217008020D4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		279BBC721DF0E21F008020D4 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../Secrets.swift; sourceTree = "<group>"; };
 		279BBC741DF0E236008020D4 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
+				27513FDE1DF1D73C00C87495 /* Secrets.swift */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
 				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
-				279BBC721DF0E21F008020D4 /* Secrets.swift */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
 				250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */,
@@ -458,8 +458,8 @@
 				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */,
 				45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */,
-				279BBC731DF0E21F008020D4 /* Secrets.swift in Sources */,
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
+				27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */,
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
 				250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */,
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,

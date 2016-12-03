@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FBSDKLoginKit
 
 
 final class FirebaseManager {
@@ -83,6 +84,43 @@ final class FirebaseManager {
 
         
     }
+    
+    func facebookLogIn(completion: @escaping (Bool) -> Void) {
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        print("credential is \(credential)")
+        
+        if let token = FBSDKAccessToken.current() {
+            print("ALL good")
+            if let tokenString = token.tokenString {
+                if let token = FBSDKAccessToken.current() {
+                    print("ALL good")
+                    if let tokenString = token.tokenString {
+                        print("Token string is here \(tokenString)")
+                    }
+                    
+                }
+            }
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                
+                print("User has logged into Firebase")
+                
+                guard error == nil else { completion(false); return }
+                
+                completion(true)
+                
+            
+            }
+            print("User has logged in")
+            print("=====================================================\n\n\n")
+            
+        }
+
+        
+        
+    }
+    
     
     
     func createChatData(completion: (Bool) -> Void) {
