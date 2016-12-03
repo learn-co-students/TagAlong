@@ -220,7 +220,6 @@
 				950A2C6A1DE61C57001F2145 /* CardViewController.swift */,
 				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
@@ -238,6 +237,7 @@
 		452C599F1DE61E95005884EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */,
 				950A2C681DE5FF3E001F2145 /* CardView.swift */,
 				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
 				453921401DEC778700D19A45 /* TableViewCell.swift */,

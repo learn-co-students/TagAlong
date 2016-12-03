@@ -31,13 +31,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView!
     
     var isHighighted: Bool = false
-    
-    
-    
-    
-    
-    
-    
+
     var foodLabel: UILabel = {
         let label = UILabel()
         label.text = "Cuisine Type"

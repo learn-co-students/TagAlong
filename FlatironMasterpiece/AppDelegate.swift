@@ -36,17 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
-//        navController = UINavigationController()
+        navController = UINavigationController()
 
-//        var loginVC = LogInViewController()
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
+        var loginVC = LogInViewController()
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        self.navController?.pushViewController(loginVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
 
-//        print("app delegate working")
+        print("app delegate working")
 
 
         //MARK: - sets the initial view controller
@@ -54,16 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
  //     let initialViewController = UserTagAlongsTableViewController()
-let initialViewController = CardViewController()
-
-
-       let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+//let initialViewController = CardViewController()
+//
+//
+//       let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
 
 
         return true

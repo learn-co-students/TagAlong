@@ -16,10 +16,11 @@ class SplashLogoViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = phaedraOrange
-        // Do any additional setup after loading the view.
+        setupImage()
     }
 
     func setupImage() {
+       view.addSubview(logoImageView)
         
     }
     
