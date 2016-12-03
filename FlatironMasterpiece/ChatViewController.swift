@@ -167,8 +167,13 @@ class ChatViewController: JSQMessagesViewController {
     private func observeMessages() {
         
         store.observeMessages { (id, name, text) in
+            
+            print(id)
+            print(name)
+            print(text)
             // 4. Add the new message to the data source
              self.addMessage(withId: id, name: name, text: text)
+            print(self.messages)
             // 5. Inform JSQMessagesViewController that a message has been received.
             self.finishReceivingMessage()
         }

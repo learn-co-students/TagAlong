@@ -181,7 +181,7 @@ final class FirebaseManager {
     func createChatWithTagID() {
         
         //Using dummy tagalong key
-        allChatsRef.child("TagalongID0")
+       chatRef = allChatsRef.child("TagalongID0")
         
     }
     
@@ -209,7 +209,7 @@ final class FirebaseManager {
         //        let messageQuery = chatRef.queryLimited(toLast:25)
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = allChatsRef.observe(.childAdded, with: { (snapshot) -> Void in
+        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
 
             print("--------------------GETTING CALLED------------------")
             
