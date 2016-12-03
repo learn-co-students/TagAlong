@@ -268,15 +268,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("user forgot password")
         
         guard let email = loginEmail.text else { return }
-<<<<<<< HEAD
         
         FirebaseManager.sendPasswordReset(email: email) { (success) in
             
-=======
-
-        FirebaseManager.shared.sendPasswordReset(email: email) { (success) in
-
->>>>>>> master
             if success {
                 print("Reset email sent")
             }

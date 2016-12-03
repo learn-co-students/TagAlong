@@ -46,12 +46,12 @@ class UserTagAlongsTableViewController: UITableViewController {
         return cell
     }
   
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tagAlong = allTagAlongs[indexPath.row]
-        let chatVC = ChatViewController()
-        chatVC.tagAlongID = tagAlong
-        present(chatVC, animated: true, completion: nil)
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let tagAlong = allTagAlongs[indexPath.row]
+//        let chatVC = ChatViewController()
+//        chatVC.tagAlongID = tagAlong
+//        present(chatVC, animated: true, completion: nil)
+//        
+//    }
 
 }

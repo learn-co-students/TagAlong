@@ -7,9 +7,6 @@
 //
 
 import UIKit
-//import Firebase
-//import FirebaseAuth
-//import FirebaseDatabase
 import JSQMessagesViewController
 
 
@@ -22,35 +19,10 @@ class ChatViewController: JSQMessagesViewController {
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-<<<<<<< HEAD
-//    // Reference properties
-//    
-//    //1 - create a "chat" entity in firebase
-//    let allChatsRef = FIRDatabase.database().reference().child("chats")
-//    
-//    //2 - creating a tagalongID
-//    var tagAlongRef: FIRDatabaseReference!
-//    
-//    //3 - creates an observation of our tagalongID attributes
-//    private var newMessageRefHandle: FIRDatabaseHandle?
-    
-    //4 - prop that represents the tagalong id
-    var tagAlongID: String?
-=======
-    // Reference properties
-    private var matchRef: FIRDatabaseReference!
-    var chatRef: FIRDatabaseReference!
-    let allChatsRef = FIRDatabase.database().reference().child("chats")
-    private var membersRef: FIRDatabaseReference!
-    
-    private var matchRefHandle: FIRDatabaseHandle?
-    private var newMessageRefHandle: FIRDatabaseHandle?
+
     
     var chatID: String?
     
-    // Unique ID
-    let uid = UUID().uuidString
->>>>>>> master
     
     override func viewDidLoad() {
         super.viewDidLoad()
