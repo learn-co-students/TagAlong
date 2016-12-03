@@ -198,7 +198,7 @@ final class FirebaseManager {
         
     }
     
-    func observeMessages() {
+    func observeMessages(completion:@escaping (String, String, String)-> Void) {
         
         
         // 1. Creating a query that limits the synchronization to the last 25 messages
@@ -206,7 +206,7 @@ final class FirebaseManager {
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
         newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-            
+
             print("--------------------GETTING CALLED------------------")
             
             // 3. Extract the messageData from the snapshot
@@ -219,11 +219,8 @@ final class FirebaseManager {
                 let text = messageData["text"] as! String!,
                 text.characters.count > 0 {
                 
-                // 4. Add the new message to the data source
-                self.addMessage(withId: id, name: name, text: text)
-                
-                // 5. Inform JSQMessagesViewController that a message has been received.
-                self.finishReceivingMessage()
+                completion(id, name, text)
+
             } else {
                 print("Error! Could not decode message data")
             }
