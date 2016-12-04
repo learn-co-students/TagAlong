@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RestaurantViewDelegate {
+    func canDisplayImage(sender:UIImage) -> Bool
+}
+
 class RestaurantView: UIView {
 
     @IBOutlet var contentView: UIView!
@@ -17,39 +21,31 @@ class RestaurantView: UIView {
     @IBOutlet weak var selectedRestaurantAddressLabel: UILabel!
     @IBOutlet weak var restaurantPricingLabel: UILabel!
     
-    @IBAction func tagAlongSwitch(_ sender: UISwitch) {
-        //TODO: - add code for what to do when the user selects the "tag along" option
-        print("The user wants to tag along.")
-    }
-    
-    @IBAction func preferencesButtonTapped(_ sender: UIButton) {
-        //TODO: - add code that will take the user to their preferences page
-        print("The user wants to see their preferences.")
-    }
-    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         //TODO: - add code that will take the user back to deck view
     }
     
     @IBAction func hostTagAlongTapped(_ sender: UIButton) {
         //TODO: - add code that will create alert controller
-        let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
-            print("User clicked cancel")
-        })
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
-            //TODO: 
-            //call on function that creates a tagalong from Firebase Manager
-            //segue way searchingForTagAlong vc
-
-            let searchingVC = SearchingForTagAlongViewController()
-//            self.navigationController?.pushViewController(searchingVC, animated: true)
-            let nav = UINavigationController(rootViewController: searchingVC)
-            
-        })
-        confirmTagAlongAlert.addAction(cancelAction)
-        confirmTagAlongAlert.addAction(confirmAction)
+//        SelectedRestaurantViewController.showTagAlongAlert(self)
         
+//        let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+//            print("User clicked cancel")
+//        })
+//        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+//            //TODO: 
+//            //call on function that creates a tagalong from Firebase Manager
+//            //segue way searchingForTagAlong vc
+//
+//            
+//            let searchingVC = SearchingForTagAlongViewController()
+////            self.navigationController?.pushViewController(searchingVC, animated: true)
+//            let nav = UINavigationController(rootViewController: searchingVC)
+//            
+//        })
+//        confirmTagAlongAlert.addAction(cancelAction)
+//        confirmTagAlongAlert.addAction(confirmAction)
 
     }
     

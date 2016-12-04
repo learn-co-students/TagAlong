@@ -25,6 +25,7 @@ class GetLocationViewController: UIViewController {
 //    var longitude: Double = -74.0002432
     
     override func viewDidLoad() {
+        print("getlocationVC is working")
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()
     }
@@ -34,17 +35,18 @@ class GetLocationViewController: UIViewController {
         
         let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-        
         locationManager.startUpdatingLocation()
-        
         getLocation()
         
     }
     
     func getLocation() {
+        print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
             
             if let error = error {
+                print("there is an error in getlocation")
+                print("this is the \(error.localizedDescription)")
                 return
             }
             
@@ -67,7 +69,6 @@ class GetLocationViewController: UIViewController {
             self.longitude = place.coordinate.longitude
             
             // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
-
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: "italian", completion: { (JSON) in
                 self.store.restaurantsInJSON = JSON
                 self.store.filterSearchedRestaurants()
