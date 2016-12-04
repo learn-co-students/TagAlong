@@ -266,7 +266,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     // TODO: -
     func savePreferences() {
         // Send to shake instruction view controller
+       let user = FIRAuth.auth()?.currentUser
+      guard let unwrappedUser = user else { return }
+        print(unwrappedUser)
+        if   FIRAuth.auth()?.currentUser != nil {
+            
+        }
         print("Save preferences tapped")
+        print(store.preferredCuisineArray)
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
         

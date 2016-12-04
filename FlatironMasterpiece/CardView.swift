@@ -74,30 +74,30 @@ class CardView: UIView {
        
         
 
-        self.addSubview(restCostLabel)
-        //        restCostLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        //        restCostLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        //        restCostLabel.backgroundColor = UIColor.yellow
-        //        restCostLabel.topAnchor.constraint(equalTo: restNameLabel.bottomAnchor, constant: 20).isActive = true
-        //        restCostLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -40).isActive = true
-        restDistanceLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.64, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
-        restDistanceLabel.backgroundColor = UIColor.yellow
-        restDistanceLabel.text = "0.5 mi"
-        restDistanceLabel.textAlignment = .center
-        self.addSubview(restDistanceLabel)
-        //        restDistanceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        //        restDistanceLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        //        restDistanceLabel.backgroundColor = UIColor.yellow
-        //        restDistanceLabel.topAnchor.constraint(equalTo: restCuisineLabel.bottomAnchor, constant: 20).isActive = true
-        //        restDistanceLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 40).isActive = true
-        //
-        //
-        //        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.25, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
-        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.71, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
-        restHoursLabel.backgroundColor = UIColor.yellow
-        restHoursLabel.text = "12:00 pm - 8:00 pm"
-        restHoursLabel.textAlignment = .center
-        self.addSubview(restHoursLabel)
+//        self.addSubview(restCostLabel)
+//        //        restCostLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        //        restCostLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
+//        //        restCostLabel.backgroundColor = UIColor.yellow
+//        //        restCostLabel.topAnchor.constraint(equalTo: restNameLabel.bottomAnchor, constant: 20).isActive = true
+//        //        restCostLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -40).isActive = true
+//        restDistanceLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.64, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
+//        restDistanceLabel.backgroundColor = UIColor.yellow
+//        restDistanceLabel.text = "0.5 mi"
+//        restDistanceLabel.textAlignment = .center
+//        self.addSubview(restDistanceLabel)
+//        //        restDistanceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        //        restDistanceLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+//        //        restDistanceLabel.backgroundColor = UIColor.yellow
+//        //        restDistanceLabel.topAnchor.constraint(equalTo: restCuisineLabel.bottomAnchor, constant: 20).isActive = true
+//        //        restDistanceLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 40).isActive = true
+//        //
+//        //
+//        //        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.25, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
+//        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.71, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
+//        restHoursLabel.backgroundColor = UIColor.yellow
+//        restHoursLabel.text = "12:00 pm - 8:00 pm"
+//        restHoursLabel.textAlignment = .center
+//        self.addSubview(restHoursLabel)
         
 //        let frame = CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.05)
 //        let newFrame = CGRect(x: 350, y: 350, width: 200, height: 200)
@@ -163,7 +163,7 @@ class CardView: UIView {
 //        
 //        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.25, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
 
-        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.71, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
+        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.78, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
         restHoursLabel.backgroundColor = UIColor.yellow
         restHoursLabel.text = "12:00 pm - 8:00 pm"
         restHoursLabel.textAlignment = .center

@@ -17,7 +17,7 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
-    
+    let cuisines = [String]()
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
         self.firstName = firstName
         self.lastName = lastName
@@ -34,7 +34,8 @@ class User {
             "firstName" : firstName,
             "lastName" : lastName,
             "jobTitle" : jobTitle,
-            "industry" : industry
+            "industry" : industry,
+            
         ]
             
     }
