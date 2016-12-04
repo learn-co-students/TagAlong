@@ -21,12 +21,12 @@ struct Constants {
     static let PASSWORDVERIFICATION = "passwordverification"
     static let INDUSTRY = "industry"
     static let JOBTITLE = "jobtitle"
-    
+
 }
 
 
 class AccountCreationViewController: UIViewController {
-    
+
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -42,12 +42,12 @@ class AccountCreationViewController: UIViewController {
     var password = false
     var industry = false
     var jobtitle = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         createViews()
-        
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         view.backgroundColor = UIColor.white
@@ -70,11 +70,11 @@ class AccountCreationViewController: UIViewController {
         //
         //        }
     }
-    
+
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
     func tapCreateButtonOnce() {
         self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
@@ -84,11 +84,11 @@ class AccountCreationViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
         //createAccountButton.addGestureRecognizer(tap)
     }
-    
+
     func enableButton() {
         createAccountButton.isEnabled = true
     }
-    
+
 }
 
 
@@ -104,9 +104,9 @@ extension UIView {
 
 // MARK: Set Up
 extension AccountCreationViewController {
-    
+
     func createViews() {
-        
+
         // Create Account Label
         view.addSubview(createAccountLabel)
         createAccountLabel.text = "Create Account"
@@ -116,7 +116,7 @@ extension AccountCreationViewController {
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // First Name Textfield
         view.addSubview(firstNameEntry)
         firstNameEntry.placeholder = "  First Name"
@@ -128,7 +128,7 @@ extension AccountCreationViewController {
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Last Name Textfield
         view.addSubview(lastNameEntry)
         lastNameEntry.placeholder = "  Last Name"
@@ -140,7 +140,7 @@ extension AccountCreationViewController {
         lastNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         lastNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         lastNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Email Address Texfield
         view.addSubview(emailEntry)
         emailEntry.placeholder = "  Email Address"
@@ -152,7 +152,7 @@ extension AccountCreationViewController {
         emailEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         emailEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         emailEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Password Textfield
         view.addSubview(passwordEntry)
         passwordEntry.placeholder = "  Password"
@@ -164,7 +164,7 @@ extension AccountCreationViewController {
         passwordEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         passwordEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         passwordEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Password Verification Textfield
         view.addSubview(passwordVerification)
         passwordVerification.placeholder = "  Verify Password"
@@ -176,7 +176,7 @@ extension AccountCreationViewController {
         passwordVerification.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         passwordVerification.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         passwordVerification.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Industry Textfield
         view.addSubview(industryEntry)
         industryEntry.placeholder = "  Industry"
@@ -188,7 +188,7 @@ extension AccountCreationViewController {
         industryEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         industryEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         industryEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Job Title Textfield
         view.addSubview(jobEntry)
         jobEntry.placeholder = "  Job Title"
@@ -200,7 +200,7 @@ extension AccountCreationViewController {
         jobEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         jobEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         jobEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
+
         // Create Account Button
         view.addSubview(createAccountButton)
         createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
@@ -211,14 +211,17 @@ extension AccountCreationViewController {
         createAccountButton.specialConstrain(to: view)
 
     }
-    
-    
+
+
     func sendEmail() {
-        FirebaseManager.shared.sendEmailVerification()
+
+        FirebaseManager.sendEmailVerification()
+
+
     }
-    
+
     func createAccountButtonTapped(sender: UIButton!) {
-        
+
         if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
             let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
@@ -228,7 +231,7 @@ extension AccountCreationViewController {
             invalidCredentialsAlert.addAction(okAction)
             self.present(invalidCredentialsAlert, animated: true, completion: nil)
         }
-        
+
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
         guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
@@ -236,23 +239,23 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-        
+
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
-        
-        
+
+
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
-        
+
         //1 - create an instance of a user
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-        
+
         //2 - called on FirebaseManger to create a user based on the above currentUser
-        FirebaseManager.shared.create(currentUser: currentUser, completion: { success in
-            
+        FirebaseManager.createNewUser(currentUser: currentUser, completion: { success in
+
             if success {
-                
+
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
                 
@@ -264,18 +267,18 @@ extension AccountCreationViewController {
                     invalidCredentialsAlert.addAction(okAction)
                     self.present(invalidCredentialsAlert, animated: true, completion: nil)
             }
-                
-                
+
+
         })
-            
-      
-        
+
+
+
     }//end of createAccountButtonTapped
 
 }
-    
+
 extension AccountCreationViewController {
-        
-        
-        
+
+
+
 }
