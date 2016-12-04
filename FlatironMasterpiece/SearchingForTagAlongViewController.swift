@@ -11,12 +11,12 @@ import UIKit
 class SearchingForTagAlongViewController: UIViewController {
     
     let searchingLabel: UILabel = UILabel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = phaedraBeige
         setupLabel()
+        setupSpinner()
     }
 
     func setupLabel() {
@@ -28,17 +28,45 @@ class SearchingForTagAlongViewController: UIViewController {
         searchingLabel.translatesAutoresizingMaskIntoConstraints = false
         searchingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         searchingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        searchingLabel.specialConstrain(to: view)
+        searchingLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setupSpinner() {
+        var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        activityIndicator.color = phaedraDarkGreen
+        activityIndicator.layer.cornerRadius = 4
+        activityIndicator.layer.backgroundColor = phaedraLightGreen.cgColor
+        activityIndicator.layer.borderWidth = 1
+        activityIndicator.layer.borderColor = phaedraDarkGreen.cgColor
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
     }
-    */
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

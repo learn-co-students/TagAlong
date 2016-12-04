@@ -45,9 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
-        print("app delegate working")
-
-
         //MARK: - sets the initial view controller
 
 //      let initialViewController = GetLocationViewController()
