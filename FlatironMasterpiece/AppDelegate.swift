@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
-
+//
         navController = UINavigationController()
-        var loginVC = LogInViewController()
+        let loginVC = LogInViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         self.navController?.pushViewController(loginVC, animated: false)
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-//      let initialViewController = SearchingForTagAlongViewController()
+//      let initialViewController = PreferenceViewController()
 //
 //       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
@@ -57,10 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-
-
-
-
 
         return true
     }
