@@ -207,10 +207,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let nav = UINavigationController(rootViewController: preferencesVC)
                     self.present(nav, animated: true, completion: nil)
                     
-                    
                 } else {
 
-                    
                     //TODO: - Notify user of error
                     print("error")
                     let loginErrorAlert = UIAlertController(title: "Invalid Credentials", message: "Please enter valid information.", preferredStyle: .alert)
