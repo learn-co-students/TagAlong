@@ -12,6 +12,7 @@ class SelectedRestaurantViewController: UIViewController {
     
     var restaurantView: RestaurantView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Restaurant Detail View"
@@ -23,16 +24,21 @@ class SelectedRestaurantViewController: UIViewController {
         restaurantView = RestaurantView()
         self.view = restaurantView
     }
-   
+    
+    func createTagAlong(user: String, date: String, location: [String: Any]) {
+        
+        //Things a tagalong needs:
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        "host" : "UserID", <-- should be collected when host confirms
+        //         "location" : [     <-- should be collected from host
+        //                "name" : "taco bell", <-- should be collected from host / restaurant conf card
+        //                "latitude" : "30",
+        //                "longitude" : "30"
+        //            ],
+        //         "date-time" : "figure out formatting here"
+        
+        
+        
+        
     }
-    */
-
 }
