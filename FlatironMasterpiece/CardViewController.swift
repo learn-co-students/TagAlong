@@ -19,8 +19,16 @@ class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
     
+    //erica's code
+    var restStore = RestaurantDataStore.sharedInstance
+    var restaurantArray = [Restaurant]()
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        self.restaurantArray = restStore.restaurantsArray
+        
+        swipeableView.numberOfActiveView = UInt(restStore.restaurantsArray.count)
         swipeableView.nextView = {
             return self.nextCardView()
         }
@@ -76,18 +84,22 @@ class CardViewController: UIViewController {
     
     // MARK: ()
     func nextCardView() -> UIView? {
-        let cardView = CardView(frame: swipeableView.bounds)
-        cardView.backgroundColor = getRandomPhaedraColor()
-//        cardView.backgroundColor = getRandomColor()
-        return cardView
-    }
-    
-    func getRandomColor() -> UIColor{
-        let red = CGFloat(drand48())
-        let green = CGFloat(drand48())
-        let blue = CGFloat(drand48())
         
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+      
+        while restaurantArray.count != 0{
+            let restaurant = restaurantArray.removeFirst()
+            let cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
+            cardView.backgroundColor = getRandomPhaedraColor()
+    
+            return cardView
+            
+        }
+        
+        //if i have a next card then return view if i do not return nil
+        
+       
+//        cardView.backgroundColor = getRandomColor()
+        return CardView(restaurant: nil, frame: swipeableView.bounds)
     }
     
     func getRandomPhaedraColor()-> UIColor {

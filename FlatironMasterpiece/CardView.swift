@@ -12,6 +12,23 @@ import UIKit
 class CardView: UIView {
     
     var restStore = RestaurantDataStore.sharedInstance
+    var restaurant: Restaurant!
+    
+   
+    
+   
+    init(restaurant:Restaurant?, frame:CGRect){
+        super.init(frame:frame)
+        
+        if restaurant == nil{
+            defaultSetup()
+        }else{
+            self.backgroundColor = UIColor.blue
+            self.restaurant = restaurant
+            setup()
+        }
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,6 +40,13 @@ class CardView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
+    
+    
+    func defaultSetup(){
+        
+    }
+    
+    
     
     func setup() {
         // Shadow
@@ -54,7 +78,8 @@ class CardView: UIView {
         restNameLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
         restNameLabel.backgroundColor = UIColor.yellow
         
-        restNameLabel.text = restStore.restaurantsArray[0].name
+        restNameLabel.text = restaurant.name
+        
         restNameLabel.textAlignment = .center
         self.addSubview(restNameLabel)
 
