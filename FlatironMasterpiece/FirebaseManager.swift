@@ -161,12 +161,13 @@ final class FirebaseManager {
         let tagAlongIDRef = tagAlongsRef.childByAutoId()
         
         // Tagalong Key
-        let tagAlongIDKey = tagAlongsRef.key
+        let tagAlongIDKey = tagAlongIDRef.key
         
         // Add Tagalong dictionary to Tagalong ID
         tagAlongIDRef.updateChildValues(tagAlongInfo)
         print("hey there")
         completion(tagAlongIDKey)
+        print(tagAlongIDKey)
         print("after completion")
         
     }
