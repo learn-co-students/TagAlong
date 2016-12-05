@@ -36,29 +36,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
-//        navController = UINavigationController()
-//        var loginVC = LogInViewController()
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-//
-//        print("app delegate working")
 
+        navController = UINavigationController()
+        var loginVC = LogInViewController()
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        self.navController?.pushViewController(loginVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
 
         //MARK: - sets the initial view controller
 
-      let initialViewController = CardViewController()
+//      let initialViewController = SearchingForTagAlongViewController()
+//
+//       let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
 
-       let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
 
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+
 
 
         return true
@@ -76,17 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(app,open: url,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
-    
+
 //    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
 //        let shouldOpen :Bool = FBSDKApplicationDelegate.sharedInstance().application(
 //            app,
 //            open: url as URL!,
 //            sourceApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String,
 //            annotation: nil)
-//        
-//        
+//
+//
 //        return shouldOpen
-//        
+//
 //    }
 //    func application(_ application: UIApplication, open url: URL, options: protocol<UIApplicationOpenURLOptionsKey, Any>) -> Bool {
 //        var handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey], annotation: options[UIApplicationOpenURLOptionsAnnotationKey])

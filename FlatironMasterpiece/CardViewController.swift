@@ -31,10 +31,9 @@ class CardViewController: UIViewController {
         swipeableView = ZLSwipeableView()
         swipeableView.backgroundColor = UIColor.red
         view.addSubview(swipeableView)
-        self.view.backgroundColor = UIColor.green
+        self.view.backgroundColor = phaedraOrange
         
         print("running")
-        
         
         swipeableView.didStart = {view, location in
             print("Did start swiping view at location: \(location)")
@@ -78,7 +77,8 @@ class CardViewController: UIViewController {
     // MARK: ()
     func nextCardView() -> UIView? {
         let cardView = CardView(frame: swipeableView.bounds)
-        cardView.backgroundColor = getRandomColor()
+        cardView.backgroundColor = getRandomPhaedraColor()
+//        cardView.backgroundColor = getRandomColor()
         return cardView
     }
     
@@ -88,6 +88,12 @@ class CardViewController: UIViewController {
         let blue = CGFloat(drand48())
         
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+    
+    func getRandomPhaedraColor()-> UIColor {
+        let phaedraColorArray:[UIColor] = [phaedraLightGreen, phaedraYellow, phaedraBeige, phaedraOliveGreen, phaedraDarkGreen]
+        let randomNum = Int(arc4random_uniform(UInt32(phaedraColorArray.count)))
+        return phaedraColorArray[randomNum]
     }
     
     

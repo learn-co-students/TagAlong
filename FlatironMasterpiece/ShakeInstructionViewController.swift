@@ -15,7 +15,6 @@ class ShakeInstructionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
-        self.title = "Shake"
     }
 
     override func loadView() {

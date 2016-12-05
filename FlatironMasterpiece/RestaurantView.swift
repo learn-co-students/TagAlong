@@ -8,7 +8,13 @@
 
 import UIKit
 
-class RestaurantView: UIView {
+protocol RestaurantViewDelegate: class {
+    func canDisplayImage()
+}
+
+class RestaurantView: UIView{
+    
+    weak var delegate: RestaurantViewDelegate?
 
     @IBOutlet var contentView: UIView!
     
@@ -17,14 +23,16 @@ class RestaurantView: UIView {
     @IBOutlet weak var selectedRestaurantAddressLabel: UILabel!
     @IBOutlet weak var restaurantPricingLabel: UILabel!
     
-    @IBAction func tagAlongSwitch(_ sender: UISwitch) {
-        //TODO: - add code for what to do when the user selects the "tag along" option
-        print("The user wants to tag along.")
+   
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        //TODO: - add code that will take the user back to deck view
     }
     
-    @IBAction func preferencesButtonTapped(_ sender: UIButton) {
-        //TODO: - add code that will take the user to their preferences page
-        print("The user wants to see their preferences.")
+    @IBAction func hostTagAlongTapped(_ sender: UIButton) {
+        //TODO: - add code that will create alert controller
+        delegate?.canDisplayImage()
+
     }
     
     init() {
