@@ -71,11 +71,15 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
             guard let user = self.user, let date = self.date, let location = self.location else { return }
 
-            // This function returns a dictionary - this dictionary should segue into next view controller
             
-            self.createTagAlong(user: user, date: date, location: location)
+            // Dummy Data
+            guard let user1 = self.user1 else { return }
+            
+            // This function returns a dictionary - this dictionary should segue into next view controller
+            let tagalongInfoDict = self.createTagAlong(user: user1, date: self.date1, location: self.location1)
 
-
+            FirebaseManager.createTagAlong(with: <#T##tagalongInfoDict#>, completion: <#T##(String) -> Void#>)
+            
             //segue way searchingForTagAlong vc
 
             let searchingVC = SearchingForTagAlongViewController()
