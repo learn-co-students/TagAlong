@@ -173,16 +173,21 @@ final class FirebaseManager {
     }
     
     //2 - update user with tagalong id
-    func updateUserWithTagAlongKey() {
+    static func updateUserWithTagAlongKey(key: String) {
         
         // Add tagalong key to users
+        // 1. Create tagalongs
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            guard let currentUser = currentUser else { return }
+            ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
+        }
         
-//        self.ref.child("users")
+        // 2. Create current tagalongs
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            guard let currentUser = currentUser else { return }
+            ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
+        }
         
-        
-        //        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
-        //            <#code#>
-        //        }
     }
     
     
@@ -191,7 +196,7 @@ final class FirebaseManager {
     static func createChatWithTagID(key: String) {
         
         //Create chat with tagalong key
-       self.chatRef = allChatsRef.child("\(key)")
+        self.chatRef = allChatsRef.child("\(key)")
         
     }
     
@@ -220,7 +225,7 @@ final class FirebaseManager {
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
         newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-
+            
             print("--------------------GETTING CALLED------------------")
             
             // 3. Extract the messageData from the snapshot
@@ -234,13 +239,13 @@ final class FirebaseManager {
                 text.characters.count > 0 {
                 
                 completion(id, name, text)
-
+                
             } else {
                 print("Error! Could not decode message data")
             }
             
             print("----------------------------------------------\n\n\n")
-        }) 
+        })
     }
     
     

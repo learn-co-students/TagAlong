@@ -86,16 +86,8 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
             //TODO:
             print("confirm tapped")
-//            guard let user = self.user, let date = self.date, let location = self.location else { return }
 
-            
-            // Dummy Data
-//            guard let user1 = self.user1 else { return }
-            
-            // This function returns a dictionary - this dictionary should segue into next view controller
-//            let tagalongInfoDict = self.createTagAlong(user: user1, date: self.date1, location: self.location1)
-//
-//            print(tagalongInfoDict)
+
             print("hey there before createtagalong")
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
                 
@@ -103,14 +95,13 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 
                 // Add tagalong key to chat
                 FirebaseManager.createChatWithTagID(key: key)
-                
                 print("Chat ID Being created")
                 
                 // Add tagalong key to users (current tagalong and tagalongs)
+                FirebaseManager.updateUserWithTagAlongKey(key: key)
                 
                 
-                
-                // send key to tableview so that guests can join
+                // Send key to tableview so that guests can join
                
                 
             })
