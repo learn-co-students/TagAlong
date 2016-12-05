@@ -43,10 +43,10 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             //call on function that creates a tagalong from Firebase Manager
             //segue way searchingForTagAlong vc
             
-            
             let searchingVC = SearchingForTagAlongViewController()
+            self.navigationController?.pushViewController(searchingVC, animated: true)
 //            let nav = UINavigationController(rootViewController: searchingVC)
-            self.navigationController?.present(searchingVC, animated: true, completion: nil)
+//            self.navigationController?.present(searchingVC, animated: true, completion: nil)
             
         })
         confirmTagAlongAlert.addAction(cancelAction)

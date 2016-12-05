@@ -63,7 +63,7 @@ class SearchingForTagAlongViewController: UIViewController {
         searchAgainButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         searchAgainButton.titleLabel?.textAlignment = .center
         searchAgainButton.translatesAutoresizingMaskIntoConstraints = false
-        searchAgainButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 290).isActive = true
+        searchAgainButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 340).isActive = true
         searchAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchAgainButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         searchAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
@@ -95,18 +95,15 @@ class SearchingForTagAlongViewController: UIViewController {
         print("User wants to return to deck view")
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-
+//        let shakeInstructionVC = ShakeInstructionViewController()
+//        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
 
     func seeOtherTagAlongs() {
         print("User wants to see other tagalongs")
         let tagAlongsVC = TagAlongViewController()
         self.navigationController?.pushViewController(tagAlongsVC, animated: true)
-
     }
-    
-    
-    
     
     
 
