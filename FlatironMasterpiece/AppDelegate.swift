@@ -45,12 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
-        print("app delegate working")
-
-
         //MARK: - sets the initial view controller
 
-//      let initialViewController = CardViewController()
+//      let initialViewController = GetLocationViewController()
 //
 //       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
@@ -59,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
+
 
 
         return true

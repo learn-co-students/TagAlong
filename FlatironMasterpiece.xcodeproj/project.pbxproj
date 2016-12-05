@@ -45,6 +45,7 @@
 		453921411DEC778700D19A45 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921401DEC778700D19A45 /* TableViewCell.swift */; };
 		453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E06B11DE8E8C6007EE25A /* RestaurantView.swift */; };
 		453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */; };
+		454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */; };
 		45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */; };
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
 		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
@@ -104,6 +105,7 @@
 		453921401DEC778700D19A45 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		453E06B11DE8E8C6007EE25A /* RestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedRestaurantViewController.swift; sourceTree = "<group>"; };
+		454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingForTagAlongViewController.swift; sourceTree = "<group>"; };
 		45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDataStore.swift; sourceTree = "<group>"; };
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				27AAFE3A1DDAC9AA00C08348 /* Info.plist */,
 				270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */,
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
+				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				452C599E1DE61E34005884EE /* Controllers */,
@@ -196,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
-				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				4539213E1DEC777300D19A45 /* TableViewCell.xib */,
 				452C59991DE5EABC005884EE /* SelectedRestaurant.xib */,
 			);
@@ -222,6 +224,7 @@
 				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
+				454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */,
 				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
@@ -453,6 +456,7 @@
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
 				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
+				454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */,
 				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */,
 				45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */,

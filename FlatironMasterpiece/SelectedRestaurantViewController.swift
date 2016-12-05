@@ -9,36 +9,75 @@
 import UIKit
 
 class SelectedRestaurantViewController: UIViewController {
-    
+
     var restaurantView: RestaurantView!
+    var tagAlongTapped:Bool = false
     
-    
+    // Information needed from Deck View
+    var user: String?
+    var date: Date?
+    var location: [String: Any]?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Restaurant Detail View"
+        restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
     }
-    
+
     override func loadView() {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
+        if !tagAlongTapped {
+            canDisplayImage()
+        }
     }
-    
-    func createTagAlong(user: String, date: String, location: [String: Any]) {
-        
-        //Things a tagalong needs:
 
-//        "host" : "UserID", <-- should be collected when host confirms
-        //         "location" : [     <-- should be collected from host
-        //                "name" : "taco bell", <-- should be collected from host / restaurant conf card
-        //                "latitude" : "30",
-        //                "longitude" : "30"
-        //            ],
-        //         "date-time" : "figure out formatting here"
+    
+    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
         
+        var tagAlonginfo: [String: Any] = [
+                "host" : user,
+                 "location" : location,
+                 "date-time" : date,
+        ]
         
-        
-        
+        return tagAlonginfo
     }
+
+}
+
+extension SelectedRestaurantViewController: RestaurantViewDelegate {
+
+    func canDisplayImage() {
+
+        let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            print("User clicked cancel")
+        })
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+            //TODO:
+            
+            guard let user = self.user, let date = self.date, let location = self.location else { return }
+            
+            // This function returns a dictionary - this dictionary should segue into next view controller
+            
+            self.createTagAlong(user: user, date: date, location: location)
+            
+            
+            //segue way searchingForTagAlong vc
+
+            
+            let searchingVC = SearchingForTagAlongViewController()
+//            let nav = UINavigationController(rootViewController: searchingVC)
+            self.navigationController?.present(searchingVC, animated: true, completion: nil)
+
+        })
+        confirmTagAlongAlert.addAction(cancelAction)
+        confirmTagAlongAlert.addAction(confirmAction)
+        self.present(confirmTagAlongAlert, animated: true, completion: nil)
+
+    }
+
 }
