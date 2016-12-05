@@ -33,7 +33,7 @@ class ChatViewController: JSQMessagesViewController {
         
         
         //Testing FirebaseManager 
-        FirebaseManager.createChatWithTagID()
+//        FirebaseManager.createChatWithTagID()
         
         // Testing on a real user
         self.senderId = FirebaseManager.currentUser

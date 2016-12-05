@@ -80,6 +80,8 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
             FirebaseManager.createTagAlong(with: tagalongInfoDict, completion: { (key) in
                 
+                print("------------------- IS BEING CALLED ------------------------")
+                
                 // Add tagalong key to chat
                 FirebaseManager.createChatWithTagID(key: key)
                 
@@ -87,14 +89,20 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 // Add tagalong key to users (current tagalong and tagalongs)
                 // send key to tableview so that guests can join
                 
-                
+               
                 
             })
             
-            //segue way searchingForTagAlong vc
+            // Testing Chat
 
-            let searchingVC = SearchingForTagAlongViewController()
-            self.navigationController?.pushViewController(searchingVC, animated: true)
+            let chatVC = ChatViewController()
+            self.navigationController?.pushViewController(chatVC, animated: true)
+            let nav = UINavigationController(rootViewController: chatVC)
+            self.navigationController?.present(chatVC, animated: true, completion: nil)
+            
+            //segue way searchingForTagAlong vc
+//            let searchingVC = SearchingForTagAlongViewController()
+//            self.navigationController?.pushViewController(searchingVC, animated: true)
 //            let nav = UINavigationController(rootViewController: searchingVC)
 //            self.navigationController?.present(searchingVC, animated: true, completion: nil)
 
