@@ -156,7 +156,7 @@ class CardView: UIView {
         restDistanceLabel.text = "0.5 mi"
         restDistanceLabel.textAlignment = .center
         self.addSubview(restDistanceLabel)
-<<<<<<< HEAD
+
 //        restDistanceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        restDistanceLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
 //        restDistanceLabel.backgroundColor = UIColor.yellow
