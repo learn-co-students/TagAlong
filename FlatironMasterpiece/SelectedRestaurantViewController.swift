@@ -17,6 +17,16 @@ class SelectedRestaurantViewController: UIViewController {
     var user: String?
     var date: Date?
     var location: [String: Any]?
+    
+    // Dummy Data
+    var user1 = FirebaseManager.currentUser
+    var date1 = Date()
+    var location1: [String: Any] = [
+        "restaurant" : "Peter Luger Stake House",
+        "lat" : -45,
+        "long": 35
+    ]
+    
 
 
     override func viewDidLoad() {
@@ -62,7 +72,7 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             guard let user = self.user, let date = self.date, let location = self.location else { return }
 
             // This function returns a dictionary - this dictionary should segue into next view controller
-
+            
             self.createTagAlong(user: user, date: date, location: location)
 
 
