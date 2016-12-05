@@ -10,17 +10,17 @@ import UIKit
 import FirebaseAuth
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
-
+    
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-
+    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
+    
     let store = UsersDataStore.sharedInstance
-
+    
     var usersCuisineSelectionsArray:[String] = []
-
+    
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
     var dineWithCompanyLabel = UILabel()
@@ -31,25 +31,26 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var cuisineCollectionView:UICollectionView!
     let cuisineReuseIdentifier = "Cuisine Cell"
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
-
+    
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
-
+  //  let cuisineImage = [UIImage(named: "Asian")!]
+    
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = phaedraBeige
         createSegmentedController()
         layoutCuisineCollectionView()
         formatButtons()
         formatLabels()
-
-
-
-
+        
+        
+        
+        
     }
-
+    
     func formatLabels() {
         view.addSubview(preferencesLabel)
         preferencesLabel.text = "PREFERENCES"
@@ -60,7 +61,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-
+        
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
@@ -69,7 +70,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 10).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-
+        
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Choose Your Cuisines"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
@@ -79,8 +80,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisinePreferencesLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 165).isActive = true
     }
-
-
+    
+    
     func createSegmentedController() {
         let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
         let budgetSC = UISegmentedControl(items: budgetArray)
@@ -98,10 +99,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
     }
-
-
+    
+    
     func layoutCuisineCollectionView() {
-
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 90, height: 90)
@@ -111,45 +112,45 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.register(CuisineCollectionViewCell.self, forCellWithReuseIdentifier: cuisineReuseIdentifier)
         cuisineCollectionView.backgroundColor = phaedraDarkGreen
         view.addSubview(cuisineCollectionView)
-
+        
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 185).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
     }
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cuisineArray.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cuisineReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
-
+        
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
-
+        
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Hey SELECTING ME!!")
         let selectedCuisine = cuisineArray[indexPath.row]
-
+        
         //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         if store.preferredCuisineArray.contains(selectedCuisine) {
-
+            
             cell.toggledSelectedState()
-
+            
             let index = store.preferredCuisineArray.index(of: selectedCuisine)
             guard let unwrappedindex = index else { return }
-
+            
             store.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(store.preferredCuisineArray, forKey: "UserCuisineArray")
             print("array is now \(store.preferredCuisineArray)")
@@ -164,7 +165,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         // Johann end
     }
-
+    
     func printChosenBudget(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -183,9 +184,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             print("user chose 💰💰")
         }
     }
-
+    
     func formatButtons() {
-
+        
         view.addSubview(replayTutorialButton)
         replayTutorialButton.backgroundColor = phaedraLightGreen
         replayTutorialButton.layer.cornerRadius = 5
@@ -203,7 +204,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
-
+        
         view.addSubview(logoutButton)
         logoutButton.backgroundColor = phaedraOrange
         logoutButton.layer.cornerRadius = 5
@@ -222,7 +223,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         view.addSubview(replayTutorialButton)
-
+        
         view.addSubview(savePreferencesButton)
         savePreferencesButton.backgroundColor = phaedraLightGreen
         savePreferencesButton.layer.cornerRadius = 5
@@ -239,20 +240,20 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
         savePreferencesButton.setTitleColor(phaedraYellow, for: .highlighted)
-
+        
     }
-
+    
     // MARK: - selector functions for buttons
-
+    
     // TODO: - write function that displays replayTutorial
     func replayTutorial() {
         print("Replay tutorial requested.")
     }
-
+    
     // TODO: - write function that logs user out of the app
     func logoutUser() {
         print("User tapped button to logout.")
-
+        
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
@@ -260,27 +261,37 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         } catch {
             print("Logout of app error")
         }
-
+        
         let loginVC = LogInViewController()
         let nav = UINavigationController(rootViewController: loginVC)
         self.present(nav, animated: true, completion: nil)
-
+        
     }
-
+    
     // TODO: -
     func savePreferences() {
         // Send to shake instruction view controller
-       let user = FIRAuth.auth()?.currentUser
-      guard let unwrappedUser = user else { return }
+        let user = FIRAuth.auth()?.currentUser
+        guard let unwrappedUser = user else { return }
         print(unwrappedUser)
         if   FIRAuth.auth()?.currentUser != nil {
             
         }
         print("Save preferences tapped")
+        let saved = store.preferredCuisineArray
+        
+        var dict = [String: Any]()
+        for save in saved{
+            dict[save] = true
+        }
+    
+        FirebaseManager.savePref(dictionary: dict)
+        
         print(store.preferredCuisineArray)
+        
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-
+        
     }
-
+    
 }

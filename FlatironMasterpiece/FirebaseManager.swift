@@ -47,6 +47,39 @@ final class FirebaseManager {
         })
     }
     
+    //    func savePreferences() {
+    //        // Send to shake instruction view controller
+    //        let user = FIRAuth.auth()?.currentUser
+    //        guard let unwrappedUser = user else { return }
+    //        print(unwrappedUser)
+    //        if   FIRAuth.auth()?.currentUser != nil {
+    //
+    //        }
+    //        print("Save preferences tapped")
+    //        print(store.preferredCuisineArray)
+    //        let shakeInstructionVC = ShakeInstructionViewController()
+    //        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
+    //
+    //    }
+    //    func savePreferencesToFirebase() {
+    //        if FIRAuth.auth()?.currentUser?.uid != nil {
+    //       //     let unique = FIRAuth.auth()?.currentUser?.uid
+    //        //    FIRDatabase.database().reference().child("users").child(unique).observeSingleEvent(of: .value, with: { (snapshot) in
+    //
+    //            })
+    //        }
+    //    }
+    class func savePref(dictionary: [String: Any]) {
+        print(dictionary)
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            let unique = FIRAuth.auth()?.currentUser?.uid
+            print(unique!)
+            //    FIRDatabase.database().reference().setValuesForKeys(dictionary)
+            FIRDatabase.database().reference().child("users").child(unique!).child("preferences").updateChildValues(dictionary)
+            
+        }
+    }
+    
     static func sendEmailVerification() {
         
         FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
@@ -181,7 +214,7 @@ final class FirebaseManager {
     static func createChatWithTagID() {
         
         //Using dummy tagalong key
-       self.chatRef = allChatsRef.child("TagalongID0")
+        self.chatRef = allChatsRef.child("TagalongID0")
         
     }
     
@@ -210,7 +243,7 @@ final class FirebaseManager {
         
         // 2. Observe every child item that has been added, and will be added, at the messages location.
         newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-
+            
             print("--------------------GETTING CALLED------------------")
             
             // 3. Extract the messageData from the snapshot
@@ -224,7 +257,7 @@ final class FirebaseManager {
                 text.characters.count > 0 {
                 
                 completion(id, name, text)
-
+                
             } else {
                 print("Error! Could not decode message data")
             }
