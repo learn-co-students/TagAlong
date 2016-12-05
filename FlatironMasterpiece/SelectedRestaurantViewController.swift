@@ -17,15 +17,17 @@ class SelectedRestaurantViewController: UIViewController {
         super.viewDidLoad()
         restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
+        if !tagAlongTapped {
+            canDisplayImage()
+        }
     }
     
     override func loadView() {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
-        if !tagAlongTapped {
-            canDisplayImage()
-        }
+        
+        
     }
 
 }

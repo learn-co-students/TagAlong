@@ -13,9 +13,7 @@ class RestaurantDataStore {
     
     static let sharedInstance = RestaurantDataStore()
     
-    var locationsArray: [Restaurant] = []
-    
-   
+    var restaurantsArray: [Restaurant] = []
     
     var restaurantsInJSON:json!
     
@@ -30,9 +28,9 @@ class RestaurantDataStore {
         
         for array in resultsArray {
             let newRestaurant = Restaurant(dictionary: array as! json)
-            locationsArray.append(newRestaurant)
-            dump(locationsArray)
-            print("\nrestaurant array count is \(locationsArray.count)\n")
+            restaurantsArray.append(newRestaurant)
+            dump(restaurantsArray)
+            print("\nrestaurant array count is \(restaurantsArray.count)\n")
         }
     
         

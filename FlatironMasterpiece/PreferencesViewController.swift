@@ -367,5 +367,6 @@ extension PreferenceViewController {
         print("random cuisine is: \(randomCuisine)")
         return randomCuisine
     }
+    
 }
 
