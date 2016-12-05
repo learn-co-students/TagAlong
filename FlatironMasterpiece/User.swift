@@ -57,6 +57,7 @@ class User {
             "industry" : industry,
             //3 - include the favoritecuisinesarray
 //            "favoriteCuisines": favoriteCuisines
+            
         ]
     }
     

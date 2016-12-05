@@ -87,6 +87,9 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 
                 
                 // Add tagalong key to users (current tagalong and tagalongs)
+                
+                
+                
                 // send key to tableview so that guests can join
                 
                
@@ -94,7 +97,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             })
             
             // Testing Chat
-
             let chatVC = ChatViewController()
             self.navigationController?.pushViewController(chatVC, animated: true)
             let nav = UINavigationController(rootViewController: chatVC)

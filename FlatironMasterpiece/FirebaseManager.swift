@@ -173,6 +173,11 @@ final class FirebaseManager {
     //2 - update user with tagalong id
     func updateUserWithTagAlongKey() {
         
+        // Add tagalong key to users
+        
+        self.ref.child("users")
+        
+        
         //        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
         //            <#code#>
         //        }
