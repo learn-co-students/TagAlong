@@ -16,6 +16,14 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
 
+    
+    //Populate tableview using a Firebase call for tagalongs
+    // Things we need from tagalongs
+    // Host key --> name, industry
+    // Tagalong Location (restaurant name)
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraOliveGreen
@@ -23,6 +31,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         createFakeUsers()
         layoutTableView()
         layoutScrollView()
+        
+        getTagalongs()
     }
     
     func formatLabels() {
@@ -99,6 +109,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         view.addSubview(myScrollView)
     
+    }
+    
+    //Firebase functions
+    
+    func getTagalongs() {
+        print("---------------THIS IS BEING CALLED--------------------")
+        let tagalong = FirebaseManager.ref.child("tagalongs").key
+        
+        
     }
     
     
