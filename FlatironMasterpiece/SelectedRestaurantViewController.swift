@@ -27,6 +27,23 @@ class SelectedRestaurantViewController: UIViewController {
         "long": 35
     ]
     
+//    var tagalongInfoDict: [String: Any] [
+//        "user" : self.user1,
+//        "date" : self.date1,
+//        "location" : self.location1
+//    ]
+    
+    var tagalongInfo: [String: Any] = [
+        "user" : "Christina",
+        "date" : "December 1",
+        "location" : [
+            "restaurant" : "Peter Luger Stake House",
+            "lat" : -45,
+            "long": 35
+        ]
+    
+    ]
+    
 
 
     override func viewDidLoad() {
@@ -68,39 +85,42 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         })
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
             //TODO:
-
-            guard let user = self.user, let date = self.date, let location = self.location else { return }
+            print("confirm tapped")
+//            guard let user = self.user, let date = self.date, let location = self.location else { return }
 
             
             // Dummy Data
-            guard let user1 = self.user1 else { return }
+//            guard let user1 = self.user1 else { return }
             
             // This function returns a dictionary - this dictionary should segue into next view controller
-            let tagalongInfoDict = self.createTagAlong(user: user1, date: self.date1, location: self.location1)
-
-            FirebaseManager.createTagAlong(with: tagalongInfoDict, completion: { (key) in
+//            let tagalongInfoDict = self.createTagAlong(user: user1, date: self.date1, location: self.location1)
+//
+//            print(tagalongInfoDict)
+            print("hey there before createtagalong")
+            FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
                 
                 print("------------------- IS BEING CALLED ------------------------")
                 
                 // Add tagalong key to chat
                 FirebaseManager.createChatWithTagID(key: key)
                 
+                print("Chat ID Being created")
                 
                 // Add tagalong key to users (current tagalong and tagalongs)
                 
                 
                 
                 // send key to tableview so that guests can join
-                
                
                 
             })
             
-            // Testing Chat
+            // Testing Chat - should segue to
+        
             let chatVC = ChatViewController()
-            self.navigationController?.pushViewController(chatVC, animated: true)
-            let nav = UINavigationController(rootViewController: chatVC)
             self.navigationController?.present(chatVC, animated: true, completion: nil)
+//            
+
             
             //segue way searchingForTagAlong vc
 //            let searchingVC = SearchingForTagAlongViewController()

@@ -165,8 +165,9 @@ final class FirebaseManager {
         
         // Add Tagalong dictionary to Tagalong ID
         tagAlongIDRef.updateChildValues(tagAlongInfo)
-        
+        print("hey there")
         completion(tagAlongIDKey)
+        print("after completion")
         
     }
     
@@ -175,7 +176,7 @@ final class FirebaseManager {
         
         // Add tagalong key to users
         
-        self.ref.child("users")
+//        self.ref.child("users")
         
         
         //        createTagAlong(with: <#T##[String : Any]#>) { (<#String#>) in
