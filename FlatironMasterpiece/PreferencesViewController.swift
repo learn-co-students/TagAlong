@@ -54,7 +54,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     //NOTE: - user and rest properties
     let userStore = UsersDataStore.sharedInstance
-    var usersCuisineSelectionsArray:[String] = []
+    
     var randomCuisine  = ""
     let restStore = RestaurantDataStore.sharedInstance
     
@@ -313,6 +313,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     func savePreferences() {
+         getLocation()
         print("Save preferences tapped")
         // Send to shake instruction view controller
         let user = FIRAuth.auth()?.currentUser
@@ -329,10 +330,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         for save in saved{
             dict[save] = true
         }
-    
+   
         FirebaseManager.savePref(dictionary: dict)
         
         print(store.preferredCuisineArray)
+        self.getRandomCuisine()
         
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
@@ -341,14 +343,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
 
         
-        self.getRandomCuisine()
-        getLocation()
+    
         
-    }
+    
         
 //end of class
-}
 
+}
 extension PreferenceViewController {
     
     func getLocation() {

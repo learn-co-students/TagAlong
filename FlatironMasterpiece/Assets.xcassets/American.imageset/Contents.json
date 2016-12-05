@@ -2,11 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "American.png",
-=======
-      "filename" : "american.png",
->>>>>>> 3c92c3e42571aa1466b053457a2c9a2ab296c176
+
       "scale" : "1x"
     },
     {
@@ -16,10 +13,9 @@
     },
     {
       "idiom" : "universal",
-<<<<<<< HEAD
-=======
+
       "filename" : "american3x.png",
->>>>>>> 3c92c3e42571aa1466b053457a2c9a2ab296c176
+
       "scale" : "3x"
     }
   ],
