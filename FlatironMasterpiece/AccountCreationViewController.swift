@@ -27,6 +27,12 @@ struct Constants {
 
 class AccountCreationViewController: UIViewController {
 
+    let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
+    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
+
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -36,6 +42,7 @@ class AccountCreationViewController: UIViewController {
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -46,11 +53,24 @@ class AccountCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        //Just this line creates the blur
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"foodWoodenTable")!)
+        //below this creates the actual picture
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "foodWoodenTable")?.draw(in: self.view.bounds)
+
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+
+        UIGraphicsEndImageContext()
+
+        self.view.backgroundColor = UIColor(patternImage: image)
+
         createViews()
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        view.backgroundColor = UIColor.white
+ //       view.backgroundColor = phaedraLightGreen
         firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
         lastNameEntry.accessibilityLabel = Constants.LASTNAME
         emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
@@ -110,19 +130,25 @@ extension AccountCreationViewController {
         // Create Account Label
         view.addSubview(createAccountLabel)
         createAccountLabel.text = "Create Account"
+        createAccountLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
+        createAccountLabel.textColor = UIColor.white
         createAccountLabel.textAlignment = .center
         createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
         // First Name Textfield
         view.addSubview(firstNameEntry)
-        firstNameEntry.placeholder = "  First Name"
-        firstNameEntry.layer.borderWidth = 1
+        firstNameEntry.placeholder = "First Name"
+
+        firstNameEntry.backgroundColor = UIColor.white
+        firstNameEntry.textAlignment = .center
+        firstNameEntry.layer.borderWidth = 2
         firstNameEntry.layer.cornerRadius = 5
-        firstNameEntry.layer.borderColor = UIColor.lightGray.cgColor
+        firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
         firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 30).isActive = true
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -131,10 +157,14 @@ extension AccountCreationViewController {
 
         // Last Name Textfield
         view.addSubview(lastNameEntry)
-        lastNameEntry.placeholder = "  Last Name"
-        lastNameEntry.layer.borderWidth = 1
+        lastNameEntry.placeholder = "Last Name"
+        lastNameEntry.textAlignment = .center
+        lastNameEntry.layer.borderWidth = 2
         lastNameEntry.layer.cornerRadius = 5
-        lastNameEntry.layer.borderColor = UIColor.lightGray.cgColor
+        lastNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
+        lastNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        lastNameEntry.backgroundColor = UIColor.white
+
         lastNameEntry.translatesAutoresizingMaskIntoConstraints = false
         lastNameEntry.topAnchor.constraint(equalTo: firstNameEntry.bottomAnchor, constant: 10).isActive = true
         lastNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -143,10 +173,13 @@ extension AccountCreationViewController {
 
         // Email Address Texfield
         view.addSubview(emailEntry)
-        emailEntry.placeholder = "  Email Address"
-        emailEntry.layer.borderWidth = 1
+        emailEntry.placeholder = "Email Address"
+        emailEntry.layer.borderWidth = 2
         emailEntry.layer.cornerRadius = 5
-        emailEntry.layer.borderColor = UIColor.lightGray.cgColor
+        emailEntry.layer.borderColor = phaedraDarkGreen.cgColor
+        emailEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        emailEntry.textAlignment = .center
+        emailEntry.backgroundColor = UIColor.white
         emailEntry.translatesAutoresizingMaskIntoConstraints = false
         emailEntry.topAnchor.constraint(equalTo: lastNameEntry.bottomAnchor, constant: 10).isActive = true
         emailEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -155,10 +188,14 @@ extension AccountCreationViewController {
 
         // Password Textfield
         view.addSubview(passwordEntry)
-        passwordEntry.placeholder = "  Password"
-        passwordEntry.layer.borderWidth = 1
+        passwordEntry.placeholder = "Password"
+        passwordEntry.layer.borderWidth = 2
         passwordEntry.layer.cornerRadius = 5
-        passwordEntry.layer.borderColor = UIColor.lightGray.cgColor
+        passwordEntry.layer.borderColor = phaedraDarkGreen.cgColor
+        passwordEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordEntry.textAlignment = .center
+        passwordEntry.backgroundColor = UIColor.white
+
         passwordEntry.translatesAutoresizingMaskIntoConstraints = false
         passwordEntry.topAnchor.constraint(equalTo: emailEntry.bottomAnchor, constant: 10).isActive = true
         passwordEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -167,10 +204,14 @@ extension AccountCreationViewController {
 
         // Password Verification Textfield
         view.addSubview(passwordVerification)
-        passwordVerification.placeholder = "  Verify Password"
-        passwordVerification.layer.borderWidth = 1
+        passwordVerification.placeholder = "Verify Password"
+        passwordVerification.layer.borderWidth = 2
         passwordVerification.layer.cornerRadius = 5
-        passwordVerification.layer.borderColor = UIColor.lightGray.cgColor
+        passwordVerification.layer.borderColor = phaedraDarkGreen.cgColor
+        passwordVerification.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordVerification.textAlignment = .center
+
+        passwordVerification.backgroundColor = UIColor.white
         passwordVerification.translatesAutoresizingMaskIntoConstraints = false
         passwordVerification.topAnchor.constraint(equalTo: passwordEntry.bottomAnchor, constant: 10).isActive = true
         passwordVerification.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -179,10 +220,13 @@ extension AccountCreationViewController {
 
         // Industry Textfield
         view.addSubview(industryEntry)
-        industryEntry.placeholder = "  Industry"
-        industryEntry.layer.borderWidth = 1
+        industryEntry.placeholder = "Industry"
+        industryEntry.layer.borderWidth = 2
         industryEntry.layer.cornerRadius = 5
-        industryEntry.layer.borderColor = UIColor.lightGray.cgColor
+        industryEntry.layer.borderColor = phaedraDarkGreen.cgColor
+        industryEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        industryEntry.textAlignment = .center
+        industryEntry.backgroundColor = UIColor.white
         industryEntry.translatesAutoresizingMaskIntoConstraints = false
         industryEntry.topAnchor.constraint(equalTo: passwordVerification.bottomAnchor, constant: 10).isActive = true
         industryEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -191,10 +235,13 @@ extension AccountCreationViewController {
 
         // Job Title Textfield
         view.addSubview(jobEntry)
-        jobEntry.placeholder = "  Job Title"
-        jobEntry.layer.borderWidth = 1
+        jobEntry.placeholder = "Job Title"
+        jobEntry.layer.borderWidth = 2
         jobEntry.layer.cornerRadius = 5
-        jobEntry.layer.borderColor = UIColor.lightGray.cgColor
+        jobEntry.layer.borderColor = phaedraDarkGreen.cgColor
+        jobEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        jobEntry.textAlignment = .center
+        jobEntry.backgroundColor = UIColor.white
         jobEntry.translatesAutoresizingMaskIntoConstraints = false
         jobEntry.topAnchor.constraint(equalTo: industryEntry.bottomAnchor, constant: 10).isActive = true
         jobEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -205,7 +252,12 @@ extension AccountCreationViewController {
         view.addSubview(createAccountButton)
         createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
         createAccountButton.setTitle("Create Account", for: UIControlState.normal)
-        createAccountButton.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        createAccountButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15.0)
+        createAccountButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
+        createAccountButton.backgroundColor = phaedraYellow
+        createAccountButton.layer.borderColor = phaedraDarkGreen.cgColor
+        createAccountButton.layer.borderWidth = 2
+        createAccountButton.layer.cornerRadius = 6
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
         createAccountButton.topAnchor.constraint(equalTo: jobEntry.bottomAnchor, constant: 40).isActive = true
         createAccountButton.specialConstrain(to: view)
@@ -258,7 +310,7 @@ extension AccountCreationViewController {
 
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
-                
+
             } else {
                     print("error!")
                     let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
