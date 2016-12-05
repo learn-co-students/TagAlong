@@ -19,10 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-
-    
     var chatID: String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
