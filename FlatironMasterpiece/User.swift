@@ -17,6 +17,9 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
+
+    let cuisines = [String]()
+
     
     //1 -create a favoriteCuisines property from a bunch of cuisines
 //    let faveCuisine1: String
@@ -29,6 +32,7 @@ class User {
 //        return [faveCuisine1, faveCuisine2, faveCuisine3, faveCuisine4, faveCuisine5, faveCuisine6]
 //    }
     
+
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
         
 //    init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String, faveCuisine1: String, faveCuisine2: String, faveCuisine3: String, faveCuisine4: String, faveCuisine5: String, faveCuisine6: String) {
@@ -55,8 +59,10 @@ class User {
             "lastName" : lastName,
             "jobTitle" : jobTitle,
             "industry" : industry,
+
             //3 - include the favoritecuisinesarray
 //            "favoriteCuisines": favoriteCuisines
+
         ]
     }
     

@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
+
         navController = UINavigationController()
         var loginVC = LogInViewController()
         let frame = UIScreen.main.bounds
@@ -59,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
+
+
         return true
     }
 
@@ -74,17 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(app,open: url,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
-    
+
 //    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
 //        let shouldOpen :Bool = FBSDKApplicationDelegate.sharedInstance().application(
 //            app,
 //            open: url as URL!,
 //            sourceApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String,
 //            annotation: nil)
-//        
-//        
+//
+//
 //        return shouldOpen
-//        
+//
 //    }
 //    func application(_ application: UIApplication, open url: URL, options: protocol<UIApplicationOpenURLOptionsKey, Any>) -> Bool {
 //        var handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey], annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
