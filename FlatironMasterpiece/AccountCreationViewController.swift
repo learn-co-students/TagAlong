@@ -12,6 +12,7 @@ import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
+import CoreLocation
 
 struct Constants {
     static let FIRSTNAME = "firstNameTextField"
@@ -25,7 +26,7 @@ struct Constants {
 }
 
 
-class AccountCreationViewController: UIViewController {
+class AccountCreationViewController: UIViewController, CLLocationManagerDelegate {
 
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
@@ -49,11 +50,29 @@ class AccountCreationViewController: UIViewController {
     var password = false
     var industry = false
     var jobtitle = false
-
+var manager = CLLocationManager()
+    
+    
+    func Locate() {
+        
+        manager.delegate = self
+        
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        func locationManager(manager: CLLocationManager,
+                             didChangeAuthorizationStatus status: CLAuthorizationStatus)
+        {
+            if status == .authorizedAlways || status == .authorizedWhenInUse {
+                manager.startUpdatingLocation()
+                // ...
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        Locate()
+        
         //Just this line creates the blur
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"foodWoodenTable")!)
         //below this creates the actual picture
@@ -67,8 +86,7 @@ class AccountCreationViewController: UIViewController {
         self.view.backgroundColor = UIColor(patternImage: image)
 
         createViews()
-
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+                let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
  //       view.backgroundColor = phaedraLightGreen
         firstNameEntry.accessibilityLabel = Constants.FIRSTNAME

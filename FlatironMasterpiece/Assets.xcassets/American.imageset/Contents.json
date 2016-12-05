@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "american.png",
+      "filename" : "American.png",
+
       "scale" : "1x"
     },
     {
@@ -12,7 +13,9 @@
     },
     {
       "idiom" : "universal",
+
       "filename" : "american3x.png",
+
       "scale" : "3x"
     }
   ],

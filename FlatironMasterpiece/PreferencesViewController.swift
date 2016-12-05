@@ -1,4 +1,5 @@
 
+
 //
 //  PracticeViewController.swift
 //  FlatironMasterpiece
@@ -14,15 +15,25 @@ import GooglePlaces
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
 
-    
+
+
+
+
     //NOTE: - UI properties
+
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
+    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
 
     let store = UsersDataStore.sharedInstance
+
+
+    var usersCuisineSelectionsArray:[String] = []
+
+
+
 
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
@@ -35,45 +46,49 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let cuisineReuseIdentifier = "Cuisine Cell"
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
 
-
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+  //  let cuisineImage = [UIImage(named: "Asian")!]
 
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
-    
+
+
     //NOTE: - user and rest properties
     let userStore = UsersDataStore.sharedInstance
-    var usersCuisineSelectionsArray:[String] = []
+
     var randomCuisine  = ""
     let restStore = RestaurantDataStore.sharedInstance
-    
+
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
-    
+
     //these are example lat and long for chelsea
     //    var latitude: Double = 40.748944899999998
     //    var longitude: Double = -74.0002432
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = phaedraBeige
         createSegmentedController()
         layoutCuisineCollectionView()
         formatButtons()
         formatLabels()
 
-        
+
+
         print("getlocationVC is working")
         placesClient = GMSPlacesClient.shared()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+
 
     }
 
@@ -170,16 +185,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+
         if userStore.preferredCuisineArray.contains(selectedCuisine) {
-            
+
             cell.toggledSelectedState()
-            
+
             let index = userStore.preferredCuisineArray.index(of: selectedCuisine)
             guard let unwrappedindex = index else { return }
-            
+
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
             print("array is now \(userStore.preferredCuisineArray)")
+
 
         }else{
             if cell.isHighlighted == false {
@@ -295,46 +312,64 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    
     func savePreferences() {
+         getLocation()
         print("Save preferences tapped")
         // Send to shake instruction view controller
-       let user = FIRAuth.auth()?.currentUser
-      guard let unwrappedUser = user else { return }
+        let user = FIRAuth.auth()?.currentUser
+        guard let unwrappedUser = user else { return }
         print(unwrappedUser)
         if   FIRAuth.auth()?.currentUser != nil {
-            
+
         }
-        
+
+        print("Save preferences tapped")
+        let saved = store.preferredCuisineArray
+
+        var dict = [String: Any]()
+        for save in saved{
+            dict[save] = true
+        }
+
+        FirebaseManager.savePref(dictionary: dict)
+
+        print(store.preferredCuisineArray)
         self.getRandomCuisine()
-        getLocation()
+
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-    }
-        
-//end of class
-}
 
+    }
+
+
+
+
+
+
+
+//end of class
+
+}
 extension PreferenceViewController {
-    
+
     func getLocation() {
         print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
-            
+
             if let error = error {
                 print("there is an error in getlocation")
                 print("this is the \(error.localizedDescription)")
                 return
             }
-            
+
             guard let placeLikelihoodList = placeLikelihoodList else { return }
-            
+
             guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
-            
+
             let placeName = place.name
             //Place name is Public School 33
             let placeAddressComponents = place.addressComponents
-            
+
             guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
             //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
             let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
@@ -344,22 +379,22 @@ extension PreferenceViewController {
             print("Place coordinates are \(placeCoordinates)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
-            
-            
+
+
             // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
-        
+
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.randomCuisine, completion: { (JSON) in
                 self.restStore.restaurantsInJSON = JSON
                 self.restStore.filterSearchedRestaurants()
             })
-            
-            
-            
+
+
+
         })
     }
 
     func getRandomCuisine()->String {
-        
+
         let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
 //        for rest in userStore.preferredCuisineArray {
 //            randomRest =
@@ -368,5 +403,5 @@ extension PreferenceViewController {
         print("random cuisine is: \(randomCuisine)")
         return randomCuisine
     }
-}
 
+}
