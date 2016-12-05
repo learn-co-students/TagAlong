@@ -157,10 +157,13 @@ final class FirebaseManager {
         //            "date-time" : "figure out formatting here"
         //        ] as [String : Any]
         
+        // Tagalong ID
         let tagAlongIDRef = tagAlongsRef.childByAutoId()
         
+        // Tagalong Key
         let tagAlongIDKey = tagAlongsRef.key
         
+        // Add Tagalong dictionary to Tagalong ID
         tagAlongIDRef.updateChildValues(tagAlongInfo)
         
         completion(tagAlongIDKey)
