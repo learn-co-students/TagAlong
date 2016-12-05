@@ -78,7 +78,15 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             // This function returns a dictionary - this dictionary should segue into next view controller
             let tagalongInfoDict = self.createTagAlong(user: user1, date: self.date1, location: self.location1)
 
-            FirebaseManager.createTagAlong(with: <#T##tagalongInfoDict#>, completion: <#T##(String) -> Void#>)
+            FirebaseManager.createTagAlong(with: tagalongInfoDict, completion: { (key) in
+                
+                // Add tagalong key to chat
+                // Add tagalong key to users (current tagalong and tagalongs)
+                // send key to tableview so that guests can join
+                
+                
+                
+            })
             
             //segue way searchingForTagAlong vc
 
