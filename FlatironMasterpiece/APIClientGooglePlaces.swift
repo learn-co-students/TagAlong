@@ -25,15 +25,15 @@ class APIClientGooglePlaces {
         
         switch queryString {
             case "american":
-            query = "cheeseburger+sandwich+steak+seafood+american"
+            query = "american"
             case "asian":
-            query = "chinese+japanese+sushi+thai+korean+asian"
+            query = "asian"
             case "italian":
-            query = "pizza+pasta+seafood+meatballs+italian"
+            query = "italian"
             case "healthy":
-            query = "salads+healthy+smoothies+tea"
+            query = "healthy"
             case "latin":
-            query = "latin+mexican+taco+burrito"
+            query = "latin"
             default:
             query = "fastfood"
         }
