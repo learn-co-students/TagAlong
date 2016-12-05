@@ -181,10 +181,10 @@ final class FirebaseManager {
     
     //MARK: - Tagalong Message Methods
     
-    static func createChatWithTagID() {
+    static func createChatWithTagID(key: String) {
         
-        //Using dummy tagalong key
-       self.chatRef = allChatsRef.child("TagalongID0")
+        //Create chat with tagalong key
+       self.chatRef = allChatsRef.child("\(key)")
         
     }
     

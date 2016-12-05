@@ -81,6 +81,9 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             FirebaseManager.createTagAlong(with: tagalongInfoDict, completion: { (key) in
                 
                 // Add tagalong key to chat
+                FirebaseManager.createChatWithTagID(key: key)
+                
+                
                 // Add tagalong key to users (current tagalong and tagalongs)
                 // send key to tableview so that guests can join
                 
