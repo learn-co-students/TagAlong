@@ -74,7 +74,7 @@ class CardView: UIView {
         
         
         
-<<<<<<< HEAD
+
 
 //        self.addSubview(restCostLabel)
 //        //        restCostLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -167,17 +167,7 @@ class CardView: UIView {
 //        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.25, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
 
         restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.78, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
-=======
-        //        restDistanceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        //        restDistanceLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        //        restDistanceLabel.backgroundColor = UIColor.yellow
-        //        restDistanceLabel.topAnchor.constraint(equalTo: restCuisineLabel.bottomAnchor, constant: 20).isActive = true
-        //        restDistanceLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 40).isActive = true
-        //
-        //
-        //        var dumblabel = UILabel(frame: CGRect(x: self.bounds.width * 0.25, y: self.bounds.height * 0.43, width: self.bounds.width * 0.5, height: self.bounds.width * 0.15))
-        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.71, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
->>>>>>> e7697aad45920476426bd2dda15359c9ce9ee52d
+
         restHoursLabel.backgroundColor = UIColor.yellow
         restHoursLabel.text = "12:00 pm - 8:00 pm"
         restHoursLabel.textAlignment = .center
