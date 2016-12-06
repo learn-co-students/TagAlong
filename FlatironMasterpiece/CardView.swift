@@ -13,10 +13,8 @@ class CardView: UIView {
     
     var restStore = RestaurantDataStore.sharedInstance
     var restaurant: Restaurant!
+    var userStore = UsersDataStore.sharedInstance
     
-   
-    
-   
     init(restaurant:Restaurant?, frame:CGRect){
         super.init(frame:frame)
         
@@ -85,7 +83,7 @@ class CardView: UIView {
 
         restCuisineLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.27, y: self.bounds.height * 0.50, width: self.bounds.width * 0.5, height: self.bounds.width * 0.08))
         restCuisineLabel.backgroundColor = UIColor.yellow
-        restCuisineLabel.text = "--Cuisine name--"
+        restCuisineLabel.text = userStore.currentChosenCuisine
         restCuisineLabel.textAlignment = .center
         self.addSubview(restCuisineLabel)
         

@@ -312,11 +312,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             let shakeInstructionVC = ShakeInstructionViewController()
             self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
         }
-        
-      
 
-
+    }
+    
+    func getRandomCuisine()->String {
         
+        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+        //        for rest in userStore.preferredCuisineArray {
+        //            randomRest =
+        //        }
+        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+        print("random cuisine is: \(userStore.currentChosenCuisine)")
+        return userStore.currentChosenCuisine
     }
         
 //end of class

@@ -50,8 +50,6 @@ class Restaurant {
                     self.openNow = true
                 }else{
                     self.openNow = false
-                    //if the restaurant is closed, we don't create a restaurant object
-                    return
                 }
                 
                 print("restaurant is open now")

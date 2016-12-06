@@ -19,7 +19,6 @@ class ShakeInstructionViewController: UIViewController {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
-    var randomCuisine  = ""
     let restStore = RestaurantDataStore.sharedInstance
     let userStore = UsersDataStore.sharedInstance
     
@@ -51,7 +50,7 @@ class ShakeInstructionViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         //ERICA'S CODE - should this go here?
-        self.getRandomCuisine()
+        
         getLocation()
         
     }
@@ -102,25 +101,14 @@ extension ShakeInstructionViewController {
             
             // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
             
-            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.randomCuisine, completion: { (JSON) in
+            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
                 self.restStore.restaurantsInJSON = JSON
                 self.restStore.filterSearchedRestaurants()
             })
             
-            
-            
         })
     }
     
-    func getRandomCuisine()->String {
-        
-        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-        //        for rest in userStore.preferredCuisineArray {
-        //            randomRest =
-        //        }
-        randomCuisine = userStore.preferredCuisineArray[randomNum]
-        print("random cuisine is: \(randomCuisine)")
-        return randomCuisine
-    }
+   
     
 }
