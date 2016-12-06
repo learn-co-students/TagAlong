@@ -15,6 +15,11 @@ import AVFoundation
 class ShakeInstructionViewController: UIViewController {
  
     var shakeView: ShakeView!
+
+    var shakeNosie: AVAudioPlayer?
+    var vview: UIView!
+    
+
     
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
@@ -28,10 +33,11 @@ class ShakeInstructionViewController: UIViewController {
     //    var latitude: Double = 40.748944899999998
     //    var longitude: Double = -74.0002432
 
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let vview = ShakeView()
+        vview = ShakeView()
         view.backgroundColor = UIColor.blue
 
         self.shakeView.activityIndicator.startAnimating()
@@ -41,11 +47,16 @@ class ShakeInstructionViewController: UIViewController {
 
         if view == vview {
             vibrate()
+            playSound()
         }
-    
+
+        playSound()
+
+   
 
     }
 
+    
     override func loadView() {
         super.loadView()
         shakeView = ShakeView()
@@ -66,6 +77,32 @@ class ShakeInstructionViewController: UIViewController {
         
     }
     
+    
+    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
+        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+        let url = URL(fileURLWithPath: path!)
+        
+        var audioPlayer: AVAudioPlayer?
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
+        } catch {
+            print("Nothing to play")
+        }
+        return audioPlayer
+    }
+    
+    func loadPlayer() {
+        if let shakeNosie = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
+            self.shakeNosie = shakeNosie
+            
+        }
+        self.shakeNosie?.volume = 1.0
+        self.shakeNosie?.play()
+    }
+    
+    func playSound() {
+       loadPlayer()
+    }
     func vibrate() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }

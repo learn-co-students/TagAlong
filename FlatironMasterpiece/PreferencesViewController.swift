@@ -42,7 +42,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
   //  let cuisineImage = [UIImage(named: "Asian")!]
 
-    let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
+    let cuisineArray:[String] = ["American", "Asian", "Healthy", "Italian", "Latin", "Unhealthy"]
 
     
     //NOTE: - userStore properties

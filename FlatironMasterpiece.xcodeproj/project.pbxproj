@@ -22,6 +22,7 @@
 		27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27513FDE1DF1D73C00C87495 /* Secrets.swift */; };
 		279BBC711DF0E217008020D4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC701DF0E217008020D4 /* User.swift */; };
 		279BBC751DF0E236008020D4 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC741DF0E236008020D4 /* Restaurant.swift */; };
+		279FC38A1DF668460094A4BB /* SprayShake.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 279FC3891DF668460094A4BB /* SprayShake.mp3 */; };
 		27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */; };
 		27AAFE361DDAC9AA00C08348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE351DDAC9AA00C08348 /* Assets.xcassets */; };
 		27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		27513FDE1DF1D73C00C87495 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		279BBC701DF0E217008020D4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		279BBC741DF0E236008020D4 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		279FC3891DF668460094A4BB /* SprayShake.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SprayShake.mp3; sourceTree = "<group>"; };
 		27AAFE2B1DDAC9AA00C08348 /* FlatironMasterpiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatironMasterpiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27AAFE351DDAC9AA00C08348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
+				279FC3891DF668460094A4BB /* SprayShake.mp3 */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				452C599E1DE61E34005884EE /* Controllers */,
 				452C599B1DE61D1D005884EE /* DataStores */,
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */,
+				279FC38A1DF668460094A4BB /* SprayShake.mp3 in Resources */,
 				25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */,
 				4539213F1DEC777300D19A45 /* TableViewCell.xib in Resources */,
 				27AAFE391DDAC9AA00C08348 /* LaunchScreen.storyboard in Resources */,
@@ -447,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
+				45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
