@@ -52,7 +52,6 @@
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
 		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
-		45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */; };
 		45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F196A41DF2A87F00BD24E9 /* CardViewController.swift */; };
 		45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */; };
 		45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */; };
@@ -114,7 +113,6 @@
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
-		45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashLogoViewController.swift; sourceTree = "<group>"; };
 		45F196A41DF2A87F00BD24E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Abel-Regular.ttf"; sourceTree = "<group>"; };
 		45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeInstructionViewController.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
-				45EA82751DF0F56000CD4935 /* SplashLogoViewController.swift */,
 				453921341DEB8E5100D19A45 /* TabBarController.swift */,
 				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
 				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
@@ -453,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,

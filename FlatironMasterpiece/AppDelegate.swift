@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
+
         navController = UINavigationController()
         var loginVC = LogInViewController()
         let frame = UIScreen.main.bounds
@@ -57,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.makeKeyAndVisible()
 //        }
 //
+
 
         return true
     }
