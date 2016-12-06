@@ -106,6 +106,9 @@ class SearchingForTagAlongViewController: UIViewController {
         self.navigationController?.pushViewController(tagAlongsVC, animated: true)
     }
     
+    //TODO: - Create two buttons: Accept, Deny
+    // Accept - change user value to true
+    // Deny - user value remains
     
 
 }

@@ -300,6 +300,11 @@ final class FirebaseManager {
         ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([currentUser : false])
         
     }
+    
+    static func acceptTagAlong() {
+        
+        
+    }
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 
