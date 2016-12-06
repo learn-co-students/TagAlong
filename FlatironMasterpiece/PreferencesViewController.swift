@@ -297,18 +297,27 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func savePreferences() {
         print("Save preferences tapped")
-        // Send to shake instruction view controller
-       let user = FIRAuth.auth()?.currentUser
-      guard let unwrappedUser = user else { return }
-        print(unwrappedUser)
-        if   FIRAuth.auth()?.currentUser != nil {
-            
+        if userStore.preferredCuisineArray.count == 0 {
+            let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select your cuisine preferences.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            noCuisineAlert.addAction(okAction)
+            self.present(noCuisineAlert, animated: true, completion: nil)
+        } else {
+            let shakeInstructionVC = ShakeInstructionViewController()
+            self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
         }
+        // Send to shake instruction view controller
+//       let user = FIRAuth.auth()?.currentUser
+//      guard let unwrappedUser = user else { return }
+//        print(unwrappedUser)
+//        if   FIRAuth.auth()?.currentUser != nil {
+//            
+//        }
+//        
+//        self.getRandomCuisine()
+//        getLocation()
+//        
         
-        self.getRandomCuisine()
-        getLocation()
-        let shakeInstructionVC = ShakeInstructionViewController()
-        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
         
 //end of class
