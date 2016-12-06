@@ -311,8 +311,11 @@ final class FirebaseManager {
     
     static func observeTagalongRequests(tagalongID: String) {
         
-        // User -> CurrentTagalong -> TagalongID
+        // To get UserID : Host -> ID
         //Tagalong -> Guests -> Users
+        
+        ref.child("tagalongs").child("\(tagalongID)").child("guests").obs
+        
         
         
     }
