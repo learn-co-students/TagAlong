@@ -118,11 +118,10 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTagalongs() {
         print("---------------THIS IS BEING CALLED--------------------")
         
-        FirebaseManager.observeTagalongs { (tagalongDictionary, tagalongKey) in
-            
-                self.tagalongKeys.append(tagalongKey)
-            
-            
+     FirebaseManager.observeTagalongs { (key) in
+        
+        self.tagalongKeys.append(key)
+        print(self.tagalongKeys)
         }
             
             

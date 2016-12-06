@@ -235,7 +235,7 @@ final class FirebaseManager {
 
     }
     
-    static func observeTagalongs(completion: @escaping ([String: Any], String) -> Void) {
+    static func observeTagalongs(completion: @escaping (String) -> Void) {
         
         newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
@@ -246,19 +246,20 @@ final class FirebaseManager {
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
             
-            let tagalongData = snapshot.value as! [String: Any]
+//            let tagalongData = snapshot.value as! [String: Any]
+//            
+//            if let host = tagalongData["host"] as? String,
+//                let date = tagalongData["date"] as? String,
+//                let location = tagalongData["location"] as? String,
+//                host.characters.count > 0 {
+//                
+//                print("These \(tagalongData) are getting called within Firebase Manager")
             
-            if let host = tagalongData["host"] as? String,
-                let date = tagalongData["date"] as? String,
-                let location = tagalongData["location"] as? String,
-                host.characters.count > 0 {
+                if let tagalongKey = snapshot.key as? String {
                 
-                print("These \(tagalongData) are getting called within Firebase Manager")
-                
-                let tagalongKey = snapshot.key as! String
-                
-                completion(tagalongData, tagalongKey)
-                
+                completion(tagalongKey)
+            
+            
             } else {
                 print("Error! Could not decode message data")
             }
