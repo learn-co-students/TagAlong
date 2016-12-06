@@ -20,14 +20,17 @@ class RestaurantDataStore {
     fileprivate init() {}
     
     func filterSearchedRestaurants() {
-        
+        restaurantsArray.removeAll()
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
         
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
+        
         for array in resultsArray {
+            //restaurantsArray.removeAll()
             let newRestaurant = Restaurant(dictionary: array as! json)
+            //restaurantsArray.removeAll()
             restaurantsArray.append(newRestaurant)
             dump(restaurantsArray)
             print("\nrestaurant array count is \(restaurantsArray.count)\n")
