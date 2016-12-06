@@ -17,8 +17,8 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
-
     let cuisines = [String]()
+//    let currentTagalong: String?
 
 
     //1 -create a favoriteCuisines property from a bunch of cuisines
@@ -39,6 +39,7 @@ class User {
         let email = snapshot["email"] as! String
         let jobTitle = snapshot["jobTitle"] as! String
         let industry = snapshot["industry"] as! String
+//        let currentTagAlong = snapshot["currentTagAlong"] as! String
         self.firstName = firstName
         self.lastName = lastName
         self.emailAddress = email

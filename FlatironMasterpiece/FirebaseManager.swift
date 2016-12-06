@@ -17,6 +17,7 @@ final class FirebaseManager {
 
     static let shared = FirebaseManager()
 
+
     // Reference properties
     static let ref = FIRDatabase.database().reference().root
     static var chatRef: FIRDatabaseReference!
@@ -29,6 +30,10 @@ final class FirebaseManager {
 
 
     private init() {}
+    
+    
+    
+    var tagalongs = [Tagalong]()
 
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
@@ -235,6 +240,9 @@ final class FirebaseManager {
             FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
                 let userInfo = snapshot.value as! [String: Any]
                 let user = User(snapshot: userInfo)
+                
+                
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
                 //self.newtagalongUserArray.append(user)
                 completion(user)
                 
@@ -254,6 +262,24 @@ final class FirebaseManager {
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
 
+
+    }
+    
+    func getTagalongs(){
+        FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.value, with: { (snapshot) -> Void in
+            //let tags = snapshot as! [[String:Any]]
+            for tag in snapshot.children {
+                let snapshotDict = tag as! FIRDataSnapshot
+                let snapDict = snapshotDict.value as! [String:Any]
+                let tagalong = Tagalong(snapshot: snapDict)
+                 self.tagalongs.append(tagalong)
+            }
+          
+           
+            
+            
+      
+        })
 
     }
     

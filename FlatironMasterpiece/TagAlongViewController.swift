@@ -15,6 +15,11 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     var tagalongKeys: [String] = []
     var newtagalongUserArray: [User] = []
     var tagAlongUserArray:[User] = []
+    var myTableView: UITableView!
+    
+    
+    let store = FirebaseManager.shared
+    var tagalongs = [Tagalong]()
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
@@ -29,12 +34,19 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         getTagalongs()
+        johannGetTags()
+        
+        //store.getTagalongs()
+        // print(store.tagalongs.count)
         view.backgroundColor = phaedraOliveGreen
         formatLabels()
-        createFakeUsers()
+        
+        
         layoutTableView()
         layoutScrollView()
-        createUsersForTagalong()
+        
+        createFakeUsers()
+        
         
     }
     
@@ -115,62 +127,77 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //Firebase functions --- this can be refined in firebaseManager during refactoring
-    
+    func johannGetTags(){
+        FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
+            
+            
+            let tagDict = snapshot.value as! [String:Any]
+            let tagId = snapshot.key as! String
+            var tagalong = Tagalong(snapshot: tagDict)
+            
+            
+            FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
+                tagalong.user = user
+                // After populating cells with users, find a way to connect User to Tagalong ID
+                self.tagalongs.append(tagalong)
+                self.myTableView.reloadData()
+            })
+            //
+            //            if let tagalongKey = snapshot.key as? String,
+            //                let tagalongValue = snapshot.value as? [String: Any] {
+            //
+            //
+            //            } else {
+            //                print("Error! Could not decode message data")
+            //            }
+            
+            
+            
+        })
+        
+    }
     func getTagalongs() {
         print("---------------THIS IS BEING CALLED--------------------")
         
         FirebaseManager.observeTagalongs { (key) in
-         
+            
             self.tagalongKeys.append(key)
             print(self.tagalongKeys)
-//            self.createUserFrom(tagalong: key)
+            //            self.createUserFrom(tagalong: key)
             FirebaseManager.createUserFrom(tagalong: key, completion: { (user) in
-                newtagalongUserArray.append(user)
+                self.newtagalongUserArray.append(user)
                 
-        // After populating cells with users, find a way to connect User to Tagalong ID
-                
+                print(user)
+                // After populating cells with users, find a way to connect User to Tagalong ID
                 
             })
         }
         print("ending")
     }
     
-//    func createUserFrom(tagalong: String, completion:(User)->()){
-//        var userName = ""
-//        
-//        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observe(.value, with: { (snapshot) in
-//            userName = snapshot.value as! String
-//
-//            FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
-//                let userInfo = snapshot.value as! [String: Any]
-//                let user = User(snapshot: userInfo)
-//                //self.newtagalongUserArray.append(user)
-//                completion(user)
-//                
-//            })
-//        })
-//
-//        
-//       
-//    }
-    
-    func createUsersForTagalong() {
-    print("HELLLOOOOOO")
-        print(tagalongKeys)
-        for key in tagalongKeys {
-            
-           
-        }
-        
-        
-    }
-    
-    
+    //    func createUserFrom(tagalong: String, completion:(User)->()){
+    //        var userName = ""
+    //
+    //        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observe(.value, with: { (snapshot) in
+    //            userName = snapshot.value as! String
+    //
+    //            FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
+    //                let userInfo = snapshot.value as! [String: Any]
+    //                let user = User(snapshot: userInfo)
+    //                //self.newtagalongUserArray.append(user)
+    //                completion(user)
+    //
+    //            })
+    //        })
+    //
+    //
+    //
+    //    }
     
     
     // MARK: - set up tableview
     func layoutTableView() {
-        var myTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
+        self.myTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.backgroundColor = phaedraOliveGreen
@@ -191,20 +218,23 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO: - 4 is a default value, we can change this number of cells
         // Make this tagalongKey.count
-        return 4
+        return self.tagalongs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         
-     
-//        let fullName = tagalongKeys[indexPath.row]
         
-                let fullName = tagAlongUserArray[indexPath.row].firstName + " " + tagAlongUserArray[indexPath.row].lastName
+        //        let fullName = tagalongKeys[indexPath.row]
+        
+        let selectedTag = self.tagalongs[indexPath.row]
+        
+        
+        let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = "Industry"
-        myCell.restNameLabel.text = "Applebees"
+        myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = "0.4"
         myCell.diningTimeLabel.text = "1:00pm"
         myCell.userImageView?.image = UIImage(named: "rock.png")
