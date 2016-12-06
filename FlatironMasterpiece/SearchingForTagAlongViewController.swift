@@ -106,7 +106,8 @@ class SearchingForTagAlongViewController: UIViewController {
         self.navigationController?.pushViewController(tagAlongsVC, animated: true)
     }
     
-    //TODO: - Create two buttons: Accept, Deny
+    //TODO: - Create two buttons: Accept, Deny when a child has been added
+    // Observe child and add info to the alert message
     // Accept - change user value to true
     // Deny - user value remains
     

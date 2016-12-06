@@ -304,6 +304,7 @@ final class FirebaseManager {
     static func acceptTagAlong() {
         
         
+        
     }
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {

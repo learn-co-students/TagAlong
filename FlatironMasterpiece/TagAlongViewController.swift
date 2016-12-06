@@ -190,7 +190,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
         
-        // Send Alert to Host
+        // Send alert to host
         
     }
     
