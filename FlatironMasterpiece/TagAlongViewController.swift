@@ -17,7 +17,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     var tagAlongUserArray:[User] = []
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
-
+    
     
     //Populate tableview using a Firebase call for tagalongs
     // Things we need from tagalongs
@@ -62,20 +62,20 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         tagAlongUserArray.append(user4)
         tagAlongUserArray.append(user5)
     }
-
+    
     func layoutScrollView() {
-//        var myImageView: UIImageView!
-//        var aspectRatio: NSLayoutConstraint?
-//        let burger = UIImage(named: "american")
-//        myImageView = UIImageView(image: burger)
-//        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
-//        myImageView.addConstraint(aspectRatio!)
+        //        var myImageView: UIImageView!
+        //        var aspectRatio: NSLayoutConstraint?
+        //        let burger = UIImage(named: "american")
+        //        myImageView = UIImageView(image: burger)
+        //        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
+        //        myImageView.addConstraint(aspectRatio!)
         
-//        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
-//        myScrollView.backgroundColor = phaedraOrange
-//        myScrollView.addSubview(myImageView)
-//        myScrollView.contentSize = myImageView.frame.size
-//        view.addSubview(myScrollView)
+        //        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
+        //        myScrollView.backgroundColor = phaedraOrange
+        //        myScrollView.addSubview(myImageView)
+        //        myScrollView.contentSize = myImageView.frame.size
+        //        view.addSubview(myScrollView)
         
         let myScrollView: UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
         let imageWidth: CGFloat = 355
@@ -99,9 +99,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             myScrollView.addSubview(myImageView)
             
             let spacer: CGFloat = 30
-//            yPosition += imageHeight + spacer
+            //            yPosition += imageHeight + spacer
             xPosition += imageWidth + spacer
-//            scrollViewContentSize += imageHeight
+            //            scrollViewContentSize += imageHeight
             scrollViewContentSize += imageWidth
             
             
@@ -110,7 +110,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         view.addSubview(myScrollView)
-    
+        
     }
     
     //Firebase functions
@@ -118,16 +118,12 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTagalongs() {
         print("---------------THIS IS BEING CALLED--------------------")
         
-     FirebaseManager.observeTagalongs { (key) in
-        
-        self.tagalongKeys.append(key)
-        print(self.tagalongKeys)
-        }
+        FirebaseManager.observeTagalongs { (key) in
             
-            
+            self.tagalongKeys.append(key)
+            print(self.tagalongKeys)
         }
-        
-    
+    }
     
     
     
@@ -141,7 +137,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         //this determines the size of the tableview
         myTableView.frame = CGRect(x: 0, y: 50, width: 380, height: 400)
-//        myTableView.layer.cornerRadius = 8
+        //        myTableView.layer.cornerRadius = 8
         
         
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tagAlongCell")
@@ -154,19 +150,23 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO: - 4 is a default value, we can change this number of cells
-        return 4
+        return tagalongKeys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
-        let fullName = tagAlongUserArray[indexPath.row].firstName + " " + tagAlongUserArray[indexPath.row].lastName
+        
+        //        let fullName = tagalongKeys[indexPath.row]
+        //        myCell.userNameLabel.text = fullName
+        let fullName = tagalongKeys[indexPath.row]
+        //        let fullName = tagAlongUserArray[indexPath.row].firstName + " " + tagAlongUserArray[indexPath.row].lastName
         myCell.userNameLabel.text = fullName
-        myCell.userIndustryLabel.text = tagAlongUserArray[indexPath.row].industry
+        myCell.userIndustryLabel.text = "Industry"
         myCell.restNameLabel.text = "Applebees"
         myCell.restDistLabel.text = "0.4"
         myCell.diningTimeLabel.text = "1:00pm"
         myCell.userImageView?.image = UIImage(named: "rock.png")
-    
+        
         return myCell
     }
     

@@ -62,16 +62,16 @@ class SelectedRestaurantViewController: UIViewController {
     }
 
 
-    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
-
-        var tagAlonginfo: [String: Any] = [
-                "host" : user,
-                 "location" : location,
-                 "date-time" : date,
-        ]
-
-        return tagAlonginfo
-    }
+//    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
+//
+//        var tagAlonginfo: [String: Any] = [
+//                "host" : user,
+//                 "location" : location,
+//                 "date-time" : date,
+//        ]
+//
+//        return tagAlonginfo
+//    }
 
 }
 

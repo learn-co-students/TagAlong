@@ -246,23 +246,26 @@ final class FirebaseManager {
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
             
-//            let tagalongData = snapshot.value as! [String: Any]
-//            
-//            if let host = tagalongData["host"] as? String,
-//                let date = tagalongData["date"] as? String,
-//                let location = tagalongData["location"] as? String,
-//                host.characters.count > 0 {
-//                
-//                print("These \(tagalongData) are getting called within Firebase Manager")
-            
                 if let tagalongKey = snapshot.key as? String {
-                
+
+                    
                 completion(tagalongKey)
-            
+
             
             } else {
                 print("Error! Could not decode message data")
             }
+            
+          
+            
+            
+            // If we want both tagalong Key and value , try capturing the entire snapshot as array of dictionaries ------
+            
+            // if let tagalongDict = snapshot as? [[String: Any]]
+            
+            // OR! 
+            
+            // Create an array of dictinary , ie : [[snapshot.key : snapshot.value]]
             
             print("----------------------------------------------\n\n\n")
         })
