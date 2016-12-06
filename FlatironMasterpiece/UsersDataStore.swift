@@ -14,6 +14,7 @@ class UsersDataStore {
     var users: [User] = []
     
     var preferredCuisineArray:[String] = []
+    var currentChosenCuisine:String = ""
     
     var userBudgetChoice:Int = 1
     

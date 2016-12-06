@@ -15,6 +15,7 @@ class ShakeView: UIView {
     @IBOutlet weak var chooseCuisineLabel: UILabel!
     @IBOutlet weak var shakePhoneLabel: UILabel!
     @IBOutlet weak var shakeIcon: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     init(){
         super.init(frame: CGRect.zero)

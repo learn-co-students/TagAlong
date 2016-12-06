@@ -32,7 +32,7 @@ class User {
 //        return [faveCuisine1, faveCuisine2, faveCuisine3, faveCuisine4, faveCuisine5, faveCuisine6]
 //    }
 
-    
+
     init(snapshot: [String: Any]){
         let firstName = snapshot["firstName"] as! String
         let lastName = snapshot["lastName"] as! String
@@ -45,13 +45,12 @@ class User {
         self.emailAddress = email
         self.jobTitle = jobTitle
         self.industry = industry
-        
+
         self.passWord = ""
     }
 
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
 
-//    init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String, faveCuisine1: String, faveCuisine2: String, faveCuisine3: String, faveCuisine4: String, faveCuisine5: String, faveCuisine6: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.emailAddress = emailAddress
@@ -59,13 +58,6 @@ class User {
         self.industry = industry
         self.jobTitle = jobTitle
 
-        //2- initialize the favecuisines
-//        self.faveCuisine1 = faveCuisine1
-//        self.faveCuisine2 = faveCuisine2
-//        self.faveCuisine3 = faveCuisine3
-//        self.faveCuisine4 = faveCuisine4
-//        self.faveCuisine5 = faveCuisine5
-//        self.faveCuisine6 = faveCuisine6
     }
 
     func serialize() -> [String : String] {
@@ -75,9 +67,6 @@ class User {
             "lastName" : lastName,
             "jobTitle" : jobTitle,
             "industry" : industry,
-
-            //3 - include the favoritecuisinesarray
-//            "favoriteCuisines": favoriteCuisines
 
         ]
     }

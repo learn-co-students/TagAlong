@@ -13,29 +13,30 @@ class RestaurantDataStore {
     
     static let sharedInstance = RestaurantDataStore()
     
-    var locationsArray: [Restaurant] = []
-    
-   
+    var restaurantsArray: [Restaurant] = []
     
     var restaurantsInJSON:json!
     
     fileprivate init() {}
     
     func filterSearchedRestaurants() {
-        
+        restaurantsArray.removeAll()
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
         
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
-        for array in resultsArray {
-            let newRestaurant = Restaurant(dictionary: array as! json)
-            locationsArray.append(newRestaurant)
-            dump(locationsArray)
-            print("\nrestaurant array count is \(locationsArray.count)\n")
-        }
-    
         
+        for array in resultsArray {
+            //restaurantsArray.removeAll()
+            let newRestaurant = Restaurant(dictionary: array as! json)
+
+            if newRestaurant.openNow == true {
+                restaurantsArray.append(newRestaurant)
+                print("\nrestaurant array count is \(restaurantsArray.count)\n")
+            }
+
+        }
     }
 }
 

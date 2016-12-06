@@ -44,20 +44,24 @@ class Restaurant {
             print("This is the restaurant name \(name)")
         }
         
-        if let restaurantDict = dictionary["opening_hours"] as? restaurantDictionary {
-            if let restaurantOpenNow = restaurantDict["open_now"] as? Int {
-                if restaurantOpenNow == 1{
-                    self.openNow = true
-                }else{
-                    self.openNow = false
-                }
-                
-                print("restaurant is open now")
-            }
+        if let restaurantArray = dictionary["opening_hours"] as? [String : Any] {
             
-        }else{
-            print("opening hours doesn't exist")
-            self.openNow = false
+            if let item = restaurantArray["open_now"]  {
+                
+                if let number = item as? NSNumber {
+                    
+                   let this = Int(number)
+                    
+                    if this == 1 {
+                        self.openNow = true
+                    } else {
+                        self.openNow = false
+                    }
+                    
+                }
+            } else {
+                print("&&&&&&&&&&&&&")
+            }
             
         }
     
@@ -70,14 +74,6 @@ class Restaurant {
             restaurantRating = urestaurantRating
             print("This is the restaurant's rating \(restaurantRating)")
         }
-        
-        
-//        name = restaurantName as! String
-//        priceLevel = restaurantPriceLevel as! Int
-//        //    var openNow: Int
-//        latitude = restaurantLat as! Double
-//        longitude = restaurantLong as! Double
-//        timeStampOfLocation = restaurantRating as! Double
         
     }
     
