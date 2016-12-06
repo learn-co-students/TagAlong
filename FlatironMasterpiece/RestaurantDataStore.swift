@@ -28,20 +28,11 @@ class RestaurantDataStore {
         
         for array in resultsArray {
             let newRestaurant = Restaurant(dictionary: array as! json)
-//            if newRestaurant.openNow == true {
-//                restaurantsArray.append(newRestaurant)
-//                dump(restaurantsArray)
-//                print("\nrestaurant array count is \(restaurantsArray.count)\n")
-//            }
-            print("THIS IS A NEW RESTAURANT: \(newRestaurant.name) and it is opennow:\(newRestaurant.openNow)")
-//            restaurantsArray.append(newRestaurant)
-//            dump(restaurantsArray)
-//            print("\nrestaurant array count is \(restaurantsArray.count)\n")
-
-            
+            if newRestaurant.openNow == true {
+                restaurantsArray.append(newRestaurant)
+                print("\nrestaurant array count is \(restaurantsArray.count)\n")
+            }
         }
-    
-        
     }
 }
 
