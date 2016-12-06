@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import GooglePlaces
+import AudioToolbox
+import AVFoundation
 
 class ShakeInstructionViewController: UIViewController {
  
@@ -27,12 +29,21 @@ class ShakeInstructionViewController: UIViewController {
     //    var longitude: Double = -74.0002432
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        let vview = ShakeView()
         view.backgroundColor = UIColor.blue
+
         self.shakeView.activityIndicator.startAnimating()
         
         print("getlocationVC is working")
         placesClient = GMSPlacesClient.shared()
+
+        if view == vview {
+            vibrate()
+        }
+    
+
     }
 
     override func loadView() {
@@ -53,6 +64,10 @@ class ShakeInstructionViewController: UIViewController {
         
         getLocation()
         
+    }
+    
+    func vibrate() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {

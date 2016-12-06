@@ -1,6 +1,6 @@
 
 //
-//  PracticeViewController.swift
+//  PreferenceViewController.swift
 //  FlatironMasterpiece
 //
 //  Created by Erica Millado on 11/20/16.
@@ -14,13 +14,19 @@ import FirebaseAuth
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
 
-    
+
+
+
+
     //NOTE: - UI properties
+
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
+    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
+    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
+    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
+    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
+
+    let store = UsersDataStore.sharedInstance
 
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
@@ -34,24 +40,15 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
 
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+  //  let cuisineImage = [UIImage(named: "Asian")!]
 
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
+
     
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
     var usersCuisineSelectionsArray:[String] = []
-    
-    
-    //DELETE
-//    //NOTE: - google places / core location properties
-//    var placesClient: GMSPlacesClient?
-//    var latitude: Double = 0.0
-//    var longitude: Double = 0.0
-    
-    //these are example lat and long for chelsea
-    //    var latitude: Double = 40.748944899999998
-    //    var longitude: Double = -74.0002432
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
@@ -59,20 +56,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         layoutCuisineCollectionView()
         formatButtons()
         formatLabels()
-
-        //DELETE
-//        print("getlocationVC is working")
-//        placesClient = GMSPlacesClient.shared()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //DELETE
-//        let locationManager = CLLocationManager()
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
-
     }
 
     func formatLabels() {
@@ -168,16 +155,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+
         if userStore.preferredCuisineArray.contains(selectedCuisine) {
-            
+
             cell.toggledSelectedState()
-            
+
             let index = userStore.preferredCuisineArray.index(of: selectedCuisine)
             guard let unwrappedindex = index else { return }
-            
+
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
             print("array is now \(userStore.preferredCuisineArray)")
+
 
         }else{
             if cell.isHighlighted == false {
@@ -226,7 +215,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
-        replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
+        replayTutorialButton.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
 
@@ -271,6 +260,19 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - selector functions for buttons
 
     // TODO: - write function that displays replayTutorial
+    func deleteUser() {
+        let user = FIRAuth.auth()?.currentUser
+        print(user)
+        user?.delete { error in
+            if let error = error {
+                // An error happened.
+            } else {
+                // Account deleted.
+            }
+        }
+        print("User deleted")
+    }
+    
     func replayTutorial() {
         print("Replay tutorial requested.")
     }
@@ -293,15 +295,19 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    
     func savePreferences() {
         print("Save preferences tapped")
+
+        // Send to shake instruction view controller
+
+        //ASK ELI WHAT THIS FIRAUTH CODE IS ABOUT
         let user = FIRAuth.auth()?.currentUser
         guard let unwrappedUser = user else { return }
         print(unwrappedUser)
         if   FIRAuth.auth()?.currentUser != nil {
-            
+
         }
+
         if userStore.preferredCuisineArray.count == 0 {
             let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select your cuisine preferences.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -313,10 +319,22 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
         }
 
+        let saved = store.preferredCuisineArray
+
+        var dict = [String: Any]()
+        for save in saved{
+            dict[save] = true
+        }
+
+        FirebaseManager.savePref(dictionary: dict)
+
+        print(store.preferredCuisineArray)
+        self.getRandomCuisine()
+
     }
     
     func getRandomCuisine()->String {
-        
+
         let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
         //        for rest in userStore.preferredCuisineArray {
         //            randomRest =
@@ -328,6 +346,4 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         
 //end of class
 }
-
-
 

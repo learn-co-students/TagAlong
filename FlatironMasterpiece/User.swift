@@ -19,18 +19,18 @@ class User {
     let storage = FIRStorage.storage().reference()
 
     let cuisines = [String]()
-    
 
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
+
         self.firstName = firstName
         self.lastName = lastName
         self.emailAddress = emailAddress
         self.passWord = passWord
         self.industry = industry
         self.jobTitle = jobTitle
-    
+
     }
-    
+
     func serialize() -> [String : String] {
         return [
             "email" : emailAddress,
@@ -41,7 +41,7 @@ class User {
 
         ]
     }
-    
 
-    
+
+
 }

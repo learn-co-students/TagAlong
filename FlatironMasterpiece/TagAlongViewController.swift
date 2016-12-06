@@ -16,6 +16,14 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
 
+    
+    //Populate tableview using a Firebase call for tagalongs
+    // Things we need from tagalongs
+    // Host key --> name, industry
+    // Tagalong Location (restaurant name)
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraOliveGreen
@@ -23,6 +31,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         createFakeUsers()
         layoutTableView()
         layoutScrollView()
+        
+        getTagalongs()
     }
     
     func formatLabels() {
@@ -101,6 +111,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     }
     
+    //Firebase functions
+    
+    func getTagalongs() {
+        print("---------------THIS IS BEING CALLED--------------------")
+        let tagalong = FirebaseManager.ref.child("tagalongs").key
+        
+        
+    }
+    
     
     
     
@@ -148,17 +167,4 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
