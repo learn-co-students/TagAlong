@@ -7,6 +7,13 @@
 //  Copyright © 2016 Joyce Matos. All rights reserved.
 //
 
+
+
+//Fix compressed image on background
+//make image selector appear when button pressed
+//replace button background with image when selected
+
+
 import UIKit
 import Foundation
 import FirebaseAuth
@@ -43,6 +50,7 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+    var picButton = UIButton()
 
     var firstNameConfirmed = false
     var lastNameConfirmed = false
@@ -50,6 +58,8 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var password = false
     var industry = false
     var jobtitle = false
+    
+    
 var manager = CLLocationManager()
     
     
@@ -157,6 +167,28 @@ extension AccountCreationViewController {
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
+        
+        view.addSubview(picButton)
+  //      picButton.addTarget(self, action: #selector(picButtonTapped(sender:)), for: .touchUpInside)
+        picButton.titleLabel?.numberOfLines = 2
+        picButton.setTitle("Add\nPic", for: UIControlState.normal)
+        picButton.titleLabel?.textAlignment = .center
+        picButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        picButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
+        picButton.backgroundColor = phaedraYellow
+        picButton.layer.borderColor = phaedraDarkGreen.cgColor
+        picButton.layer.borderWidth = 2
+        picButton.layer.cornerRadius = 35
+        picButton.translatesAutoresizingMaskIntoConstraints = false
+        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
+  //      picButton.specialConstrain(to: view)
+        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        picButton.widthAnchor.constraint(equalToConstant: 72.0).isActive = true
+        picButton.heightAnchor.constraint(equalToConstant: 72.0).isActive = true
+        
+        
+        
+        
         // First Name Textfield
         view.addSubview(firstNameEntry)
         firstNameEntry.placeholder = "First Name"
@@ -168,7 +200,7 @@ extension AccountCreationViewController {
         firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 30).isActive = true
+        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 90).isActive = true
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
