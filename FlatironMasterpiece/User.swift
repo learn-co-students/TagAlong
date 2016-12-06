@@ -32,6 +32,21 @@ class User {
 //        return [faveCuisine1, faveCuisine2, faveCuisine3, faveCuisine4, faveCuisine5, faveCuisine6]
 //    }
 
+    
+    init(snapshot: [String: Any]){
+        let firstName = snapshot["firstName"] as! String
+        let lastName = snapshot["lastName"] as! String
+        let email = snapshot["email"] as! String
+        let jobTitle = snapshot["jobTitle"] as! String
+        let industry = snapshot["industry"] as! String
+        self.firstName = firstName
+        self.lastName = lastName
+        self.emailAddress = email
+        self.jobTitle = jobTitle
+        self.industry = industry
+        
+        self.passWord = ""
+    }
 
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
 

@@ -224,6 +224,28 @@ final class FirebaseManager {
 
     }
 
+    
+    static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
+        var userName = ""
+        
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observe(.value, with: { (snapshot) in
+            userName = snapshot.value as! String
+            
+            // This will need to be replaced with the userID
+            FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
+                let userInfo = snapshot.value as! [String: Any]
+                let user = User(snapshot: userInfo)
+                //self.newtagalongUserArray.append(user)
+                completion(user)
+                
+            })
+        })
+        
+        
+        
+    }
+
+    
 
     //MARK: - Tagalong Message Methods
 
@@ -246,17 +268,15 @@ final class FirebaseManager {
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
             
-                if let tagalongKey = snapshot.key as? String {
-
-                    
+            if let tagalongKey = snapshot.key as? String,
+                let tagalongValue = snapshot.value as? [String: Any] {
+                
+//                let tagalongDict = [tagalongKey: tagalongValue]
                 completion(tagalongKey)
-
             
             } else {
                 print("Error! Could not decode message data")
             }
-            
-          
             
             
             // If we want both tagalong Key and value , try capturing the entire snapshot as array of dictionaries ------
@@ -269,6 +289,14 @@ final class FirebaseManager {
             
             print("----------------------------------------------\n\n\n")
         })
+    }
+    
+    // Request a tagalong
+    static func requestTagAlong(key: String) {
+        
+        guard let currentUser = currentUser else { return }
+        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([currentUser : false])
+        
     }
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
