@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import AVFoundation
 class ShakeInstructionViewController: UIViewController {
  
     var shakeView: ShakeView!
