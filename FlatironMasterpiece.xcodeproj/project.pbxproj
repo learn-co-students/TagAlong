@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2500B1E11DF619B400B0C78D /* TagalongDataStore.swift */; };
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2500B1E11DF619B400B0C78D /* TagalongDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagalongDataStore.swift; sourceTree = "<group>"; };
 		250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */,
 				45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */,
+				2500B1E11DF619B400B0C78D /* TagalongDataStore.swift */,
 			);
 			name = DataStores;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */,
 				950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */,
 				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
+				2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
