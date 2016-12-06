@@ -26,6 +26,15 @@ final class FirebaseManager {
     static var newTagalongRefHandle: FIRDatabaseHandle?
     static var currentUser = FIRAuth.auth()?.currentUser?.uid
     static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
+    
+    
+    // Tagalongs that populate tagalong tableview
+    var tagalongs = [Tagalong]()
+
+    //Tagalong ID from selected Tagalong
+    var selectedTagAlongID: String?
+    
+
 
 
 
@@ -33,7 +42,6 @@ final class FirebaseManager {
     
     
     
-    var tagalongs = [Tagalong]()
 
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
@@ -301,8 +309,10 @@ final class FirebaseManager {
         
     }
     
-    static func acceptTagAlong() {
+    static func observeTagalongRequests(tagalongID: String) {
         
+        // User -> CurrentTagalong -> TagalongID
+        //Tagalong -> Guests -> Users
         
         
     }

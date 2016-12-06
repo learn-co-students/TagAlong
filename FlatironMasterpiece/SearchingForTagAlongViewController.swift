@@ -107,9 +107,10 @@ class SearchingForTagAlongViewController: UIViewController {
     }
     
     //TODO: - Create two buttons: Accept, Deny when a child has been added
-    // Observe child and add info to the alert message
-    // Accept - change user value to true
-    // Deny - user value remains
+    // 1. Observe child and when value has been added, show alert
+    // 2. Add info about the guest to the alert message
+    // 3. Accept - change user value to true, Deny - user value remains
+    
     
 
 }
