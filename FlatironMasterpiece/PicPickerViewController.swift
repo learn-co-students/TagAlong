@@ -22,11 +22,10 @@ import UIKit
 class PicPickerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("view is running")
-        self.view.backgroundColor = UIColor.green
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        print("view is running")
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,9 +37,6 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     // this should create the alert that allows you to choose how you want to get your picture
     
 //    let picAlertController = UIAlertController(title: "Add Account Picture", message: "Use Existing", preferredStyle: .alert)
-
-    
-    
     
     
 //    let alertController = UIAlertController(title: "UIAlertController", message: "UIAlertController with multiple buttons", preferredStyle: .alert)
@@ -71,6 +67,7 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+        return
     }
     
     func takePicture() {
@@ -101,9 +98,16 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         print(newImage.size)
         guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
         guard let compressedJPGImage = UIImage(data: imageData) else { return }
-       //send to firebase
-        
-        dismiss(animated: true)
+        //send to firebase
+
+//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            newImage = image
+//        } else {
+//            print("Something went wrong")
+//        }
+//        
+        print("view should dismiss")
+        self.dismiss(animated: true, completion: nil)
     }
     
     

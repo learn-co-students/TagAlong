@@ -10,7 +10,7 @@
 
 
 //Fix compressed image on background
-//make image selector appear when button pressed
+// XX make image selector appear when button pressed
 //replace button background with image when selected
 
 
@@ -180,6 +180,8 @@ extension AccountCreationViewController {
         picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 35
         picButton.translatesAutoresizingMaskIntoConstraints = false
+ //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
+
         picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
   //      picButton.specialConstrain(to: view)
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
