@@ -10,30 +10,20 @@ import UIKit
 
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var tagAlongUsersLabel: UILabel = UILabel()
-    
-    var tagalongKeys: [String] = []
-    var newtagalongUserArray: [User] = []
-    var tagAlongUserArray:[User] = []
-    var myTableView: UITableView!
-    
-    
     let store = FirebaseManager.shared
+
     var tagalongs = [Tagalong]()
+//    var tagAlongUserArray:[User] = []
+    var myTableView: UITableView!
+    var tagAlongUsersLabel: UILabel = UILabel()
+
+    
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
     
-    //Populate tableview using a Firebase call for tagalongs
-    // Things we need from tagalongs
-    // Host key --> name, industry
-    // Tagalong Location (restaurant name)
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getTagalongs()
         johannGetTags()
         
         //store.getTagalongs()
@@ -41,11 +31,10 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = phaedraOliveGreen
         formatLabels()
         
-        
         layoutTableView()
         layoutScrollView()
         
-        createFakeUsers()
+//        createFakeUsers()
         
         
     }
@@ -63,18 +52,18 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         tagAlongUsersLabel.specialConstrain(to: view)
     }
     
-    func createFakeUsers() {
-        let user1:User = User(firstName: "Dwayne", lastName: "Johnson", emailAddress: "therock@peoplesElbow.com", passWord: "rock", industry: "Entertainment", jobTitle: "Beast")
-        let user2:User = User(firstName: "Erica", lastName: "Millado", emailAddress: "erica@lovestacos.com", passWord: "tacos", industry: "iOS", jobTitle: "iOS Developer")
-        let user3:User = User(firstName: "Michelle", lastName: "Obama", emailAddress: "michelle@firstlady.com", passWord: "first", industry: "Being Awesome", jobTitle: "BossLady")
-        let user4: User = User(firstName: "Johann", lastName: "Kerr", emailAddress: "johann@kerr.com", passWord: "ilovecode", industry: "iOS", jobTitle: "instructor")
-        let user5: User = User(firstName: "Kermit", lastName: "The Frog", emailAddress: "livin@thegreenlife.com", passWord: "frogs", industry: "Entertainment", jobTitle: "Comedian")
-        tagAlongUserArray.append(user1)
-        tagAlongUserArray.append(user2)
-        tagAlongUserArray.append(user3)
-        tagAlongUserArray.append(user4)
-        tagAlongUserArray.append(user5)
-    }
+//    func createFakeUsers() {
+//        let user1:User = User(firstName: "Dwayne", lastName: "Johnson", emailAddress: "therock@peoplesElbow.com", passWord: "rock", industry: "Entertainment", jobTitle: "Beast")
+//        let user2:User = User(firstName: "Erica", lastName: "Millado", emailAddress: "erica@lovestacos.com", passWord: "tacos", industry: "iOS", jobTitle: "iOS Developer")
+//        let user3:User = User(firstName: "Michelle", lastName: "Obama", emailAddress: "michelle@firstlady.com", passWord: "first", industry: "Being Awesome", jobTitle: "BossLady")
+//        let user4: User = User(firstName: "Johann", lastName: "Kerr", emailAddress: "johann@kerr.com", passWord: "ilovecode", industry: "iOS", jobTitle: "instructor")
+//        let user5: User = User(firstName: "Kermit", lastName: "The Frog", emailAddress: "livin@thegreenlife.com", passWord: "frogs", industry: "Entertainment", jobTitle: "Comedian")
+//        tagAlongUserArray.append(user1)
+//        tagAlongUserArray.append(user2)
+//        tagAlongUserArray.append(user3)
+//        tagAlongUserArray.append(user4)
+//        tagAlongUserArray.append(user5)
+//    }
     
     func layoutScrollView() {
         //        var myImageView: UIImageView!
@@ -132,7 +121,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func johannGetTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
-            
             let tagDict = snapshot.value as! [String: Any]
             let tagId = snapshot.key as! String
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
@@ -147,27 +135,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         })
         
     }
-    
-    
-//    func getTagalongs() {
-//        print("---------------THIS IS BEING CALLED--------------------")
-//        
-//        FirebaseManager.observeTagalongs { (key) in
-//            
-//            self.tagalongKeys.append(key)
-//            print(self.tagalongKeys)
-//            //            self.createUserFrom(tagalong: key)
-//            FirebaseManager.createUserFrom(tagalong: key, completion: { (user) in
-//                self.newtagalongUserArray.append(user)
-//                
-//                print(user)
-//                // After populating cells with users, find a way to connect User to Tagalong ID
-//                
-//            })
-//        }
-//        print("ending")
-//    }
-    
     
     
     // MARK: - set up tableview
@@ -200,13 +167,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         
-        
-        //        let fullName = tagalongKeys[indexPath.row]
-        
         let selectedTag = self.tagalongs[indexPath.row]
-        
-        
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
+        
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
@@ -226,8 +189,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         let selectedTag = tagalongs[indexPath.row]
         
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
-        
-        
         
         
     }

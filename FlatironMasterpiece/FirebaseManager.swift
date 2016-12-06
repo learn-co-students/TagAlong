@@ -127,11 +127,10 @@ final class FirebaseManager {
 
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
-
             completion(true)
+            
         })
-
-
+        
     }
 
     //MARK: - Firebase Facebook Methods
@@ -148,27 +147,20 @@ final class FirebaseManager {
                     if let tokenString = token.tokenString {
                         print("Token string is here \(tokenString)")
                     }
-
                 }
             }
 
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
                 print("User has logged into Firebase")
-
                 guard error == nil else { completion(false); return }
-
                 completion(true)
-
-
             }
+            
             print("User has logged in")
             print("=====================================================\n\n\n")
 
         }
-
-
-
     }
 
 
