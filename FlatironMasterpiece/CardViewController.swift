@@ -41,6 +41,11 @@ class CardViewController: UIViewController {
         view.addSubview(swipeableView)
         self.view.backgroundColor = phaedraOrange
         
+        //NOTE: hides top nav controller
+        navigationController?.isNavigationBarHidden = true
+//        navigationItem.hidesBackButton = true
+//        navigationController?.navigationBar.isUserInteractionEnabled = false
+//        navigationController?.navigationBar.tintColor = phaedraLightGreen
         print("running")
         
         swipeableView.didStart = {view, location in
@@ -57,6 +62,7 @@ class CardViewController: UIViewController {
             if direction.description == "Right" {
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                
             }
         }
         swipeableView.didCancel = {view in

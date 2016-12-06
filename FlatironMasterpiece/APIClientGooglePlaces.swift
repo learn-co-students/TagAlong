@@ -49,6 +49,7 @@ class APIClientGooglePlaces {
             guard let unwrappedData = data else { print("error at data"); return }
             do {
                 var responseJSON = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! json
+                
                 completion(responseJSON)
             } catch {
                 print("error in getting responseJSON")
