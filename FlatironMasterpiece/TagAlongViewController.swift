@@ -233,7 +233,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
         myCell.userNameLabel.text = fullName
-        myCell.userIndustryLabel.text = "Industry"
+        myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = "0.4"
         myCell.diningTimeLabel.text = "1:00pm"
