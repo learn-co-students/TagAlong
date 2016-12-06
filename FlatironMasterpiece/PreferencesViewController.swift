@@ -9,8 +9,8 @@
 
 import UIKit
 import FirebaseAuth
-import CoreLocation
-import GooglePlaces
+//import CoreLocation
+//import GooglePlaces
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
 
@@ -21,8 +21,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
      let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
      let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
      let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-
-    let store = UsersDataStore.sharedInstance
 
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
@@ -39,16 +37,16 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     let cuisineArray:[String] = ["american", "asian", "healthy", "italian", "latin", "unhealthy"]
     
-    //NOTE: - user and rest properties
+    //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
     var usersCuisineSelectionsArray:[String] = []
-    var randomCuisine  = ""
-    let restStore = RestaurantDataStore.sharedInstance
     
-    //NOTE: - google places / core location properties
-    var placesClient: GMSPlacesClient?
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
+    
+    //DELETE
+//    //NOTE: - google places / core location properties
+//    var placesClient: GMSPlacesClient?
+//    var latitude: Double = 0.0
+//    var longitude: Double = 0.0
     
     //these are example lat and long for chelsea
     //    var latitude: Double = 40.748944899999998
@@ -62,17 +60,18 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         formatButtons()
         formatLabels()
 
-        
-        print("getlocationVC is working")
-        placesClient = GMSPlacesClient.shared()
+        //DELETE
+//        print("getlocationVC is working")
+//        placesClient = GMSPlacesClient.shared()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        //DELETE
+//        let locationManager = CLLocationManager()
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
 
     }
 
@@ -297,85 +296,31 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func savePreferences() {
         print("Save preferences tapped")
+        let user = FIRAuth.auth()?.currentUser
+        guard let unwrappedUser = user else { return }
+        print(unwrappedUser)
+        if   FIRAuth.auth()?.currentUser != nil {
+            
+        }
         if userStore.preferredCuisineArray.count == 0 {
             let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select your cuisine preferences.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)
         } else {
+            // Send to shake instruction view controller
             let shakeInstructionVC = ShakeInstructionViewController()
             self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
         }
-        // Send to shake instruction view controller
-//       let user = FIRAuth.auth()?.currentUser
-//      guard let unwrappedUser = user else { return }
-//        print(unwrappedUser)
-//        if   FIRAuth.auth()?.currentUser != nil {
-//            
-//        }
-//        
-//        self.getRandomCuisine()
-//        getLocation()
-//        
+        
+      
+
+
         
     }
         
 //end of class
 }
 
-extension PreferenceViewController {
-    
-    func getLocation() {
-        print("get location func is working")
-        placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
-            
-            if let error = error {
-                print("there is an error in getlocation")
-                print("this is the \(error.localizedDescription)")
-                return
-            }
-            
-            guard let placeLikelihoodList = placeLikelihoodList else { return }
-            
-            guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
-            
-            let placeName = place.name
-            //Place name is Public School 33
-            let placeAddressComponents = place.addressComponents
-            
-            guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
-            //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
-            let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
-            //Place coordinates are (40.748944899999998, -74.0002432)
-            print("Place name is \(placeName)")
-            print("Place address is \(placeAddress)")
-            print("Place coordinates are \(placeCoordinates)")
-            self.latitude = place.coordinate.latitude
-            self.longitude = place.coordinate.longitude
-            
-            
-            // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
-        
-            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.randomCuisine, completion: { (JSON) in
-                self.restStore.restaurantsInJSON = JSON
-                self.restStore.filterSearchedRestaurants()
-            })
-            
-            
-            
-        })
-    }
 
-    func getRandomCuisine()->String {
-        
-        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-//        for rest in userStore.preferredCuisineArray {
-//            randomRest =
-//        }
-        randomCuisine = userStore.preferredCuisineArray[randomNum]
-        print("random cuisine is: \(randomCuisine)")
-        return randomCuisine
-    }
-    
-}
 
