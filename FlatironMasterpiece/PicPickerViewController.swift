@@ -31,10 +31,40 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Pic picker should appear")
-        takePicture()
+  //      present(alertController, animated: true, completion: nil)
+        selectPicture()
     }
     
+    // this should create the alert that allows you to choose how you want to get your picture
     
+//    let picAlertController = UIAlertController(title: "Add Account Picture", message: "Use Existing", preferredStyle: .alert)
+
+    
+    
+    
+    
+//    let alertController = UIAlertController(title: "UIAlertController", message: "UIAlertController with multiple buttons", preferredStyle: .alert)
+//    let buttonOne = UIAlertAction(title: "One", style: .Default, handler: { (action) -> Void in
+//        println("Button One Pressed")
+//    })
+//    let buttonTwo = UIAlertAction(title: "Two", style: .Default, handler: { (action) -> Void in
+//        println("Button Two Pressed")
+//    })
+//       let buttonCancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+//        print("Cancel Button Pressed")
+//    }
+//    
+//    alertController.addAction(buttonOne)
+//    alertController.addAction(buttonTwo)
+//    alertController.addAction(buttonCancel)
+//    
+//    presentViewController(alertController, animated: true, completion: nil)
+//    
+//    
+    
+    
+    
+    // Below this allows you to select a picture form the list or take a new picture
     
     func selectPicture() {
         let picker = UIImagePickerController()
@@ -69,6 +99,9 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         
         // do something interesting here!
         print(newImage.size)
+        guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
+        guard let compressedJPGImage = UIImage(data: imageData) else { return }
+       //send to firebase
         
         dismiss(animated: true)
     }
