@@ -150,16 +150,32 @@ extension ShakeInstructionViewController {
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
             
-            
-            // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
-            
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
                 self.restStore.restaurantsInJSON = JSON
                 self.restStore.filterSearchedRestaurants()
-            })
             
+                for restaurant in self.restStore.restaurantsArray {
+                    APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
+                        data in
+                        
+                        print("\n\n WE came back and we don't know whats up yete.")
+                        
+                        if let rawData = data {
+                            
+                            print("\n\n")
+                            
+                            print("We have raw data")
+                            
+                            restaurant.photoImage = UIImage(data: rawData)
+                            
+                        }
+                    })
+                }
+              })
         })
     }
+
+    
     
    
     

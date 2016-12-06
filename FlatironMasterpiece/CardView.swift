@@ -17,12 +17,12 @@ class CardView: UIView {
     
     init(restaurant:Restaurant?, frame:CGRect){
         super.init(frame:frame)
+        self.restaurant = restaurant
         
-        if restaurant == nil{
+        if restaurant == nil {
             defaultSetup()
         }else{
             self.backgroundColor = UIColor.blue
-            self.restaurant = restaurant
             setup()
         }
         
@@ -41,7 +41,7 @@ class CardView: UIView {
     
     
     func defaultSetup(){
-        
+
     }
     
     
@@ -63,12 +63,11 @@ class CardView: UIView {
         var restDistanceLabel = UILabel()
         var restHoursLabel = UILabel()
         
-        //
-        // (x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.50))
-        
         restImageView = UIImageView(frame: CGRect(x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.66))
-        //      restImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5));
-        restImageView.image = UIImage(named: testArray1[0])
+//        restImageView.image = UIImage(named: testArray1[0])
+        //SET THE IMAGE VIEW TO AN ACTUAL RESTAURANT IMAGE!
+        restImageView.image = restaurant.photoImage
+      
         self.addSubview(restImageView)
         restImageView.backgroundColor = UIColor.yellow
 
@@ -139,5 +138,6 @@ class CardView: UIView {
             return "Open Now"
         }
     }
+
     
 }

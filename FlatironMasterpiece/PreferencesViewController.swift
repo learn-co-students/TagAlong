@@ -13,13 +13,8 @@ import FirebaseAuth
 //import GooglePlaces
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
-
-
-
-
-
+    
     //NOTE: - UI properties
-
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
@@ -40,11 +35,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
 
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
-  //  let cuisineImage = [UIImage(named: "Asian")!]
 
     let cuisineArray:[String] = ["American", "Asian", "Healthy", "Italian", "Latin", "Unhealthy"]
 
-    
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
     var usersCuisineSelectionsArray:[String] = []
@@ -52,6 +45,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
+        
+        //NOTE: hides top navController
+        navigationController?.isNavigationBarHidden = true
         createSegmentedController()
         layoutCuisineCollectionView()
         formatButtons()
@@ -336,9 +332,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func getRandomCuisine()->String {
 
         let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-        //        for rest in userStore.preferredCuisineArray {
-        //            randomRest =
-        //        }
         userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
         print("random cuisine is: \(userStore.currentChosenCuisine)")
         return userStore.currentChosenCuisine

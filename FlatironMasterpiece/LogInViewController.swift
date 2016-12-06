@@ -27,6 +27,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //NOTE: - hides top navcontroller
+        navigationController?.isNavigationBarHidden = true
         
         print("login view controller working")
         

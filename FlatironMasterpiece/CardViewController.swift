@@ -43,9 +43,7 @@ class CardViewController: UIViewController {
         
         //NOTE: hides top nav controller
         navigationController?.isNavigationBarHidden = true
-//        navigationItem.hidesBackButton = true
-//        navigationController?.navigationBar.isUserInteractionEnabled = false
-//        navigationController?.navigationBar.tintColor = phaedraLightGreen
+
         print("running")
         
         swipeableView.didStart = {view, location in
@@ -62,7 +60,6 @@ class CardViewController: UIViewController {
             if direction.description == "Right" {
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
-                
             }
         }
         swipeableView.didCancel = {view in
@@ -77,7 +74,6 @@ class CardViewController: UIViewController {
         }
         
         // +50 -50 +120 -100
-        
         constrain(swipeableView, view) { view1, view2 in
             view1.left == view2.left+50
             view1.right == view2.right-50
@@ -86,25 +82,18 @@ class CardViewController: UIViewController {
         }
     }
     
-
-    
     // MARK: ()
     func nextCardView() -> UIView? {
-        
-      
+    
         while restaurantArray.count != 0{
             let restaurant = restaurantArray.removeFirst()
             let cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
             cardView.backgroundColor = getRandomPhaedraColor()
-    
             return cardView
-            
         }
-        
-        //if i have a next card then return view if i do not return nil
-        
-       
-//        cardView.backgroundColor = getRandomColor()
+    
+    
+        //if i have a next card then return view if i do not return the default cardview
         return CardView(restaurant: nil, frame: swipeableView.bounds)
     }
     
@@ -114,6 +103,51 @@ class CardViewController: UIViewController {
         return phaedraColorArray[randomNum]
     }
     
+    func createDefaultCard()->CardView {
+        let defaultCard = CardView(restaurant: nil, frame: swipeableView.bounds)
+        swipeableView = ZLSwipeableView()
+        swipeableView.backgroundColor = UIColor.red
+        view.addSubview(swipeableView)
+        self.view.backgroundColor = phaedraOrange
+                
+        swipeableView.didStart = {view, location in
+            print("Did start swiping view at location: \(location)")
+        }
+        swipeableView.swiping = {view, location, translation in
+            print("Swiping at view location: \(location) translation: \(translation)")
+        }
+        swipeableView.didEnd = {view, location in
+            print("Did end swiping view at location: \(location)")
+        }
+        swipeableView.didSwipe = {view, direction, vector in
+            print("Did swipe view in direction: \(direction), vector: \(vector)")
+            if direction.description == "Right" {
+                let selectedRestVC = SelectedRestaurantViewController()
+                self.navigationController?.pushViewController(selectedRestVC, animated: true)
+            }
+        }
+        swipeableView.didCancel = {view in
+            print("Did cancel swiping view")
+        }
+        swipeableView.didTap = {view, location in
+            print("Did tap at location \(location)")
+        }
+        swipeableView.didDisappear = { view in
+            print("Did disappear swiping view")
+            
+        }
+        
+        // +50 -50 +120 -100
+        constrain(swipeableView, view) { view1, view2 in
+            view1.left == view2.left+50
+            view1.right == view2.right-50
+            view1.top == view2.top + 50
+            view1.bottom == view2.bottom - 50
+        }
+        return defaultCard
+    }
     
+
     
 }
+
