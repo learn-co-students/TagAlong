@@ -245,7 +245,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
-        replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
+        replayTutorialButton.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
         
@@ -290,6 +290,19 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - selector functions for buttons
     
     // TODO: - write function that displays replayTutorial
+    func deleteUser() {
+        let user = FIRAuth.auth()?.currentUser
+        print(user)
+        user?.delete { error in
+            if let error = error {
+                // An error happened.
+            } else {
+                // Account deleted.
+            }
+        }
+        print("User deleted")
+    }
+    
     func replayTutorial() {
         print("Replay tutorial requested.")
     }

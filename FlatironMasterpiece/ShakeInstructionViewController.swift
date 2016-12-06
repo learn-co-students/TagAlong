@@ -7,20 +7,31 @@
 //
 
 import UIKit
-
+import AudioToolbox
 class ShakeInstructionViewController: UIViewController {
  
     var shakeView: ShakeView!
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        let vview = ShakeView()
         view.backgroundColor = UIColor.blue
+        if view == vview {
+            vibrate()
+        }
+        
+   
     }
 
     override func loadView() {
         super.loadView()
         shakeView = ShakeView()
         self.view = shakeView
+    }
+    
+    func vibrate() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
