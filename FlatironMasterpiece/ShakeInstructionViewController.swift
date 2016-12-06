@@ -15,12 +15,14 @@ class ShakeInstructionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
+//        animateActivityIndicator()
     }
 
     override func loadView() {
         super.loadView()
         shakeView = ShakeView()
         self.view = shakeView
+    
     }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -32,14 +34,10 @@ class ShakeInstructionViewController: UIViewController {
             self.navigationController?.pushViewController(deckView, animated: false)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    func animateActivityIndicator() {
+//        self.shakeView.activityIndicator.startAnimating()
+//    }
+    
 
 }
