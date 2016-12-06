@@ -169,7 +169,7 @@ extension AccountCreationViewController {
 
         
         view.addSubview(picButton)
-  //      picButton.addTarget(self, action: #selector(picButtonTapped(sender:)), for: .touchUpInside)
+       picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
         picButton.titleLabel?.numberOfLines = 2
         picButton.setTitle("Add\nPic", for: UIControlState.normal)
         picButton.titleLabel?.textAlignment = .center
@@ -183,8 +183,8 @@ extension AccountCreationViewController {
         picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
   //      picButton.specialConstrain(to: view)
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picButton.widthAnchor.constraint(equalToConstant: 72.0).isActive = true
-        picButton.heightAnchor.constraint(equalToConstant: 72.0).isActive = true
+        picButton.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+        picButton.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
         
         
         
@@ -320,6 +320,12 @@ extension AccountCreationViewController {
         FirebaseManager.sendEmailVerification()
 
 
+    }
+    
+    func picButtonTapped(){
+        let pic = PicPickerViewController()
+        self.present(pic, animated: true, completion: nil)
+        
     }
 
     func createAccountButtonTapped(sender: UIButton!) {
