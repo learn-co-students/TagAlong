@@ -248,9 +248,6 @@ final class FirebaseManager {
                 
             })
         })
-        
-        
-        
     }
 
     
@@ -262,26 +259,24 @@ final class FirebaseManager {
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
 
-
     }
     
-    func getTagalongs(){
-        FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.value, with: { (snapshot) -> Void in
-            //let tags = snapshot as! [[String:Any]]
-            for tag in snapshot.children {
-                let snapshotDict = tag as! FIRDataSnapshot
-                let snapDict = snapshotDict.value as! [String:Any]
-                let tagalong = Tagalong(snapshot: snapDict)
-                 self.tagalongs.append(tagalong)
-            }
-          
-           
-            
-            
-      
-        })
-
-    }
+    
+    
+//     Get tagalongs and append to tagalong property
+//    func getTagalongs(){
+//        FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.value, with: { (snapshot) -> Void in
+//            //let tags = snapshot as! [[String:Any]]
+//            for tag in snapshot.children {
+//                let snapshotDict = tag as! FIRDataSnapshot
+//                let snapDict = snapshotDict.value as! [String:Any]
+//                let tagalong = Tagalong(snapshot: snapDict, tag)
+//                 self.tagalongs.append(tagalong)
+//            }
+//      
+//        })
+//
+//    }
     
     static func observeTagalongs(completion: @escaping (String) -> Void) {
         
@@ -289,7 +284,6 @@ final class FirebaseManager {
             
             print("--------------------GETTING CALLED------------------")
             
-            // 3. Extract the messageData from the snapshot
             
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
@@ -297,21 +291,11 @@ final class FirebaseManager {
             if let tagalongKey = snapshot.key as? String,
                 let tagalongValue = snapshot.value as? [String: Any] {
                 
-//                let tagalongDict = [tagalongKey: tagalongValue]
                 completion(tagalongKey)
             
             } else {
                 print("Error! Could not decode message data")
             }
-            
-            
-            // If we want both tagalong Key and value , try capturing the entire snapshot as array of dictionaries ------
-            
-            // if let tagalongDict = snapshot as? [[String: Any]]
-            
-            // OR! 
-            
-            // Create an array of dictinary , ie : [[snapshot.key : snapshot.value]]
             
             print("----------------------------------------------\n\n\n")
         })

@@ -10,6 +10,7 @@ import Foundation
 
 struct Tagalong{
     
+    var tagID: String
     var date: String
     var latitude: Double
     var longitude: Double
@@ -17,7 +18,7 @@ struct Tagalong{
     var user: User!
     var guest = ""
     
-    init(snapshot: [String:Any]) {
+    init(snapshot: [String:Any], tagID: String) {
         print(snapshot)
         let date = snapshot["date"] as! String
         let location = snapshot["location"] as! [String: Any]
@@ -31,6 +32,7 @@ struct Tagalong{
         self.longitude = longitude
         self.latitude = latitude
         self.restaurant = restaurant
+        self.tagID = tagID
     
         
     }

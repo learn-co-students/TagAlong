@@ -33,7 +33,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTagalongs()
+//        getTagalongs()
         johannGetTags()
         
         //store.getTagalongs()
@@ -127,72 +127,47 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //Firebase functions --- this can be refined in firebaseManager during refactoring
+    
+    // Get tagalongs
     func johannGetTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
             
-            let tagDict = snapshot.value as! [String:Any]
+            let tagDict = snapshot.value as! [String: Any]
             let tagId = snapshot.key as! String
-            var tagalong = Tagalong(snapshot: tagDict)
-            
+            var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
             
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user
-                // After populating cells with users, find a way to connect User to Tagalong ID
+
                 self.tagalongs.append(tagalong)
                 self.myTableView.reloadData()
             })
-            //
-            //            if let tagalongKey = snapshot.key as? String,
-            //                let tagalongValue = snapshot.value as? [String: Any] {
-            //
-            //
-            //            } else {
-            //                print("Error! Could not decode message data")
-            //            }
-            
-            
             
         })
         
     }
-    func getTagalongs() {
-        print("---------------THIS IS BEING CALLED--------------------")
-        
-        FirebaseManager.observeTagalongs { (key) in
-            
-            self.tagalongKeys.append(key)
-            print(self.tagalongKeys)
-            //            self.createUserFrom(tagalong: key)
-            FirebaseManager.createUserFrom(tagalong: key, completion: { (user) in
-                self.newtagalongUserArray.append(user)
-                
-                print(user)
-                // After populating cells with users, find a way to connect User to Tagalong ID
-                
-            })
-        }
-        print("ending")
-    }
     
-    //    func createUserFrom(tagalong: String, completion:(User)->()){
-    //        var userName = ""
-    //
-    //        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observe(.value, with: { (snapshot) in
-    //            userName = snapshot.value as! String
-    //
-    //            FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
-    //                let userInfo = snapshot.value as! [String: Any]
-    //                let user = User(snapshot: userInfo)
-    //                //self.newtagalongUserArray.append(user)
-    //                completion(user)
-    //
-    //            })
-    //        })
-    //
-    //
-    //
-    //    }
+    
+//    func getTagalongs() {
+//        print("---------------THIS IS BEING CALLED--------------------")
+//        
+//        FirebaseManager.observeTagalongs { (key) in
+//            
+//            self.tagalongKeys.append(key)
+//            print(self.tagalongKeys)
+//            //            self.createUserFrom(tagalong: key)
+//            FirebaseManager.createUserFrom(tagalong: key, completion: { (user) in
+//                self.newtagalongUserArray.append(user)
+//                
+//                print(user)
+//                // After populating cells with users, find a way to connect User to Tagalong ID
+//                
+//            })
+//        }
+//        print("ending")
+//    }
+    
     
     
     // MARK: - set up tableview
@@ -247,10 +222,13 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                
+        let selectedTag = tagalongs[indexPath.row]
         
-        // If row was selected, call this function:
+        FirebaseManager.requestTagAlong(key: selectedTag.tagID)
         
-        //  FirebaseManager.requestTagAlong(key: <#T##String#>)
+        
+        
         
     }
     
