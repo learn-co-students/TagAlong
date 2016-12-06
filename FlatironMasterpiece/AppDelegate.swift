@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-      let initialViewController = ShakeInstructionViewController()
+      let initialViewController = TagAlongViewController()
 
        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

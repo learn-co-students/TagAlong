@@ -22,6 +22,7 @@ final class FirebaseManager {
     static var chatRef: FIRDatabaseReference!
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
     static var newMessageRefHandle: FIRDatabaseHandle?
+    static var newTagalongRefHandle: FIRDatabaseHandle?
     static var currentUser = FIRAuth.auth()?.currentUser?.uid
     static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
 
@@ -233,6 +234,38 @@ final class FirebaseManager {
 
 
     }
+    
+    static func observeTagalongs(completion: @escaping ([String: Any], String) -> Void) {
+        
+        newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
+            
+            print("--------------------GETTING CALLED------------------")
+            
+            // 3. Extract the messageData from the snapshot
+            
+            print("tagalongQuery snapshot: \(snapshot.value)")
+            print("tagalongKey: \(snapshot.key)")
+            
+            let tagalongData = snapshot.value as! [String: Any]
+            
+            if let host = tagalongData["host"] as? String,
+                let date = tagalongData["date"] as? String,
+                let location = tagalongData["location"] as? String,
+                host.characters.count > 0 {
+                
+                print("These \(tagalongData) are getting called within Firebase Manager")
+                
+                let tagalongKey = snapshot.key as! String
+                
+                completion(tagalongData, tagalongKey)
+                
+            } else {
+                print("Error! Could not decode message data")
+            }
+            
+            print("----------------------------------------------\n\n\n")
+        })
+    }
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 
@@ -251,7 +284,7 @@ final class FirebaseManager {
 
     }
 
-    static func observeMessages(completion:@escaping (String, String, String)-> Void) {
+    static func observeMessages(completion: @escaping (String, String, String) -> Void) {
 
 
         // 1. Creating a query that limits the synchronization to the last 25 messages

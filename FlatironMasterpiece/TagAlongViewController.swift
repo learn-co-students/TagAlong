@@ -12,6 +12,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var tagAlongUsersLabel: UILabel = UILabel()
     
+    var tagalongKeys: [String] = []
+    
     var tagAlongUserArray:[User] = []
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
@@ -115,10 +117,18 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func getTagalongs() {
         print("---------------THIS IS BEING CALLED--------------------")
-        let tagalong = FirebaseManager.ref.child("tagalongs").key
         
+        FirebaseManager.observeTagalongs { (tagalongDictionary, tagalongKey) in
+            
+                self.tagalongKeys.append(tagalongKey)
+            
+            
+        }
+            
+            
+        }
         
-    }
+    
     
     
     
