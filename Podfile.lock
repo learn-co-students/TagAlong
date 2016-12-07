@@ -117,8 +117,5 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c58e76f1e26259f80c9257f92a3ffc3f04103524
 
-<<<<<<< HEAD
+
 COCOAPODS: 1.1.1
-=======
-COCOAPODS: 1.0.1
->>>>>>> feature/account-picture
