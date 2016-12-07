@@ -60,14 +60,7 @@ class CardView: UIView {
         layer.shadowRadius = 4.0
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
-//        
-//        var restImageView = UIImageView()
-//        var restNameLabel = UILabel()
-//        var restCuisineLabel = UILabel()
-//        var restCostLabel = UILabel()
-//        var restDistanceLabel = UILabel()
-//        var restHoursLabel = UILabel()
-//        
+   
         let labelWidth = self.bounds.width * 0.8
         let labelXLocation = self.bounds.width * 0.10
         
@@ -129,13 +122,6 @@ class CardView: UIView {
         
         // Corner Radius
         layer.cornerRadius = 10.0;
-        
-       
-        
-        
-        
-        
-        
         
     }
     

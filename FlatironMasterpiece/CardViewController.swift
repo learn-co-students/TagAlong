@@ -290,10 +290,7 @@ extension Double {
     var radians: Double {
         return self * M_PI / 180
     }
-//    var miles: Double  {
-//        
-//        return rounded
-//    }
+
     var feet: Double {
         return self * 3280.84
     }
