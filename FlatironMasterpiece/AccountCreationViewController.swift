@@ -153,7 +153,7 @@ extension UIView {
 
 
 // MARK: Set Up
-extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AccountCreationViewController {
 
   
     func selectProfileImage() {
@@ -163,11 +163,11 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         picker.isEditing = true
         present(picker, animated: true, completion: nil)
     }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("cancelled PICKER")
-        
-    }
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        print("cancelled PICKER")
+//        
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
        
@@ -224,6 +224,11 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 60
         picButton.translatesAutoresizingMaskIntoConstraints = false
+        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
+        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+        
 
         
 
@@ -235,15 +240,14 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         
         picImage.backgroundColor = UIColor.red
         picImage.layer.borderWidth = 2
-        picImage.layer.cornerRadius = 35
+        picImage.layer.cornerRadius = 60
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
         
-        picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
-        //      picButton.specialConstrain(to: view)
+        picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picImage.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
-        picImage.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+        picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
         
         
         
@@ -254,12 +258,6 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         
         
         
-
-
-        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
-        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
 
 
 
@@ -507,23 +505,23 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         //AccountCreationViewController()
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
-        var newImage: UIImage
-        var sourceType: UIImagePickerControllerSourceType
-
-        if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            newImage = possibleImage
-        } else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            newImage = possibleImage
-        } else {
-            return
-        }
-
-        // do something interesting here!
-        print(newImage.size)
-        guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
-        guard let compressedJPGImage = UIImage(data: imageData) else { return }
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//
+//        var newImage: UIImage
+//        var sourceType: UIImagePickerControllerSourceType
+//
+//        if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+//            newImage = possibleImage
+//        } else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            newImage = possibleImage
+//        } else {
+//            return
+//        }
+//
+//        // do something interesting here!
+//        print(newImage.size)
+//        guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
+//        guard let compressedJPGImage = UIImage(data: imageData) else { return }
         //send to firebase
 
         //        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -532,14 +530,14 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         //            print("Something went wrong")
         //        }
         //
-        print("view should dismiss")
-        super.dismiss(animated: true, completion: nil)
+//        print("view should dismiss")
+//        super.dismiss(animated: true, completion: nil)
     }
 
 
 
 
-}
+
 
 extension AccountCreationViewController {
 
