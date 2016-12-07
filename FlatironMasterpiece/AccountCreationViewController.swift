@@ -51,7 +51,9 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
     var picButton = UIButton()
-
+    var picImage = UIImageView()
+    
+    
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
@@ -151,7 +153,42 @@ extension UIView {
 
 
 // MARK: Set Up
-extension AccountCreationViewController {
+extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+  
+    func selectProfileImage() {
+        print(123)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.isEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("cancelled PICKER")
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+       
+        var selectedImageFromPicker: UIImage?
+       
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+
+            print(editedImage)
+            selectedImageFromPicker = editedImage
+        } else if let original = info["UIImagePickerControllerOriginalImage"] as? UIImage{
+            print(original)
+            selectedImageFromPicker = original
+        }
+     
+        if let selectedImage = selectedImageFromPicker {
+            picImage.image = selectedImage
+        }
+        dismiss(animated: true, completion: nil)
+
+    }
+    
 
     func createViews() {
 
@@ -167,9 +204,15 @@ extension AccountCreationViewController {
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-        
         view.addSubview(picButton)
-       picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+        
+        
+        
+        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+        picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        picButton.isUserInteractionEnabled = true
         picButton.titleLabel?.numberOfLines = 2
         picButton.setTitle("Add\nPic", for: UIControlState.normal)
         picButton.titleLabel?.textAlignment = .center
@@ -180,13 +223,47 @@ extension AccountCreationViewController {
         picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 35
         picButton.translatesAutoresizingMaskIntoConstraints = false
- //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-
+        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
+        
         picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
-  //      picButton.specialConstrain(to: view)
+        //      picButton.specialConstrain(to: view)
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picButton.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
         picButton.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        
+
+      
+        view.addSubview(picImage)
+        
+        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+        picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+//        picImage.isUserInteractionEnabled = true
+//        picImage.titleLabel?.numberOfLines = 2
+//        picImage.setTitle("Add\nPic", for: UIControlState.normal)
+//        picImage.titleLabel?.textAlignment = .center
+//        picImage.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+//        picImage.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
+        //picImage.backgroundColor = phaedraYellow
+       //picImage.layer.borderColor = phaedraDarkGreen.cgColor
+        picImage.backgroundColor = UIColor.red
+        picImage.layer.borderWidth = 2
+        picImage.layer.cornerRadius = 35
+        picImage.translatesAutoresizingMaskIntoConstraints = false
+        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
+        
+        picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
+        //      picButton.specialConstrain(to: view)
+        picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        picImage.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+        picImage.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+        
+        
+        
+        
+        
+        
         
         
         
