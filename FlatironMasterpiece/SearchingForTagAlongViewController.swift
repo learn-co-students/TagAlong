@@ -117,10 +117,12 @@ class SearchingForTagAlongViewController: UIViewController {
     
     func tagalongRequest() {
         
-        store.createGuestFrom(tagalong: store.selectedTagAlongID) { (guest) in
+        guard let tagalongID = store.selectedTagAlongID else { return }
+        
+        store.createGuestFrom(tagalong: tagalongID) { (guest) in
             
             //Message to request
-            // name, job title, would like to tag along with you at restaraunt. Would you like them to tag along?
+            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
             
             
         }

@@ -341,7 +341,7 @@ final class FirebaseManager {
                 let userInfo = snapshot.value as! [String: Any]
                 let user = User(snapshot: userInfo)
                 
-                
+        
                 print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
                 //self.newtagalongUserArray.append(user)
                 completion(user)
