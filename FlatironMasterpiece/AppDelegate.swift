@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
         //MARK: - sets the initial view controller
 
-//      let initialViewController = SelectedRestaurantViewController()
-//
+//      let initialViewController = ShakeInstructionViewController()
+
 //       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-
+//
 
         return true
     }
