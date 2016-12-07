@@ -126,13 +126,10 @@ extension ShakeInstructionViewController {
             guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
             
             let placeName = place.name
-            //Place name is Public School 33
             let placeAddressComponents = place.addressComponents
             
             guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
-            //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
             let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
-            //Place coordinates are (40.748944899999998, -74.0002432)
             print("Place name is \(placeName)")
             print("Place address is \(placeAddress)")
             print("Place coordinates are \(placeCoordinates)")
