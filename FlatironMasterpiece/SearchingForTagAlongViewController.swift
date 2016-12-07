@@ -178,9 +178,16 @@ class SearchingForTagAlongViewController: UIViewController {
         
         store.acceptTagalong(guestID: store.guestID)
         
+        store.guestStatus[store.guestID] = true
+        
         // Segue into chat/tab bar view
 //        let chatVC = ChatViewController()
 //        self.navigationController?.present(chatVC, animated: true, completion: nil)
+        
+        // Add tagalong to guest's current tagalong branch and current tagalong branch
+        
+        FirebaseManager.updateUserWithTagAlongKey(key: store.selectedTagAlongID)
+        
     }
     
     func denyTagalongAction() {
@@ -189,6 +196,11 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.isHidden = true
         denyButton.isHidden = true
         tagAlongFoundLabel.isHidden = true
+        
+        
+        //Figure out a way to notify user when they are denied 
+        store.guestStatus[store.guestID] = false
+
     }
     
     
@@ -219,22 +231,8 @@ class SearchingForTagAlongViewController: UIViewController {
 //            })
 //            
 //            // Deny Invite: - notify guest so they can keep searching
-//            
-//            
-//            
 //
-//
-//
-//        
-//
-//            
-//            
 //        }
-//        
-//        
-//        
-//        
-//        
 //        
 //        
 //    }

@@ -37,6 +37,9 @@ final class FirebaseManager {
     var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
 
     var testID: String?
+    
+    var guestStatus: [String: Bool]?
+    
 
     private init() {}
 
