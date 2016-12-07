@@ -173,9 +173,6 @@ class SearchingForTagAlongViewController: UIViewController {
         
 //        guard let acceptedGuestID = store.guestID else { return }
         
-        let user2 = "XviS8DvnTDY4aW2fyzXHgf1sqJu1"
-        let user3 = "LdldUs5cSaQc6Be76iHLhajhbm03"
-        
         store.acceptTagalong(guestID: store.guestID)
         
         store.guestStatus[store.guestID] = true
@@ -198,7 +195,7 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongFoundLabel.isHidden = true
         
         
-        //Figure out a way to notify user when they are denied 
+        //Figure out a way to notify user when they are denied
         store.guestStatus[store.guestID] = false
 
     }
