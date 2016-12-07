@@ -10,7 +10,6 @@ import UIKit
 
 class WaitingForHostViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
