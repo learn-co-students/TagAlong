@@ -47,15 +47,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-//      let initialViewController = CardViewController()
-//
-//       let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
+
+//      let initialViewController = ShakeInstructionViewController()
+
+        let initialViewController = AccountCreationViewController()
+
+
+
+
+       let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
 
 
         return true
