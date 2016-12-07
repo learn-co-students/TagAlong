@@ -41,10 +41,7 @@ class SelectedRestaurantViewController: UIViewController {
             "lat" : -45,
             "long": 35
         ]
-    
     ]
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +56,6 @@ class SelectedRestaurantViewController: UIViewController {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
-        
-        
     }
 
 
@@ -88,8 +83,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
             //TODO:
             print("confirm tapped")
-
-
             print("hey there before createtagalong")
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
                 
@@ -102,19 +95,14 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 // Add tagalong key to users (current tagalong and tagalongs)
                 FirebaseManager.updateUserWithTagAlongKey(key: key)
                 
-                
                 // Send key to tableview so that guests can join
                
-                
             })
             
             // Testing Chat - should segue to
-        
             let chatVC = ChatViewController()
             self.navigationController?.present(chatVC, animated: true, completion: nil)
-//            
-
-            
+  
             //segue way searchingForTagAlong vc
 //            let searchingVC = SearchingForTagAlongViewController()
 //            self.navigationController?.pushViewController(searchingVC, animated: true)
