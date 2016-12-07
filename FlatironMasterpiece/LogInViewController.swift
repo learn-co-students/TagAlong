@@ -92,7 +92,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
         loginEmail.translatesAutoresizingMaskIntoConstraints = false
-        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 80).isActive = true
+        loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 60).isActive = true
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
@@ -121,16 +121,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // login button
         view.addSubview(loginButton)
-        loginButton.backgroundColor = phaedraYellow
+        loginButton.backgroundColor = UIColor.clear
+//        loginButton.backgroundColor = phaedraYellow
         loginButton.layer.borderColor = phaedraLightGreen.cgColor
         loginButton.layer.borderWidth = 2
         loginButton.layer.cornerRadius = 5
         loginButton.setTitle("Enter", for: UIControlState.normal)
         loginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         loginButton.titleLabel?.textAlignment = .center
-        
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
+//        loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        loginButton.setTitleColor(phaedraLightGreen, for: .normal)
         loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 120).isActive = true
@@ -175,7 +176,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         forgotPasswordButton.backgroundColor = UIColor.clear
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:10).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:5).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true

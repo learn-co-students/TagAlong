@@ -119,8 +119,8 @@ class CardViewController: UIViewController {
                 userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
                 print("random cuisine is: \(userStore.currentChosenCuisine)")
                 getLocation()
-//                let shakeVC = ShakeInstructionViewController()
-//                self.navigationController?.pushViewController(shakeVC, animated: false)
+                let shakeVC = ShakeInstructionViewController()
+                self.navigationController?.pushViewController(shakeVC, animated: false)
             }
         }
     }
