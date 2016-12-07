@@ -350,6 +350,16 @@ final class FirebaseManager {
         })
     }
     
+    static func acceptTagalong(guestID: String, completion: (Bool) -> Void) {
+        
+        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([guestID : true])
+        
+        completion(true)
+        // User segues to chat
+        // Send guest to chat
+        
+    }
+    
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 
