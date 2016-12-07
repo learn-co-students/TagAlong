@@ -87,15 +87,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(loginEmail)
         loginEmail.placeholder = "  Email Address"
         loginEmail.textAlignment = .center
-        loginEmail.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        loginEmail.font = UIFont(name: "OpenSans-Light", size: 16.0)
         loginEmail.layer.borderWidth = 2
         loginEmail.layer.cornerRadius = 5
         loginEmail.layer.borderColor = phaedraDarkGreen.cgColor
         loginEmail.translatesAutoresizingMaskIntoConstraints = false
         loginEmail.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 80).isActive = true
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70).isActive = true
+        loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
         loginEmail.backgroundColor = UIColor.white
         
         loginEmail.autocapitalizationType = .none
@@ -105,15 +105,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(loginPassword)
         loginPassword.placeholder = "Password"
         loginPassword.textAlignment = .center
-        loginPassword.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        loginPassword.font = UIFont(name: "OpenSans-Light", size: 16.0)
         loginPassword.layer.borderWidth = 2
         loginPassword.layer.cornerRadius = 5
         loginPassword.layer.borderColor = phaedraDarkGreen.cgColor
         loginPassword.translatesAutoresizingMaskIntoConstraints = false
         loginPassword.topAnchor.constraint(equalTo: loginEmail.bottomAnchor, constant: 5).isActive = true
         loginPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
-        loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        loginPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70).isActive = true
+        loginPassword.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
         loginPassword.backgroundColor = UIColor.white
         
         loginPassword.isSecureTextEntry = true
@@ -133,7 +133,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
         loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 150).isActive = true
+        loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 120).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -175,7 +175,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         forgotPasswordButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         forgotPasswordButton.backgroundColor = UIColor.clear
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:15).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:10).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true

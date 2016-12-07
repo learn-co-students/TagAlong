@@ -9,6 +9,8 @@
 import UIKit
 import ZLSwipeableViewSwift
 import Cartography
+import CoreLocation
+import GooglePlaces
 
 
 var testArray1 = ["spreads", "De Mole", "Mexican", "$$", ".4 miles", "11AM-11:30PM"]
@@ -20,8 +22,13 @@ class CardViewController: UIViewController {
     var swipeableView: ZLSwipeableView!
     
     //erica's code
+    var userStore = UsersDataStore.sharedInstance
     var restStore = RestaurantDataStore.sharedInstance
     var restaurantArray = [Restaurant]()
+    //NOTE: - google places / core location properties
+    var placesClient: GMSPlacesClient?
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -41,16 +48,29 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = phaedraOrange
         makeLabels()
-        
-        swipeableView = ZLSwipeableView()
-        swipeableView.backgroundColor = UIColor.clear
-       
-        view.addSubview(swipeableView)
+        formatSwipeableView()
+        print("getlocationVC is working")
+        placesClient = GMSPlacesClient.shared()
         
         //NOTE: hides top nav controller
         navigationController?.isNavigationBarHidden = true
-
+        
         print("running")
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func formatSwipeableView() {
+        swipeableView = ZLSwipeableView()
+        swipeableView.backgroundColor = UIColor.clear
+        view.addSubview(swipeableView)
         
         swipeableView.didStart = {view, location in
             print("Did start swiping view at location: \(location)")
@@ -84,6 +104,24 @@ class CardViewController: UIViewController {
             view1.right == view2.right-30
             view1.top == view2.top + 80
             view1.bottom == view2.bottom - 60
+        }
+
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if(event?.subtype == UIEventSubtype.motionShake) {
+            print("shaken")
+                    
+            var currentRandomCuisine = userStore.currentChosenCuisine
+            //if the current random cuisine is not the new random cuisine
+            let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+            if currentRandomCuisine != userStore.preferredCuisineArray[randomNum] {
+                userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+                print("random cuisine is: \(userStore.currentChosenCuisine)")
+                getLocation()
+//                let shakeVC = ShakeInstructionViewController()
+//                self.navigationController?.pushViewController(shakeVC, animated: false)
+            }
         }
     }
     
@@ -177,6 +215,66 @@ class CardViewController: UIViewController {
     }
     
 
+    
+}
+
+extension CardViewController {
+    
+    func getLocation() {
+        print("get location func is working")
+        placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
+            
+            if let error = error {
+                print("there is an error in getlocation")
+                print("this is the \(error.localizedDescription)")
+                return
+            }
+            
+            guard let placeLikelihoodList = placeLikelihoodList else { return }
+            
+            guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
+            
+            let placeName = place.name
+            //Place name is Public School 33
+            let placeAddressComponents = place.addressComponents
+            
+            guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
+            //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
+            let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
+            //Place coordinates are (40.748944899999998, -74.0002432)
+            print("Place name is \(placeName)")
+            print("Place address is \(placeAddress)")
+            print("Place coordinates are \(placeCoordinates)")
+            self.latitude = place.coordinate.latitude
+            self.longitude = place.coordinate.longitude
+            print("please work")
+            
+            APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
+                
+                self.restStore.restaurantsInJSON = JSON
+                print("this is the json \(self.restStore.restaurantsInJSON)")
+                self.restStore.filterSearchedRestaurants()
+                
+                print("getting restaurants")
+                for restaurant in self.restStore.restaurantsArray {
+                    APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
+                        data in
+                        
+                        print("\n\n WE came back and we don't know whats up yete.")
+                        
+                        if let rawData = data {
+                            
+                            print("\n\n")
+                            
+                            print("We have raw data")
+                            
+                            restaurant.photoImage = UIImage(data: rawData)
+                        }
+                    })
+                }
+            })
+        })
+    }
     
 }
 
