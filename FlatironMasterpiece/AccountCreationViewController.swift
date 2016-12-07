@@ -151,8 +151,27 @@ extension UIView {
 
 
 // MARK: Set Up
-extension AccountCreationViewController {
+extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+  
+    func selectProfileImage() {
+        print(123)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("cancelled PICKER")
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let original = info["UIImagePickerControllerOriginalImage"] {
+            print(info)
+        }
+//        print(info)
+//        dismiss(animated: true, completion: nil)
+    }
     func createViews() {
 
         // Create Account Label
@@ -167,9 +186,14 @@ extension AccountCreationViewController {
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
+      
         
         view.addSubview(picButton)
-       picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+       //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+    //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+        picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        picButton.isUserInteractionEnabled = true
         picButton.titleLabel?.numberOfLines = 2
         picButton.setTitle("Add\nPic", for: UIControlState.normal)
         picButton.titleLabel?.textAlignment = .center
