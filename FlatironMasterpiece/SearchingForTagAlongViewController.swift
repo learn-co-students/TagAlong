@@ -15,6 +15,9 @@ class SearchingForTagAlongViewController: UIViewController {
     let searchingLabel: UILabel = UILabel()
     var searchAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     var beTagAlongGuestButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
+    var tagAlongFoundLabel: UILabel = UILabel()
+    var acceptButton = UIButton()
+    var denyButton = UIButton()
     var firstTimeLoaded = true
     
     override func viewDidLoad() {
@@ -28,6 +31,8 @@ class SearchingForTagAlongViewController: UIViewController {
         setupLabel()
         setupSpinner()
         setupButtons()
+        
+        setupTagAlongMessageAndButtons()
         
     }
 
@@ -92,6 +97,55 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.setTitleColor(phaedraDarkGreen, for: .normal)
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
 
+    }
+    
+    func setupTagAlongMessageAndButtons() {
+        view.addSubview(tagAlongFoundLabel)
+        tagAlongFoundLabel.text = "You have been matched with /n'Person"
+        tagAlongFoundLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
+        tagAlongFoundLabel.textColor = phaedraOrange
+        tagAlongFoundLabel.textAlignment = .center
+        tagAlongFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        tagAlongFoundLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
+        tagAlongFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        
+        view.addSubview(acceptButton)
+        acceptButton.backgroundColor = phaedraLightGreen
+        acceptButton.layer.cornerRadius = 5
+        acceptButton.layer.borderWidth = 1
+        acceptButton.layer.borderColor = phaedraDarkGreen.cgColor
+        acceptButton.setTitle("Accept Tag Along", for: UIControlState.normal)
+        acceptButton.setTitle("Tutorial Played", for: .highlighted)
+        acceptButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        acceptButton.titleLabel?.textAlignment = .center
+        acceptButton.translatesAutoresizingMaskIntoConstraints = false
+        acceptButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
+        acceptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        acceptButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        acceptButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
+        acceptButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
+        acceptButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        acceptButton.setTitleColor(phaedraYellow, for: .highlighted)
+        
+        view.addSubview(denyButton)
+        denyButton.backgroundColor = phaedraLightGreen
+        denyButton.layer.cornerRadius = 5
+        denyButton.layer.borderWidth = 1
+        denyButton.layer.borderColor = phaedraDarkGreen.cgColor
+        denyButton.setTitle("Accept Tag Along", for: UIControlState.normal)
+        denyButton.setTitle("Tutorial Played", for: .highlighted)
+        denyButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
+        denyButton.titleLabel?.textAlignment = .center
+        denyButton.translatesAutoresizingMaskIntoConstraints = false
+        denyButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
+        denyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        denyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        denyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
+        denyButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
+        denyButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        denyButton.setTitleColor(phaedraYellow, for: .highlighted)
+        
     }
     
     func returnToDeckView() {
@@ -184,13 +238,13 @@ class SearchingForTagAlongViewController: UIViewController {
                 
                 self.store.guestID = snapshot?.key
                 
-                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
-                    
-                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-                    
-                    
-                    
-                })
+//                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
+//                    
+//                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
+//                    
+//                    
+//                    
+//                })
                 
                 print("\n\n")
                 
