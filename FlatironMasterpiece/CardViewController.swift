@@ -193,6 +193,7 @@ class CardViewController: UIViewController {
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
+                
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
             }
@@ -225,7 +226,6 @@ class CardViewController: UIViewController {
 extension CardViewController {
     
     func getLocation() {
-        print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
             
             if let error = error {
@@ -239,36 +239,29 @@ extension CardViewController {
             guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
             
             let placeName = place.name
-            //Place name is Public School 33
             let placeAddressComponents = place.addressComponents
             
             guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
-            //Place address is Optional("281 9th Ave\nNew York\nNY 10001\nUSA")
             let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
-            //Place coordinates are (40.748944899999998, -74.0002432)
-            print("Place name is \(placeName)")
-            print("Place address is \(placeAddress)")
-            print("Place coordinates are \(placeCoordinates)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
-            print("please work")
+            print("\nplease work - getting a location")
             
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
                 
                 self.restStore.restaurantsInJSON = JSON
-                print("this is the json \(self.restStore.restaurantsInJSON)")
                 self.restStore.filterSearchedRestaurants(completion: { _ in
                     // TO DO: determine whether completion will be used here.
                 })
                 
-                print("getting restaurants")
+                print("\ngetting restaurants")
                 for restaurant in self.restStore.restaurantsArray {
                     APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
                         data in
                         
                         if let rawData = data {
                             
-                            print("\n\n")
+                            print("\ngetting restaurant photos")
                             
                             restaurant.photoImage = UIImage(data: rawData)
                         }

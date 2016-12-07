@@ -63,11 +63,11 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zct-o0-103">
-                    <rect key="frame" x="21" y="474.5" width="179" height="42.5"/>
+                    <rect key="frame" x="21" y="485.5" width="179" height="31.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="179" id="R46-IM-rpx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="24"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="3" height="2"/>
@@ -114,7 +114,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-yE-2FO">
-                    <rect key="frame" x="42" y="397" width="290" height="54.5"/>
+                    <rect key="frame" x="42" y="397" width="290" height="65.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="290" id="ZE7-JX-0sk"/>
                     </constraints>
@@ -124,11 +124,11 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💰💰💰💰" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-Ne-Fu2">
-                    <rect key="frame" x="208" y="474.5" width="132" height="42.5"/>
+                    <rect key="frame" x="208" y="485.5" width="132" height="31.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="132" id="BId-FQ-3S9"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="23"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

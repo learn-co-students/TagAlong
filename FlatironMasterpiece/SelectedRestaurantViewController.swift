@@ -11,6 +11,7 @@ import UIKit
 class SelectedRestaurantViewController: UIViewController {
 
     var restaurantView: RestaurantView!
+    var userStore = UsersDataStore.sharedInstance
 
     // Information needed from Deck View
     var user: String?
@@ -41,15 +42,12 @@ class SelectedRestaurantViewController: UIViewController {
             "long": 35
         ]
     ]
-    
-    deinit {
-        print("OBNOXIOUS PRINT - AKA TAYLOR SWIFT - SELECTEDRESTAURANTVIEWCONTROLLER")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
+        restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
     }
 
     override func loadView() {
