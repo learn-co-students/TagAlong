@@ -24,6 +24,9 @@ class SearchingForTagAlongViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
         observeTagalongRequests()
+        
+        print(FirebaseManager.currentUser)
+        print(firstTimeLoaded)
     }
     
     override func loadView() {
@@ -168,9 +171,12 @@ class SearchingForTagAlongViewController: UIViewController {
     
     func acceptTagalongAction() {
         
-        guard let acceptedGuestID = store.guestID else { return }
+//        guard let acceptedGuestID = store.guestID else { return }
         
-        store.acceptTagalong(guestID: acceptedGuestID)
+        let user2 = "XviS8DvnTDY4aW2fyzXHgf1sqJu1"
+        let user3 = "LdldUs5cSaQc6Be76iHLhajhbm03"
+        
+        store.acceptTagalong(guestID: store.guestID)
         
         // Segue into chat/tab bar view
 //        let chatVC = ChatViewController()
@@ -242,9 +248,9 @@ class SearchingForTagAlongViewController: UIViewController {
             
             // Only detects recents tagalongs
             if !self.firstTimeLoaded {
-                
+            
                 //Alert user of new tag along
-                print("\n Getting called.")
+                print("\n ==============Getting called.===============")
                 
                 guard snapshot != nil else { return }
                 
@@ -257,7 +263,7 @@ class SearchingForTagAlongViewController: UIViewController {
                 
 //                guard let tagalongID = self.store.selectedTagAlongID else { return }
                 
-                self.store.guestID = snapshot?.key
+//                self.store.guestID = snapshot?.key
                 
 //                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
 //                    

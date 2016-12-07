@@ -32,9 +32,9 @@ final class FirebaseManager {
     var tagalongs = [Tagalong]()
 
     //Tagalong ID from selected Tagalong
-    var selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C"       // TODO: Remove this. Using it to test.
+    var selectedTagAlongID = "in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
     //User ID from guest requesting tagalong
-    var guestID: String?
+    var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
     
     var testID: String?
 
@@ -332,7 +332,10 @@ final class FirebaseManager {
     
      func acceptTagalong(guestID: String) {
         
-        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").child("guests").updateChildValues([guestID : true])
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").updateChildValues([guestID : true])
+        
+//        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").updateChildValues([guests: [String: Bool]])
+
         
         // User segues to chat
         

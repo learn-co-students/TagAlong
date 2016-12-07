@@ -200,8 +200,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
                 
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
-        store.selectedTagAlongID = selectedTag.tagID
-        store.guestID = FirebaseManager.currentUser
+//        store.selectedTagAlongID = selectedTag.tagID
+//        store.guestID = FirebaseManager.currentUser
         
     }
     
