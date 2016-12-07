@@ -12,7 +12,7 @@
 //UIImageWriteToSavedPhotosAlbum(compressedJPGImage, nil, nil, nil)
 
 
-//vdl - 
+//ADD: take picture button, choose picture button, view with picture
 
 
 import Foundation
@@ -61,6 +61,7 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     
     // Below this allows you to select a picture form the list or take a new picture
+    //maybe stick this whole thing inside the viw controller it is to be dismissed to
     
     func selectPicture() {
         let picker = UIImagePickerController()
@@ -83,12 +84,13 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         var newImage: UIImage
         var sourceType: UIImagePickerControllerSourceType
         
-        if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+        if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             newImage = possibleImage
-        } else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        } else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newImage = possibleImage
         } else {
             return
