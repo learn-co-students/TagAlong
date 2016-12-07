@@ -15,10 +15,25 @@ class SearchingForTagAlongViewController: UIViewController {
     let searchingLabel: UILabel = UILabel()
     var searchAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     var beTagAlongGuestButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
+    var firstTimeLoaded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
+        store.observeTagalongRequests { (snapshot) in
+            
+            //Prevents old tagalongs to appear if 
+            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
+            
+            print("\n Getting called.")
+
+            guard snapshot != nil else { return }
+            
+            print("\n\n")
+            
+            print("We have a new tag along person. \(snapshot)")
+            
+        }
        
     }
     
@@ -115,51 +130,50 @@ class SearchingForTagAlongViewController: UIViewController {
     
     //ALERT:
     
-    func tagalongRequest() {
-        
-        guard let tagalongID = store.selectedTagAlongID else { return }
-        
-        store.createGuestFrom(tagalong: tagalongID) { (guest) in
-            
-            //Message to request
-            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-            
-            
-            // Accept Invite
-            FirebaseManager.acceptTagalong(guestID: guest, completion: { (isAccepted) in
-                
-                if isAccepted {
-                    
-                    // Send user to chat using tagalong ID
-                    let chatVC = ChatViewController()
-                    self.navigationController?.present(chatVC, animated: true, completion: nil)
-
-                    //TODO: - Give guest access to chat
-                    
-                }
-                
-            })
-            
-            // Deny Invite: - notify guest so they can keep searching 
-            
-            
-            
-
-
-
-        
-
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-    }
+//    func tagalongRequest() {
+//        
+//        guard let tagalongID = store.selectedTagAlongID else { return }
+//        
+//        store.createGuestFrom(tagalong: tagalongID) { (guest) in
+//            
+//            //Message to request
+//            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
+//            
+//            // Accept Invite
+//            FirebaseManager.acceptTagalong(guestID: guest, completion: { (isAccepted) in
+//                
+//                if isAccepted {
+//                    
+//                    // Send user to chat using tagalong ID
+//                    let chatVC = ChatViewController()
+//                    self.navigationController?.present(chatVC, animated: true, completion: nil)
+//
+//                    //TODO: - Give guest access to chat
+//                    
+//                }
+//                
+//            })
+//            
+//            // Deny Invite: - notify guest so they can keep searching
+//            
+//            
+//            
+//
+//
+//
+//        
+//
+//            
+//            
+//        }
+//        
+//        
+//        
+//        
+//        
+//        
+//        
+//    }
 
 }
 

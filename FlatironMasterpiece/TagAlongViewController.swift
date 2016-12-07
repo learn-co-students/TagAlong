@@ -188,13 +188,20 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 
         let selectedTag = tagalongs[indexPath.row]
         
+        
+        // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
                 
         // Store tagalongID to firebase (This ID will later be used to observe child values for requests)
-        store.selectedTagAlongID = selectedTag
+    
+        store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
         // Send alert to host
         
+        // -------------------------
+        
+        //If user presses cancel, no action will occur
+//
     }
     
     

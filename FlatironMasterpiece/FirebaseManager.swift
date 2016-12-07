@@ -311,21 +311,22 @@ final class FirebaseManager {
         
     }
     
-    static func observeTagalongRequests(tagalongID: String) {
+    func observeTagalongRequests(response: @escaping (FIRDataSnapshot?) -> Void) {
+    
+        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
         
-        // To get UserID : Host -> ID
-        //Tagalong -> Guests -> Users
+        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
         
-        
-//        ref.child("tagalongs").child("\(tagalongID)").child("guests").observe(.childAdded) { (snapshot) in
-//            
-//            print(snapshot)
-//            
-//        }
-        
-        // Create user from tagalong
-        // Send user info to host
-        ref.child("tagalongs").child("\(tagalongID)").child("host").key
+        FirebaseManager.ref.child("tagalongs").child("\(theSelectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
+            
+            DispatchQueue.main.async {
+                
+                response(snapshot)
+            }
+            
+            
+            
+        })
         
     }
     
@@ -350,15 +351,15 @@ final class FirebaseManager {
         })
     }
     
-    static func acceptTagalong(guestID: String, completion: (Bool) -> Void) {
-        
-        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([guestID : true])
-        
-        completion(true)
-        // User segues to chat
-        // Send guest to chat
-        
-    }
+//    static func acceptTagalong(guestID: String, completion: (Bool) -> Void) {
+//        
+//        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([guestID : true])
+//        
+//        completion(true)
+//        // User segues to chat
+//        // Send guest to chat
+//        
+//    }
     
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
