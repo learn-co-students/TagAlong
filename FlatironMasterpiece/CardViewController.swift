@@ -170,7 +170,7 @@ class CardViewController: UIViewController {
             
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
             print("\(restaurant.name) distance as miles \(rounded)")
-            print("\(restaurant.name) distance as feet \(distance.feet)")
+ 
             cardView.restDistanceLabel.text = "\(rounded) mi"
 
             return cardView
