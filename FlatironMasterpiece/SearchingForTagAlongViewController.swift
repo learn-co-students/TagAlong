@@ -20,21 +20,7 @@ class SearchingForTagAlongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
-        store.observeTagalongRequests { (snapshot) in
-            
-            //Prevents old tagalongs to appear if 
-            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
-            
-            print("\n Getting called.")
-
-            guard snapshot != nil else { return }
-            
-            print("\n\n")
-            
-            print("We have a new tag along person. \(snapshot)")
-            
-        }
-       
+        observeTagalongRequests()
     }
     
     override func loadView() {
@@ -175,6 +161,50 @@ class SearchingForTagAlongViewController: UIViewController {
 //        
 //    }
 
+    func observeTagalongRequests() {
+        
+        store.observeTagalongRequests { (snapshot) in
+            
+            //Prevents old tagalongs to appear if
+            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
+            
+            // Only detects recents tagalongs
+            if !self.firstTimeLoaded {
+                
+                //Alert user of new tag along
+                print("\n Getting called.")
+                
+                guard snapshot != nil else { return }
+                
+                // Reveal text
+                
+                // Grab info from guest
+                
+//                guard let tagalongID = self.store.selectedTagAlongID else { return }
+                
+                self.store.guestID = snapshot?.key
+                
+                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
+                    
+                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
+                    
+                    
+                    
+                })
+                
+                print("\n\n")
+                
+                print("We have a new tag along person. \(snapshot)")
+            }
+            
+            
+            
+            
+        }
+
+        
+        
+    }
 }
 
 

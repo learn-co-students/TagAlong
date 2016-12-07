@@ -32,7 +32,7 @@ final class FirebaseManager {
     var tagalongs = [Tagalong]()
 
     //Tagalong ID from selected Tagalong
-    var selectedTagAlongID: String?
+    var selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C"       // TODO: Remove this. Using it to test.
     //User ID from guest requesting tagalong
     var guestID: String?
     
@@ -313,11 +313,11 @@ final class FirebaseManager {
     
     func observeTagalongRequests(response: @escaping (FIRDataSnapshot?) -> Void) {
     
-        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
+//        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
         
-        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
+//        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
         
-        FirebaseManager.ref.child("tagalongs").child("\(theSelectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
             
             DispatchQueue.main.async {
                 
@@ -333,12 +333,12 @@ final class FirebaseManager {
     
     func createGuestFrom(tagalong: String, completion:@escaping (User)->()){
         var userName = guestID
-        
+//
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
-            userName = snapshot.value as! String
+            userName = snapshot.key as! String
             
             // This will need to be replaced with the userID
-            FirebaseManager.ref.child("guest").child("\(userName)").observe(.value, with: { (snapshot) in
+            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
                 let userInfo = snapshot.value as! [String: Any]
                 let user = User(snapshot: userInfo)
                 
