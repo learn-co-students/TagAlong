@@ -130,7 +130,6 @@ extension ShakeInstructionViewController {
             
             guard let placeAddress = place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n") else { print("Error with placeAddress"); return }
             let placeCoordinates = (place.coordinate.latitude, place.coordinate.longitude)
-            //Place coordinates are (40.748944899999998, -74.0002432)
             print("Place name is \(placeName)")
             print("Place address is \(placeAddress)")
             print("Place coordinates are \(placeCoordinates)")
