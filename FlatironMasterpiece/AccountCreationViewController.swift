@@ -158,17 +158,21 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         print(123)
         let picker = UIImagePickerController()
         picker.delegate = self
+        picker.isEditing = true 
         present(picker, animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("cancelled PICKER")
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let original = info["UIImagePickerControllerOriginalImage"] {
-            print(info)
+            print(original)
+        
         }
+        dismiss(animated: true, completion: nil)
 //        print(info)
 //        dismiss(animated: true, completion: nil)
     }
