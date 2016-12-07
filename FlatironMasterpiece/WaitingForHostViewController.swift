@@ -5,31 +5,21 @@
 //  Created by Erica Millado on 12/7/16.
 //
 //
-
 import UIKit
 
 class WaitingForHostViewController: UIViewController {
+    
+    var waitingForHostView: WaitingForHostView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.cyan
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func loadView() {
+        super.loadView()
+        waitingForHostView = WaitingForHostView()
+        self.view = waitingForHostView
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -16,7 +16,7 @@ class ShakeInstructionViewController: UIViewController {
  
     var shakeView: ShakeView!
 
-    var shakeNosie: AVAudioPlayer?
+    var shakeNoise: AVAudioPlayer?
     var vview: UIView!
 
     //NOTE: - google places / core location properties
@@ -81,12 +81,11 @@ class ShakeInstructionViewController: UIViewController {
     }
     
     func loadPlayer() {
-        if let shakeNosie = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
-            self.shakeNosie = shakeNosie
-            
+        if let shakeNoise = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
+            self.shakeNoise = shakeNoise
         }
-        self.shakeNosie?.volume = 1.0
-        self.shakeNosie?.play()
+        self.shakeNoise?.volume = 1.0
+        self.shakeNoise?.play()
     }
     
     func playSound() {

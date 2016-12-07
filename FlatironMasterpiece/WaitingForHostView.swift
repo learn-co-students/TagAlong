@@ -14,12 +14,32 @@ class WaitingForHostView: UIView {
     
     @IBOutlet weak var waitingHostLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        commonInit()
     }
-    */
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        Bundle.main.loadNibNamed("WaitingForHost", owner: self, options: nil)
+        self.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+    }
 
 }
