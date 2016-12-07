@@ -38,11 +38,11 @@ class ShakeInstructionViewController: UIViewController {
         print("getlocationVC is working")
         placesClient = GMSPlacesClient.shared()
 
-        if view == vview {
-            vibrate()
-            playSound()
-        }
-        playSound()
+//        if view == vview {
+//            vibrate()
+//            playSound()
+//        }
+//        playSound()
 
     }
 
@@ -67,34 +67,34 @@ class ShakeInstructionViewController: UIViewController {
     }
     
     
-    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
-        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
-        let url = URL(fileURLWithPath: path!)
-        
-        var audioPlayer: AVAudioPlayer?
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: url)
-        } catch {
-            print("Nothing to play")
-        }
-        return audioPlayer
-    }
-    
-    func loadPlayer() {
-        if let shakeNosie = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
-            self.shakeNosie = shakeNosie
-            
-        }
-        self.shakeNosie?.volume = 1.0
-        self.shakeNosie?.play()
-    }
-    
-    func playSound() {
-       loadPlayer()
-    }
-    func vibrate() {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    }
+//    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
+//        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+//        let url = URL(fileURLWithPath: path!)
+//        
+//        var audioPlayer: AVAudioPlayer?
+//        do {
+//            try audioPlayer = AVAudioPlayer(contentsOf: url)
+//        } catch {
+//            print("Nothing to play")
+//        }
+//        return audioPlayer
+//    }
+//    
+//    func loadPlayer() {
+//        if let shakeNosie = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
+//            self.shakeNosie = shakeNosie
+//            
+//        }
+//        self.shakeNosie?.volume = 1.0
+//        self.shakeNosie?.play()
+//    }
+//    
+//    func playSound() {
+//       loadPlayer()
+//    }
+//    func vibrate() {
+//        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//    }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
