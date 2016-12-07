@@ -168,27 +168,23 @@ class SearchingForTagAlongViewController: UIViewController {
     
     func acceptTagalongAction() {
         
-        let acceptedGuestID = store.guestID
+        guard let acceptedGuestID = store.guestID else { return }
         
-        FirebaseManager.acceptTagalong(guestID: acceptedGuestID )
+        store.acceptTagalong(guestID: acceptedGuestID)
         
-        // Segure into chat
-        
+        // Segue into chat/tab bar view
+//        let chatVC = ChatViewController()
+//        self.navigationController?.present(chatVC, animated: true, completion: nil)
     }
     
     func denyTagalongAction() {
         
         // Hide and reveal buttons/labels
-        
         acceptButton.isHidden = true
         denyButton.isHidden = true
         tagAlongFoundLabel.isHidden = true
     }
     
-    //TODO: - Create two buttons: Accept, Deny when a child has been added
-    // 1. Observe child and when value has been added, show alert
-    // 2. Add info about the guest to the alert message
-    // 3. Accept - change user value to true, Deny - user value remains
     
     //ALERT:
     
@@ -253,9 +249,9 @@ class SearchingForTagAlongViewController: UIViewController {
                 guard snapshot != nil else { return }
                 
                 //Show labels and buttons
-                acceptButton.isHidden = false
-                denyButton.isHidden = false
-                tagAlongFoundLabel.isHidden = false
+                self.acceptButton.isHidden = false
+                self.denyButton.isHidden = false
+                self.tagAlongFoundLabel.isHidden = false
                 
                 // Grab info from guest
                 

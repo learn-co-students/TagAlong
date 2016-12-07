@@ -36,9 +36,7 @@ final class FirebaseManager {
     //User ID from guest requesting tagalong
     var guestID: String?
     
-
-
-
+    var testID: String?
 
     private init() {}
     
@@ -308,8 +306,6 @@ final class FirebaseManager {
                 response(snapshot)
             }
             
-            
-            
         })
         
     }
@@ -335,12 +331,11 @@ final class FirebaseManager {
         })
     }
     
-    static func acceptTagalong(guestID: String) {
+     func acceptTagalong(guestID: String) {
         
-        ref.child("tagalongs").child("\(selectedTagAlongID))").child("guests").updateChildValues([guestID : true])
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").child("guests").updateChildValues([guestID : true])
         
         // User segues to chat
-        // Send guest to chat
         
     }
     

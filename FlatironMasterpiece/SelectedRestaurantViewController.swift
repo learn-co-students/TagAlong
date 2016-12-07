@@ -103,9 +103,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 FirebaseManager.updateUserWithTagAlongKey(key: key)
                 
                 
-                // Send key to tableview so that guests can join
-               
-                
             })
             
             // Testing Chat - should segue to
