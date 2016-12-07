@@ -33,7 +33,7 @@ class APIClientGooglePlaces {
             query = "fastfood"
         }
         
-        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=800&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"
+        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=1600&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"
         
         let url = URL(string: textSearchUrlString)
     

@@ -50,7 +50,6 @@
 		454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */; };
 		45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */; };
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
-		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
 		45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F196A41DF2A87F00BD24E9 /* CardViewController.swift */; };
 		45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */; };
@@ -111,7 +110,6 @@
 		454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingForTagAlongViewController.swift; sourceTree = "<group>"; };
 		45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDataStore.swift; sourceTree = "<group>"; };
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
 		45F196A41DF2A87F00BD24E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Abel-Regular.ttf"; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				45F196A41DF2A87F00BD24E9 /* CardViewController.swift */,
 				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */,
@@ -451,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
-				45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
@@ -459,7 +455,6 @@
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */,
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
-				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
 				454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */,
 				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,

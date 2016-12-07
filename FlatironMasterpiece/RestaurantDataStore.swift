@@ -20,9 +20,8 @@ class RestaurantDataStore {
     fileprivate init() {}
     
     func filterSearchedRestaurants() {
-        
+        print("filter searched func is working")
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
-        
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
@@ -31,6 +30,9 @@ class RestaurantDataStore {
             if newRestaurant.openNow == true {
                 restaurantsArray.append(newRestaurant)
                 print("\nrestaurant array count is \(restaurantsArray.count)\n")
+                if restaurantsArray.isEmpty {
+                    print("no restaurants open right now")
+                }
             }
         }
     }

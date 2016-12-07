@@ -15,6 +15,7 @@ class Restaurant {
     var name: String?
     var openNow: Bool = false
     var photoRef: String = ""
+    var noPhotoRef: String?
     var photoImage: UIImage?
     var priceLevel: Int?
     var restaurantRating: Int?
@@ -72,6 +73,11 @@ class Restaurant {
                     
                 }
             }
+        }
+        
+        //if rest has NO photo
+        if let noPhotoRef = dictionary["reference"] as? String {
+            self.noPhotoRef = noPhotoRef
         }
         
         //gets restaurant price level

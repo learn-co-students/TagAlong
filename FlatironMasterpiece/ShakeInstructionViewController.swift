@@ -149,11 +149,15 @@ extension ShakeInstructionViewController {
             print("Place coordinates are \(placeCoordinates)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
+            print("please work")
             
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
+                
                 self.restStore.restaurantsInJSON = JSON
+                print("this is the json \(self.restStore.restaurantsInJSON)")
                 self.restStore.filterSearchedRestaurants()
-            
+                
+                print("getting restaurants")
                 for restaurant in self.restStore.restaurantsArray {
                     APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
                         data in

@@ -34,12 +34,18 @@ class CardViewController: UIViewController {
         }
     }
     
+    let testLabel = UILabel()
+    let shakeImage = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        swipeableView = ZLSwipeableView()
-        swipeableView.backgroundColor = UIColor.red
-        view.addSubview(swipeableView)
         self.view.backgroundColor = phaedraOrange
+        makeLabels()
+        
+        swipeableView = ZLSwipeableView()
+        swipeableView.backgroundColor = UIColor.clear
+       
+        view.addSubview(swipeableView)
         
         //NOTE: hides top nav controller
         navigationController?.isNavigationBarHidden = true
@@ -73,13 +79,35 @@ class CardViewController: UIViewController {
             
         }
         
-        // +50 -50 +120 -100
         constrain(swipeableView, view) { view1, view2 in
-            view1.left == view2.left+50
-            view1.right == view2.right-50
-            view1.top == view2.top + 120
-            view1.bottom == view2.bottom - 100
+            view1.left == view2.left+30
+            view1.right == view2.right-30
+            view1.top == view2.top + 80
+            view1.bottom == view2.bottom - 60
         }
+    }
+    
+    
+    func makeLabels() {
+        view.addSubview(testLabel)
+        testLabel.text = "Whoops, out of options!  Shake the app to choose a new cuisine."
+        testLabel.font = UIFont(name: "OpenSans-Bold", size: 25.0)
+        testLabel.textColor = phaedraYellow
+        testLabel.textAlignment = .center
+        testLabel.lineBreakMode = .byWordWrapping
+        testLabel.numberOfLines = 6
+        testLabel.translatesAutoresizingMaskIntoConstraints = false
+        testLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        testLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        testLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
+        
+        view.addSubview(shakeImage)
+        shakeImage.image = UIImage(named: "shake_yellow")
+        shakeImage.translatesAutoresizingMaskIntoConstraints = false
+        shakeImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30).isActive = true
+        shakeImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
+        shakeImage.topAnchor.constraint(equalTo: testLabel.bottomAnchor, constant: 30).isActive = true
+        shakeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
     }
     
     // MARK: ()
@@ -88,7 +116,8 @@ class CardViewController: UIViewController {
         while restaurantArray.count != 0{
             let restaurant = restaurantArray.removeFirst()
             let cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
-            cardView.backgroundColor = getRandomPhaedraColor()
+//            cardView.backgroundColor = getRandomPhaedraColor()
+            cardView.backgroundColor = phaedraYellow
             return cardView
         }
     
