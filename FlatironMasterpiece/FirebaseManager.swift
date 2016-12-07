@@ -314,7 +314,16 @@ final class FirebaseManager {
         // To get UserID : Host -> ID
         //Tagalong -> Guests -> Users
         
-        ref.child("tagalongs").child("\(tagalongID)").child("guests").obs
+        
+//        ref.child("tagalongs").child("\(tagalongID)").child("guests").observe(.childAdded) { (snapshot) in
+//            
+//            print(snapshot)
+//            
+//        }
+        
+        // Create user from tagalong
+        // Send user info to host
+        ref.child("tagalongs").child("\(tagalongID)").child("host").key
         
         
         
