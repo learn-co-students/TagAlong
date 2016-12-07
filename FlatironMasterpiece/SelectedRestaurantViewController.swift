@@ -11,7 +11,6 @@ import UIKit
 class SelectedRestaurantViewController: UIViewController {
 
     var restaurantView: RestaurantView!
-    var tagAlongTapped:Bool = false
 
     // Information needed from Deck View
     var user: String?
@@ -42,14 +41,15 @@ class SelectedRestaurantViewController: UIViewController {
             "long": 35
         ]
     ]
+    
+    deinit {
+        print("OBNOXIOUS PRINT - AKA TAYLOR SWIFT - SELECTEDRESTAURANTVIEWCONTROLLER")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
-        if !tagAlongTapped {
-            canDisplayImage()
-        }
     }
 
     override func loadView() {
@@ -74,7 +74,7 @@ class SelectedRestaurantViewController: UIViewController {
 
 extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
-    func canDisplayImage() {
+    func sendToTagAlongConfirmation() {
 
         let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
@@ -113,7 +113,13 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         confirmTagAlongAlert.addAction(cancelAction)
         confirmTagAlongAlert.addAction(confirmAction)
         self.present(confirmTagAlongAlert, animated: true, completion: nil)
-
     }
+    
+    func sendToDeckView() {
+        let shakeInstVC = ShakeInstructionViewController()
+        self.navigationController?.pushViewController(shakeInstVC, animated: true)
+    }
+    
+   
 
 }

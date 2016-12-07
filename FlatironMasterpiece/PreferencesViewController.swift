@@ -247,7 +247,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
-        savePreferencesButton.setTitleColor(phaedraYellow, for: .highlighted)
+        savePreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
 
     }
 

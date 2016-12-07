@@ -44,6 +44,10 @@ class CardViewController: UIViewController {
     let testLabel = UILabel()
     let shakeImage = UIImageView()
     
+    deinit {
+        print("OBNOXIOUS PRINT - AKA TAYLOR SWIFT - CARDVIEWCONTROLLER")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = phaedraOrange

@@ -60,6 +60,9 @@ class CardView: UIView {
         var restDistanceLabel = UILabel()
         var restHoursLabel = UILabel()
         
+        let labelWidth = self.bounds.width * 0.8
+        let labelXLocation = self.bounds.width * 0.10
+        
         //card image view
         restImageView = UIImageView(frame: CGRect(x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.66))
         restImageView.image = restaurant.photoImage
@@ -67,7 +70,7 @@ class CardView: UIView {
         restImageView.backgroundColor = UIColor.yellow
 
         //card restaurant name label
-        restNameLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.21, y: self.bounds.height * 0.57, width: self.bounds.width * 0.6, height: self.bounds.width * 0.08))
+        restNameLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.57, width: labelWidth, height: self.bounds.width * 0.08))
         restNameLabel.backgroundColor = phaedraOrange
         restNameLabel.textColor = phaedraYellow
         restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
@@ -77,7 +80,7 @@ class CardView: UIView {
         self.addSubview(restNameLabel)
 
         //card cusisine label
-        restCuisineLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.21, y: self.bounds.height * 0.64, width: self.bounds.width * 0.6, height: self.bounds.width * 0.08))
+        restCuisineLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.64, width: labelWidth, height: self.bounds.width * 0.08))
         restCuisineLabel.backgroundColor = phaedraOrange
         restCuisineLabel.textColor = phaedraYellow
         restCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
@@ -86,7 +89,7 @@ class CardView: UIView {
         self.addSubview(restCuisineLabel)
         
         //card restaurant pricelevel label
-        restCostLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.21, y: self.bounds.height * 0.71, width: self.bounds.width * 0.6, height: self.bounds.width * 0.08))
+        restCostLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.71, width: labelWidth, height: self.bounds.width * 0.08))
         restCostLabel.backgroundColor = phaedraOrange
         restCostLabel.textColor = phaedraYellow
         restCostLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
@@ -97,7 +100,7 @@ class CardView: UIView {
         self.addSubview(restCostLabel)
        
         //card restaurant distance label
-        restDistanceLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.21, y: self.bounds.height * 0.78, width: self.bounds.width * 0.6, height: self.bounds.width * 0.08))
+        restDistanceLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.78, width: labelWidth, height: self.bounds.width * 0.08))
         restDistanceLabel.backgroundColor = phaedraOrange
         restDistanceLabel.textColor = phaedraYellow
         restDistanceLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
@@ -107,7 +110,7 @@ class CardView: UIView {
         self.addSubview(restDistanceLabel)
 
         //card restaurant hours label
-        restHoursLabel = UILabel(frame: CGRect(x: self.bounds.width * 0.21, y: self.bounds.height * 0.85, width: self.bounds.width * 0.6, height: self.bounds.width * 0.08))
+        restHoursLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.85, width: labelWidth, height: self.bounds.width * 0.08))
         restHoursLabel.backgroundColor = phaedraOrange
         restHoursLabel.textColor = phaedraYellow
         restHoursLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)

@@ -9,7 +9,8 @@
 import UIKit
 
 protocol RestaurantViewDelegate: class {
-    func canDisplayImage()
+    func sendToTagAlongConfirmation()
+    func sendToDeckView()
 }
 
 class RestaurantView: UIView{
@@ -27,11 +28,12 @@ class RestaurantView: UIView{
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         //TODO: - add code that will take the user back to deck view
+        delegate?.sendToDeckView()
     }
     
     @IBAction func hostTagAlongTapped(_ sender: UIButton) {
         //TODO: - add code that will create alert controller
-        delegate?.canDisplayImage()
+        delegate?.sendToTagAlongConfirmation()
 
     }
     

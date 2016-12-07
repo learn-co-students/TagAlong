@@ -259,36 +259,36 @@ final class FirebaseManager {
 
     }
 
-    static func observeMessages(completion:@escaping (String, String, String)-> Void) {
-
-
-        // 1. Creating a query that limits the synchronization to the last 25 messages
-        //        let messageQuery = chatRef.queryLimited(toLast:25)
-
-        // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-
-            print("--------------------GETTING CALLED------------------")
-
-            // 3. Extract the messageData from the snapshot
-
-            print("messageQuery snapshot: \(snapshot.value)")
-            let messageData = snapshot.value as! [String: Any]
-
-            if let id = messageData["senderId"] as? String,
-                let name = messageData["senderName"] as? String,
-                let text = messageData["text"] as? String,
-                text.characters.count > 0 {
-
-                completion(id, name, text)
-
-            } else {
-                print("Error! Could not decode message data")
-            }
-
-            print("----------------------------------------------\n\n\n")
-        })
-    }
+//    static func observeMessages(completion:@escaping (String, String, String)-> Void) {
+//
+//
+//        // 1. Creating a query that limits the synchronization to the last 25 messages
+//        //        let messageQuery = chatRef.queryLimited(toLast:25)
+//
+//        // 2. Observe every child item that has been added, and will be added, at the messages location.
+//        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
+//
+//            print("--------------------GETTING CALLED------------------")
+//
+//            // 3. Extract the messageData from the snapshot
+//
+//            print("messageQuery snapshot: \(snapshot.value)")
+//            let messageData = snapshot.value as! [String: Any]
+//
+//            if let id = messageData["senderId"] as? String,
+//                let name = messageData["senderName"] as? String,
+//                let text = messageData["text"] as? String,
+//                text.characters.count > 0 {
+//
+//                completion(id, name, text)
+//
+//            } else {
+//                print("Error! Could not decode message data")
+//            }
+//
+//            print("----------------------------------------------\n\n\n")
+//        })
+//    }
 
 
 

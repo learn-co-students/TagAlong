@@ -151,8 +151,12 @@ extension ShakeInstructionViewController {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
                             self.shakeView.activityIndicator.removeFromSuperview()
+                            self.shakeView.shakePhoneLabel.isHidden = true
+                            self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."
+                            self.shakeView.chooseCuisineLabel.lineBreakMode = .byWordWrapping
+                            self.shakeView.chooseCuisineLabel.numberOfLines = 4
+                            self.shakeView.chooseCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 33.0)
                         }
-                        
 //                        self.shakeView.activityIndicator.hidesWhenStopped = true
 //                        self.shakeView.activityIndicator.stopAnimating()
                     }
@@ -167,10 +171,7 @@ extension ShakeInstructionViewController {
                             
                             print("\n\n")
                             
-                            print("We have raw data")
-                            
                             restaurant.photoImage = UIImage(data: rawData)
-                            
                         }
                     })
                 }

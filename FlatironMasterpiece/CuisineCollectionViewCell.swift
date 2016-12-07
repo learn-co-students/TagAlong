@@ -12,8 +12,9 @@ extension UICollectionViewCell {
     func toggledSelectedState() {
         if isHighlighted == true {
             self.layer.borderColor = phaedraLightGreen.cgColor
-            self.layer.borderWidth = 5
+            self.layer.borderWidth = 6
             self.layer.cornerRadius = 5
+            self.layer.masksToBounds = true
         } else if !isHighlighted {
             self.layer.borderWidth = 0
         }
