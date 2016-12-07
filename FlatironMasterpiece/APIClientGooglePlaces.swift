@@ -19,21 +19,21 @@ class APIClientGooglePlaces {
         
         var query = ""
             switch queryString {
-            case "american":
+            case "American":
             query = "american"
-            case "asian":
+            case "Asian":
             query = "asian"
-            case "italian":
+            case "Italian":
             query = "italian"
-            case "healthy":
+            case "Healthy":
             query = "healthy"
-            case "latin":
+            case "Latin":
             query = "latin"
             default:
             query = "fastfood"
         }
         
-        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=1600&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"
+        let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=800&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"
         
         let url = URL(string: textSearchUrlString)
     

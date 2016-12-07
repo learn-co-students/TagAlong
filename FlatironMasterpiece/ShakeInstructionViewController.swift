@@ -18,9 +18,7 @@ class ShakeInstructionViewController: UIViewController {
 
     var shakeNosie: AVAudioPlayer?
     var vview: UIView!
-    
 
-    
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
@@ -28,11 +26,6 @@ class ShakeInstructionViewController: UIViewController {
     
     let restStore = RestaurantDataStore.sharedInstance
     let userStore = UsersDataStore.sharedInstance
-    
-    //these are example lat and long for chelsea
-    //    var latitude: Double = 40.748944899999998
-    //    var longitude: Double = -74.0002432
-
 
     override func viewDidLoad() {
         
@@ -49,10 +42,7 @@ class ShakeInstructionViewController: UIViewController {
             vibrate()
             playSound()
         }
-
         playSound()
-
-   
 
     }
 
@@ -72,7 +62,6 @@ class ShakeInstructionViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         //ERICA'S CODE - should this go here?
-        
         getLocation()
         
     }
@@ -153,6 +142,7 @@ extension ShakeInstructionViewController {
             
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
                 
+                print("in shake instructionVC - queryString is \(self.userStore.currentChosenCuisine)")
                 self.restStore.restaurantsInJSON = JSON
                 print("this is the json \(self.restStore.restaurantsInJSON)")
                 self.restStore.filterSearchedRestaurants()
