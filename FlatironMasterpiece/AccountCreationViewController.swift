@@ -33,7 +33,7 @@ struct Constants {
 }
 
 
-class AccountCreationViewController: UIViewController, CLLocationManagerDelegate {
+class AccountCreationViewController: UIViewController, CLLocationManagerDelegate , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
@@ -60,18 +60,18 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var password = false
     var industry = false
     var jobtitle = false
-    
-    
+
+
 var manager = CLLocationManager()
-    
-    
+
+
     func Locate() {
-        
+
         manager.delegate = self
-        
+
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        
+
         func locationManager(manager: CLLocationManager,
                              didChangeAuthorizationStatus status: CLAuthorizationStatus)
         {
@@ -84,7 +84,7 @@ var manager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         Locate()
-        
+
         //Just this line creates the blur
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"foodWoodenTable")!)
         //below this creates the actual picture
@@ -199,10 +199,11 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         createAccountLabel.textColor = UIColor.white
         createAccountLabel.textAlignment = .center
         createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
+        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+
 
         view.addSubview(picButton)
         
@@ -221,32 +222,17 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         picButton.backgroundColor = phaedraYellow
         picButton.layer.borderColor = phaedraDarkGreen.cgColor
         picButton.layer.borderWidth = 2
-        picButton.layer.cornerRadius = 35
+        picButton.layer.cornerRadius = 60
         picButton.translatesAutoresizingMaskIntoConstraints = false
-        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        
-        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 10).isActive = true
-        //      picButton.specialConstrain(to: view)
-        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picButton.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
-        picButton.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+
         
 
       
         view.addSubview(picImage)
         
-        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
-        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+      
         picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-//        picImage.isUserInteractionEnabled = true
-//        picImage.titleLabel?.numberOfLines = 2
-//        picImage.setTitle("Add\nPic", for: UIControlState.normal)
-//        picImage.titleLabel?.textAlignment = .center
-//        picImage.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
-//        picImage.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
-        //picImage.backgroundColor = phaedraYellow
-       //picImage.layer.borderColor = phaedraDarkGreen.cgColor
+        
         picImage.backgroundColor = UIColor.red
         picImage.layer.borderWidth = 2
         picImage.layer.cornerRadius = 35
@@ -268,6 +254,17 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         
         
         
+
+
+        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
+        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+
+
+
+
+
         // First Name Textfield
         view.addSubview(firstNameEntry)
         firstNameEntry.placeholder = "First Name"
@@ -279,7 +276,7 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 90).isActive = true
+        firstNameEntry.topAnchor.constraint(equalTo: picButton.bottomAnchor, constant: 20).isActive = true
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -400,11 +397,55 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
 
 
     }
-    
+
     func picButtonTapped(){
-        let pic = PicPickerViewController()
-        self.present(pic, animated: true, completion: nil)
+//        let pic = PicPickerViewController()
+//        self.present(pic, animated: true, completion: nil)
         
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let buttonOne = UIAlertAction(title: "Use Existing", style: .default, handler: { (action) -> Void in
+            self.selectPicture()
+        })
+//        let buttonTwo = UIAlertAction(title: "Take New", style: .default, handler: { (action) -> Void in
+//            self.takePicture()
+//        })
+        let buttonCancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel Button Pressed")
+        }
+
+        alertController.addAction(buttonOne)
+//        alertController.addAction(buttonTwo)
+        alertController.addAction(buttonCancel)
+        present(alertController, animated: true, completion: nil)
+
+
+
+    }
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    func selectPicture() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+
+    func takePicture() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.sourceType = .camera
+        picker.delegate = self
+        present(picker, animated: true)
+        if let image = UIImage(named: "example.png") {
+            if let data = UIImageJPEGRepresentation(image, 0.8) {
+                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+                print("saved")
+                try? data.write(to: filename)
+            }
+        }
     }
 
     func createAccountButtonTapped(sender: UIButton!) {
@@ -459,6 +500,44 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
         })
 
     }//end of createAccountButtonTapped
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+        print("Really, dismiss!")
+        //AccountCreationViewController()
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+        var newImage: UIImage
+        var sourceType: UIImagePickerControllerSourceType
+
+        if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            newImage = possibleImage
+        } else {
+            return
+        }
+
+        // do something interesting here!
+        print(newImage.size)
+        guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
+        guard let compressedJPGImage = UIImage(data: imageData) else { return }
+        //send to firebase
+
+        //        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        //            newImage = image
+        //        } else {
+        //            print("Something went wrong")
+        //        }
+        //
+        print("view should dismiss")
+        super.dismiss(animated: true, completion: nil)
+    }
+
+
+
 
 }
 

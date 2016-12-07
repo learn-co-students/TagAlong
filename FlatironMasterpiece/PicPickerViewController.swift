@@ -36,26 +36,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     // this should create the alert that allows you to choose how you want to get your picture
     
-//    let picAlertController = UIAlertController(title: "Add Account Picture", message: "Use Existing", preferredStyle: .alert)
     
-    
-//    let alertController = UIAlertController(title: "UIAlertController", message: "UIAlertController with multiple buttons", preferredStyle: .alert)
-//    let buttonOne = UIAlertAction(title: "One", style: .Default, handler: { (action) -> Void in
-//        println("Button One Pressed")
-//    })
-//    let buttonTwo = UIAlertAction(title: "Two", style: .Default, handler: { (action) -> Void in
-//        println("Button Two Pressed")
-//    })
-//       let buttonCancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
-//        print("Cancel Button Pressed")
-//    }
-//    
-//    alertController.addAction(buttonOne)
-//    alertController.addAction(buttonTwo)
-//    alertController.addAction(buttonCancel)
-//    
-//    presentViewController(alertController, animated: true, completion: nil)
-//    
+//
 //    
     
     
@@ -68,7 +50,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
-        return
+        imagePickerControllerDidCancel(picker)
+
     }
     
     func takePicture() {
@@ -81,6 +64,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+        print("Really, dismiss!")
+        //AccountCreationViewController()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -109,7 +94,7 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
 //        }
 //        
         print("view should dismiss")
-        self.dismiss(animated: true, completion: nil)
+        super.dismiss(animated: true, completion: nil)
     }
     
     
