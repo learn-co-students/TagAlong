@@ -101,6 +101,7 @@ class SearchingForTagAlongViewController: UIViewController {
     
     func setupTagAlongMessageAndButtons() {
         view.addSubview(tagAlongFoundLabel)
+        tagAlongFoundLabel.isHidden = true
         tagAlongFoundLabel.text = "You have been matched with /n'Person"
         tagAlongFoundLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         tagAlongFoundLabel.textColor = phaedraOrange
@@ -111,6 +112,7 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
         view.addSubview(acceptButton)
+        acceptButton.isHidden = true
         acceptButton.backgroundColor = phaedraLightGreen
         acceptButton.layer.cornerRadius = 5
         acceptButton.layer.borderWidth = 1
@@ -120,20 +122,21 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         acceptButton.titleLabel?.textAlignment = .center
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
-        acceptButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
+        acceptButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
         acceptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         acceptButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         acceptButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
-        acceptButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(acceptTagalongAction), for: .touchUpInside)
         acceptButton.setTitleColor(phaedraDarkGreen, for: .normal)
         acceptButton.setTitleColor(phaedraYellow, for: .highlighted)
         
         view.addSubview(denyButton)
+        denyButton.isHidden = true
         denyButton.backgroundColor = phaedraLightGreen
         denyButton.layer.cornerRadius = 5
         denyButton.layer.borderWidth = 1
         denyButton.layer.borderColor = phaedraDarkGreen.cgColor
-        denyButton.setTitle("Accept Tag Along", for: UIControlState.normal)
+        denyButton.setTitle("Deny Tag Along", for: UIControlState.normal)
         denyButton.setTitle("Tutorial Played", for: .highlighted)
         denyButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         denyButton.titleLabel?.textAlignment = .center
@@ -142,7 +145,7 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         denyButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         denyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
-        denyButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
+        denyButton.addTarget(self, action: #selector(denyTagalongAction), for: .touchUpInside)
         denyButton.setTitleColor(phaedraDarkGreen, for: .normal)
         denyButton.setTitleColor(phaedraYellow, for: .highlighted)
         
@@ -161,6 +164,25 @@ class SearchingForTagAlongViewController: UIViewController {
         print("User wants to see other tagalongs")
         let tagAlongsVC = TagAlongViewController()
         self.navigationController?.pushViewController(tagAlongsVC, animated: true)
+    }
+    
+    func acceptTagalongAction() {
+        
+        let acceptedGuestID = store.guestID
+        
+        FirebaseManager.acceptTagalong(guestID: acceptedGuestID )
+        
+        // Segure into chat
+        
+    }
+    
+    func denyTagalongAction() {
+        
+        // Hide and reveal buttons/labels
+        
+        acceptButton.isHidden = true
+        denyButton.isHidden = true
+        tagAlongFoundLabel.isHidden = true
     }
     
     //TODO: - Create two buttons: Accept, Deny when a child has been added
@@ -230,7 +252,10 @@ class SearchingForTagAlongViewController: UIViewController {
                 
                 guard snapshot != nil else { return }
                 
-                // Reveal text
+                //Show labels and buttons
+                acceptButton.isHidden = false
+                denyButton.isHidden = false
+                tagAlongFoundLabel.isHidden = false
                 
                 // Grab info from guest
                 

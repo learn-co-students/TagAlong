@@ -264,22 +264,6 @@ final class FirebaseManager {
     }
     
     
-    
-//     Get tagalongs and append to tagalong property
-//    func getTagalongs(){
-//        FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.value, with: { (snapshot) -> Void in
-//            //let tags = snapshot as! [[String:Any]]
-//            for tag in snapshot.children {
-//                let snapshotDict = tag as! FIRDataSnapshot
-//                let snapDict = snapshotDict.value as! [String:Any]
-//                let tagalong = Tagalong(snapshot: snapDict, tag)
-//                 self.tagalongs.append(tagalong)
-//            }
-//      
-//        })
-//
-//    }
-    
     static func observeTagalongs(completion: @escaping (String) -> Void) {
         
         newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
@@ -351,15 +335,14 @@ final class FirebaseManager {
         })
     }
     
-//    static func acceptTagalong(guestID: String, completion: (Bool) -> Void) {
-//        
-//        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([guestID : true])
-//        
-//        completion(true)
-//        // User segues to chat
-//        // Send guest to chat
-//        
-//    }
+    static func acceptTagalong(guestID: String) {
+        
+        ref.child("tagalongs").child("\(selectedTagAlongID))").child("guests").updateChildValues([guestID : true])
+        
+        // User segues to chat
+        // Send guest to chat
+        
+    }
     
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
