@@ -34,7 +34,7 @@ class SelectedRestaurantViewController: UIViewController {
 //    ]
     
     var tagalongInfo: [String: Any] = [
-        "user" : "Christina",
+        "user" : FirebaseManager.currentUser,
         "date" : "December 1",
         "location" : [
             "restaurant" : "Peter Luger Stake House",
@@ -107,14 +107,14 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             
             // Testing Chat - should segue to
         
-            let chatVC = ChatViewController()
-            self.navigationController?.present(chatVC, animated: true, completion: nil)
-//            
+//            let chatVC = ChatViewController()
+//            self.navigationController?.present(chatVC, animated: true, completion: nil)
+//
 
             
             //segue way searchingForTagAlong vc
-//            let searchingVC = SearchingForTagAlongViewController()
-//            self.navigationController?.pushViewController(searchingVC, animated: true)
+            let searchingVC = SearchingForTagAlongViewController()
+            self.navigationController?.pushViewController(searchingVC, animated: true)
 //            let nav = UINavigationController(rootViewController: searchingVC)
 //            self.navigationController?.present(searchingVC, animated: true, completion: nil)
 

@@ -34,6 +34,11 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         layoutTableView()
         layoutScrollView()
         
+        
+//        for tag in tagalongs {
+//            
+//            print(tag.tagID)
+//        }
 //        createFakeUsers()
         
         
@@ -122,8 +127,10 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
             let tagDict = snapshot.value as! [String: Any]
-            let tagId = snapshot.key as! String
+            let tagId = snapshot.key
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
+            
+            print("****************"+tagId)
             
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user

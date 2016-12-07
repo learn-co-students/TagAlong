@@ -231,13 +231,12 @@ final class FirebaseManager {
 
     
     static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
-        var userName = ""
         
-        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observe(.value, with: { (snapshot) in
-            userName = snapshot.value as! String
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observeSingleEvent(of: .value, with: { (snapshot) in
+            let userName = snapshot.value as! String
             
             // This will need to be replaced with the userID
-            FirebaseManager.ref.child("users").child("XviS8DvnTDY4aW2fyzXHgf1sqJu1").observe(.value, with: { (snapshot) in
+            FirebaseManager.ref.child("users").child(userName).observe(.value, with: { (snapshot) in
                 let userInfo = snapshot.value as! [String: Any]
                 let user = User(snapshot: userInfo)
                 
