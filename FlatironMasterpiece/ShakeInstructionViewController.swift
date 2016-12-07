@@ -113,6 +113,7 @@ extension ShakeInstructionViewController {
     func getLocation() {
         print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
+
             
             if let error = error {
                 print("there is an error in getlocation")
@@ -138,6 +139,9 @@ extension ShakeInstructionViewController {
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
             print("please work")
+            
+            self.userStore.userLat = place.coordinate.latitude
+            self.userStore.userLong = place.coordinate.longitude
             
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
                 

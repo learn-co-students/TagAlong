@@ -16,7 +16,12 @@ class UsersDataStore {
     
     var preferredCuisineArray:[String] = []
     
+    var userLat: Double = 0.0
+    var userLong: Double = 0.0
     var currentChosenCuisine:String = ""
+    
+    var chosenRestLat: Double = 0.0
+    var chosenRestLong: Double = 0.0
     var chosenRestName:String = ""
     var chosenRestAddress:String = ""
     var chosenRestPriceLevel: Int = 0

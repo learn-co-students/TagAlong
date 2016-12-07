@@ -15,6 +15,14 @@ class CardView: UIView {
     var restaurant: Restaurant!
     var userStore = UsersDataStore.sharedInstance
     
+    
+    lazy var restImageView = UIImageView()
+    lazy var restNameLabel = UILabel()
+    lazy var restCuisineLabel = UILabel()
+    lazy var restCostLabel = UILabel()
+    lazy var restDistanceLabel = UILabel()
+    lazy var restHoursLabel = UILabel()
+    
     init(restaurant:Restaurant?, frame:CGRect){
         super.init(frame:frame)
         self.restaurant = restaurant
@@ -52,14 +60,14 @@ class CardView: UIView {
         layer.shadowRadius = 4.0
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
-        
-        var restImageView = UIImageView()
-        var restNameLabel = UILabel()
-        var restCuisineLabel = UILabel()
-        var restCostLabel = UILabel()
-        var restDistanceLabel = UILabel()
-        var restHoursLabel = UILabel()
-        
+//        
+//        var restImageView = UIImageView()
+//        var restNameLabel = UILabel()
+//        var restCuisineLabel = UILabel()
+//        var restCostLabel = UILabel()
+//        var restDistanceLabel = UILabel()
+//        var restHoursLabel = UILabel()
+//        
         let labelWidth = self.bounds.width * 0.8
         let labelXLocation = self.bounds.width * 0.10
         
@@ -121,6 +129,14 @@ class CardView: UIView {
         
         // Corner Radius
         layer.cornerRadius = 10.0;
+        
+       
+        
+        
+        
+        
+        
+        
     }
     
     func convertPriceToEMOJI(priceLevel:Int)->String {

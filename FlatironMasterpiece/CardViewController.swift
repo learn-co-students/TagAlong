@@ -157,13 +157,25 @@ class CardViewController: UIViewController {
     
         while restaurantArray.count != 0{
             let restaurant = restaurantArray.removeFirst()
-            let cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
-//            cardView.backgroundColor = getRandomPhaedraColor()
+            var cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
             cardView.backgroundColor = phaedraYellow
+            
+            //NOTE: - calculate distance in km between user and the restaurant
+            var distance: Double
+            distance = Double(acos(sin(userStore.userLat.radians) * sin((restaurant.latitude?.radians)!) + cos(self.userStore.userLat.radians) * cos((restaurant.latitude?.radians)!) * cos(self.userStore.userLong.radians-(restaurant.longitude?.radians)!)) * 6371000 / 1000)
+            print(distance)
+            
+            let numberOfPlaces = 2.0
+            let multiplier = pow(10.0, numberOfPlaces)
+            
+            let rounded = round(distance * 0.621371 * multiplier) / multiplier
+            print("\(restaurant.name) distance as miles \(rounded)")
+            print("\(restaurant.name) distance as feet \(distance.feet)")
+            cardView.restDistanceLabel.text = "\(rounded) mi"
+
             return cardView
         }
-    
-    
+
         //if i have a next card then return view if i do not return the default cardview
         return CardView(restaurant: nil, frame: swipeableView.bounds)
     }
@@ -193,7 +205,7 @@ class CardViewController: UIViewController {
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
-                
+
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
             }
@@ -269,6 +281,21 @@ extension CardViewController {
                 }
             })
         })
+    }
+    
+}
+
+
+extension Double {
+    var radians: Double {
+        return self * M_PI / 180
+    }
+//    var miles: Double  {
+//        
+//        return rounded
+//    }
+    var feet: Double {
+        return self * 3280.84
     }
     
 }
