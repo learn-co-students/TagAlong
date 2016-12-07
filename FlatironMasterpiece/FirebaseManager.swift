@@ -69,6 +69,14 @@ final class FirebaseManager {
     //            })
     //        }
     //    }
+   /* static func blockUser(user: String) {
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+          let unique = FIRAuth.auth()?.currentUser?.uid
+            FIRDatabase.database().reference().child("blockedUsers").child(unique).child
+        }
+    }
+ */   
+    
     class func savePref(dictionary: [String: Any]) {
         print(dictionary)
         if FIRAuth.auth()?.currentUser?.uid != nil {
