@@ -145,7 +145,19 @@ extension ShakeInstructionViewController {
                 print("in shake instructionVC - queryString is \(self.userStore.currentChosenCuisine)")
                 self.restStore.restaurantsInJSON = JSON
                 print("this is the json \(self.restStore.restaurantsInJSON)")
-                self.restStore.filterSearchedRestaurants()
+                
+                //put a competion here 
+                self.restStore.filterSearchedRestaurants{ completed in
+                    if completed {
+                        print("turn off activity indicator in shake view")
+                        OperationQueue.main.addOperation {
+                            self.shakeView.activityIndicator.removeFromSuperview()
+                        }
+                        
+//                        self.shakeView.activityIndicator.hidesWhenStopped = true
+//                        self.shakeView.activityIndicator.stopAnimating()
+                    }
+                }
                 
                 print("getting restaurants")
                 for restaurant in self.restStore.restaurantsArray {

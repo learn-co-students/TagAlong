@@ -96,7 +96,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         loginEmail.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70).isActive = true
         loginEmail.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
-        loginEmail.backgroundColor = UIColor.white
+        loginEmail.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         
         loginEmail.autocapitalizationType = .none
         

@@ -64,7 +64,6 @@ class Restaurant {
                 if let photoString = rawPhotoRef as? NSString {
                     self.photoRef = String(photoString)
                     APIClientGooglePlaces.getRestImages(photoRef: photoRef, completion: { (data) in
-                        print("this is what the photo api call gets back :\(data)")
                         if let rawData = data {
                             self.photoImage = UIImage(data: rawData)
                         }

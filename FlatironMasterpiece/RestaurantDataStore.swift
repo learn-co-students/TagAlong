@@ -19,7 +19,8 @@ class RestaurantDataStore {
     
     fileprivate init() {}
     
-    func filterSearchedRestaurants() {
+    // TO DO: error handling for incompletion
+    func filterSearchedRestaurants(completion: @escaping (Bool)->()) {
 
         restaurantsArray.removeAll()
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
@@ -40,6 +41,9 @@ class RestaurantDataStore {
             }
 
         }
+        print("completed creating restaurants array")
+        completion(true)
+        
     }
     
 }

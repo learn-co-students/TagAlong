@@ -253,20 +253,18 @@ extension CardViewController {
                 
                 self.restStore.restaurantsInJSON = JSON
                 print("this is the json \(self.restStore.restaurantsInJSON)")
-                self.restStore.filterSearchedRestaurants()
+                self.restStore.filterSearchedRestaurants(completion: { _ in
+                    // TO DO: determine whether completion will be used here.
+                })
                 
                 print("getting restaurants")
                 for restaurant in self.restStore.restaurantsArray {
                     APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
                         data in
                         
-                        print("\n\n WE came back and we don't know whats up yete.")
-                        
                         if let rawData = data {
                             
                             print("\n\n")
-                            
-                            print("We have raw data")
                             
                             restaurant.photoImage = UIImage(data: rawData)
                         }
