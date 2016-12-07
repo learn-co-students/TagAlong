@@ -33,6 +33,8 @@ final class FirebaseManager {
 
     //Tagalong ID from selected Tagalong
     var selectedTagAlongID: String?
+    //User ID from guest requesting tagalong
+    var guestID: String?
     
 
 
@@ -325,9 +327,29 @@ final class FirebaseManager {
         // Send user info to host
         ref.child("tagalongs").child("\(tagalongID)").child("host").key
         
-        
-        
     }
+    
+    
+    func createGuestFrom(tagalong: String, completion:@escaping (User)->()){
+        var userName = guestID
+        
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
+            userName = snapshot.value as! String
+            
+            // This will need to be replaced with the userID
+            FirebaseManager.ref.child("guest").child("\(userName)").observe(.value, with: { (snapshot) in
+                let userInfo = snapshot.value as! [String: Any]
+                let user = User(snapshot: userInfo)
+                
+                
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                //self.newtagalongUserArray.append(user)
+                completion(user)
+                
+            })
+        })
+    }
+    
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 

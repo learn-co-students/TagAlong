@@ -10,6 +10,8 @@ import UIKit
 
 class SearchingForTagAlongViewController: UIViewController {
     
+    let store = FirebaseManager.shared
+    
     let searchingLabel: UILabel = UILabel()
     var searchAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     var beTagAlongGuestButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
@@ -111,7 +113,20 @@ class SearchingForTagAlongViewController: UIViewController {
     // 2. Add info about the guest to the alert message
     // 3. Accept - change user value to true, Deny - user value remains
     
+    //ALERT:
     
+    func tagalongRequest() {
+        
+        store.createGuestFrom(tagalong: store.selectedTagAlongID) { (guest) in
+            
+            //Message to request
+            // name, job title, would like to tag along with you at restaraunt. Would you like them to tag along?
+            
+            
+        }
+        
+        
+    }
 
 }
 
