@@ -55,16 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-       let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
-
-
-        return true
+ //      let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
+//
+//
+          return true
     }
 
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
