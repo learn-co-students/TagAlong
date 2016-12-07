@@ -8,6 +8,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantView" customModule="FlatironMasterpiece" customModuleProvider="target">
             <connections>
@@ -23,90 +34,136 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzQ-5a-Ngn">
-                    <rect key="frame" x="329" y="20" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="cog">
-                        <color key="titleColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="settingsButtonTapped:" destination="-1" eventType="touchUpInside" id="XEU-Am-16n"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Healthy" translatesAutoresizingMaskIntoConstraints="NO" id="cin-zN-AyG">
-                    <rect key="frame" x="42" y="93" width="273" height="255"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Healthy" translatesAutoresizingMaskIntoConstraints="NO" id="cin-zN-AyG">
+                    <rect key="frame" x="64" y="145" width="247" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="0Sg-hd-PfI"/>
+                        <constraint firstAttribute="width" constant="247" id="mWK-Eg-Xd3"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB5-k1-YXP">
-                    <rect key="frame" x="42" y="302" width="290" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB5-k1-YXP">
+                    <rect key="frame" x="42" y="345" width="290" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="YMS-Pk-wR7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cuisine" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-H1-E9A">
-                    <rect key="frame" x="42" y="71" width="290" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-H1-E9A">
+                    <rect key="frame" x="42" y="75" width="290" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="5gL-6J-nKy"/>
+                        <constraint firstAttribute="height" constant="46" id="nwr-8k-7YA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="34"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-yE-2FO">
-                    <rect key="frame" x="42" y="356" width="290" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zct-o0-103">
+                    <rect key="frame" x="21" y="485.5" width="179" height="31.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="179" id="R46-IM-rpx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price Level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zct-o0-103">
-                    <rect key="frame" x="16" y="390" width="179" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
-                    <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.38039215686274508" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                    <size key="shadowOffset" width="3" height="2"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="💰💰💰💰" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-Ne-Fu2">
-                    <rect key="frame" x="180" y="390" width="179" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="31"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-wz-m3m">
-                    <rect key="frame" x="29" y="485" width="119" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-wz-m3m">
+                    <rect key="frame" x="25" y="557" width="133" height="30"/>
                     <color key="backgroundColor" red="1" green="1" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Search Again"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="jre-GQ-QuZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                    <state key="normal" title="Search">
+                        <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="IoH-cE-pWz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPa-U5-LKg">
-                    <rect key="frame" x="180" y="485" width="135" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPa-U5-LKg">
+                    <rect key="frame" x="188" y="557" width="150" height="30"/>
                     <color key="backgroundColor" red="1" green="0.3803921569" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Oo8-pu-iUw"/>
+                        <constraint firstAttribute="width" constant="150" id="zxG-Ww-a48"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                     <state key="normal" title="Host A Tag Along">
                         <color key="titleColor" red="1" green="1" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="hostTagAlongTapped:" destination="-1" eventType="touchUpInside" id="oPX-BX-34Q"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-yE-2FO">
+                    <rect key="frame" x="42" y="397" width="290" height="65.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="ZE7-JX-0sk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="26"/>
+                    <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="3" height="2"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💰💰💰💰" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilk-Ne-Fu2">
+                    <rect key="frame" x="208" y="485.5" width="132" height="31.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="132" id="BId-FQ-3S9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.63921568627450975" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ilk-Ne-Fu2" secondAttribute="trailing" constant="35" id="0Cf-G5-PS2"/>
+                <constraint firstItem="oB5-k1-YXP" firstAttribute="top" secondItem="cin-zN-AyG" secondAttribute="bottom" constant="10" id="0Rt-Vf-rds"/>
+                <constraint firstItem="MNx-wz-m3m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="3lz-gX-rdb"/>
+                <constraint firstItem="cin-zN-AyG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="64" id="7B1-Uc-VtH"/>
+                <constraint firstItem="cin-zN-AyG" firstAttribute="top" secondItem="Gjf-H1-E9A" secondAttribute="bottom" constant="24" id="7hg-8e-I0h"/>
+                <constraint firstItem="zct-o0-103" firstAttribute="top" secondItem="8Hi-yE-2FO" secondAttribute="bottom" constant="23" id="7wI-3e-kJN"/>
+                <constraint firstAttribute="bottom" secondItem="xPa-U5-LKg" secondAttribute="bottom" constant="80" id="8rw-zo-qGV"/>
+                <constraint firstAttribute="trailing" secondItem="8Hi-yE-2FO" secondAttribute="trailing" constant="43" id="FUe-eR-RfE"/>
+                <constraint firstItem="oB5-k1-YXP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="42" id="IAL-33-PSN"/>
+                <constraint firstItem="8Hi-yE-2FO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="42" id="IQw-N5-aiX"/>
+                <constraint firstItem="ilk-Ne-Fu2" firstAttribute="top" secondItem="8Hi-yE-2FO" secondAttribute="bottom" constant="23" id="Jpy-t3-ACE"/>
+                <constraint firstItem="MNx-wz-m3m" firstAttribute="top" secondItem="zct-o0-103" secondAttribute="bottom" constant="40" id="L5M-SJ-zQG"/>
+                <constraint firstAttribute="trailing" secondItem="Gjf-H1-E9A" secondAttribute="trailing" constant="43" id="MUm-rf-LLN"/>
+                <constraint firstItem="Gjf-H1-E9A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="42" id="QG9-3b-8RZ"/>
+                <constraint firstItem="xPa-U5-LKg" firstAttribute="top" secondItem="ilk-Ne-Fu2" secondAttribute="bottom" constant="40" id="Rls-91-OiW"/>
+                <constraint firstAttribute="trailing" secondItem="cin-zN-AyG" secondAttribute="trailing" constant="64" id="S5R-TL-zgV"/>
+                <constraint firstAttribute="trailing" secondItem="oB5-k1-YXP" secondAttribute="trailing" constant="43" id="fU1-Ls-rDm"/>
+                <constraint firstAttribute="bottom" secondItem="MNx-wz-m3m" secondAttribute="bottom" constant="80" id="i4U-kw-hHJ"/>
+                <constraint firstItem="zct-o0-103" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="21" id="ihv-xY-PTn"/>
+                <constraint firstItem="ilk-Ne-Fu2" firstAttribute="leading" secondItem="zct-o0-103" secondAttribute="trailing" constant="8" id="p6E-Uk-Dct"/>
+                <constraint firstItem="Gjf-H1-E9A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" id="uQo-2n-Fwk"/>
+                <constraint firstItem="8Hi-yE-2FO" firstAttribute="top" secondItem="oB5-k1-YXP" secondAttribute="bottom" constant="6" id="x7N-gX-zPc"/>
+                <constraint firstItem="xPa-U5-LKg" firstAttribute="leading" secondItem="MNx-wz-m3m" secondAttribute="trailing" constant="30" id="ygX-Io-KZd"/>
+                <constraint firstAttribute="trailing" secondItem="xPa-U5-LKg" secondAttribute="trailing" constant="37" id="zhI-6v-f7j"/>
+            </constraints>
             <point key="canvasLocation" x="105.5" y="164.5"/>
         </view>
     </objects>
     <resources>
         <image name="Healthy" width="656" height="369"/>
-        <image name="cog" width="128" height="128"/>
     </resources>
 </document>

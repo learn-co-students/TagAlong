@@ -11,13 +11,13 @@ import UIKit
 class SelectedRestaurantViewController: UIViewController {
 
     var restaurantView: RestaurantView!
-    var tagAlongTapped:Bool = false
+    var userStore = UsersDataStore.sharedInstance
 
     // Information needed from Deck View
     var user: String?
     var date: Date?
     var location: [String: Any]?
-    
+
     // Dummy Data
     var user1 = FirebaseManager.currentUser
     var date1 = Date()
@@ -26,13 +26,13 @@ class SelectedRestaurantViewController: UIViewController {
         "lat" : -45,
         "long": 35
     ]
-    
+
 //    var tagalongInfoDict: [String: Any] [
 //        "user" : self.user1,
 //        "date" : self.date1,
 //        "location" : self.location1
 //    ]
-    
+
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,
         "date" : "December 1",
@@ -41,26 +41,19 @@ class SelectedRestaurantViewController: UIViewController {
             "lat" : -45,
             "long": 35
         ]
-    
     ]
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
-        if !tagAlongTapped {
-            canDisplayImage()
-        }
+        restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
     }
 
     override func loadView() {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
-        
-        
     }
 
 
@@ -79,7 +72,7 @@ class SelectedRestaurantViewController: UIViewController {
 
 extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
-    func canDisplayImage() {
+    func sendToTagAlongConfirmation() {
 
         let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
@@ -88,30 +81,27 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
             //TODO:
             print("confirm tapped")
-
-
             print("hey there before createtagalong")
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
-                
+
                 print("------------------- IS BEING CALLED ------------------------")
-                
+
                 // Add tagalong key to chat
                 FirebaseManager.createChatWithTagID(key: key)
                 print("Chat ID Being created")
-                
+
                 // Add tagalong key to users (current tagalong and tagalongs)
                 FirebaseManager.updateUserWithTagAlongKey(key: key)
-                
-                
+                                
             })
-            
+
             // Testing Chat - should segue to
-        
+
 //            let chatVC = ChatViewController()
 //            self.navigationController?.present(chatVC, animated: true, completion: nil)
 //
 
-            
+
             //segue way searchingForTagAlong vc
             let searchingVC = SearchingForTagAlongViewController()
             self.navigationController?.pushViewController(searchingVC, animated: true)
@@ -122,7 +112,13 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         confirmTagAlongAlert.addAction(cancelAction)
         confirmTagAlongAlert.addAction(confirmAction)
         self.present(confirmTagAlongAlert, animated: true, completion: nil)
-
     }
+
+    func sendToDeckView() {
+        let shakeInstVC = ShakeInstructionViewController()
+        self.navigationController?.pushViewController(shakeInstVC, animated: true)
+    }
+
+
 
 }

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
-        GMSPlacesClient.provideAPIKey(gpApiKey)
+        GMSPlacesClient.provideAPIKey(gpSearchApiKey)
 
         FIRApp.configure()
 
@@ -36,40 +36,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
-//        navController = UINavigationController()
-//        var loginVC = LogInViewController()
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-
-        //MARK: - sets the initial view controller
-
-//      let initialViewController = SearchingForTagAlongViewController()
-//
-//       let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-
-        //MARK: - sets the initial view controller
-
-      let initialViewController = SearchingForTagAlongViewController()
-
-       let frame = UIScreen.main.bounds
+         navController = UINavigationController()
+        var loginVC = LogInViewController()
+        let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
+        self.navController?.pushViewController(loginVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
 
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+        //MARK: - sets the initial view controller
+
+
+//      let initialViewController = ShakeInstructionViewController()
+
+        let initialViewController = AccountCreationViewController()
+
+
+
+
+ //      let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
 //
-
-        return true
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
+          return true
     }
 
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

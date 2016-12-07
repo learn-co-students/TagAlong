@@ -12,7 +12,6 @@
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
-		250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */; };
 		250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */; };
 		250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CC1DF0CC770090AC68 /* FirebaseManager.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
@@ -20,7 +19,6 @@
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */; };
-		27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27513FDE1DF1D73C00C87495 /* Secrets.swift */; };
 		279BBC711DF0E217008020D4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC701DF0E217008020D4 /* User.swift */; };
 		279BBC751DF0E236008020D4 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BBC741DF0E236008020D4 /* Restaurant.swift */; };
 		279FC38A1DF668460094A4BB /* SprayShake.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 279FC3891DF668460094A4BB /* SprayShake.mp3 */; };
@@ -51,7 +49,6 @@
 		454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */; };
 		45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */; };
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
-		45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14431DE16E16005B91CD /* GetLocationViewController.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
 		45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F196A41DF2A87F00BD24E9 /* CardViewController.swift */; };
 		45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */; };
@@ -65,6 +62,8 @@
 		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
 		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
 		95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95948B921DDE53B900C94BB4 /* LogInViewController.swift */; };
+		95FCF5101DF7044A009F9EEA /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FCF50F1DF7044A009F9EEA /* Secrets.swift */; };
+		95FCF5121DF73EF7009F9EEA /* PicPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,13 +73,11 @@
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
-		250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomTestViewController.swift; sourceTree = "<group>"; };
 		250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTagAlongsTableViewController.swift; sourceTree = "<group>"; };
 		250501CC1DF0CC770090AC68 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		27513FDE1DF1D73C00C87495 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		279BBC701DF0E217008020D4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		279BBC741DF0E236008020D4 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		279FC3891DF668460094A4BB /* SprayShake.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SprayShake.mp3; sourceTree = "<group>"; };
@@ -113,7 +110,6 @@
 		454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingForTagAlongViewController.swift; sourceTree = "<group>"; };
 		45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDataStore.swift; sourceTree = "<group>"; };
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		45AD14431DE16E16005B91CD /* GetLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
 		45F196A41DF2A87F00BD24E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Abel-Regular.ttf"; sourceTree = "<group>"; };
@@ -129,6 +125,8 @@
 		950A2C6C1DE9F95D001F2145 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		950A2C6E1DEC9F01001F2145 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		95948B921DDE53B900C94BB4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		95FCF50F1DF7044A009F9EEA /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicPickerViewController.swift; sourceTree = "<group>"; };
 		B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlatironMasterpiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21ECE4CD9C9E494BBB53F75 /* Pods-FlatironMasterpiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,8 +167,8 @@
 		27AAFE2D1DDAC9AA00C08348 /* FlatironMasterpiece */ = {
 			isa = PBXGroup;
 			children = (
-				27513FDE1DF1D73C00C87495 /* Secrets.swift */,
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
+				95FCF50F1DF7044A009F9EEA /* Secrets.swift */,
 				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
@@ -226,9 +224,8 @@
 			children = (
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
 				45F196A41DF2A87F00BD24E9 /* CardViewController.swift */,
-				250501C81DEF8EBA0090AC68 /* ChatroomTestViewController.swift */,
+				95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
-				45AD14431DE16E16005B91CD /* GetLocationViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */,
@@ -455,7 +452,6 @@
 			files = (
 				2500B2051DF7450100B0C78D /* Tagalong.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
-				45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
@@ -463,17 +459,15 @@
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */,
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
-				45AD14441DE16E16005B91CD /* GetLocationViewController.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
+				95FCF5101DF7044A009F9EEA /* Secrets.swift in Sources */,
 				454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */,
 				250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */,
 				45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */,
 				45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */,
 				45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */,
 				45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */,
-				27513FDF1DF1D73C00C87495 /* Secrets.swift in Sources */,
 				45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */,
-				250501C91DEF8EBA0090AC68 /* ChatroomTestViewController.swift in Sources */,
 				95948B931DDE53B900C94BB4 /* LogInViewController.swift in Sources */,
 				250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */,
 				250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */,
@@ -486,6 +480,7 @@
 				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
+				95FCF5121DF73EF7009F9EEA /* PicPickerViewController.swift in Sources */,
 				950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */,
 				279BBC751DF0E236008020D4 /* Restaurant.swift in Sources */,
 			);

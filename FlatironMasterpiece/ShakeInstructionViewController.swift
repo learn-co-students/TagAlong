@@ -18,9 +18,7 @@ class ShakeInstructionViewController: UIViewController {
 
     var shakeNosie: AVAudioPlayer?
     var vview: UIView!
-    
 
-    
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
@@ -28,11 +26,6 @@ class ShakeInstructionViewController: UIViewController {
     
     let restStore = RestaurantDataStore.sharedInstance
     let userStore = UsersDataStore.sharedInstance
-    
-    //these are example lat and long for chelsea
-    //    var latitude: Double = 40.748944899999998
-    //    var longitude: Double = -74.0002432
-
 
     override func viewDidLoad() {
         
@@ -49,10 +42,7 @@ class ShakeInstructionViewController: UIViewController {
             vibrate()
             playSound()
         }
-
         playSound()
-
-   
 
     }
 
@@ -72,7 +62,6 @@ class ShakeInstructionViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         //ERICA'S CODE - should this go here?
-        
         getLocation()
         
     }
@@ -111,7 +100,6 @@ class ShakeInstructionViewController: UIViewController {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
             
-            //TODO: 1) segue to deck view 2) have the phone vibrate/pulsate 3) shaking sounds
             let deckView = CardViewController()
             self.navigationController?.pushViewController(deckView, animated: false)
         }
@@ -125,6 +113,7 @@ extension ShakeInstructionViewController {
     func getLocation() {
         print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
+
             
             if let error = error {
                 print("there is an error in getlocation")
@@ -149,17 +138,52 @@ extension ShakeInstructionViewController {
             print("Place coordinates are \(placeCoordinates)")
             self.latitude = place.coordinate.latitude
             self.longitude = place.coordinate.longitude
+            print("please work")
             
-            
-            // TODO: - this .getRestaurants call should be taking in a querySTring based on what the user has clicked in preferences
+            self.userStore.userLat = place.coordinate.latitude
+            self.userStore.userLong = place.coordinate.longitude
             
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
+                
+                print("in shake instructionVC - queryString is \(self.userStore.currentChosenCuisine)")
                 self.restStore.restaurantsInJSON = JSON
-                self.restStore.filterSearchedRestaurants()
-            })
-            
+                print("this is the json \(self.restStore.restaurantsInJSON)")
+                
+                //put a competion here 
+                self.restStore.filterSearchedRestaurants{ completed in
+                    if completed {
+                        print("turn off activity indicator in shake view")
+                        OperationQueue.main.addOperation {
+                            self.shakeView.activityIndicator.removeFromSuperview()
+                            self.shakeView.shakePhoneLabel.isHidden = true
+                            self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."
+                            self.shakeView.chooseCuisineLabel.lineBreakMode = .byWordWrapping
+                            self.shakeView.chooseCuisineLabel.numberOfLines = 4
+                            self.shakeView.chooseCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 33.0)
+                        }
+//                        self.shakeView.activityIndicator.hidesWhenStopped = true
+//                        self.shakeView.activityIndicator.stopAnimating()
+                    }
+                }
+                
+                print("getting restaurants")
+                for restaurant in self.restStore.restaurantsArray {
+                    APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
+                        data in
+                                                
+                        if let rawData = data {
+                            
+                            print("\n\n")
+                            
+                            restaurant.photoImage = UIImage(data: rawData)
+                        }
+                    })
+                }
+              })
         })
     }
+
+    
     
    
     

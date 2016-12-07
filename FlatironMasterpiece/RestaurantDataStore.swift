@@ -19,10 +19,11 @@ class RestaurantDataStore {
     
     fileprivate init() {}
     
-    func filterSearchedRestaurants() {
+    // TO DO: error handling for incompletion
+    func filterSearchedRestaurants(completion: @escaping (Bool)->()) {
+
         restaurantsArray.removeAll()
         guard let unwrappedRestaurantsInJSON = restaurantsInJSON else { print("problem with unwrappingRestaurantsInJSON"); return }
-        
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
@@ -34,9 +35,16 @@ class RestaurantDataStore {
             if newRestaurant.openNow == true {
                 restaurantsArray.append(newRestaurant)
                 print("\nrestaurant array count is \(restaurantsArray.count)\n")
+                if restaurantsArray.isEmpty {
+                    print("no restaurants open right now")
+                }
             }
 
         }
+        print("completed creating restaurants array")
+        completion(true)
+        
     }
+    
 }
 
