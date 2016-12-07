@@ -100,7 +100,6 @@ class ShakeInstructionViewController: UIViewController {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
             
-            //TODO: 1) segue to deck view 2) have the phone vibrate/pulsate 3) shaking sounds
             let deckView = CardViewController()
             self.navigationController?.pushViewController(deckView, animated: false)
         }
@@ -163,9 +162,7 @@ extension ShakeInstructionViewController {
                 for restaurant in self.restStore.restaurantsArray {
                     APIClientGooglePlaces.getRestImages(photoRef: restaurant.photoRef, completion: {
                         data in
-                        
-                        print("\n\n WE came back and we don't know whats up yete.")
-                        
+                                                
                         if let rawData = data {
                             
                             print("\n\n")

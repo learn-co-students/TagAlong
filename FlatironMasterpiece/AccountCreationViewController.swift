@@ -381,8 +381,6 @@ extension AccountCreationViewController {
 
         })
 
-
-
     }//end of createAccountButtonTapped
 
 }

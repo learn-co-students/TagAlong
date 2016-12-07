@@ -325,19 +325,5 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("user forgot password")
     }
     
-    // Testing Segue to chat
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "showChat" {
-    //
-    //            let destination = segue.destination as! TabBarController
-    //            //
-    //            //            let chatVC = segue.destination as! ChatViewController
-    //            //            let allChatsRef = FIRDatabase.database().reference().child("chats")
-    //            //            // chatRef should point to only one single chat --- eventually Auto ID
-    //            //            chatVC.chatRef = allChatsRef.child("testChat")
-    //            //
-    //        }
-    //    }
     
 }

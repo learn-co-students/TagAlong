@@ -9,8 +9,6 @@
 
 import UIKit
 import FirebaseAuth
-//import CoreLocation
-//import GooglePlaces
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
     
