@@ -441,7 +441,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -452,7 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
-				45EA82761DF0F56000CD4935 /* SplashLogoViewController.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
