@@ -245,7 +245,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
+        savePreferencesButton.addTarget(self, action: #selector(savePreferencesButtonTapped), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
         savePreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
 
@@ -288,7 +288,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    func savePreferences() {
+    func savePreferencesButtonTapped() {
         print("Save preferences tapped")
 
         //ASK ELI WHAT THIS FIRAUTH CODE IS ABOUT
@@ -305,9 +305,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)
         } else {
-            // Send to shake instruction view controller
-            let shakeInstructionVC = ShakeInstructionViewController()
-            self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
+            
+            //send to search/tagalongVC
+            let searchTagAlongVC = SearchOrTagAlongViewController()
+            self.navigationController?.pushViewController(searchTagAlongVC, animated: true)
         }
 
         let saved = store.preferredCuisineArray

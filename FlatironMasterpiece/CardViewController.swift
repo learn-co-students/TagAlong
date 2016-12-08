@@ -21,7 +21,6 @@ class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
     var swipeLeftCardsCount: Int = 0
-    var selectedCardIndex: Int = 0
     
     //NOTE: - access' the user's restaurant array needed for restaurant deck
     var userStore = UsersDataStore.sharedInstance
@@ -84,13 +83,16 @@ class CardViewController: UIViewController {
         swipeableView.didEnd = {view, location in
             print("Did end swiping view at location: \(location)")
         }
+        
         //INCLUDE LOGIC ON SAVING SWIPED RESTAURANT
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
             
-                 self.selectedCardIndex = self.swipeLeftCardsCount + 1
-                print("selected card index is \(self.selectedCardIndex)")
+                self.userStore.selectedCardIndex = self.swipeLeftCardsCount + 1
+                let indexToPrint = self.userStore.selectedCardIndex
+                print("selected card index is \(indexToPrint)")
+                
                 self.getSelectedRestInfo(completion: { (success) in
                         let selectedRestVC = SelectedRestaurantViewController()
                         self.navigationController?.pushViewController(selectedRestVC, animated: true)
@@ -124,9 +126,9 @@ class CardViewController: UIViewController {
     }
     
     func getSelectedRestInfo(completion: @escaping(Bool) -> Void) {
-        self.userStore.chosenRestName = self.restaurantArray[selectedCardIndex].name!
-        self.userStore.chosenRestAddress = self.restaurantArray[selectedCardIndex].address!
-        self.userStore.chosenRestPriceLevel = self.restaurantArray[selectedCardIndex].priceLevel!
+        self.userStore.chosenRestName = self.restaurantArray[self.userStore.selectedCardIndex].name!
+        self.userStore.chosenRestAddress = self.restaurantArray[self.userStore.selectedCardIndex].address!
+        self.userStore.chosenRestPriceLevel = self.restaurantArray[self.userStore.selectedCardIndex].priceLevel!
         
         var usersRestaurant = self.userStore.chosenRestName
         print(usersRestaurant)

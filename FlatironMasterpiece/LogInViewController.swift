@@ -144,7 +144,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         createAccountButton.layer.cornerRadius = 5
         createAccountButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15)
         createAccountButton.backgroundColor = phaedraYellow
-        createAccountButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
         createAccountButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         createAccountButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         createAccountButton.translatesAutoresizingMaskIntoConstraints = false
@@ -202,9 +202,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if success {
                     print("Successful Log In")
                     
-                    // Send to preferences (for now)
-                    let preferencesVC = PreferenceViewController()
-                    self.navigationController?.pushViewController(preferencesVC, animated: true)
+                    //send to search/tagalongVC
+                    let searchTagAlongVC = SearchOrTagAlongViewController()
+                    self.navigationController?.pushViewController(searchTagAlongVC, animated: true)
                     
                 } else {
 
@@ -222,11 +222,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
     
-    func registerButtonTapped(sender: UIButton!) {
+    func createAccountButtonTapped(sender: UIButton!) {
         print("register button tapped")
         
         let accountCreationVC = AccountCreationViewController()
-
         self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     

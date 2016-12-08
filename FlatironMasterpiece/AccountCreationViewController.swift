@@ -249,20 +249,6 @@ extension AccountCreationViewController {
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-
-
-
-
         // First Name Textfield
         view.addSubview(firstNameEntry)
         firstNameEntry.placeholder = "First Name"

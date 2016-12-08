@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-//        let initialViewController = SelectedRestaurantViewController()
+//        let initialViewController = SearchOrTagAlongViewController()
 //
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)

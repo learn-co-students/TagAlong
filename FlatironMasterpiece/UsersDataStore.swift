@@ -19,6 +19,7 @@ class UsersDataStore {
     var userLat: Double = 0.0
     var userLong: Double = 0.0
     var currentChosenCuisine:String = ""
+    var selectedCardIndex:Int = 0
     
     var chosenRestLat: Double = 0.0
     var chosenRestLong: Double = 0.0
