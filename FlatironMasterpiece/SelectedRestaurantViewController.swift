@@ -53,7 +53,7 @@ class SelectedRestaurantViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = UIColor.blue
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
-        
+        restaurantView.selectedRestaurantLabel.text = restaurant?.name
         dump(self.restaurant)
         
     }
