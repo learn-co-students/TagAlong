@@ -407,13 +407,22 @@ final class FirebaseManager {
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
             
         })
+
+    }
+    
+    func denyTagalong(guestID: String) {
         
-
-//        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").updateChildValues([guests: [String: Bool]])
-
-
-        // User segues to chat
-
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+            
+            
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : "none"])
+            
+        })
+        
+        
     }
     
     func observeGuestTagalongStatus(completion: @escaping (FIRDataSnapshot?) -> Void) {
