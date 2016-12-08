@@ -425,18 +425,7 @@ final class FirebaseManager {
         guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
 
         FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.childChanged, with: { (snapshot) in
-
-            let result = snapshot.value as! Bool?
-
-
-            if result == true{
-
-            }else if result == false{
-
-            }else if result == nil{
-                print("rejected")
-            }
-
+            
             completion(snapshot)
 
         })

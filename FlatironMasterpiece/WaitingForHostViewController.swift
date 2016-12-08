@@ -147,23 +147,39 @@ observeGuestTagalongStatus()
         
         store.observeGuestTagalongStatus { (snapshot) in
             
-            let result = snapshot?.value as! Bool?
-
-            if result == true{
-               
-               self.enterTagALongLabel.isHidden = false
-                self.confirmButton.isHidden = false
+            if let result = snapshot?.value as? Bool {
                 
-            } else if result == false {
+                if result {
+                    
+                    // TODO: If it's true do something
+                    
+                    self.enterTagALongLabel.isHidden = false
+                    self.confirmButton.isHidden = false
+                    
+                    
+                } else {
+                    
+                    // TODO: Not true, it's FALSE so do something else.
+                }
                 
-                //
-                
-            } else if result == nil {
-                
-                self.hostUnavailableLabel.isHidden = false
-                self.searchNewTagAlongButton.isHidden = false
-                print("rejected")
             }
+            
+            if let noResult = snapshot?.value as? String {
+                
+                if noResult == "none" {
+                    
+                    
+                    // TODO: They've been denied, do something else.
+                    self.hostUnavailableLabel.isHidden = false
+                    self.searchNewTagAlongButton.isHidden = false
+                    print("rejected")
+                }
+                
+                
+            }
+
+            
+        
         }
         
             
