@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
-
+    var tagAlong  = ""
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraYellow
@@ -25,6 +26,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         //TODO: - replace this tab 1 with chat
         let chatVC = ChatViewController()
         let tabOne = chatVC
+        chatVC.tagalongTag = tagAlong
         let tabOneBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "ic_speaker_notes.png"), selectedImage: UIImage(named: "ic_speaker_notes.png"))
         tabOne.tabBarItem = tabOneBarItem
 
@@ -38,7 +40,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let tabeThreeBarItem3 = UITabBarItem(title: "Preferences", image: UIImage(named: "gear.png"), selectedImage: UIImage(named: "gear.png"))
         tabThree.tabBarItem = tabeThreeBarItem3
         
-        self.viewControllers = [tabOne, tabTwo, tabThree]
+        self.viewControllers = [tabTwo, tabOne, tabThree]
         
     }
     

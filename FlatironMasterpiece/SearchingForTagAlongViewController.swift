@@ -180,11 +180,17 @@ class SearchingForTagAlongViewController: UIViewController {
         print(acceptedGuestID)
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
+            
+            
+            
+            let tabBarVC = TabBarController()
+            tabBarVC.tagAlong = currentTagAlongKey
+            
+            self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
         
         // Segue into chat/tab bar view
-        let tabBarVC = TabBarController()
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        
     }
 
     func denyTagalongAction() {
