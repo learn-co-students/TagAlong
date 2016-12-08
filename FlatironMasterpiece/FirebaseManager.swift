@@ -308,6 +308,13 @@ final class FirebaseManager {
 
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
+        
+        
+        //Create chat with tagalongID from user's node
+        
+//        guard let userID = currentUser else { return }
+//       let tagalongID = FirebaseManager.ref.child("users").child(userID).child("currentTagalongs").key
+//        self.chatRef = allChatsRef.child("\(tagalongID)")
 
     }
 
