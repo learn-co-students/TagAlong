@@ -130,8 +130,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 170).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40).isActive = true
+//        cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40).isActive = true
+        cuisineCollectionView.heightAnchor.constraint(equalToConstant: 225).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
+
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -214,11 +216,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.topAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -165).isActive = true
+        replayTutorialButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
        // replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
+        replayTutorialButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        replayTutorialButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         replayTutorialButton.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
@@ -232,11 +234,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -60).isActive = true
-        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -165).isActive = true
+        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
+        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
-        logoutButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        logoutButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
@@ -251,10 +253,12 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
         savePreferencesButton.titleLabel?.textAlignment = .center
         savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -130).isActive = true
+        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 435).isActive = true
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
-        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+//        savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
+        savePreferencesButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+//        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        savePreferencesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
         savePreferencesButton.setTitleColor(phaedraYellow, for: .highlighted)
