@@ -13,6 +13,7 @@ class SearchingForTagAlongViewController: UIViewController {
     let searchingLabel: UILabel = UILabel()
     var searchAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     var beTagAlongGuestButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,6 @@ class SearchingForTagAlongViewController: UIViewController {
     }
     
     func setupSpinner() {
-        var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         activityIndicator.color = phaedraDarkGreen
         activityIndicator.layer.cornerRadius = 4
         activityIndicator.layer.backgroundColor = phaedraLightGreen.cgColor

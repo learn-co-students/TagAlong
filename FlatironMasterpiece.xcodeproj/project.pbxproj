@@ -44,8 +44,6 @@
 		4539213F1DEC777300D19A45 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4539213E1DEC777300D19A45 /* TableViewCell.xib */; };
 		453921411DEC778700D19A45 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921401DEC778700D19A45 /* TableViewCell.swift */; };
 		453E00541DF8B67100694858 /* WaitingForHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E00531DF8B67100694858 /* WaitingForHostViewController.swift */; };
-		453E00561DF8B6B300694858 /* WaitingForHost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453E00551DF8B6B300694858 /* WaitingForHost.xib */; };
-		453E00581DF8B78800694858 /* WaitingForHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E00571DF8B78800694858 /* WaitingForHostView.swift */; };
 		453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E06B11DE8E8C6007EE25A /* RestaurantView.swift */; };
 		453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */; };
 		454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */; };
@@ -107,8 +105,6 @@
 		4539213E1DEC777300D19A45 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		453921401DEC778700D19A45 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		453E00531DF8B67100694858 /* WaitingForHostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingForHostViewController.swift; sourceTree = "<group>"; };
-		453E00551DF8B6B300694858 /* WaitingForHost.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitingForHost.xib; sourceTree = "<group>"; };
-		453E00571DF8B78800694858 /* WaitingForHostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingForHostView.swift; sourceTree = "<group>"; };
 		453E06B11DE8E8C6007EE25A /* RestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedRestaurantViewController.swift; sourceTree = "<group>"; };
 		454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingForTagAlongViewController.swift; sourceTree = "<group>"; };
@@ -209,7 +205,6 @@
 				4539213E1DEC777300D19A45 /* TableViewCell.xib */,
 				452C59991DE5EABC005884EE /* SelectedRestaurant.xib */,
 				45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */,
-				453E00551DF8B6B300694858 /* WaitingForHost.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -252,7 +247,6 @@
 				45F509FB1DE4FD0D00A4F9C4 /* ShakeView.swift */,
 				453921401DEC778700D19A45 /* TableViewCell.swift */,
 				453E06B11DE8E8C6007EE25A /* RestaurantView.swift */,
-				453E00571DF8B78800694858 /* WaitingForHostView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -386,7 +380,6 @@
 				451C01AA1DEE432A007B1388 /* OpenSans-Bold.ttf in Resources */,
 				451C01AB1DEE4331007B1388 /* OpenSans-BoldItalic.ttf in Resources */,
 				451C01AC1DEE4333007B1388 /* OpenSans-ExtraBold.ttf in Resources */,
-				453E00561DF8B6B300694858 /* WaitingForHost.xib in Resources */,
 				451C01AD1DEE4335007B1388 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				451C01AE1DEE4337007B1388 /* OpenSans-Italic.ttf in Resources */,
 				451C01AF1DEE4342007B1388 /* OpenSans-Light.ttf in Resources */,
@@ -465,7 +458,6 @@
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */,
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
-				453E00581DF8B78800694858 /* WaitingForHostView.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
 				95FCF5101DF7044A009F9EEA /* Secrets.swift in Sources */,
 				454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */,
