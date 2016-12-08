@@ -91,7 +91,7 @@ class CardViewController: UIViewController {
             
                 self.userStore.selectedCardIndex = self.swipeLeftCardsCount + 1
                 let indexToPrint = self.userStore.selectedCardIndex
-                print("selected card index is \(indexToPrint)")
+//                print("selected card index is \(indexToPrint)")
                 
                 self.getSelectedRestInfo(completion: { (success) in
                         let selectedRestVC = SelectedRestaurantViewController()
@@ -135,8 +135,6 @@ class CardViewController: UIViewController {
         var usersRestAddress = self.userStore.chosenRestAddress
         var usersRestPrice = self.userStore.chosenRestPriceLevel
         print("selected rest is \(usersRestaurant) at \(usersRestAddress) with price level \(usersRestPrice)")
-        
-        
 
     }
     
