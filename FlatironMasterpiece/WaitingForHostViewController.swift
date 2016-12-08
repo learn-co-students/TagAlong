@@ -10,9 +10,12 @@ import UIKit
 
 class WaitingForHostViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        observeHostTagalong()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -24,16 +27,12 @@ class WaitingForHostViewController: UIViewController {
 
     func observeHostTagalong() {
         
-        FirebaseManager.shared.observeTagalongRequests { (snapshot) in
-            
-            
-            
+        FirebaseManager.shared.observeGuestTagalongStatus { 
+        
             
             
         }
-        
-        
-        
+     
         
     }
 

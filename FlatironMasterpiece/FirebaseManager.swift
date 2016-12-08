@@ -351,6 +351,18 @@ final class FirebaseManager {
         // User segues to chat
 
     }
+    
+    func observeGuestTagalongStatus(completion: @escaping () -> Void) {
+        
+        
+        FirebaseManager.ref.child("tagalongs").child("users").child("\(guestID)").child("currentTagalongs").observe(.childChanged, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            completion()
+            
+        })
+    }
 
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {

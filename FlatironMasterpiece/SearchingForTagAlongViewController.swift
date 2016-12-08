@@ -175,7 +175,7 @@ class SearchingForTagAlongViewController: UIViewController {
         
         store.acceptTagalong(guestID: store.guestID)
         
-        store.guestStatus[store.guestID] = true
+//        store.guestStatus[store.guestID] = true
         
         // Segue into chat/tab bar view
 //        let chatVC = ChatViewController()
@@ -196,7 +196,7 @@ class SearchingForTagAlongViewController: UIViewController {
         
         
         //Figure out a way to notify user when they are denied
-        store.guestStatus[store.guestID] = false
+//        store.guestStatus[store.guestID] = false
 
     }
     
