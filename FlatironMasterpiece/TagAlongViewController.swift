@@ -196,8 +196,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         let selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
-        let tabBarVC = TabBarController()
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        let waitingForHostVC = WaitingForHostViewController()
+        self.navigationController?.pushViewController(waitingForHostVC, animated: true)
         
         ///////////////////////////////
         // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert

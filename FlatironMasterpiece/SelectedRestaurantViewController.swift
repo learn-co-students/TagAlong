@@ -15,6 +15,7 @@ class SelectedRestaurantViewController: UIViewController {
     var userStore = UsersDataStore.sharedInstance
     var map: MKMapView?
     var restaurant: Restaurant?
+    var emojiString = ""
     
     // Information needed from Deck View
     var user: String?
@@ -55,9 +56,9 @@ class SelectedRestaurantViewController: UIViewController {
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
         restaurantView.selectedRestaurantLabel.text = restaurant?.name
         restaurantView.selectedRestaurantAddressLabel.text = restaurant?.address
-        let priceLevelAsEmoji = changePriceToEmoji(level: (restaurant?.priceLevel)!)
-        restaurantView.restaurantPricingLabel.text = String(priceLevelAsEmoji)
-        dump(self.restaurant)
+        emojiString = changePriceToEmoji(level: (restaurant?.priceLevel)!)
+        print(emojiString)
+        restaurantView.restaurantPricingLabel.text = emojiString
         
     }
 

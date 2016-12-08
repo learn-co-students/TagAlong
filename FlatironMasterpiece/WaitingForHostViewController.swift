@@ -37,7 +37,7 @@ class WaitingForHostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-observeGuestTagalongStatus()
+        observeGuestTagalongStatus()
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = phaedraOliveGreen
@@ -144,32 +144,42 @@ observeGuestTagalongStatus()
     }
     
     func observeGuestTagalongStatus() {
+        print("about to observe guest tagalong status")
         
         store.observeGuestTagalongStatus { (snapshot) in
             
-            let result = snapshot?.value as! Bool?
-
-            if result == true{
-               
-               self.enterTagALongLabel.isHidden = false
-                self.confirmButton.isHidden = false
-                
-            } else if result == false {
-                
-                //
-                
-            } else if result == nil {
-                
-                self.hostUnavailableLabel.isHidden = false
-                self.searchNewTagAlongButton.isHidden = false
-                print("rejected")
-            }
-        }
-        
+            print("starting to observe guest tagalong status")
             
+            if let result = snapshot?.value as? Bool {
+                
+                if result {
+                    
+                    // TODO: If it's true do something
+                    self.waitingHostLabel.isHidden = true
+                    self.enterTagALongLabel.isHidden = false
+                    self.confirmButton.isHidden = false
+                    
+                } else {
+                    
+                    // TODO: Not true, it's FALSE so do something else.
+                }
+                
+            }
+            
+            if let noResult = snapshot?.value as? String {
+                
+                if noResult == "none" {
+                    
+                    // TODO: They've been denied, do something else.
+                    self.hostUnavailableLabel.isHidden = false
+                    self.searchNewTagAlongButton.isHidden = false
+                }
+                
+            }
         
     }
     
     
     
+}
 }
