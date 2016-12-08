@@ -46,9 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
+//      let initialViewController = ShakeInstructionViewController()
+//        let initialViewController = SelectedRestaurantViewController()
 
-//      let initialViewController = TabBarController()
-//
 //       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //

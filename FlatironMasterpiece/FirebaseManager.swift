@@ -44,6 +44,20 @@ final class FirebaseManager {
 
 
 
+
+
+    
+//    static func upload(image: UIImage, handler: (Bool) -> Void) {
+//        
+//        // upload to firebase
+//        
+//        // when done.
+//        
+//        
+//        
+//        
+//    }
+
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
     static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
@@ -52,6 +66,10 @@ final class FirebaseManager {
 
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
+           let storageRef = FIRStorage.storage().reference()
+ //           let uploadData = UIImagePNGRepresentation(picImage)
+  //          storageRef.put(<#T##uploadData: Data##Data#>, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
+            
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
 
                 guard error == nil else { completion(false); return }
@@ -60,6 +78,13 @@ final class FirebaseManager {
 
             })
         })
+    }
+    
+    static func storeImage(image: UIImage) {
+        let ref = FIRStorage.storage().reference()
+        let imageData = UIImagePNGRepresentation(image)
+        let metaData = FIRStorageMetadata()
+     //   ref.put(imageData, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
     }
 
     //    func savePreferences() {

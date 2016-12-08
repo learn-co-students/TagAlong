@@ -88,12 +88,10 @@ class CardViewController: UIViewController {
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
-            
-                self.userStore.selectedCardIndex = self.swipeLeftCardsCount + 1
-                let indexToPrint = self.userStore.selectedCardIndex
-                print("selected card index is \(indexToPrint)")
-                
+
+                let cardView = view as! CardView
                 let selectedRestVC = SelectedRestaurantViewController()
+                selectedRestVC.restaurant = cardView.restaurant
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
                 
             } else if direction.description == "Left" {
@@ -203,6 +201,61 @@ class CardViewController: UIViewController {
 
         //if i have a next card then return view if i do not return the default cardview
         return CardView(restaurant: nil, frame: swipeableView.bounds)
+    }
+    
+    func getRandomPhaedraColor()-> UIColor {
+        let phaedraColorArray:[UIColor] = [phaedraLightGreen, phaedraYellow, phaedraBeige, phaedraOliveGreen, phaedraDarkGreen]
+        let randomNum = Int(arc4random_uniform(UInt32(phaedraColorArray.count)))
+        return phaedraColorArray[randomNum]
+    }
+    
+    func createDefaultCard()->CardView {
+        let defaultCard = CardView(restaurant: nil, frame: swipeableView.bounds)
+        swipeableView = ZLSwipeableView()
+        swipeableView.backgroundColor = UIColor.red
+        view.addSubview(swipeableView)
+        self.view.backgroundColor = phaedraOrange
+                
+        swipeableView.didStart = {view, location in
+            print("Did start swiping view at location: \(location)")
+        }
+        swipeableView.swiping = {view, location, translation in
+            print("Swiping at view location: \(location) translation: \(translation)")
+        }
+        swipeableView.didEnd = {view, location in
+            print("Did end swiping view at location: \(location)")
+        }
+        swipeableView.didSwipe = {view, direction, vector in
+            print("Did swipe view in direction: \(direction), vector: \(vector)")
+            print("CVC > createDefaultCard > didSwipe")
+            if direction.description == "Right" {
+
+                let selectedRestVC = SelectedRestaurantViewController()
+                self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                
+                
+                
+            }
+        }
+        swipeableView.didCancel = {view in
+            print("Did cancel swiping view")
+        }
+        swipeableView.didTap = {view, location in
+            print("Did tap at location \(location)")
+        }
+        swipeableView.didDisappear = { view in
+            print("Did disappear swiping view")
+            
+        }
+        
+        // +50 -50 +120 -100
+        constrain(swipeableView, view) { view1, view2 in
+            view1.left == view2.left+50
+            view1.right == view2.right-50
+            view1.top == view2.top + 50
+            view1.bottom == view2.bottom - 50
+        }
+        return defaultCard
     }
     
     

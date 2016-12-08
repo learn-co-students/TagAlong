@@ -34,7 +34,9 @@ struct Constants {
 
 
 class AccountCreationViewController: UIViewController, CLLocationManagerDelegate , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    //static let shared = AccountCreationViewController()
+   
+    
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
@@ -158,6 +160,7 @@ extension AccountCreationViewController {
   
     func selectProfileImage() {
         print(123)
+        
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.isEditing = true
@@ -175,15 +178,17 @@ extension AccountCreationViewController {
        
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
 
-            print(editedImage)
+            
+            print("This is an edited image \(editedImage)")
             selectedImageFromPicker = editedImage
         } else if let original = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-            print(original)
+            print("This is the original \(original)")
             selectedImageFromPicker = original
         }
      
         if let selectedImage = selectedImageFromPicker {
             picImage.image = selectedImage
+        print("selected:::: \(picImage)")
         }
         dismiss(animated: true, completion: nil)
 
@@ -221,7 +226,7 @@ extension AccountCreationViewController {
         picButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         picButton.backgroundColor = phaedraYellow
         picButton.layer.borderColor = phaedraDarkGreen.cgColor
-        picButton.layer.borderWidth = 2
+      //  picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 60
         picButton.translatesAutoresizingMaskIntoConstraints = false
         picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
@@ -238,8 +243,8 @@ extension AccountCreationViewController {
       
         picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
         
-        picImage.backgroundColor = UIColor.red
-        picImage.layer.borderWidth = 2
+       // picImage.backgroundColor = UIColor.red
+        picImage.layer.borderWidth = 0
         picImage.layer.cornerRadius = 60
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
@@ -382,55 +387,56 @@ extension AccountCreationViewController {
 
     }
 
-    func picButtonTapped(){
-//        let pic = PicPickerViewController()
-//        self.present(pic, animated: true, completion: nil)
-        
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let buttonOne = UIAlertAction(title: "Use Existing", style: .default, handler: { (action) -> Void in
-            self.selectPicture()
-        })
-//        let buttonTwo = UIAlertAction(title: "Take New", style: .default, handler: { (action) -> Void in
-//            self.takePicture()
+//    func picButtonTapped(){
+////        let pic = PicPickerViewController()
+////        self.present(pic, animated: true, completion: nil)
+//        
+//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//        let buttonOne = UIAlertAction(title: "Use Existing", style: .default, handler: { (action) -> Void in
+//            self.selectPicture()
 //        })
-        let buttonCancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel Button Pressed")
-        }
-
-        alertController.addAction(buttonOne)
-//        alertController.addAction(buttonTwo)
-        alertController.addAction(buttonCancel)
-        present(alertController, animated: true, completion: nil)
-
-
-
-    }
+////        let buttonTwo = UIAlertAction(title: "Take New", style: .default, handler: { (action) -> Void in
+////            self.takePicture()
+////        })
+//        let buttonCancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+//            print("Cancel Button Pressed")
+//        }
+//
+//        alertController.addAction(buttonOne)
+////        alertController.addAction(buttonTwo)
+//        alertController.addAction(buttonCancel)
+//        present(alertController, animated: true, completion: nil)
+//
+//
+//
+//    }
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
-    func selectPicture() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
-    }
+//    func selectPicture() {
+//        print("selected piccccc")
+//        let picker = UIImagePickerController()
+//        picker.allowsEditing = true
+//        picker.delegate = self
+//        present(picker, animated: true)
+//    }
 
-    func takePicture() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.sourceType = .camera
-        picker.delegate = self
-        present(picker, animated: true)
-        if let image = UIImage(named: "example.png") {
-            if let data = UIImageJPEGRepresentation(image, 0.8) {
-                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
-                print("saved")
-                try? data.write(to: filename)
-            }
-        }
-    }
+//    func takePicture() {
+//        let picker = UIImagePickerController()
+//        picker.allowsEditing = true
+//        picker.sourceType = .camera
+//        picker.delegate = self
+//        present(picker, animated: true)
+//        if let image = UIImage(named: "example.png") {
+//            if let data = UIImageJPEGRepresentation(image, 0.8) {
+//                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+//                print("saved")
+//                try? data.write(to: filename)
+//            }
+//        }
+//    }
 
     func createAccountButtonTapped(sender: UIButton!) {
 
