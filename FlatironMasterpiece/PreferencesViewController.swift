@@ -77,7 +77,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
 
         view.addSubview(cuisinePreferencesLabel)
-        cuisinePreferencesLabel.text = "Choose Your Cuisines (at least 2)"
+        cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center

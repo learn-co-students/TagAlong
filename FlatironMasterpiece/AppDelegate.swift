@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 
-        //MARK: - sets up the navigation controller for our app
+//        //MARK: - sets up the navigation controller for our app
          navController = UINavigationController()
         var loginVC = LogInViewController()
         let frame = UIScreen.main.bounds
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-//        let initialViewController = WaitingForHostViewController()
+//        let initialViewController = SelectedRestaurantViewController()
 //
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)

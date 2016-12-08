@@ -20,8 +20,8 @@ var testArray2 = ["spreads.jpg", "Rizzo's Pizza", "Italian", "$$", ".1 miles", "
 class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
-    var hasPickedRestaurant: Bool = false
-    var cardsCounter: Int = 0
+    var swipeLeftCardsCount: Int = 0
+    var selectedCardIndex: Int = 0
     
     //NOTE: - access' the user's restaurant array needed for restaurant deck
     var userStore = UsersDataStore.sharedInstance
@@ -88,10 +88,20 @@ class CardViewController: UIViewController {
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
-                self.hasPickedRestaurant = true
-                let selectedRestVC = SelectedRestaurantViewController()
-                self.navigationController?.pushViewController(selectedRestVC, animated: true)
-            }
+            
+                 self.selectedCardIndex = self.swipeLeftCardsCount + 1
+                print("selected card index is \(self.selectedCardIndex)")
+                self.getSelectedRestInfo(completion: { (success) in
+                        let selectedRestVC = SelectedRestaurantViewController()
+                        self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                    
+                })
+            } else if direction.description == "Left" {
+                self.swipeLeftCardsCount += 1
+                var newCount = self.swipeLeftCardsCount
+                print("cardsCounter is: \(newCount)")
+            }            
+            
         }
         swipeableView.didCancel = {view in
             print("Did cancel swiping view")
@@ -113,10 +123,19 @@ class CardViewController: UIViewController {
 
     }
     
-    func saveSwipedRestaurant(_ completion: @escaping ()->Void) {
-        if hasPickedRestaurant {
-            
-        }
+    func getSelectedRestInfo(completion: @escaping(Bool) -> Void) {
+        self.userStore.chosenRestName = self.restaurantArray[selectedCardIndex].name!
+        self.userStore.chosenRestAddress = self.restaurantArray[selectedCardIndex].address!
+        self.userStore.chosenRestPriceLevel = self.restaurantArray[selectedCardIndex].priceLevel!
+        
+        var usersRestaurant = self.userStore.chosenRestName
+        print(usersRestaurant)
+        var usersRestAddress = self.userStore.chosenRestAddress
+        var usersRestPrice = self.userStore.chosenRestPriceLevel
+        print("selected rest is \(usersRestaurant) at \(usersRestAddress) with price level \(usersRestPrice)")
+        
+        
+
     }
     
     
@@ -173,13 +192,11 @@ class CardViewController: UIViewController {
             //NOTE: - calculates distance in km between user and the restaurant
             var distance: Double
             distance = Double(acos(sin(userStore.userLat.radians) * sin((restaurant.latitude?.radians)!) + cos(self.userStore.userLat.radians) * cos((restaurant.latitude?.radians)!) * cos(self.userStore.userLong.radians-(restaurant.longitude?.radians)!)) * 6371000 / 1000)
-            print(distance)
             
             let numberOfPlaces = 2.0
             let multiplier = pow(10.0, numberOfPlaces)
             
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
-            print("\(restaurant.name) distance as miles \(rounded)")
  
             cardView.restDistanceLabel.text = "\(rounded) mi away"
 
