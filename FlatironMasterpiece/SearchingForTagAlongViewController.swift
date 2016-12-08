@@ -178,18 +178,13 @@ class SearchingForTagAlongViewController: UIViewController {
         print(store.guestID)
         guard let acceptedGuestID = store.guestID else { print("leaving function");return }
         print(acceptedGuestID)
-        store.acceptTagalong(guestID: acceptedGuestID)
+        store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
+            self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
+        }
         
-
         // Segue into chat/tab bar view
-//        let chatVC = ChatViewController()
-//        self.navigationController?.present(chatVC, animated: true, completion: nil)
-
-        // Add tagalong to guest's current tagalong branch and current tagalong branch
-        guard let selectedTag = store.selectedTagAlongID else { return }
-        
-        FirebaseManager.updateUserWithTagAlongKey(key: selectedTag)
-
+        let tabBarVC = TabBarController()
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
 
     func denyTagalongAction() {

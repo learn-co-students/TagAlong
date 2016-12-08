@@ -269,14 +269,13 @@ final class FirebaseManager {
     }
     
     ///this gets called in searchingForTagAlongVC (acceptTagalong())
-    func updateGuestWithTagAlongKey(key: String) {
-        // Add tagalong key to users
-        // 1. Create tagalongs
+    func updateGuestWithTagAlongKey(tagAlongkey: String) {
         
         guard let unwrappedGuestID = guestID else { return }
-        ref.child("users").child(unwrappedGuestID).child("tagalongs").updateChildValues([key: true])
         
-        ref.child("users").child(unwrappedGuestID).child("currentTagalongs").setValue([key: true])
+        FirebaseManager.ref.child("users").child(unwrappedGuestID).child("tagalongs").updateChildValues([tagAlongkey: true])
+        
+        FirebaseManager.ref.child("users").child(unwrappedGuestID).child("currentTagalongs").setValue([tagAlongkey: true])
         
     }
 
@@ -390,7 +389,7 @@ final class FirebaseManager {
         })
     }
 
-     func acceptTagalong(guestID: String) {
+    func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
         //get my own tag along id
         
         
@@ -399,7 +398,7 @@ final class FirebaseManager {
             let currentTagalong = snapshot.key
             print("Current Tagalong -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
-            
+            completion(currentTagalong)
         })
 
     }
