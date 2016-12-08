@@ -127,6 +127,11 @@ final class FirebaseManager {
 
         }
     }
+    
+    //this method gets preferences from firebase
+    class func getPreferences() {
+        <#code#>
+    }
 
     static func sendEmailVerification() {
 
