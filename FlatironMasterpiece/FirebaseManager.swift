@@ -352,14 +352,14 @@ final class FirebaseManager {
 
     }
     
-    func observeGuestTagalongStatus(completion: @escaping () -> Void) {
+    func observeGuestTagalongStatus(completion: @escaping (FIRDataSnapshot?) -> Void) {
         
         
         FirebaseManager.ref.child("tagalongs").child("users").child("\(guestID)").child("currentTagalongs").observe(.childChanged, with: { (snapshot) in
             
             print(snapshot)
             
-            completion()
+            completion(snapshot)
             
         })
     }

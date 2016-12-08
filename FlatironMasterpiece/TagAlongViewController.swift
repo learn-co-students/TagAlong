@@ -203,6 +203,14 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //        store.selectedTagAlongID = selectedTag.tagID
 //        store.guestID = FirebaseManager.currentUser
         
+        // Remove tagalongID from Array
+//        for (index, value) in tagalongs.enumerated() {
+//            if value == selectedTag {
+//                tagalongs.remove(at: index)
+//            }
+//        }
+        
+        
     }
     
     

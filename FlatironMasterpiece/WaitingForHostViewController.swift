@@ -27,13 +27,15 @@ class WaitingForHostViewController: UIViewController {
 
     func observeHostTagalong() {
         
-        FirebaseManager.shared.observeGuestTagalongStatus { 
-        
+        FirebaseManager.shared.observeGuestTagalongStatus { (snapshot) in
             
+            if snapshot?.value == true {
+                
+                //TODO:- Change text on the view
+                
+            }
             
         }
-     
-        
-    }
+        }
 
 }
