@@ -1,3 +1,4 @@
+
 //
 //  FirebaseManager.swift
 //  FlatironMasterpiece
@@ -35,32 +36,31 @@ final class FirebaseManager {
     var tagalongs = [Tagalong]()
     
     //Tagalong ID from selected Tagalong
-    var selectedTagAlongID = "in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
+    var selectedTagAlongID: String? //"in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
     //User ID from guest requesting tagalong
-    var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
-    
+    var guestID: String? //"lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
+
     var guestStatus = [String: Bool]()
-    
-    
+
     private init() {}
-    
-    
-    
-    
-    
-    
-    
-    //    static func upload(image: UIImage, handler: (Bool) -> Void) {
-    //
-    //        // upload to firebase
-    //
-    //        // when done.
-    //
-    //
-    //
-    //
-    //    }
-    
+
+
+
+
+
+
+
+//    static func upload(image: UIImage, handler: (Bool) -> Void) {
+//
+//        // upload to firebase
+//
+//        // when done.
+//
+//
+//
+//
+//    }
+
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
     static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
@@ -69,10 +69,11 @@ final class FirebaseManager {
             
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
-            let storageRef = FIRStorage.storage().reference()
-            //           let uploadData = UIImagePNGRepresentation(picImage)
-            //          storageRef.put(<#T##uploadData: Data##Data#>, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
-            
+
+           let storageRef = FIRStorage.storage().reference()
+ //           let uploadData = UIImagePNGRepresentation(picImage)
+  //          storageRef.put(<#T##uploadData: Data##Data#>, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
+
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
                 
                 guard error == nil else { completion(false); return }
@@ -82,7 +83,7 @@ final class FirebaseManager {
             })
         })
     }
-    
+
     static func storeImage(image: UIImage) {
         let ref = FIRStorage.storage().reference()
         let imageData = UIImagePNGRepresentation(image)
@@ -176,8 +177,9 @@ final class FirebaseManager {
         //        }
     }
 
-    
+
     //this method gets preferences from firebase
+
     class func getPreferences() {
         //work with ELI to get the cuisines from Firebase
     }
@@ -317,26 +319,17 @@ final class FirebaseManager {
         }
         
     }
-    
 
-    ///CHANGE THIS TO LOOK LIKE ABOVE FUNCTION
-    static func updateGuestWithTagAlongKey(key: String) {
-        
-        // Add tagalong key to users
-        // 1. Create tagalongs
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
-            ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
-        }
-        
-        // 2. Create current tagalongs
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
-            ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
-        }
-        
+
+    ///this gets called in searchingForTagAlongVC (acceptTagalong())
+    func updateGuestWithTagAlongKey(tagAlongkey: String) {
+
+        guard let unwrappedGuestID = guestID else { return }
+
+        FirebaseManager.ref.child("users").child(unwrappedGuestID).child("tagalongs").updateChildValues([tagAlongkey: true])
+
+        FirebaseManager.ref.child("users").child(unwrappedGuestID).child("currentTagalongs").setValue([tagAlongkey: true])
     }
-
 
 
     static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
@@ -367,6 +360,15 @@ final class FirebaseManager {
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
         
+
+        
+        //Create chat with tagalongID from user's node
+        
+//        guard let userID = currentUser else { return }
+//       let tagalongID = FirebaseManager.ref.child("users").child(userID).child("currentTagalongs").key
+//        self.chatRef = allChatsRef.child("\(tagalongID)")
+
+
     }
     
     
@@ -402,20 +404,25 @@ final class FirebaseManager {
     }
     
     func observeTagalongRequests(response: @escaping (FIRDataSnapshot?) -> Void) {
-        
-        //        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
-        
-        //        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
-        
-        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
-            
-            DispatchQueue.main.async {
-                
-                response(snapshot)
-            }
-            
+//        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
+
+//        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
+
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").observe(.childAdded, with: { snapshot in
+
+                DispatchQueue.main.async {
+
+                    response(snapshot)
+                }
+
+            })
+
+
         })
-        
     }
     
     
@@ -438,27 +445,44 @@ final class FirebaseManager {
             })
         })
     }
-    
-    func acceptTagalong(guestID: String) {
-        
-        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").updateChildValues([guestID : true])
-        
-        //        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").updateChildValues([guests: [String: Bool]])
-        
-        
-        // User segues to chat
-        
+
+    func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
+        //get my own tag along id
+
+
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
+            completion(currentTagalong)
+        })
+
     }
-    
+
+    func denyTagalong(guestID: String) {
+
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+
+
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : "none"])
+
+        })
+    }
+
     func observeGuestTagalongStatus(completion: @escaping (FIRDataSnapshot?) -> Void) {
+
+        guard let guestID = FirebaseManager.currentUser else { print("hey retuning");return }
+        guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
+
+        print("firebase manager observe guest tagalong - selected tag: \(selectedTag)")
         
-        
-        FirebaseManager.ref.child("tagalongs").child("users").child("\(guestID)").child("currentTagalongs").observe(.childChanged, with: { (snapshot) in
-            
-            print(snapshot)
-            
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.value, with: { (snapshot) in
             completion(snapshot)
-            
+
         })
     }
     

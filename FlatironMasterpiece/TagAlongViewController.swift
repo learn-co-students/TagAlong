@@ -24,7 +24,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        johannGetTags()
+        getTags()
         
         //store.getTagalongs()
         // print(store.tagalongs.count)
@@ -123,7 +123,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     //Firebase functions --- this can be refined in firebaseManager during refactoring
     
     // Get tagalongs
-    func johannGetTags(){
+    func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
             let tagDict = snapshot.value as! [String: Any]
@@ -196,16 +196,16 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         let selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
-        let tabBarVC = TabBarController()
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        let waitingForHostVC = WaitingForHostViewController()
+        self.navigationController?.pushViewController(waitingForHostVC, animated: true)
         
         ///////////////////////////////
         // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
                 
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
-//        store.selectedTagAlongID = selectedTag.tagID
-//        store.guestID = FirebaseManager.currentUser
+        store.selectedTagAlongID = selectedTag.tagID
+        store.guestID = FirebaseManager.currentUser
         
         // Remove tagalongID from Array
 //        for (index, value) in tagalongs.enumerated() {

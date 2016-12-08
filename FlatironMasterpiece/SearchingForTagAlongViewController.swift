@@ -154,6 +154,9 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.setTitleColor(phaedraYellow, for: .highlighted)
 
     }
+    func johann(){
+        print("wooo hoo")
+    }
 
     func returnToDeckView() {
         print("User wants to return to deck view")
@@ -171,95 +174,53 @@ class SearchingForTagAlongViewController: UIViewController {
     }
 
     func acceptTagalongAction() {
-
-//        guard let acceptedGuestID = store.guestID else { return }
-
-        store.acceptTagalong(guestID: store.guestID)
-
-//        store.guestStatus[store.guestID] = true
-
+        print("getting hit")
+        print(store.guestID)
+        guard let acceptedGuestID = store.guestID else { print("leaving function");return }
+        print(acceptedGuestID)
+        store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
+            self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
+        }
+        
         // Segue into chat/tab bar view
-//        let chatVC = ChatViewController()
-//        self.navigationController?.present(chatVC, animated: true, completion: nil)
-
-        // Add tagalong to guest's current tagalong branch and current tagalong branch
-
-        FirebaseManager.updateUserWithTagAlongKey(key: store.selectedTagAlongID)
-
+        let tabBarVC = TabBarController()
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
 
     func denyTagalongAction() {
 
-        // Hide and reveal buttons/labels
-        acceptButton.isHidden = true
-        denyButton.isHidden = true
-        tagAlongFoundLabel.isHidden = true
-
-
-        //Figure out a way to notify user when they are denied
-//        store.guestStatus[store.guestID] = false
+        guard let deniedGuestID = store.guestID else { print("leaving function");return }
+        print(deniedGuestID)
+        
+        store.denyTagalong(guestID: deniedGuestID)
 
     }
 
-
-    //ALERT:
-
-//    func tagalongRequest() {
-//
-//        guard let tagalongID = store.selectedTagAlongID else { return }
-//
-//        store.createGuestFrom(tagalong: tagalongID) { (guest) in
-//
-//            //Message to request
-//            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-//
-//            // Accept Invite
-//            FirebaseManager.acceptTagalong(guestID: guest, completion: { (isAccepted) in
-//
-//                if isAccepted {
-//
-//                    // Send user to chat using tagalong ID
-//                    let chatVC = ChatViewController()
-//                    self.navigationController?.present(chatVC, animated: true, completion: nil)
-//
-//                    //TODO: - Give guest access to chat
-//
-//                }
-//
-//            })
-//
-//            // Deny Invite: - notify guest so they can keep searching
-//
-//        }
-//
-//
-//    }
 
     func observeTagalongRequests() {
 
         store.observeTagalongRequests { (snapshot) in
 
             //Prevents old tagalongs to appear if
-            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
+//            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
 
             // Only detects recents tagalongs
-            if !self.firstTimeLoaded {
+//            if !self.firstTimeLoaded {
 
                 //Alert user of new tag along
                 print("\n ==============Getting called.===============")
 
-                guard snapshot != nil else { return }
+            guard snapshot != nil else { print("snapshot is nil");return }
 
                 //Show labels and buttons
                 self.acceptButton.isHidden = false
                 self.denyButton.isHidden = false
                 self.tagAlongFoundLabel.isHidden = false
-
-                // Grab info from guest
+                                // Grab info from guest
 
 //                guard let tagalongID = self.store.selectedTagAlongID else { return }
 
-//                self.store.guestID = snapshot?.key
+                self.store.guestID = snapshot?.key
 
 //                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
 //
@@ -272,7 +233,7 @@ class SearchingForTagAlongViewController: UIViewController {
                 print("\n\n")
 
                 print("We have a new tag along person. \(snapshot)")
-            }
+//            }
 
 
 
