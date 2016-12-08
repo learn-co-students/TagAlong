@@ -202,39 +202,6 @@ class SearchingForTagAlongViewController: UIViewController {
     }
 
 
-    //ALERT:
-
-//    func tagalongRequest() {
-//
-//        guard let tagalongID = store.selectedTagAlongID else { return }
-//
-//        store.createGuestFrom(tagalong: tagalongID) { (guest) in
-//
-//            //Message to request
-//            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-//
-//            // Accept Invite
-//            FirebaseManager.acceptTagalong(guestID: guest, completion: { (isAccepted) in
-//
-//                if isAccepted {
-//
-//                    // Send user to chat using tagalong ID
-//                    let chatVC = ChatViewController()
-//                    self.navigationController?.present(chatVC, animated: true, completion: nil)
-//
-//                    //TODO: - Give guest access to chat
-//
-//                }
-//
-//            })
-//
-//            // Deny Invite: - notify guest so they can keep searching
-//
-//        }
-//
-//
-//    }
-
     func observeTagalongRequests() {
 
         store.observeTagalongRequests { (snapshot) in
