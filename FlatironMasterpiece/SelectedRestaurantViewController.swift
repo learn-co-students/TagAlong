@@ -54,6 +54,9 @@ class SelectedRestaurantViewController: UIViewController {
         view.backgroundColor = UIColor.blue
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
         restaurantView.selectedRestaurantLabel.text = restaurant?.name
+        restaurantView.selectedRestaurantAddressLabel.text = restaurant?.address
+        let priceLevelAsEmoji = changePriceToEmoji(level: (restaurant?.priceLevel)!)
+        restaurantView.restaurantPricingLabel.text = String(priceLevelAsEmoji)
         dump(self.restaurant)
         
     }
@@ -134,6 +137,21 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         self.navigationController?.pushViewController(shakeInstVC, animated: true)
     }
 
+}
 
-
+extension SelectedRestaurantViewController {
+    func changePriceToEmoji(level:Int)->String {
+        switch level {
+        case 0:
+            return "💰"
+        case 1:
+            return "💰💰"
+        case 2:
+            return "💰💰💰"
+        case 3:
+            return "💰💰💰💰"
+        default:
+            return "💰💰"
+        }
+    }
 }
