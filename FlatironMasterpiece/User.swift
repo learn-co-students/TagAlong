@@ -17,7 +17,7 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
-
+    let image = UIImageView()
     let cuisines = [String]()
 
     init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {

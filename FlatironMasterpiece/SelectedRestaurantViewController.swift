@@ -7,12 +7,14 @@
 //
 
 import UIKit
-
+import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
     var restaurantView: RestaurantView!
     var userStore = UsersDataStore.sharedInstance
-
+    var map: MKMapView?
+    var restaurant: Restaurant?
+    
     // Information needed from Deck View
     var user: String?
     var date: Date?
@@ -48,6 +50,9 @@ class SelectedRestaurantViewController: UIViewController {
         restaurantView.delegate = self
         view.backgroundColor = UIColor.blue
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
+        
+        dump(self.restaurant)
+        
     }
 
     override func loadView() {
@@ -56,6 +61,10 @@ class SelectedRestaurantViewController: UIViewController {
         self.view = restaurantView
     }
 
+    func loadRestaurantsMap(lat: Double, long: Double) -> MKMapView {
+      
+       return map!
+    }
 
     func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
 

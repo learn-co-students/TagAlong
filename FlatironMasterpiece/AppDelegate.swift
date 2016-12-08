@@ -49,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //      let initialViewController = ShakeInstructionViewController()
 
-        let initialViewController = AccountCreationViewController()
-
-
-
-
- //      let frame = UIScreen.main.bounds
+//        let initialViewController = SelectedRestaurantViewController()
+//
+//
+//
+//
+//       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //
 //        if let window = window {
