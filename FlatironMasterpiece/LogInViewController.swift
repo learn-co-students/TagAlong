@@ -208,7 +208,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
 
                     // Send to preferences (for now)
-                    let shakeInstruct = ShakeInstructionViewController()
+                    let shakeInstruct = HostOrTagAlongViewController()
                     //let preferencesVC = PreferenceViewController()
                     self.navigationController?.pushViewController(shakeInstruct, animated: true)
                    FirebaseManager.getUserPref()
