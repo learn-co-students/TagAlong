@@ -118,21 +118,8 @@ class CardViewController: UIViewController {
         }
 
     }
-    
-//    func getSelectedRestInfo(completion: @escaping(Bool) -> Void) {
-//        self.userStore.chosenRestName = self.restaurantArray[self.userStore.selectedCardIndex].name!
-//        self.userStore.chosenRestAddress = self.restaurantArray[self.userStore.selectedCardIndex].address!
-//        self.userStore.chosenRestPriceLevel = self.restaurantArray[self.userStore.selectedCardIndex].priceLevel!
-//        
-//        var usersRestaurant = self.userStore.chosenRestName
-//        print(usersRestaurant)
-//        var usersRestAddress = self.userStore.chosenRestAddress
-//        var usersRestPrice = self.userStore.chosenRestPriceLevel
-//        print("selected rest is \(usersRestaurant) at \(usersRestAddress) with price level \(usersRestPrice)")
-//
-//    }
-    
-    
+
+        
     //NOTE: - shake listening function
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
