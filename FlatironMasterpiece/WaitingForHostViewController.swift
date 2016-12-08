@@ -86,35 +86,26 @@ class WaitingForHostViewController: UIViewController {
         searchNewTagAlongButton.topAnchor.constraint(equalTo: hostUnavailableLabel.bottomAnchor, constant: 40).isActive = true
         searchNewTagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchNewTagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
-        searchNewTagAlongButton.addTarget(self, action: #selector(addToTagAlong), for: .touchUpInside)
+        searchNewTagAlongButton.addTarget(self, action: #selector(searchOtherTagAlongs), for: .touchUpInside)
         searchNewTagAlongButton.setTitleColor(phaedraYellow, for: .normal)
         searchNewTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         searchNewTagAlongButton.isHidden = true
     }
     
     func goToTagAlongTabbedView() {
-        print("User wants to search for a restaurant.")
+        print("User wants to go to chat/tabbed bar controller.")
         let tabVC = TabBarController()
         self.navigationController?.present(tabVC, animated: true, completion: nil)
     }
     
-    //TODO: - write code that adds user to the tag along tableview
-    func addToTagAlong() {
-        print("User wants to tag along with another user.")
-       
+    func searchOtherTagAlongs() {
+        print("User wants to pick a different Tag Along.")
+        let tagAlongVC = TagAlongViewController()
+        self.navigationController?.present(tagAlongVC, animated: true, completion: nil)
+
     }
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
 

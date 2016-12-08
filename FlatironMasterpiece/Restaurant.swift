@@ -67,9 +67,7 @@ class Restaurant {
                         if let rawData = data {
                             self.photoImage = UIImage(data: rawData)
                         }
-                    })
-                    //delete this later
-                    
+                    })                    
                 }
             }
         }

@@ -33,7 +33,6 @@ class CardView: UIView {
             self.backgroundColor = UIColor.blue
             setup()
         }
-        
     }
     
     override init(frame: CGRect) {

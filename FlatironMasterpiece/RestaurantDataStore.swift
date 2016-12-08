@@ -19,7 +19,7 @@ class RestaurantDataStore {
     
     fileprivate init() {}
     
-    // TO DO: error handling for incompletion
+    // TODO: error handling for incompletion
     func filterSearchedRestaurants(completion: @escaping (Bool)->()) {
 
         restaurantsArray.removeAll()
@@ -27,9 +27,7 @@ class RestaurantDataStore {
         let resultsArray = unwrappedRestaurantsInJSON["results"] as! [Any]
         print(resultsArray)
         
-        
         for array in resultsArray {
-            //restaurantsArray.removeAll()
             let newRestaurant = Restaurant(dictionary: array as! json)
 
             if newRestaurant.openNow == true {
