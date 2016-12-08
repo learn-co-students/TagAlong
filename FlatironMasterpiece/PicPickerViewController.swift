@@ -47,10 +47,11 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     func selectPicture() {
         let picker = UIImagePickerController()
-        picker.allowsEditing = true
         picker.delegate = self
+        picker.allowsEditing = true
+        
         present(picker, animated: true)
-        imagePickerControllerDidCancel(picker)
+ //       imagePickerControllerDidCancel(picker)
 
     }
     
@@ -62,11 +63,11 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         present(picker, animated: true)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-        print("Really, dismisssss!")
-        //AccountCreationViewController()
-    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        dismiss(animated: true)
+//        print("Really, dismisssss!")
+//        //AccountCreationViewController()
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

@@ -170,7 +170,11 @@ extension AccountCreationViewController {
         
         let picker = UIImagePickerController()
         picker.delegate = self
+        print("I WANNA EDIT A DAMN PHOTO")
         picker.isEditing = true
+        picker.allowsEditing = true
+        
+        
         present(picker, animated: true, completion: nil)
     }
 //
