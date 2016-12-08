@@ -10,6 +10,19 @@ import UIKit
 
 class WaitingForHostViewController: UIViewController {
 
+   let store = FirebaseManager.shared
+    
+    var guestStatus: [String: Bool] {
+        didSet {
+            if guestStatus[store.guestID] == true {
+                // Show text
+            }
+            else {
+                // Show text
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
