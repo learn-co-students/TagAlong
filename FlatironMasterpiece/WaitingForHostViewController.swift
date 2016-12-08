@@ -8,41 +8,43 @@
 import UIKit
 
 class WaitingForHostViewController: UIViewController {
-
-   let store = FirebaseManager.shared
-
-    var guestStatus: [String: Bool] {
-        didSet {
-            if guestStatus[store.guestID] == true {
-                // Show text
-            }
-            else {
-                // Show text
-            }
-
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        observeHostTagalong()
-
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = phaedraOliveGreen
-        setupViews()
-    }
-
+    
+    let store = FirebaseManager.shared
+    
     let waitingHostLabel:UILabel = UILabel()
     let confirmButton: UIButton = UIButton()
     let hostUnavailableLabel: UILabel = UILabel()
     let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-
-    override func viewWillAppear(_ animated: Bool) {
-
+    
+    var guestStatus = FirebaseManager.shared.guestStatus {
+        didSet {
+            if guestStatus[store.guestID] == true {
+                confirmButton.isHidden = false
+            }
+            else {
+                hostUnavailableLabel.isHidden = false
+                searchNewTagAlongButton.isHidden = false
+            }
+            
+        }
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        observeHostTagalong()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = phaedraOliveGreen
+        setupViews()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     func setupViews() {
         view.addSubview(waitingHostLabel)
         waitingHostLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
@@ -55,11 +57,11 @@ class WaitingForHostViewController: UIViewController {
         waitingHostLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         waitingHostLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         waitingHostLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-
+        
         view.addSubview(confirmButton)
         confirmButton.backgroundColor = phaedraOrange
         confirmButton.layer.cornerRadius = 5
-        confirmButton.setTitle("Search", for: .normal)
+        confirmButton.setTitle("View Your Tag Along", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         confirmButton.titleLabel?.textAlignment = .center
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +73,7 @@ class WaitingForHostViewController: UIViewController {
         confirmButton.setTitleColor(phaedraYellow, for: .normal)
         confirmButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         confirmButton.isHidden = true
-
+        
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
         activityIndicator.layer.cornerRadius = 4
@@ -80,7 +82,7 @@ class WaitingForHostViewController: UIViewController {
         activityIndicator.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 40).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         activityIndicator.startAnimating()
-
+        
         view.addSubview(hostUnavailableLabel)
         hostUnavailableLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
         hostUnavailableLabel.lineBreakMode = .byWordWrapping
@@ -93,7 +95,7 @@ class WaitingForHostViewController: UIViewController {
         hostUnavailableLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         hostUnavailableLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         hostUnavailableLabel.isHidden = true
-
+        
         view.addSubview(searchNewTagAlongButton)
         searchNewTagAlongButton.backgroundColor = phaedraOrange
         searchNewTagAlongButton.layer.cornerRadius = 5
@@ -109,32 +111,33 @@ class WaitingForHostViewController: UIViewController {
         searchNewTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         searchNewTagAlongButton.isHidden = true
     }
-
+    
     func goToTagAlongTabbedView() {
         print("User wants to go to chat/tabbed bar controller.")
         let tabVC = TabBarController()
         self.navigationController?.present(tabVC, animated: true, completion: nil)
     }
-
+    
     func searchOtherTagAlongs() {
         print("User wants to pick a different Tag Along.")
         let tagAlongVC = TagAlongViewController()
         self.navigationController?.present(tagAlongVC, animated: true, completion: nil)
-
-}
-    func observeHostTagalong() {
-
-        FirebaseManager.shared.observeGuestTagalongStatus { (snapshot) in
-
-            if snapshot?.value == true {
-
-                //TODO:- Change text on the view
-
-            }
-
-        }
-        }
-
-
-
+        
+    }
+    
+//    func observeHostTagalong() {
+//        
+//        FirebaseManager.shared.observeGuestTagalongStatus { (snapshot) in
+//            
+//            if snapshot?.value == true {
+//                
+//                //TODO:- Change text on the view
+//                
+//            }
+//            
+//        }
+//    }
+    
+    
+    
 }

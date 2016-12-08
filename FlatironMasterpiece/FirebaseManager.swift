@@ -38,7 +38,7 @@ final class FirebaseManager {
 
     var testID: String?
     
-    var guestStatus: [String: Bool]?
+    var guestStatus = [String: Bool]()
     
 
     private init() {}

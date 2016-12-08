@@ -46,20 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-        let initialViewController = WaitingForHostViewController()
 
 //      let initialViewController = ShakeInstructionViewController()
 
-        let initialViewController = WaitingForHostViewController()
-
-       let frame = UIScreen.main.bounds
-
-        window = UIWindow(frame: frame)
-
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+//        let initialViewController = WaitingForHostViewController()
+//
+//       let frame = UIScreen.main.bounds
+//
+//        window = UIWindow(frame: frame)
+//
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
           return true
     }
 
