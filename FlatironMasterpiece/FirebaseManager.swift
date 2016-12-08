@@ -130,7 +130,7 @@ final class FirebaseManager {
     
     //this method gets preferences from firebase
     class func getPreferences() {
-        <#code#>
+        //work with ELI to get the cuisines from Firebase
     }
 
     static func sendEmailVerification() {
@@ -266,6 +266,24 @@ final class FirebaseManager {
             ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
         }
 
+    }
+    
+    ///CHANGE THIS TO LOOK LIKE ABOVE FUNCTION
+    static func updateGuestWithTagAlongKey(key: String) {
+        
+        // Add tagalong key to users
+        // 1. Create tagalongs
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            guard let currentUser = currentUser else { return }
+            ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
+        }
+        
+        // 2. Create current tagalongs
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            guard let currentUser = currentUser else { return }
+            ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
+        }
+        
     }
 
 
