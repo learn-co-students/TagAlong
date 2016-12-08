@@ -33,21 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 
-//        //MARK: - sets up the navigation controller for our app
-         navController = UINavigationController()
-        var loginVC = LogInViewController()
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        self.navController?.pushViewController(loginVC, animated: false)
-        self.window?.rootViewController = navController
-        self.window?.backgroundColor = phaedraDarkGreen
-        self.window?.makeKeyAndVisible()
+        //MARK: - sets up the navigation controller for our app
+
+//         navController = UINavigationController()
+//        var loginVC = LogInViewController()
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        self.navController?.pushViewController(loginVC, animated: false)
+//        self.window?.rootViewController = navController
+//        self.window?.backgroundColor = phaedraDarkGreen
+//        self.window?.makeKeyAndVisible()
 
         //MARK: - sets the initial view controller
 
-//        let initialViewController = SearchOrTagAlongViewController()
+
+//      let initialViewController = ShakeInstructionViewController()
 //
-//        let frame = UIScreen.main.bounds
+//       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //
 //        if let window = window {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2500B1E11DF619B400B0C78D /* TagalongDataStore.swift */; };
+		2500B2051DF7450100B0C78D /* Tagalong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2500B2041DF7450100B0C78D /* Tagalong.swift */; };
 		250347C01DDD1A1B00B896AA /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */; };
 		250347EA1DDF597500B896AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347E91DDF597500B896AA /* FBSDKCoreKit.framework */; };
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		2500B1E11DF619B400B0C78D /* TagalongDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagalongDataStore.swift; sourceTree = "<group>"; };
+		2500B2041DF7450100B0C78D /* Tagalong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tagalong.swift; sourceTree = "<group>"; };
 		250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		250347E91DDF597500B896AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				279BBC741DF0E236008020D4 /* Restaurant.swift */,
 				279BBC701DF0E217008020D4 /* User.swift */,
+				2500B2041DF7450100B0C78D /* Tagalong.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2500B2051DF7450100B0C78D /* Tagalong.swift in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,

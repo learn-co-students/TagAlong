@@ -1,6 +1,6 @@
 //
 //  WaitingForHostViewController.swift
-//  
+//
 //
 //  Created by Erica Millado on 12/7/16.
 //
@@ -8,18 +8,38 @@
 import UIKit
 
 class WaitingForHostViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = phaedraOliveGreen
-        setupViews()
-    }
+    
+    let store = FirebaseManager.shared
     
     let waitingHostLabel:UILabel = UILabel()
     let confirmButton: UIButton = UIButton()
     let hostUnavailableLabel: UILabel = UILabel()
     let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+    
+    var guestStatus = FirebaseManager.shared.guestStatus {
+        didSet {
+            if guestStatus[store.guestID] == true {
+                confirmButton.isHidden = false
+            }
+            else {
+                hostUnavailableLabel.isHidden = false
+                searchNewTagAlongButton.isHidden = false
+            }
+            
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        observeHostTagalong()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = phaedraOliveGreen
+        setupViews()
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -41,7 +61,7 @@ class WaitingForHostViewController: UIViewController {
         view.addSubview(confirmButton)
         confirmButton.backgroundColor = phaedraOrange
         confirmButton.layer.cornerRadius = 5
-        confirmButton.setTitle("Search", for: .normal)
+        confirmButton.setTitle("View Your Tag Along", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         confirmButton.titleLabel?.textAlignment = .center
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -102,11 +122,22 @@ class WaitingForHostViewController: UIViewController {
         print("User wants to pick a different Tag Along.")
         let tagAlongVC = TagAlongViewController()
         self.navigationController?.present(tagAlongVC, animated: true, completion: nil)
-
+        
     }
     
-
+//    func observeHostTagalong() {
+//        
+//        FirebaseManager.shared.observeGuestTagalongStatus { (snapshot) in
+//            
+//            if snapshot?.value == true {
+//                
+//                //TODO:- Change text on the view
+//                
+//            }
+//            
+//        }
+//    }
+    
+    
     
 }
-
-

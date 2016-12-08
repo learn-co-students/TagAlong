@@ -17,24 +17,24 @@ class SelectedRestaurantViewController: UIViewController {
     var user: String?
     var date: Date?
     var location: [String: Any]?
-    
+
     // Dummy Data
     var user1 = FirebaseManager.currentUser
     var date1 = Date()
     var location1: [String: Any] = [
-        "restaurant" : "Peter Luger Stake House",
-        "lat" : -45,
-        "long": 35
+        "restaurant" : "Peter Lugar's", // UsersDataStore.sharedInstance.chosenRestName
+        "lat" : -45,                    // chosenRestLong
+        "long": 35                      //chosenRestLat
     ]
-    
+
 //    var tagalongInfoDict: [String: Any] [
 //        "user" : self.user1,
 //        "date" : self.date1,
 //        "location" : self.location1
 //    ]
-    
+
     var tagalongInfo: [String: Any] = [
-        "user" : "Christina",
+        "user" : FirebaseManager.currentUser,
         "date" : "December 1",
         "location" : [
             "restaurant" : "Peter Luger Stake House",
@@ -56,15 +56,16 @@ class SelectedRestaurantViewController: UIViewController {
         self.view = restaurantView
     }
 
-
-    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
-        var tagAlonginfo: [String: Any] = [
-                "host" : user,
-                 "location" : location,
-                 "date-time" : date,
-        ]
-        return tagAlonginfo
-    }
+//    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
+//
+//        var tagAlonginfo: [String: Any] = [
+//                "host" : user,
+//                 "location" : location,
+//                 "date-time" : date,
+//        ]
+//
+//        return tagAlonginfo
+//    }
 
 }
 
@@ -81,39 +82,44 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             print("confirm tapped")
             print("hey there before createtagalong")
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
-                
+
                 print("------------------- IS BEING CALLED ------------------------")
-                
+
                 // Add tagalong key to chat
                 FirebaseManager.createChatWithTagID(key: key)
                 print("Chat ID Being created")
-                
+
                 // Add tagalong key to users (current tagalong and tagalongs)
                 FirebaseManager.updateUserWithTagAlongKey(key: key)
                 
-                // Send key to tableview so that guests can join
-               
+                let searchingVC = SearchingForTagAlongViewController()
+                self.navigationController?.pushViewController(searchingVC, animated: true)
+                
             })
-            
+
             // Testing Chat - should segue to
-            let chatVC = ChatViewController()
-            self.navigationController?.present(chatVC, animated: true, completion: nil)
-  
+
+//            let chatVC = ChatViewController()
+//            self.navigationController?.present(chatVC, animated: true, completion: nil)
+////
+
+
             //segue way searchingForTagAlong vc
 //            let searchingVC = SearchingForTagAlongViewController()
 //            self.navigationController?.pushViewController(searchingVC, animated: true)
+
 
         })
         confirmTagAlongAlert.addAction(cancelAction)
         confirmTagAlongAlert.addAction(confirmAction)
         self.present(confirmTagAlongAlert, animated: true, completion: nil)
     }
-    
+
     func sendToDeckView() {
         let shakeInstVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstVC, animated: true)
     }
-    
-   
+
+
 
 }

@@ -22,12 +22,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //create tab 1 - chat
         //TODO: - replace this tab 1 with chat
-        let tabOne = ChatViewController()
+        let chatVC = ChatViewController()
+        let tabOne = chatVC
         let tabOneBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "ic_speaker_notes.png"), selectedImage: UIImage(named: "ic_speaker_notes.png"))
         tabOne.tabBarItem = tabOneBarItem
-//        let allChatsRef = FIRDatabase.database().reference().child("chats")
-        // chatRef should point to only one single chat --- eventually Auto ID
-//        tabOne.chatRef = allChatsRef.child("christinaChat")
+
         
         //create tab 2 - restaurant detail view
         let tabTwo = SelectedRestaurantViewController()

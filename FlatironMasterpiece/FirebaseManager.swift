@@ -17,17 +17,32 @@ final class FirebaseManager {
 
     static let shared = FirebaseManager()
 
+
     // Reference properties
     static let ref = FIRDatabase.database().reference().root
     static var chatRef: FIRDatabaseReference!
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
     static var newMessageRefHandle: FIRDatabaseHandle?
+    static var newTagalongRefHandle: FIRDatabaseHandle?
     static var currentUser = FIRAuth.auth()?.currentUser?.uid
     static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
 
 
+    // Tagalongs that populate tagalong tableview
+    var tagalongs = [Tagalong]()
+
+    //Tagalong ID from selected Tagalong
+    var selectedTagAlongID = "in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
+    //User ID from guest requesting tagalong
+    var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
+    
+    var guestStatus = [String: Bool]()
+    
 
     private init() {}
+
+
+
 
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
@@ -75,8 +90,8 @@ final class FirebaseManager {
             FIRDatabase.database().reference().child("blockedUsers").child(unique).child
         }
     }
- */   
-    
+ */
+
     class func savePref(dictionary: [String: Any]) {
         print(dictionary)
         if FIRAuth.auth()?.currentUser?.uid != nil {
@@ -129,10 +144,9 @@ final class FirebaseManager {
 
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
-
             completion(true)
-        })
 
+        })
 
     }
 
@@ -150,27 +164,20 @@ final class FirebaseManager {
                     if let tokenString = token.tokenString {
                         print("Token string is here \(tokenString)")
                     }
-
                 }
             }
 
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
 
                 print("User has logged into Firebase")
-
                 guard error == nil else { completion(false); return }
-
                 completion(true)
-
-
             }
+
             print("User has logged in")
             print("=====================================================\n\n\n")
 
         }
-
-
-
     }
 
 
@@ -232,6 +239,27 @@ final class FirebaseManager {
     }
 
 
+    static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
+
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observeSingleEvent(of: .value, with: { (snapshot) in
+            let userName = snapshot.value as! String
+
+            // This will need to be replaced with the userID
+            FirebaseManager.ref.child("users").child(userName).observe(.value, with: { (snapshot) in
+                let userInfo = snapshot.value as! [String: Any]
+                let user = User(snapshot: userInfo)
+
+
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                //self.newtagalongUserArray.append(user)
+                completion(user)
+
+            })
+        })
+    }
+
+
+
     //MARK: - Tagalong Message Methods
 
     static func createChatWithTagID(key: String) {
@@ -239,8 +267,101 @@ final class FirebaseManager {
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
 
+    }
+
+
+    static func observeTagalongs(completion: @escaping (String) -> Void) {
+
+        newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
+
+            print("--------------------GETTING CALLED------------------")
+
+
+            print("tagalongQuery snapshot: \(snapshot.value)")
+            print("tagalongKey: \(snapshot.key)")
+
+            if let tagalongKey = snapshot.key as? String,
+                let tagalongValue = snapshot.value as? [String: Any] {
+
+                completion(tagalongKey)
+
+            } else {
+                print("Error! Could not decode message data")
+            }
+
+            print("----------------------------------------------\n\n\n")
+        })
+    }
+
+    // Request a tagalong
+    static func requestTagAlong(key: String) {
+
+        guard let currentUser = currentUser else { return }
+        ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([currentUser : false])
 
     }
+
+    func observeTagalongRequests(response: @escaping (FIRDataSnapshot?) -> Void) {
+
+//        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
+
+//        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
+
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
+
+            DispatchQueue.main.async {
+
+                response(snapshot)
+            }
+
+        })
+
+    }
+
+
+    func createGuestFrom(tagalong: String, completion:@escaping (User)->()){
+        var userName = guestID
+//
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
+            userName = snapshot.key as! String
+
+            // This will need to be replaced with the userID
+            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
+                let userInfo = snapshot.value as! [String: Any]
+                let user = User(snapshot: userInfo)
+
+
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                //self.newtagalongUserArray.append(user)
+                completion(user)
+
+            })
+        })
+    }
+
+     func acceptTagalong(guestID: String) {
+
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").updateChildValues([guestID : true])
+
+//        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").updateChildValues([guests: [String: Bool]])
+
+
+        // User segues to chat
+
+    }
+    
+    func observeGuestTagalongStatus(completion: @escaping (FIRDataSnapshot?) -> Void) {
+        
+        
+        FirebaseManager.ref.child("tagalongs").child("users").child("\(guestID)").child("currentTagalongs").observe(.childChanged, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            completion(snapshot)
+            
+        })
+    }
+
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 
@@ -259,40 +380,36 @@ final class FirebaseManager {
 
     }
 
-//    static func observeMessages(completion:@escaping (String, String, String)-> Void) {
-//
-//
-//        // 1. Creating a query that limits the synchronization to the last 25 messages
-//        //        let messageQuery = chatRef.queryLimited(toLast:25)
-//
-//        // 2. Observe every child item that has been added, and will be added, at the messages location.
-//        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-//
-//            print("--------------------GETTING CALLED------------------")
-//
-//            // 3. Extract the messageData from the snapshot
-//
-//            print("messageQuery snapshot: \(snapshot.value)")
-//            let messageData = snapshot.value as! [String: Any]
-//
-//            if let id = messageData["senderId"] as? String,
-//                let name = messageData["senderName"] as? String,
-//                let text = messageData["text"] as? String,
-//                text.characters.count > 0 {
-//
-//                completion(id, name, text)
-//
-//            } else {
-//                print("Error! Could not decode message data")
-//            }
-//
-//            print("----------------------------------------------\n\n\n")
-//        })
-//    }
+    static func observeMessages(completion: @escaping (String, String, String) -> Void) {
 
 
+        // 1. Creating a query that limits the synchronization to the last 25 messages
+        //        let messageQuery = chatRef.queryLimited(toLast:25)
 
+        // 2. Observe every child item that has been added, and will be added, at the messages location.
+        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
 
+            print("--------------------GETTING CALLED------------------")
+
+            // 3. Extract the messageData from the snapshot
+
+            print("messageQuery snapshot: \(snapshot.value)")
+            let messageData = snapshot.value as! [String: Any]
+
+            if let id = messageData["senderId"] as? String,
+                let name = messageData["senderName"] as? String,
+                let text = messageData["text"] as? String,
+                text.characters.count > 0 {
+
+                completion(id, name, text)
+
+            } else {
+                print("Error! Could not decode message data")
+            }
+
+            print("----------------------------------------------\n\n\n")
+        })
+    }
 
 
 
