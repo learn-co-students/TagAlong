@@ -21,11 +21,13 @@ class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
     var hasPickedRestaurant: Bool = false
+    var cardsCounter: Int = 0
     
-    //erica's code
+    //NOTE: - access' the user's restaurant array needed for restaurant deck
     var userStore = UsersDataStore.sharedInstance
     var restStore = RestaurantDataStore.sharedInstance
     var restaurantArray = [Restaurant]()
+    
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
@@ -111,6 +113,12 @@ class CardViewController: UIViewController {
 
     }
     
+    func saveSwipedRestaurant(_ completion: @escaping ()->Void) {
+        if hasPickedRestaurant {
+            
+        }
+    }
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
@@ -171,7 +179,7 @@ class CardViewController: UIViewController {
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
             print("\(restaurant.name) distance as miles \(rounded)")
  
-            cardView.restDistanceLabel.text = "\(rounded) mi"
+            cardView.restDistanceLabel.text = "\(rounded) mi away"
 
             return cardView
         }
@@ -180,52 +188,6 @@ class CardViewController: UIViewController {
         return CardView(restaurant: nil, frame: swipeableView.bounds)
     }
     
-    func createDefaultCard()->CardView {
-        let defaultCard = CardView(restaurant: nil, frame: swipeableView.bounds)
-        swipeableView = ZLSwipeableView()
-        swipeableView.backgroundColor = UIColor.red
-        view.addSubview(swipeableView)
-        self.view.backgroundColor = phaedraOrange
-                
-        swipeableView.didStart = {view, location in
-            print("Did start swiping view at location: \(location)")
-        }
-        swipeableView.swiping = {view, location, translation in
-            print("Swiping at view location: \(location) translation: \(translation)")
-        }
-        swipeableView.didEnd = {view, location in
-            print("Did end swiping view at location: \(location)")
-        }
-        swipeableView.didSwipe = {view, direction, vector in
-            print("Did swipe view in direction: \(direction), vector: \(vector)")
-            if direction.description == "Right" {
-
-                let selectedRestVC = SelectedRestaurantViewController()
-                self.navigationController?.pushViewController(selectedRestVC, animated: true)
-            }
-        }
-        swipeableView.didCancel = {view in
-            print("Did cancel swiping view")
-        }
-        swipeableView.didTap = {view, location in
-            print("Did tap at location \(location)")
-        }
-        swipeableView.didDisappear = { view in
-            print("Did disappear swiping view")
-            
-        }
-        
-        // +50 -50 +120 -100
-        constrain(swipeableView, view) { view1, view2 in
-            view1.left == view2.left+50
-            view1.right == view2.right-50
-            view1.top == view2.top + 50
-            view1.bottom == view2.bottom - 50
-        }
-        return defaultCard
-    }
-    
-
     
 }
 
