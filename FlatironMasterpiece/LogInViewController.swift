@@ -203,9 +203,16 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print("Successful Log In")
                     
                     //send to search/tagalongVC
-                    let hostOrTagAlongVC = HostOrTagAlongViewController()
-                    self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
+//                    let hostOrTagAlongVC = HostOrTagAlongViewController()
+  //                  self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
                     
+
+                    // Send to preferences (for now)
+                    let shakeInstruct = ShakeInstructionViewController()
+                    //let preferencesVC = PreferenceViewController()
+                    self.navigationController?.pushViewController(shakeInstruct, animated: true)
+                   FirebaseManager.getUserPref()
+
                 } else {
 
                     //TODO: - Notify user of error
