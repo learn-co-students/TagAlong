@@ -46,6 +46,8 @@ class SelectedRestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
+        self.title = "Restaurant Info"
+        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = UIColor.blue
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
     }

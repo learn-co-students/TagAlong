@@ -15,7 +15,6 @@ class CardView: UIView {
     var restaurant: Restaurant!
     var userStore = UsersDataStore.sharedInstance
     
-    
     lazy var restImageView = UIImageView()
     lazy var restNameLabel = UILabel()
     lazy var restCuisineLabel = UILabel()

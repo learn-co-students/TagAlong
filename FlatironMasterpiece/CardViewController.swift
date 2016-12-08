@@ -91,13 +91,11 @@ class CardViewController: UIViewController {
             
                 self.userStore.selectedCardIndex = self.swipeLeftCardsCount + 1
                 let indexToPrint = self.userStore.selectedCardIndex
-//                print("selected card index is \(indexToPrint)")
+                print("selected card index is \(indexToPrint)")
                 
-                self.getSelectedRestInfo(completion: { (success) in
-                        let selectedRestVC = SelectedRestaurantViewController()
-                        self.navigationController?.pushViewController(selectedRestVC, animated: true)
-                    
-                })
+                let selectedRestVC = SelectedRestaurantViewController()
+                self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                
             } else if direction.description == "Left" {
                 self.swipeLeftCardsCount += 1
                 var newCount = self.swipeLeftCardsCount

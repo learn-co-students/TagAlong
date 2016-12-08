@@ -45,6 +45,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.backgroundColor = phaedraBeige
         
         //NOTE: hides top navController
+        self.title = "Preferences"
         navigationController?.isNavigationBarHidden = true
         createSegmentedController()
         layoutCuisineCollectionView()
@@ -63,7 +64,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
 
@@ -205,7 +206,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
+        replayTutorialButton.topAnchor.constraint(equalTo: cuisineCollectionView.bottomAnchor, constant: 20).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
@@ -222,8 +223,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
-        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 460).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 20).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         logoutButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -241,7 +241,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 14.0)
         savePreferencesButton.titleLabel?.textAlignment = .center
         savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 520).isActive = true
+        savePreferencesButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20).isActive = true
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -321,7 +321,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         FirebaseManager.savePref(dictionary: dict)
 
         print(store.preferredCuisineArray)
-        self.getRandomCuisine()
+//        self.getRandomCuisine()
 
     }
     
@@ -332,7 +332,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("random cuisine is: \(userStore.currentChosenCuisine)")
         return userStore.currentChosenCuisine
     }
-        
+    
 //end of class
 }
 

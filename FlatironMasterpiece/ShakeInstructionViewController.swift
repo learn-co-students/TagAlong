@@ -62,6 +62,10 @@ class ShakeInstructionViewController: UIViewController {
         locationManager.startUpdatingLocation()
 
         //ERICA'S CODE - should this go here?
+//        getRandomCuisine { (success) in
+//            //now, get location and restaurants
+//            self.getLocation()
+//        }
         getLocation()
 
     }
@@ -180,6 +184,13 @@ extension ShakeInstructionViewController {
     }
 
 
+//    func getRandomCuisine(completion:@escaping(Bool)->Void) {
+//        
+//        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+//        print("random cuisine is: \(userStore.currentChosenCuisine)")
+//        completion(true)
+//    }
 
 
 

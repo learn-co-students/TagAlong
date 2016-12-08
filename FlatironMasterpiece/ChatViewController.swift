@@ -23,6 +23,8 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Chat"
+        navigationController?.isNavigationBarHidden = true
         
 //        if let tagAlongID = tagAlongID {
 //        tagAlongRef = allChatsRef.child("\(tagAlongID)")
