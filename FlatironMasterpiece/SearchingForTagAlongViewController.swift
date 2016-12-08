@@ -154,6 +154,9 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.setTitleColor(phaedraYellow, for: .highlighted)
 
     }
+    func johann(){
+        print("wooo hoo")
+    }
 
     func returnToDeckView() {
         print("User wants to return to deck view")
@@ -171,12 +174,13 @@ class SearchingForTagAlongViewController: UIViewController {
     }
 
     func acceptTagalongAction() {
-
-//        guard let acceptedGuestID = store.guestID else { return }
-
-        store.acceptTagalong(guestID: store.guestID)
-
-//        store.guestStatus[store.guestID] = true
+        print("getting hit")
+        print(store.guestID)
+        guard let acceptedGuestID = store.guestID else { print("leaving function");return }
+        print(acceptedGuestID)
+        store.acceptTagalong(guestID: acceptedGuestID)
+        
+        store.guestStatus[acceptedGuestID] = true
 
         // Segue into chat/tab bar view
 //        let chatVC = ChatViewController()
@@ -184,16 +188,14 @@ class SearchingForTagAlongViewController: UIViewController {
 
         // Add tagalong to guest's current tagalong branch and current tagalong branch
 
-        FirebaseManager.updateUserWithTagAlongKey(key: store.selectedTagAlongID)
+        guard let selectedTag = store.selectedTagAlongID else { return }
+        
+        FirebaseManager.updateUserWithTagAlongKey(key: selectedTag)
 
     }
 
     func denyTagalongAction() {
 
-        // Hide and reveal buttons/labels
-        acceptButton.isHidden = true
-        denyButton.isHidden = true
-        tagAlongFoundLabel.isHidden = true
 
 
         //Figure out a way to notify user when they are denied
@@ -240,26 +242,25 @@ class SearchingForTagAlongViewController: UIViewController {
         store.observeTagalongRequests { (snapshot) in
 
             //Prevents old tagalongs to appear if
-            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
+//            if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
 
             // Only detects recents tagalongs
-            if !self.firstTimeLoaded {
+//            if !self.firstTimeLoaded {
 
                 //Alert user of new tag along
                 print("\n ==============Getting called.===============")
 
-                guard snapshot != nil else { return }
+            guard snapshot != nil else { print("snapshot is nil");return }
 
                 //Show labels and buttons
                 self.acceptButton.isHidden = false
                 self.denyButton.isHidden = false
                 self.tagAlongFoundLabel.isHidden = false
-
-                // Grab info from guest
+                                // Grab info from guest
 
 //                guard let tagalongID = self.store.selectedTagAlongID else { return }
 
-//                self.store.guestID = snapshot?.key
+                self.store.guestID = snapshot?.key
 
 //                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
 //
@@ -272,7 +273,7 @@ class SearchingForTagAlongViewController: UIViewController {
                 print("\n\n")
 
                 print("We have a new tag along person. \(snapshot)")
-            }
+//            }
 
 
 

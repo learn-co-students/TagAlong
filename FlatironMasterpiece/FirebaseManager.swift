@@ -32,9 +32,9 @@ final class FirebaseManager {
     var tagalongs = [Tagalong]()
 
     //Tagalong ID from selected Tagalong
-    var selectedTagAlongID = "in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
+    var selectedTagAlongID: String? //"in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
     //User ID from guest requesting tagalong
-    var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
+    var guestID: String? //"lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
     
     var guestStatus = [String: Bool]()
     
@@ -240,7 +240,7 @@ final class FirebaseManager {
 
 
     static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
-
+       
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observeSingleEvent(of: .value, with: { (snapshot) in
             let userName = snapshot.value as! String
 
@@ -306,15 +306,24 @@ final class FirebaseManager {
 //        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
 
 //        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
-
-        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").observe(.childAdded, with: { snapshot in
-
-            DispatchQueue.main.async {
-
-                response(snapshot)
-            }
-
+        
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").observe(.childAdded, with: { snapshot in
+                
+                DispatchQueue.main.async {
+                    
+                    response(snapshot)
+                }
+                
+            })
+            
+            
         })
+        
+ 
 
     }
 
@@ -340,8 +349,17 @@ final class FirebaseManager {
     }
 
      func acceptTagalong(guestID: String) {
-
-        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID)").child("guests").updateChildValues([guestID : true])
+        //get my own tag along id
+        
+        
+        guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+            let currentTagalong = snapshot.key
+            print("Current Tagalong -> \(currentTagalong)")
+            FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
+            
+        })
+        
 
 //        FirebaseManager.ref.child("tagalongs").child("\(selectedTagAlongID))").updateChildValues([guests: [String: Bool]])
 
@@ -352,10 +370,21 @@ final class FirebaseManager {
     
     func observeGuestTagalongStatus(completion: @escaping (FIRDataSnapshot?) -> Void) {
         
+        guard let guestID = FirebaseManager.currentUser else { print("hey retuning");return }
+        guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
         
-        FirebaseManager.ref.child("tagalongs").child("users").child("\(guestID)").child("currentTagalongs").observe(.childChanged, with: { (snapshot) in
+        FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.childChanged, with: { (snapshot) in
             
-            print(snapshot)
+            let result = snapshot.value as! Bool?
+            
+            
+            if result == true{
+                
+            }else if result == false{
+            
+            }else if result == nil{
+                print("rejected")
+            }
             
             completion(snapshot)
             

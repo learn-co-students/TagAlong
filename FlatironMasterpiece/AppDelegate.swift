@@ -49,16 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //      let initialViewController = ShakeInstructionViewController()
 
-//        let initialViewController = WaitingForHostViewController()
-//
-//       let frame = UIScreen.main.bounds
-//
-//        window = UIWindow(frame: frame)
-//
-//        if let window = window {
-//            window.rootViewController = initialViewController
-//            window.makeKeyAndVisible()
-//        }
+        let initialViewController = SearchingForTagAlongViewController()
+
+       let frame = UIScreen.main.bounds
+
+        window = UIWindow(frame: frame)
+
+        if let window = window {
+            window.rootViewController = initialViewController
+            window.makeKeyAndVisible()
+        }
           return true
     }
 

@@ -12,28 +12,32 @@ class WaitingForHostViewController: UIViewController {
     let store = FirebaseManager.shared
     
     let waitingHostLabel:UILabel = UILabel()
+    let enterTagALongLabel: UILabel = UILabel()
     let confirmButton: UIButton = UIButton()
     let hostUnavailableLabel: UILabel = UILabel()
     let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
-    var guestStatus = FirebaseManager.shared.guestStatus {
-        didSet {
-            if guestStatus[store.guestID] == true {
-                confirmButton.isHidden = false
-            }
-            else {
-                hostUnavailableLabel.isHidden = false
-                searchNewTagAlongButton.isHidden = false
-            }
-            
-        }
-    }
+//    var guestStatus = FirebaseManager.shared.guestStatus {
+//        didSet {
+//            
+//            guard let guestID = store.guestID else { return }
+//            
+//            if guestStatus[guestID] == true {
+//                confirmButton.isHidden = false
+//            }
+//            else {
+//                hostUnavailableLabel.isHidden = false
+//                searchNewTagAlongButton.isHidden = false
+//            }
+//            
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        observeHostTagalong()
+observeGuestTagalongStatus()
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = phaedraOliveGreen
@@ -58,10 +62,24 @@ class WaitingForHostViewController: UIViewController {
         waitingHostLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         waitingHostLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
+        view.addSubview(enterTagALongLabel)
+        enterTagALongLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
+        enterTagALongLabel.lineBreakMode = .byWordWrapping
+        enterTagALongLabel.numberOfLines = 0
+        enterTagALongLabel.text = "Great! Your tag along has been confirmed. Click to chat"
+        enterTagALongLabel.textColor = phaedraYellow
+        enterTagALongLabel.textAlignment = .center
+        enterTagALongLabel.translatesAutoresizingMaskIntoConstraints = false
+        enterTagALongLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        enterTagALongLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        enterTagALongLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        enterTagALongLabel.isHidden = true
+        
+        
         view.addSubview(confirmButton)
         confirmButton.backgroundColor = phaedraOrange
         confirmButton.layer.cornerRadius = 5
-        confirmButton.setTitle("View Your Tag Along", for: .normal)
+        confirmButton.setTitle("Start Chatting", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         confirmButton.titleLabel?.textAlignment = .center
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -125,18 +143,32 @@ class WaitingForHostViewController: UIViewController {
         
     }
     
-//    func observeHostTagalong() {
-//        
-//        FirebaseManager.shared.observeGuestTagalongStatus { (snapshot) in
-//            
-//            if snapshot?.value == true {
-//                
-//                //TODO:- Change text on the view
-//                
-//            }
-//            
-//        }
-//    }
+    func observeGuestTagalongStatus() {
+        
+        store.observeGuestTagalongStatus { (snapshot) in
+            
+            let result = snapshot?.value as! Bool?
+
+            if result == true{
+               
+               self.enterTagALongLabel.isHidden = false
+                self.confirmButton.isHidden = false
+                
+            } else if result == false {
+                
+                //
+                
+            } else if result == nil {
+                
+                self.hostUnavailableLabel.isHidden = false
+                self.searchNewTagAlongButton.isHidden = false
+                print("rejected")
+            }
+        }
+        
+            
+        
+    }
     
     
     
