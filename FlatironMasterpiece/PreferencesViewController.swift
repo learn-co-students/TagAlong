@@ -307,8 +307,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         } else {
             
             //send to search/tagalongVC
-            let searchTagAlongVC = SearchOrTagAlongViewController()
-            self.navigationController?.pushViewController(searchTagAlongVC, animated: true)
+            let hostOrTagAlongVC = HostOrTagAlongViewController()
+            self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
         }
 
         let saved = store.preferredCuisineArray

@@ -1,5 +1,5 @@
 //
-//  SearchOrTagAlongViewController.swift
+//  HostOrTagAlongViewController.swift
 //  FlatironMasterpiece
 //
 //  Created by Erica Millado on 11/26/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchOrTagAlongViewController: UIViewController {
+class HostOrTagAlongViewController: UIViewController {
     
     let searchLabel:UILabel = UILabel()
     let searchButton: UIButton = UIButton()
