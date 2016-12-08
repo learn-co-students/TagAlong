@@ -17,6 +17,12 @@ let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
 let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
 let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
 
+func getRandomPhaedraColor()-> UIColor {
+    let phaedraColorArray:[UIColor] = [phaedraLightGreen, phaedraYellow, phaedraBeige, phaedraOliveGreen, phaedraDarkGreen]
+    let randomNum = Int(arc4random_uniform(UInt32(phaedraColorArray.count)))
+    return phaedraColorArray[randomNum]
+}
+
 
 
 

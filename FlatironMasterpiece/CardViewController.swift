@@ -20,6 +20,7 @@ var testArray2 = ["spreads.jpg", "Rizzo's Pizza", "Italian", "$$", ".1 miles", "
 class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
+    var hasPickedRestaurant: Bool = false
     
     //erica's code
     var userStore = UsersDataStore.sharedInstance
@@ -43,10 +44,6 @@ class CardViewController: UIViewController {
     
     let testLabel = UILabel()
     let shakeImage = UIImageView()
-    
-    deinit {
-        print("OBNOXIOUS PRINT - AKA TAYLOR SWIFT - CARDVIEWCONTROLLER")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,9 +82,11 @@ class CardViewController: UIViewController {
         swipeableView.didEnd = {view, location in
             print("Did end swiping view at location: \(location)")
         }
+        //INCLUDE LOGIC ON SAVING SWIPED RESTAURANT
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
+                self.hasPickedRestaurant = true
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
             }
@@ -130,6 +129,7 @@ class CardViewController: UIViewController {
     }
     
     
+    
     func makeLabels() {
         view.addSubview(testLabel)
         testLabel.text = "Whoops, out of options!  Shake the app to choose a new cuisine."
@@ -152,7 +152,7 @@ class CardViewController: UIViewController {
         shakeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
     }
     
-    // MARK: ()
+    // MARK:  - this is the call to make the next card appear
     func nextCardView() -> UIView? {
     
         while restaurantArray.count != 0{
@@ -160,7 +160,7 @@ class CardViewController: UIViewController {
             var cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
             cardView.backgroundColor = phaedraYellow
             
-            //NOTE: - calculate distance in km between user and the restaurant
+            //NOTE: - calculates distance in km between user and the restaurant
             var distance: Double
             distance = Double(acos(sin(userStore.userLat.radians) * sin((restaurant.latitude?.radians)!) + cos(self.userStore.userLat.radians) * cos((restaurant.latitude?.radians)!) * cos(self.userStore.userLong.radians-(restaurant.longitude?.radians)!)) * 6371000 / 1000)
             print(distance)
@@ -178,12 +178,6 @@ class CardViewController: UIViewController {
 
         //if i have a next card then return view if i do not return the default cardview
         return CardView(restaurant: nil, frame: swipeableView.bounds)
-    }
-    
-    func getRandomPhaedraColor()-> UIColor {
-        let phaedraColorArray:[UIColor] = [phaedraLightGreen, phaedraYellow, phaedraBeige, phaedraOliveGreen, phaedraDarkGreen]
-        let randomNum = Int(arc4random_uniform(UInt32(phaedraColorArray.count)))
-        return phaedraColorArray[randomNum]
     }
     
     func createDefaultCard()->CardView {
@@ -272,9 +266,7 @@ extension CardViewController {
                         data in
                         
                         if let rawData = data {
-                            
                             print("\ngetting restaurant photos")
-                            
                             restaurant.photoImage = UIImage(data: rawData)
                         }
                     })
@@ -290,10 +282,8 @@ extension Double {
     var radians: Double {
         return self * M_PI / 180
     }
-
     var feet: Double {
         return self * 3280.84
     }
-    
 }
 

@@ -58,13 +58,11 @@ class SelectedRestaurantViewController: UIViewController {
 
 
     func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
-
         var tagAlonginfo: [String: Any] = [
                 "host" : user,
                  "location" : location,
                  "date-time" : date,
         ]
-
         return tagAlonginfo
     }
 
@@ -104,8 +102,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             //segue way searchingForTagAlong vc
 //            let searchingVC = SearchingForTagAlongViewController()
 //            self.navigationController?.pushViewController(searchingVC, animated: true)
-//            let nav = UINavigationController(rootViewController: searchingVC)
-//            self.navigationController?.present(searchingVC, animated: true, completion: nil)
 
         })
         confirmTagAlongAlert.addAction(cancelAction)
