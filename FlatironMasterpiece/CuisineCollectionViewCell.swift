@@ -11,11 +11,14 @@ import UIKit
 extension UICollectionViewCell {
     func toggledSelectedState() {
         if isHighlighted == true {
-            self.layer.borderColor = phaedraLightGreen.cgColor
-            self.layer.borderWidth = 5
-            self.layer.cornerRadius = 5
+            self.alpha = 1.0
+            self.layer.borderColor = phaedraOrange.cgColor
+            self.layer.borderWidth = 4
+            self.layer.cornerRadius = 43
         } else if !isHighlighted {
             self.layer.borderWidth = 0
+//            self.alpha = 0.5
+//            self.layer.borderColor = phaedraOrange.cgColor
         }
     }
 }
@@ -49,14 +52,18 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     
     func setupViews() {
         
-        backgroundColor = UIColor.orange
+        //backgroundColor = UIColor.orange
         
         //imageView
         imageView = UIImageView()
         //make sure to add to the subview BEFORE you start constraining
         self.contentView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 43
+//        imageView.layer.borderColor = phaedraOrange.cgColor
+//        imageView.layer.borderWidth = 2
+//        imageView.layer.backgroundColor = phaedraLightGreen.cgColor
+//        imageView.alpha = 0.5
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
