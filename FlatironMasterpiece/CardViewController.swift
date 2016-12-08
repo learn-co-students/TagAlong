@@ -88,7 +88,9 @@ class CardViewController: UIViewController {
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
+                let cardView = view as! CardView
                 let selectedRestVC = SelectedRestaurantViewController()
+                selectedRestVC.restaurant = cardView.restaurant
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
             }
         }
@@ -204,10 +206,14 @@ class CardViewController: UIViewController {
         }
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
+            print("CVC > createDefaultCard > didSwipe")
             if direction.description == "Right" {
 
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                
+                
+                
             }
         }
         swipeableView.didCancel = {view in

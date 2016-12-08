@@ -64,7 +64,7 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
-        print("Really, dismiss!")
+        print("Really, dismisssss!")
         //AccountCreationViewController()
     }
     

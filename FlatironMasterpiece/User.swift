@@ -17,6 +17,10 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
+
+
+    let image = UIImageView()
+
     let cuisines = [String]()
 //    let currentTagalong: String?
 

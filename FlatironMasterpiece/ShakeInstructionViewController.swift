@@ -1,3 +1,4 @@
+
 //
 //  ShakeInstructionViewController.swift
 //  FlatironMasterpiece
@@ -139,6 +140,7 @@ extension ShakeInstructionViewController {
             self.userStore.userLat = place.coordinate.latitude
             self.userStore.userLong = place.coordinate.longitude
 
+
             APIClientGooglePlaces.getRestaurants(lat: self.latitude, long: self.longitude, queryString: self.userStore.currentChosenCuisine, completion: { (JSON) in
 
                 print("in shake instructionVC - queryString is \(self.userStore.currentChosenCuisine)")
@@ -177,10 +179,14 @@ extension ShakeInstructionViewController {
                 }
               })
         })
+   
+    
     }
 
 
-
-
+    //get location ends 
+    
+   
+    
 
 }
