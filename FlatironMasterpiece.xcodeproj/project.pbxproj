@@ -58,7 +58,7 @@
 		45F553461DDCF01E002E799A /* APIClientGooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */; };
 		45F8AD6D1DDF5155001BD45C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD6C1DDF5155001BD45C /* Extensions.swift */; };
 		45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */; };
-		45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */; };
+		45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA58221DE9D1EF0075D914 /* HostOrTagAlongViewController.swift */; };
 		950A2C691DE5FF3E001F2145 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C681DE5FF3E001F2145 /* CardView.swift */; };
 		950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6C1DE9F95D001F2145 /* Direction.swift */; };
 		950A2C6F1DEC9F01001F2145 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A2C6E1DEC9F01001F2145 /* Scheduler.swift */; };
@@ -121,7 +121,7 @@
 		45F553451DDCF01E002E799A /* APIClientGooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientGooglePlaces.swift; sourceTree = "<group>"; };
 		45F8AD6C1DDF5155001BD45C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		45F8AD8E1DDF83CF001BD45C /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
-		45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOrTagAlongViewController.swift; sourceTree = "<group>"; };
+		45FA58221DE9D1EF0075D914 /* HostOrTagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostOrTagAlongViewController.swift; sourceTree = "<group>"; };
 		5EBB6121FCD11B18DB9E3EE7 /* Pods-FlatironMasterpiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatironMasterpiece.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlatironMasterpiece/Pods-FlatironMasterpiece.release.xcconfig"; sourceTree = "<group>"; };
 		950A2C681DE5FF3E001F2145 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		950A2C6C1DE9F95D001F2145 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 				95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */,
-				45FA58221DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift */,
+				45FA58221DE9D1EF0075D914 /* HostOrTagAlongViewController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
 				453921341DEB8E5100D19A45 /* TabBarController.swift */,
@@ -481,7 +481,7 @@
 				2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
-				45FA58231DE9D1EF0075D914 /* SearchOrTagAlongViewController.swift in Sources */,
+				45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
 				95FCF5121DF73EF7009F9EEA /* PicPickerViewController.swift in Sources */,
