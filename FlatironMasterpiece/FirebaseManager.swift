@@ -365,7 +365,7 @@ final class FirebaseManager {
             "timestamp": String(Int(Date().timeIntervalSince1970))
         ]
         
-        self.chatRef.childByAutoId().setValue(messageItem)
+        self.chatRef.child("0").setValue(messageItem)
         
 
     }
