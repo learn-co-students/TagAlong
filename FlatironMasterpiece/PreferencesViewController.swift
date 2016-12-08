@@ -45,6 +45,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         view.backgroundColor = phaedraBeige
         
         //NOTE: hides top navController
+        self.title = "Preferences"
         navigationController?.isNavigationBarHidden = true
         createSegmentedController()
         layoutCuisineCollectionView()
@@ -63,7 +64,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
 
@@ -77,7 +78,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
 
         view.addSubview(cuisinePreferencesLabel)
-        cuisinePreferencesLabel.text = "Choose Your Cuisines"
+        cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
@@ -205,7 +206,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        replayTutorialButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
+        replayTutorialButton.topAnchor.constraint(equalTo: cuisineCollectionView.bottomAnchor, constant: 20).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
@@ -222,8 +223,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
-        logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 460).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: replayTutorialButton.bottomAnchor, constant: 20).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         logoutButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -241,11 +241,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 14.0)
         savePreferencesButton.titleLabel?.textAlignment = .center
         savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 520).isActive = true
+        savePreferencesButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20).isActive = true
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
+        savePreferencesButton.addTarget(self, action: #selector(savePreferencesButtonTapped), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
         savePreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
 
@@ -271,7 +271,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("Replay tutorial requested.")
     }
 
-    // TODO: - write function that logs user out of the app
     func logoutUser() {
         print("User tapped button to logout.")
 
@@ -289,10 +288,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    func savePreferences() {
+    func savePreferencesButtonTapped() {
         print("Save preferences tapped")
-
-        // Send to shake instruction view controller
 
         //ASK ELI WHAT THIS FIRAUTH CODE IS ABOUT
         let user = FIRAuth.auth()?.currentUser
@@ -302,15 +299,16 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         }
 
-        if userStore.preferredCuisineArray.count == 0 {
-            let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select your cuisine preferences.", preferredStyle: .alert)
+        if userStore.preferredCuisineArray.count < 2 {
+            let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select at least 2 cuisines.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)
         } else {
-            // Send to shake instruction view controller
-            let shakeInstructionVC = ShakeInstructionViewController()
-            self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
+            
+            //send to search/tagalongVC
+            let hostOrTagAlongVC = HostOrTagAlongViewController()
+            self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
         }
 
         let saved = store.preferredCuisineArray
@@ -323,7 +321,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         FirebaseManager.savePref(dictionary: dict)
 
         print(store.preferredCuisineArray)
-        self.getRandomCuisine()
+//        self.getRandomCuisine()
 
     }
     
@@ -334,7 +332,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("random cuisine is: \(userStore.currentChosenCuisine)")
         return userStore.currentChosenCuisine
     }
-        
+    
 //end of class
 }
 

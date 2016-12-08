@@ -15,7 +15,6 @@ class CardView: UIView {
     var restaurant: Restaurant!
     var userStore = UsersDataStore.sharedInstance
     
-    
     lazy var restImageView = UIImageView()
     lazy var restNameLabel = UILabel()
     lazy var restCuisineLabel = UILabel()
@@ -60,8 +59,8 @@ class CardView: UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
    
-        let labelWidth = self.bounds.width * 0.8
-        let labelXLocation = self.bounds.width * 0.10
+        let labelWidth = self.bounds.width * 0.85
+        let labelXLocation = self.bounds.width * 0.08
         
         //card image view
         restImageView = UIImageView(frame: CGRect(x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.66))
@@ -73,7 +72,7 @@ class CardView: UIView {
         restNameLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.57, width: labelWidth, height: self.bounds.width * 0.08))
         restNameLabel.backgroundColor = phaedraOrange
         restNameLabel.textColor = phaedraYellow
-        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         restNameLabel.text = restaurant.name
         restNameLabel.textAlignment = .center
         restHoursLabel.translatesAutoresizingMaskIntoConstraints = false

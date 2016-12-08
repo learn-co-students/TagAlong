@@ -1,3 +1,4 @@
+
 //
 //  SelectedRestaurantViewController.swift
 //  FlatironMasterpiece
@@ -7,12 +8,14 @@
 //
 
 import UIKit
-
+import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
     var restaurantView: RestaurantView!
     var userStore = UsersDataStore.sharedInstance
-
+    var map: MKMapView?
+    var restaurant: Restaurant?
+    
     // Information needed from Deck View
     var user: String?
     var date: Date?
@@ -46,14 +49,24 @@ class SelectedRestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
+        self.title = "Restaurant Info"
+        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = UIColor.blue
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
+        restaurantView.selectedRestaurantLabel.text = restaurant?.name
+        dump(self.restaurant)
+        
     }
 
     override func loadView() {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
+    }
+
+    func loadRestaurantsMap(lat: Double, long: Double) -> MKMapView {
+      
+       return map!
     }
 
 
@@ -108,11 +121,7 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             //segue way searchingForTagAlong vc
 //            let searchingVC = SearchingForTagAlongViewController()
 //            self.navigationController?.pushViewController(searchingVC, animated: true)
-//            let nav = UINavigationController(rootViewController: searchingVC)
-//            self.navigationController?.present(searchingVC, animated: true, completion: nil)
-            
-            
-            
+
 
         })
         confirmTagAlongAlert.addAction(cancelAction)

@@ -12,6 +12,7 @@ import UIKit
 class Restaurant {
     var latitude: Double?
     var longitude: Double?
+    var address: String?
     var name: String?
     var openNow: Bool = false
     var photoRef: String = ""
@@ -23,6 +24,9 @@ class Restaurant {
     
     init(dictionary: json) {
         
+        //gets address (as string)
+        let restaurantAddress = dictionary["formatted_address"] as? String
+        address = restaurantAddress
         //gets restaurant lat and long
         let restaurantGeometryDict = dictionary["geometry"] as! restaurantDictionary
         let restaurantLatLongDict = restaurantGeometryDict["location"] as! restaurantDictionary

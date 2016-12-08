@@ -20,11 +20,13 @@ var testArray2 = ["spreads.jpg", "Rizzo's Pizza", "Italian", "$$", ".1 miles", "
 class CardViewController: UIViewController {
     
     var swipeableView: ZLSwipeableView!
+    var swipeLeftCardsCount: Int = 0
     
-    //erica's code
+    //NOTE: - access' the user's restaurant array needed for restaurant deck
     var userStore = UsersDataStore.sharedInstance
     var restStore = RestaurantDataStore.sharedInstance
     var restaurantArray = [Restaurant]()
+    
     //NOTE: - google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
@@ -43,10 +45,6 @@ class CardViewController: UIViewController {
     
     let testLabel = UILabel()
     let shakeImage = UIImageView()
-    
-    deinit {
-        print("OBNOXIOUS PRINT - AKA TAYLOR SWIFT - CARDVIEWCONTROLLER")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,12 +83,21 @@ class CardViewController: UIViewController {
         swipeableView.didEnd = {view, location in
             print("Did end swiping view at location: \(location)")
         }
+        
+        //INCLUDE LOGIC ON SAVING SWIPED RESTAURANT
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
             if direction.description == "Right" {
+
+                let cardView = view as! CardView
                 let selectedRestVC = SelectedRestaurantViewController()
+                selectedRestVC.restaurant = cardView.restaurant
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
-            }
+                
+            } else if direction.description == "Left" {
+               
+            }            
+            
         }
         swipeableView.didCancel = {view in
             print("Did cancel swiping view")
@@ -111,7 +118,9 @@ class CardViewController: UIViewController {
         }
 
     }
-    
+
+        
+    //NOTE: - shake listening function
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
@@ -128,6 +137,7 @@ class CardViewController: UIViewController {
             }
         }
     }
+    
     
     
     func makeLabels() {
@@ -152,7 +162,7 @@ class CardViewController: UIViewController {
         shakeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
     }
     
-    // MARK: ()
+    // MARK:  - this is the call to make the next card appear
     func nextCardView() -> UIView? {
     
         while restaurantArray.count != 0{
@@ -160,18 +170,16 @@ class CardViewController: UIViewController {
             var cardView = CardView(restaurant: restaurant, frame: swipeableView.bounds)
             cardView.backgroundColor = phaedraYellow
             
-            //NOTE: - calculate distance in km between user and the restaurant
+            //NOTE: - calculates distance in km between user and the restaurant
             var distance: Double
             distance = Double(acos(sin(userStore.userLat.radians) * sin((restaurant.latitude?.radians)!) + cos(self.userStore.userLat.radians) * cos((restaurant.latitude?.radians)!) * cos(self.userStore.userLong.radians-(restaurant.longitude?.radians)!)) * 6371000 / 1000)
-            print(distance)
             
             let numberOfPlaces = 2.0
             let multiplier = pow(10.0, numberOfPlaces)
             
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
-            print("\(restaurant.name) distance as miles \(rounded)")
  
-            cardView.restDistanceLabel.text = "\(rounded) mi"
+            cardView.restDistanceLabel.text = "\(rounded) mi away"
 
             return cardView
         }
@@ -204,10 +212,14 @@ class CardViewController: UIViewController {
         }
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
+            print("CVC > createDefaultCard > didSwipe")
             if direction.description == "Right" {
 
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
+                
+                
+                
             }
         }
         swipeableView.didCancel = {view in
@@ -231,7 +243,6 @@ class CardViewController: UIViewController {
         return defaultCard
     }
     
-
     
 }
 
@@ -272,9 +283,7 @@ extension CardViewController {
                         data in
                         
                         if let rawData = data {
-                            
                             print("\ngetting restaurant photos")
-                            
                             restaurant.photoImage = UIImage(data: rawData)
                         }
                     })
@@ -290,10 +299,8 @@ extension Double {
     var radians: Double {
         return self * M_PI / 180
     }
-
     var feet: Double {
         return self * 3280.84
     }
-    
 }
 

@@ -1,5 +1,5 @@
 //
-//  SearchOrTagAlongViewController.swift
+//  HostOrTagAlongViewController.swift
 //  FlatironMasterpiece
 //
 //  Created by Erica Millado on 11/26/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchOrTagAlongViewController: UIViewController {
+class HostOrTagAlongViewController: UIViewController {
     
     let searchLabel:UILabel = UILabel()
     let searchButton: UIButton = UIButton()
@@ -39,7 +39,7 @@ class SearchOrTagAlongViewController: UIViewController {
         searchLabel.font = UIFont(name: "AvenirNext-Bold", size: 40.0)
         searchLabel.lineBreakMode = .byWordWrapping
         searchLabel.numberOfLines = 0
-        searchLabel.text = "Find a restaurant"
+        searchLabel.text = "Host a Tag Along"
         searchLabel.textColor = phaedraYellow
         searchLabel.textAlignment = .center
         searchLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class SearchOrTagAlongViewController: UIViewController {
         tagAlongLabel.font = UIFont(name: "AvenirNext-Bold", size: 40.0)
         tagAlongLabel.lineBreakMode = .byWordWrapping
         tagAlongLabel.numberOfLines = 0
-        tagAlongLabel.text = "Tag Along"
+        tagAlongLabel.text = "Join a Tag Along"
         tagAlongLabel.textColor = phaedraYellow
         tagAlongLabel.textAlignment = .center
         tagAlongLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -83,54 +83,26 @@ class SearchOrTagAlongViewController: UIViewController {
         tagAlongButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 135).isActive = true
         tagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
-        tagAlongButton.addTarget(self, action: #selector(addToTagAlong), for: .touchUpInside)
+        tagAlongButton.addTarget(self, action: #selector(joinATagAlong), for: .touchUpInside)
         tagAlongButton.setTitleColor(phaedraOrange, for: .normal)
         tagAlongButton.setTitleColor(phaedraDarkGreen, for: .highlighted)
     }
     
-    //TODO: - write code that searches for a restaurant based on the user's location
     func searchForRestaurant() {
+        
         print("User wants to search for a restaurant.")
-        self.searchLabel.fadeOut(duration: 0.3, delay: 0.0) { (true) in
-            self.searchButton.fadeOut(duration: 0.2, delay: 0.3, completion: { (true) in
-                //
-            })
-        }
+        
+        let shakeInstVC = ShakeInstructionViewController()
+        self.navigationController?.pushViewController(shakeInstVC, animated: true)
     }
     
-    //TODO: - write code that adds user to the tag along tableview
-    func addToTagAlong() {
+    func joinATagAlong() {
         print("User wants to tag along with another user.")
-        self.tagAlongLabel.fadeOut(duration: 0.3, delay: 0.0) { (true) in
-            self.tagAlongButton.fadeOut(duration: 0.2, delay: 0.3, completion: { (true) in
-                //
-            })
-        }
+       
+        let tagAlongVC = TagAlongViewController()
+        self.navigationController?.pushViewController(tagAlongVC, animated: true)
+        
     }
-    
-    
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension UIView {
-    func fadeIn(duration: TimeInterval = 1.0, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.alpha = 1.0
-        }, completion: completion)  }
-    
-    func fadeOut(duration: TimeInterval = 1.0, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.alpha = 0.0
-        }, completion: completion)
-    }
 }
