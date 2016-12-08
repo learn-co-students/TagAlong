@@ -123,6 +123,13 @@ var manager = CLLocationManager()
         //        }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        
+    }
+    
+        
+        
     func dismissKeyboard() {
         view.endEditing(true)
     }
