@@ -54,7 +54,6 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         
         //imageView
         imageView = UIImageView()
-        //make sure to add to the subview BEFORE you start constraining
         self.contentView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 5
@@ -64,8 +63,6 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        
         
         addSubview(foodLabel)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":foodLabel]))

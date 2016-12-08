@@ -21,10 +21,6 @@ final class TagalongDataStore {
     var hostPhoto: UIImage?
     var hostKey: String?
     
-    
-    
-    
-
     private init() {}
     
     

@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        // Override point for customization after application launch.
         GMSPlacesClient.provideAPIKey(gpSearchApiKey)
 
         FIRApp.configure()
@@ -47,12 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
+        let initialViewController = WaitingForHostViewController()
 
 //      let initialViewController = ShakeInstructionViewController()
 
         let initialViewController = WaitingForHostViewController()
 
        let frame = UIScreen.main.bounds
+
         window = UIWindow(frame: frame)
 
         if let window = window {

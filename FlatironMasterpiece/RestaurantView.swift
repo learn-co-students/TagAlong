@@ -24,17 +24,12 @@ class RestaurantView: UIView{
     @IBOutlet weak var selectedRestaurantAddressLabel: UILabel!
     @IBOutlet weak var restaurantPricingLabel: UILabel!
     
-   
-    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        //TODO: - add code that will take the user back to deck view
         delegate?.sendToDeckView()
     }
     
     @IBAction func hostTagAlongTapped(_ sender: UIButton) {
-        //TODO: - add code that will create alert controller
         delegate?.sendToTagAlongConfirmation()
-
     }
     
     init() {

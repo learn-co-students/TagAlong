@@ -9,9 +9,9 @@
 import UIKit
 
 class SearchingForTagAlongViewController: UIViewController {
-    
+
     let store = FirebaseManager.shared
-    
+
     let searchingLabel: UILabel = UILabel()
     var searchAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     var beTagAlongGuestButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
@@ -19,24 +19,26 @@ class SearchingForTagAlongViewController: UIViewController {
     var acceptButton = UIButton()
     var denyButton = UIButton()
     var firstTimeLoaded = true
+
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
         observeTagalongRequests()
-        
+
         print(FirebaseManager.currentUser)
         print(firstTimeLoaded)
     }
-    
+
     override func loadView() {
         super.loadView()
         setupLabel()
         setupSpinner()
         setupButtons()
-        
+
         setupTagAlongMessageAndButtons()
-        
+
     }
 
     func setupLabel() {
@@ -50,9 +52,8 @@ class SearchingForTagAlongViewController: UIViewController {
         searchingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         searchingLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
     }
-    
+
     func setupSpinner() {
-        var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         activityIndicator.color = phaedraDarkGreen
         activityIndicator.layer.cornerRadius = 4
         activityIndicator.layer.backgroundColor = phaedraLightGreen.cgColor
@@ -62,7 +63,7 @@ class SearchingForTagAlongViewController: UIViewController {
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
     }
-    
+
     func setupButtons() {
         view.addSubview(searchAgainButton)
         searchAgainButton.backgroundColor = phaedraLightGreen
@@ -81,7 +82,7 @@ class SearchingForTagAlongViewController: UIViewController {
         searchAgainButton.addTarget(self, action: #selector(returnToDeckView), for: .touchUpInside)
         searchAgainButton.setTitleColor(phaedraDarkGreen, for: .normal)
         searchAgainButton.setTitleColor(phaedraYellow, for: .highlighted)
-        
+
         view.addSubview(beTagAlongGuestButton)
         beTagAlongGuestButton.backgroundColor = phaedraLightGreen
         beTagAlongGuestButton.layer.cornerRadius = 5
@@ -101,7 +102,7 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
 
     }
-    
+
     func setupTagAlongMessageAndButtons() {
         view.addSubview(tagAlongFoundLabel)
         tagAlongFoundLabel.isHidden = true
@@ -113,7 +114,7 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongFoundLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         tagAlongFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        
+
         view.addSubview(acceptButton)
         acceptButton.isHidden = true
         acceptButton.backgroundColor = phaedraLightGreen
@@ -132,7 +133,7 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.addTarget(self, action: #selector(acceptTagalongAction), for: .touchUpInside)
         acceptButton.setTitleColor(phaedraDarkGreen, for: .normal)
         acceptButton.setTitleColor(phaedraYellow, for: .highlighted)
-        
+
         view.addSubview(denyButton)
         denyButton.isHidden = true
         denyButton.backgroundColor = phaedraLightGreen
@@ -151,9 +152,9 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.addTarget(self, action: #selector(denyTagalongAction), for: .touchUpInside)
         denyButton.setTitleColor(phaedraDarkGreen, for: .normal)
         denyButton.setTitleColor(phaedraYellow, for: .highlighted)
-        
+
     }
-    
+
     func returnToDeckView() {
         print("User wants to return to deck view")
         let shakeInstructionVC = ShakeInstructionViewController()
@@ -168,142 +169,117 @@ class SearchingForTagAlongViewController: UIViewController {
         let tagAlongsVC = TagAlongViewController()
         self.navigationController?.pushViewController(tagAlongsVC, animated: true)
     }
-    
+
     func acceptTagalongAction() {
-        
+
 //        guard let acceptedGuestID = store.guestID else { return }
-        
+
         store.acceptTagalong(guestID: store.guestID)
-        
+
 //        store.guestStatus[store.guestID] = true
-        
+
         // Segue into chat/tab bar view
 //        let chatVC = ChatViewController()
 //        self.navigationController?.present(chatVC, animated: true, completion: nil)
-        
+
         // Add tagalong to guest's current tagalong branch and current tagalong branch
-        
+
         FirebaseManager.updateUserWithTagAlongKey(key: store.selectedTagAlongID)
-        
+
     }
-    
+
     func denyTagalongAction() {
-        
+
         // Hide and reveal buttons/labels
         acceptButton.isHidden = true
         denyButton.isHidden = true
         tagAlongFoundLabel.isHidden = true
-        
-        
+
+
         //Figure out a way to notify user when they are denied
 //        store.guestStatus[store.guestID] = false
 
     }
-    
-    
+
+
     //ALERT:
-    
+
 //    func tagalongRequest() {
-//        
+//
 //        guard let tagalongID = store.selectedTagAlongID else { return }
-//        
+//
 //        store.createGuestFrom(tagalong: tagalongID) { (guest) in
-//            
+//
 //            //Message to request
 //            print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-//            
+//
 //            // Accept Invite
 //            FirebaseManager.acceptTagalong(guestID: guest, completion: { (isAccepted) in
-//                
+//
 //                if isAccepted {
-//                    
+//
 //                    // Send user to chat using tagalong ID
 //                    let chatVC = ChatViewController()
 //                    self.navigationController?.present(chatVC, animated: true, completion: nil)
 //
 //                    //TODO: - Give guest access to chat
-//                    
+//
 //                }
-//                
+//
 //            })
-//            
+//
 //            // Deny Invite: - notify guest so they can keep searching
 //
 //        }
-//        
-//        
+//
+//
 //    }
 
     func observeTagalongRequests() {
-        
+
         store.observeTagalongRequests { (snapshot) in
-            
+
             //Prevents old tagalongs to appear if
             if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
-            
+
             // Only detects recents tagalongs
             if !self.firstTimeLoaded {
-            
+
                 //Alert user of new tag along
                 print("\n ==============Getting called.===============")
-                
+
                 guard snapshot != nil else { return }
-                
+
                 //Show labels and buttons
                 self.acceptButton.isHidden = false
                 self.denyButton.isHidden = false
                 self.tagAlongFoundLabel.isHidden = false
-                
+
                 // Grab info from guest
-                
+
 //                guard let tagalongID = self.store.selectedTagAlongID else { return }
-                
+
 //                self.store.guestID = snapshot?.key
-                
+
 //                self.store.createGuestFrom(tagalong: self.store.selectedTagAlongID, completion: { (guest) in
-//                    
+//
 //                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
-//                    
-//                    
-//                    
+//
+//
+//
 //                })
-                
+
                 print("\n\n")
-                
+
                 print("We have a new tag along person. \(snapshot)")
             }
-            
-            
-            
-            
+
+
+
+
         }
 
-        
-        
+
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
