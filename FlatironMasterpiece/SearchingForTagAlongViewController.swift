@@ -194,10 +194,10 @@ class SearchingForTagAlongViewController: UIViewController {
 
     func denyTagalongAction() {
 
-
-
-        //Figure out a way to notify user when they are denied
-//        store.guestStatus[store.guestID] = false
+        guard let deniedGuestID = store.guestID else { print("leaving function");return }
+        print(deniedGuestID)
+        
+        store.denyTagalong(guestID: deniedGuestID)
 
     }
 
