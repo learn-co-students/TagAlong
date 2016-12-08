@@ -77,7 +77,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
 
         view.addSubview(cuisinePreferencesLabel)
-        cuisinePreferencesLabel.text = "Choose Your Cuisines"
+        cuisinePreferencesLabel.text = "Choose Your Cuisines (at least 2)"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
@@ -271,7 +271,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         print("Replay tutorial requested.")
     }
 
-    // TODO: - write function that logs user out of the app
     func logoutUser() {
         print("User tapped button to logout.")
 
@@ -292,8 +291,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     func savePreferences() {
         print("Save preferences tapped")
 
-        // Send to shake instruction view controller
-
         //ASK ELI WHAT THIS FIRAUTH CODE IS ABOUT
         let user = FIRAuth.auth()?.currentUser
         guard let unwrappedUser = user else { return }
@@ -302,8 +299,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         }
 
-        if userStore.preferredCuisineArray.count == 0 {
-            let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select your cuisine preferences.", preferredStyle: .alert)
+        if userStore.preferredCuisineArray.count < 2 {
+            let noCuisineAlert = UIAlertController(title: "Cuisines Needed", message: "Please select at least 2 cuisines.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)

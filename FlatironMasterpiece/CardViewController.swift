@@ -119,6 +119,8 @@ class CardViewController: UIViewController {
         }
     }
     
+    
+    //NOTE: - shake listening function
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
