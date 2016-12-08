@@ -268,21 +268,15 @@ final class FirebaseManager {
 
     }
     
-    ///CHANGE THIS TO LOOK LIKE ABOVE FUNCTION
-    static func updateGuestWithTagAlongKey(key: String) {
-        
+    ///this gets called in searchingForTagAlongVC (acceptTagalong())
+    func updateGuestWithTagAlongKey(key: String) {
         // Add tagalong key to users
         // 1. Create tagalongs
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
-            ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
-        }
         
-        // 2. Create current tagalongs
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
-            ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
-        }
+        guard let unwrappedGuestID = guestID else { return }
+        ref.child("users").child(unwrappedGuestID).child("tagalongs").updateChildValues([key: true])
+        
+        ref.child("users").child(unwrappedGuestID).child("currentTagalongs").setValue([key: true])
         
     }
 
