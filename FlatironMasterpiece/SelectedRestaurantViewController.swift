@@ -22,9 +22,9 @@ class SelectedRestaurantViewController: UIViewController {
     var user1 = FirebaseManager.currentUser
     var date1 = Date()
     var location1: [String: Any] = [
-        "restaurant" : "Peter Luger Stake House",
-        "lat" : -45,
-        "long": 35
+        "restaurant" : "Peter Lugar's", // UsersDataStore.sharedInstance.chosenRestName
+        "lat" : -45,                    // chosenRestLong
+        "long": 35                      //chosenRestLat
     ]
 
 //    var tagalongInfoDict: [String: Any] [

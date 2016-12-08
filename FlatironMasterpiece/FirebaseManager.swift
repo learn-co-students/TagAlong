@@ -35,8 +35,6 @@ final class FirebaseManager {
     var selectedTagAlongID = "in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
     //User ID from guest requesting tagalong
     var guestID = "lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
-
-    var testID: String?
     
     var guestStatus = [String: Bool]()
     
