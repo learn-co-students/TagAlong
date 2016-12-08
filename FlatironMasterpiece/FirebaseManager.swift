@@ -1,3 +1,4 @@
+
 //
 //  FirebaseManager.swift
 //  FlatironMasterpiece
@@ -308,6 +309,13 @@ final class FirebaseManager {
 
         //Create chat with tagalong key
         self.chatRef = allChatsRef.child("\(key)")
+        
+        
+        //Create chat with tagalongID from user's node
+        
+//        guard let userID = currentUser else { return }
+//       let tagalongID = FirebaseManager.ref.child("users").child(userID).child("currentTagalongs").key
+//        self.chatRef = allChatsRef.child("\(tagalongID)")
 
     }
 
@@ -423,11 +431,10 @@ final class FirebaseManager {
 
         guard let guestID = FirebaseManager.currentUser else { print("hey retuning");return }
         guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
-        
+
         print("firebase manager observe guest tagalong - selected tag: \(selectedTag)")
         
         FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.value, with: { (snapshot) in
-
             completion(snapshot)
 
         })
