@@ -66,7 +66,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-
+        
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
@@ -246,7 +246,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -255,7 +254,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        view.addSubview(replayTutorialButton)
 
         view.addSubview(savePreferencesButton)
         savePreferencesButton.backgroundColor = phaedraLightGreen
