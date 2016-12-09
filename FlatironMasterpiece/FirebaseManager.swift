@@ -354,7 +354,7 @@ final class FirebaseManager {
     
     
     //MARK: - Tagalong Message Methods
-    
+
     static func createChatWithTagID(key:String) {
         self.chatRef = allChatsRef.child("\(key)")
        
@@ -366,7 +366,6 @@ final class FirebaseManager {
         ]
         
         self.chatRef.child("0").setValue(messageItem)
-        
 
     }
     
@@ -376,10 +375,7 @@ final class FirebaseManager {
         
         self.chatRef.observe(.childAdded, with: { (snapshot) in
             print(snapshot.value)
-            
-            
         })
-        
         
     }
     
@@ -389,7 +385,6 @@ final class FirebaseManager {
         newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
             print("--------------------GETTING CALLED------------------")
-            
             
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
@@ -402,7 +397,6 @@ final class FirebaseManager {
             } else {
                 print("Error! Could not decode message data")
             }
-            
             print("----------------------------------------------\n\n\n")
         })
     }
@@ -430,10 +424,7 @@ final class FirebaseManager {
 
                     response(snapshot)
                 }
-
             })
-
-
         })
     }
     
