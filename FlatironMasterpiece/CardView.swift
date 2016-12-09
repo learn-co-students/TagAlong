@@ -82,7 +82,7 @@ class CardView: UIView {
         restCuisineLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.64, width: labelWidth, height: self.bounds.width * 0.08))
         restCuisineLabel.backgroundColor = phaedraOrange
         restCuisineLabel.textColor = phaedraYellow
-        restCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        restCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         restCuisineLabel.text = userStore.currentChosenCuisine
         restCuisineLabel.textAlignment = .center
         self.addSubview(restCuisineLabel)
@@ -91,7 +91,7 @@ class CardView: UIView {
         restCostLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.71, width: labelWidth, height: self.bounds.width * 0.08))
         restCostLabel.backgroundColor = phaedraOrange
         restCostLabel.textColor = phaedraYellow
-        restCostLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        restCostLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         guard let unwrappedRestCost = restStore.restaurantsArray[0].priceLevel else { return }
         let costEmoji = convertPriceToEMOJI(priceLevel: unwrappedRestCost)
         restCostLabel.text = costEmoji
@@ -102,7 +102,7 @@ class CardView: UIView {
         restDistanceLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.78, width: labelWidth, height: self.bounds.width * 0.08))
         restDistanceLabel.backgroundColor = phaedraOrange
         restDistanceLabel.textColor = phaedraYellow
-        restDistanceLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        restDistanceLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         //TODO: - this restDistanceLabel needs to be filled with actual distance!
         restDistanceLabel.text = "0.5 mi"
         restDistanceLabel.textAlignment = .center
@@ -112,7 +112,7 @@ class CardView: UIView {
         restHoursLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.85, width: labelWidth, height: self.bounds.width * 0.08))
         restHoursLabel.backgroundColor = phaedraOrange
         restHoursLabel.textColor = phaedraYellow
-        restHoursLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        restHoursLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         let hoursString = convertHoursToString(isopen: restStore.restaurantsArray[0].openNow)
         restHoursLabel.text = hoursString
         restHoursLabel.textAlignment = .center

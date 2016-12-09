@@ -157,6 +157,12 @@ extension ShakeInstructionViewController {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
                             
+                            if self.view == self.vview {
+                                self.vibrate()
+                                self.playSound()
+                            }
+                            self.playSound()
+                            
                             self.shakeView.activityIndicator.removeFromSuperview()
                             self.shakeView.shakePhoneLabel.isHidden = true
                             self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."
