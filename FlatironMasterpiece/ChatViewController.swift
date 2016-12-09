@@ -20,7 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var chatID: String?
-    var tagalongTag = "-KYVq6XQn3-_ged5MgiQ"
+    var tagalongTag = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
