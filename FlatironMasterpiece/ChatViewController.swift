@@ -49,9 +49,9 @@ class ChatViewController: JSQMessagesViewController {
         
         
        // observeMessages()
-        guard let hostTag = store.hostTagAlongID else { return }
+        guard let tagID = store.selectedTagAlongID else { return }
         
-        observeMessages(for: hostTag)
+        observeMessages(for: tagID)
         
     }
     

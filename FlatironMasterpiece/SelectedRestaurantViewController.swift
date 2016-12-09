@@ -114,7 +114,7 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
                 print("------------------- IS BEING CALLED ------------------------")
 
-                store.hostTagAlongID = newKey
+                self.store.selectedTagAlongID = newKey
                 
                 // Add tagalong key to chat
         
