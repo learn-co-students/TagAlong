@@ -18,7 +18,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-
     let store = UsersDataStore.sharedInstance
 
     var preferencesLabel = UILabel()
@@ -130,7 +129,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 170).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalToConstant: 225).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
 
@@ -150,7 +148,20 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
-
+        
+        //this gets back the cuisines from the
+         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+        print("this is user defaults cuisines \(ustoredUserCuisines)")
+        
+        for cuisine in ustoredUserCuisines {
+            
+            if cuisineArray[indexPath.item] == cuisine {
+                cell.alpha = 1.0
+                cell.layer.borderColor = phaedraOrange.cgColor
+                cell.layer.borderWidth = 4
+                cell.layer.cornerRadius = 43
+            }
+        }
         return cell
     }
 
@@ -352,3 +363,4 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
 //end of class
 }
+

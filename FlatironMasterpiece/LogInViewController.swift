@@ -202,14 +202,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if success {
                     print("Successful Log In")
                     
-                    //send to search/tagalongVC
-//                    let hostOrTagAlongVC = HostOrTagAlongViewController()
-  //                  self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
+                    let storedUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray")
                     
-
-                    // Send to preferences (for now)
                     let shakeInstruct = HostOrTagAlongViewController()
-                    //let preferencesVC = PreferenceViewController()
                     self.navigationController?.pushViewController(shakeInstruct, animated: true)
                    FirebaseManager.getUserPref()
 
@@ -326,6 +321,5 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     func forgotPassword(sender: UIButton!) {
         print("user forgot password")
     }
-    
     
 }

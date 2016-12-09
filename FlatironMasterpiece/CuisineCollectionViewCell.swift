@@ -11,7 +11,7 @@ import UIKit
 extension UICollectionViewCell {
     func toggledSelectedState() {
         if isHighlighted == true {
-
+print("I am inside the toggel")
             self.alpha = 1.0
             self.layer.borderColor = phaedraOrange.cgColor
             self.layer.borderWidth = 4
@@ -52,9 +52,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     }
 
     func setupViews() {
-
         //backgroundColor = UIColor.orange
-
         //imageView
         imageView = UIImageView()
         self.contentView.addSubview(imageView)
@@ -74,6 +72,10 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         addSubview(foodLabel)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":foodLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":foodLabel]))
+    }
+    
+    func updateUIFromStoredCuisines() {
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
