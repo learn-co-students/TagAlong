@@ -30,6 +30,7 @@ class ChatViewController: JSQMessagesViewController {
         navigationController?.isNavigationBarHidden = true
         
         //dismisses keyboard
+        self.inputToolbar.contentView.leftBarButtonItem = nil
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
