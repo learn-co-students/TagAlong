@@ -85,12 +85,12 @@ class WaitingForHostViewController: UIViewController {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.topAnchor.constraint(equalTo: waitingHostLabel.bottomAnchor, constant: 30).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        confirmButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
-        confirmButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        confirmButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
+        confirmButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
         confirmButton.addTarget(self, action: #selector(goToTagAlongTabbedView), for: .touchUpInside)
         confirmButton.setTitleColor(phaedraYellow, for: .normal)
         confirmButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        confirmButton.isHidden = true
+//        confirmButton.isHidden = true
         
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
