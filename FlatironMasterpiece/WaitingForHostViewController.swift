@@ -173,7 +173,7 @@ class WaitingForHostViewController: UIViewController {
                 
                 if result {
                     
-                    // TODO: Reveal enter tag along button 
+                    // TODO: Reveal enter tag along button
                     
                     self.waitingHostLabel.isHidden = true
                     self.enterTagALongLabel.isHidden = false
