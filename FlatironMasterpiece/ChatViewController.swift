@@ -27,7 +27,7 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print("getting loaded")
         self.title = "Chat"
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
         
         //dismisses keyboard
         self.inputToolbar.contentView.leftBarButtonItem = nil
