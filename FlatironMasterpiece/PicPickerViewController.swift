@@ -87,6 +87,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
         guard let compressedJPGImage = UIImage(data: imageData) else { return }
         //send to firebase
+        
+        FirebaseManager.sendToStorage(data: imageData)
 
 //        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
 //            newImage = image

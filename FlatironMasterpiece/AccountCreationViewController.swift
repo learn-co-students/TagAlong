@@ -197,7 +197,12 @@ extension AccountCreationViewController {
             selectedImageFromPicker = original
         }
      
+        
+        
         if let selectedImage = selectedImageFromPicker {
+            let data = UIImagePNGRepresentation(selectedImage)
+            guard let imageData = data else { return }
+            FirebaseManager.sendToStorage(data: imageData)
             picImage.image = selectedImage
         print("selected:::: \(picImage)")
         }
@@ -391,6 +396,8 @@ extension AccountCreationViewController {
     }
 
 
+    
+    
     func sendEmail() {
 
         FirebaseManager.sendEmailVerification()
