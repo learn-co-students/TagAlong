@@ -63,11 +63,11 @@ class ShakeInstructionViewController: UIViewController {
         locationManager.startUpdatingLocation()
 
         //ERICA'S CODE - should this go here?
-//        getRandomCuisine { (success) in
-//            //now, get location and restaurants
-//            self.getLocation()
-//        }
-        getLocation()
+        getRandomCuisine { (success) in
+            //now, get location and restaurants
+            self.getLocation()
+        }
+//        getLocation()
 
     }
 
@@ -156,6 +156,7 @@ extension ShakeInstructionViewController {
                     if completed {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
+                            
                             self.shakeView.activityIndicator.removeFromSuperview()
                             self.shakeView.shakePhoneLabel.isHidden = true
                             self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."
@@ -189,4 +190,18 @@ extension ShakeInstructionViewController {
 
     //get location ends 
 
+}
+
+extension ShakeInstructionViewController {
+    
+    func getRandomCuisine(completion:@escaping (Bool)->Void)->String {
+        
+        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+        let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+        userStore.currentChosenCuisine = ustoredUserCuisines[randomNum]
+//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+        print("random cuisine is: \(userStore.currentChosenCuisine)")
+        completion(true)
+        return userStore.currentChosenCuisine
+    }
 }

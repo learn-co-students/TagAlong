@@ -181,14 +181,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-            print("array is now \(userStore.preferredCuisineArray)")
+            print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
 
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
                 UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-                print("array is now \(userStore.preferredCuisineArray)")
+                print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
                 cell.toggledSelectedState()
             }
@@ -353,13 +353,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    func getRandomCuisine()->String {
-
-        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
-        print("random cuisine is: \(userStore.currentChosenCuisine)")
-        return userStore.currentChosenCuisine
-    }
+//    func getRandomCuisine()->String {
+//
+//        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+//        print("random cuisine is: \(userStore.currentChosenCuisine)")
+//        return userStore.currentChosenCuisine
+//    }
 
 //end of class
 }
