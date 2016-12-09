@@ -455,7 +455,7 @@ final class FirebaseManager {
     }
 
 
-    func createGuestFrom(tagalong: String, completion:@escaping (User)->()){
+    func createGuestFrom(tagalong: String, completion: @escaping (User)->()){
         var userName = guestID
         //
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in

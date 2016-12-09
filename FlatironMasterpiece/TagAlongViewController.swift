@@ -42,6 +42,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    
     func formatLabels() {
         view.addSubview(tagAlongUsersLabel)
         tagAlongUsersLabel.text = "Choose a Tag Along"
