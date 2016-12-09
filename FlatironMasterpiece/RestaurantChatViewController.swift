@@ -59,9 +59,7 @@ class RestaurantChatViewController: UIViewController {
         
         //Johann's test
 //        self.present(chatVC, animated: true, completion: nil)
-        
-        let newNav = UINavigationController()
-        newNav.present(chatVC, animated: true, completion: nil)
+
 
     }
 

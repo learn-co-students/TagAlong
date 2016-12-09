@@ -134,7 +134,8 @@ class WaitingForHostViewController: UIViewController {
         print("User wants to go to chat/tabbed bar controller.")
         let tabVC = TabBarController()
         tabVC.tagAlong = store.selectedTagAlongID!
-        self.navigationController?.present(tabVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(tabVC, animated: true)
+        //self.navigationController?.present(tabVC, animated: true, completion: nil)
     }
     
     func searchOtherTagAlongs() {
