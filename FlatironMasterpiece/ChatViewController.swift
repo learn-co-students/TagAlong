@@ -20,7 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var chatID: String?
-    var tagalongTag = ""
+    var tagalongTag = "-KYVq6XQn3-_ged5MgiQ"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,7 +152,7 @@ class ChatViewController: JSQMessagesViewController {
     
     
     // Observe Messages
-    private func observeMessages(for tag:String) {
+    private func observeMessages(for tag: String) {
         FirebaseManager.observeMessages(for: tag) { (id, name, text) in
             print(id)
             print(name)

@@ -106,16 +106,21 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             //TODO:
             print("confirm tapped")
             print("hey there before createtagalong")
+            
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
+                
+                guard let newKey = key else { return }
 
                 print("------------------- IS BEING CALLED ------------------------")
 
                 // Add tagalong key to chat
-                FirebaseManager.createChatWithTagID(key: key)
+                
+               // FirebaseManager.createChatWithTagID(key: newKey)
+                
                 print("Chat ID Being created")
 
                 // Add tagalong key to users (current tagalong and tagalongs)
-                FirebaseManager.updateUserWithTagAlongKey(key: key)
+                FirebaseManager.updateUserWithTagAlongKey(key: newKey)
                 
                 let searchingVC = SearchingForTagAlongViewController()
                 self.navigationController?.pushViewController(searchingVC, animated: true)
