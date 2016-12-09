@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
          navController = UINavigationController()
         var loginVC = LogInViewController()
+
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         self.navController?.pushViewController(loginVC, animated: false)
@@ -46,16 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-//      let initialViewController = TabBarController()
-//
-//       let frame = UIScreen.main.bounds
+
+
+//      let initialViewController = ShakeInstructionViewController()
+
+        let initialViewController = PreferenceViewController()
+
+
+
+
+ //      let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //
 //        if let window = window {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-        
+
           return true
     }
 
