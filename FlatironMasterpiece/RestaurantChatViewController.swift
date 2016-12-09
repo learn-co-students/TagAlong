@@ -60,7 +60,6 @@ class RestaurantChatViewController: UIViewController {
         //Johann's test
 //        self.present(chatVC, animated: true, completion: nil)
 
-
     }
 
 }

@@ -70,8 +70,12 @@ class Restaurant {
                     APIClientGooglePlaces.getRestImages(photoRef: photoRef, completion: { (data) in
                         if let rawData = data {
                             self.photoImage = UIImage(data: rawData)
+                            if rawData == nil {
+                                self.photoImage = UIImage(named: "fork_red")
+                            }
                         }
-                    })                    
+                        
+                    })
                 }
             }
         }
