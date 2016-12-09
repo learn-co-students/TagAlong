@@ -14,6 +14,7 @@ class WaitingForHostViewController: UIViewController {
     let waitingHostLabel:UILabel = UILabel()
     let enterTagALongLabel: UILabel = UILabel()
     let confirmButton: UIButton = UIButton()
+    let cancelTagAlongLabel: UILabel = UILabel()
     let hostUnavailableLabel: UILabel = UILabel()
     let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
@@ -112,7 +113,22 @@ class WaitingForHostViewController: UIViewController {
         hostUnavailableLabel.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 100).isActive = true
         hostUnavailableLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         hostUnavailableLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        //change this later
         hostUnavailableLabel.isHidden = true
+        
+        //NOTE: - Cancel Tag Along Label
+        view.addSubview(cancelTagAlongLabel)
+        cancelTagAlongLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
+        cancelTagAlongLabel.lineBreakMode = .byWordWrapping
+        cancelTagAlongLabel.numberOfLines = 0
+        cancelTagAlongLabel.text = "Drats! The host is currently unavailable."
+        cancelTagAlongLabel.textColor = phaedraYellow
+        cancelTagAlongLabel.textAlignment = .center
+        cancelTagAlongLabel.translatesAutoresizingMaskIntoConstraints = false
+        cancelTagAlongLabel.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 100).isActive = true
+        cancelTagAlongLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        cancelTagAlongLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        cancelTagAlongLabel.isHidden = false
         
         view.addSubview(searchNewTagAlongButton)
         searchNewTagAlongButton.backgroundColor = phaedraOrange
@@ -127,7 +143,8 @@ class WaitingForHostViewController: UIViewController {
         searchNewTagAlongButton.addTarget(self, action: #selector(searchOtherTagAlongs), for: .touchUpInside)
         searchNewTagAlongButton.setTitleColor(phaedraYellow, for: .normal)
         searchNewTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        searchNewTagAlongButton.isHidden = true
+        searchNewTagAlongButton.isHidden = false
+        
     }
     
     func goToTagAlongTabbedView() {
@@ -156,7 +173,8 @@ class WaitingForHostViewController: UIViewController {
                 
                 if result {
                     
-                    // TODO: If it's true do something
+                    // TODO: Reveal enter tag along button 
+                    
                     self.waitingHostLabel.isHidden = true
                     self.enterTagALongLabel.isHidden = false
                     self.confirmButton.isHidden = false
@@ -180,6 +198,7 @@ class WaitingForHostViewController: UIViewController {
                     
                     // TODO: They've been denied, do something else.
                     self.hostUnavailableLabel.isHidden = false
+                    self.cancelTagAlongLabel.isHidden = true
                     self.searchNewTagAlongButton.isHidden = false
                 }
                 
