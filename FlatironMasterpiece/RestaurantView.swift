@@ -94,13 +94,24 @@ class RestaurantView: UIView, MKMapViewDelegate {
         annotation.coordinate = coordinate
         annotation.title = restaurant?.name
         restMap.addAnnotation(annotation)
-       // restMap.centerCoordinate = coordinate
+       
+        // restMap.centerCoordinate = coordinate
         
         print("\n")
         
         print("We've setup the map!")
         
         
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        print("user selected map annotation")
+        let placemark = MKPlacemark(coordinate: (view.annotation?.coordinate)!, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeWalking, forKey: MKLaunchOptionsDirectionsModeKey as NSCopying)
+        mapItem.openInMaps(launchOptions: launchOptions as? [String : Any])
         
     }
     
