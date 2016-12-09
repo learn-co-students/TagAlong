@@ -11,6 +11,8 @@ import UIKit
 import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
+    let store = FirebaseManager.shared
+    
     var restaurantView: RestaurantView!
     var userStore = UsersDataStore.sharedInstance
     var map: MKMapView?
@@ -112,9 +114,13 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
                 print("------------------- IS BEING CALLED ------------------------")
 
-                // Add tagalong key to chat
+                store.hostTagAlongID = newKey
                 
+                // Add tagalong key to chat
+        
                 FirebaseManager.createChatWithTagID(key: newKey)
+                
+                
                 
                 print("Chat ID Being created")
 

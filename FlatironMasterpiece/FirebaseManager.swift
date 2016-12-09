@@ -46,6 +46,8 @@ final class FirebaseManager {
 
     var guestStatus = [String: Bool]()
 
+    var hostTagAlongID: String?
+    
     private init() {}
 
 
@@ -369,7 +371,7 @@ final class FirebaseManager {
 
     //MARK: - Tagalong Message Methods
 
-    static func createChatWithTagID(key:String) {
+    static func createChatWithTagID(key: String) {
 //        self.chatRef = allChatsRef.child("\(key)")
         self.chatsRef = allChatsRef.child("\(key)")
 

@@ -21,7 +21,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var chatID: String?
     
-    var tagalongTag = ""
+//    var tagalongTag = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,9 @@ class ChatViewController: JSQMessagesViewController {
         
         
        // observeMessages()
-        observeMessages(for: self.tagalongTag)
+        guard let hostTag = store.hostTagAlongID else { return }
+        
+        observeMessages(for: hostTag)
         
     }
     
