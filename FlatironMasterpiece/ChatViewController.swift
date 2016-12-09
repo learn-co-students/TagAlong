@@ -20,6 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var chatID: String?
+    var tagalongTag = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,8 @@ class ChatViewController: JSQMessagesViewController {
         
         
         //Testing FirebaseManager 
-//        FirebaseManager.createChatWithTagID()
+//        store.createChatWithTagID()
+        
         
         // Testing on a real user
         self.senderId = FirebaseManager.currentUser
@@ -45,8 +47,8 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         
-//        observeMessages()
-
+       // observeMessages()
+        observeMessages(for: self.tagalongTag)
         
     }
     
@@ -150,20 +152,19 @@ class ChatViewController: JSQMessagesViewController {
     
     
     // Observe Messages
-//    private func observeMessages() {
-//        
-//        FirebaseManager.observeMessages { (id, name, text) in
-//            
-//            print(id)
-//            print(name)
-//            print(text)
-//            // 4. Add the new message to the data source
-//             self.addMessage(withId: id, name: name, text: text)
-//            print(self.messages)
-//            // 5. Inform JSQMessagesViewController that a message has been received.
-//            self.finishReceivingMessage()
-//        }
-//
-//    }
+    private func observeMessages(for tag:String) {
+        FirebaseManager.observeMessages(for: tag) { (id, name, text) in
+            print(id)
+            print(name)
+            print(text)
+            // 4. Add the new message to the data source
+            self.addMessage(withId: id, name: name, text: text)
+            print(self.messages)
+            // 5. Inform JSQMessagesViewController that a message has been received.
+            self.finishReceivingMessage()
+        }
+        
+
+    }
     
 }

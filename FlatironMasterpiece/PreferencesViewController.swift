@@ -18,7 +18,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-
     let store = UsersDataStore.sharedInstance
 
     var preferencesLabel = UILabel()
@@ -67,7 +66,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-
+        
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
@@ -130,7 +129,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 170).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        cuisineCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalToConstant: 225).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
 
@@ -150,7 +148,20 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
-
+        
+        //this gets back the cuisines from the
+         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+        print("this is user defaults cuisines \(ustoredUserCuisines)")
+        
+        for cuisine in ustoredUserCuisines {
+            
+            if cuisineArray[indexPath.item] == cuisine {
+                cell.alpha = 1.0
+                cell.layer.borderColor = phaedraOrange.cgColor
+                cell.layer.borderWidth = 4
+                cell.layer.cornerRadius = 43
+            }
+        }
         return cell
     }
 
@@ -170,14 +181,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-            print("array is now \(userStore.preferredCuisineArray)")
+            print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
 
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
                 UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-                print("array is now \(userStore.preferredCuisineArray)")
+                print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
                 cell.toggledSelectedState()
             }
@@ -235,7 +246,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -244,7 +254,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        view.addSubview(replayTutorialButton)
 
         view.addSubview(savePreferencesButton)
         savePreferencesButton.backgroundColor = phaedraLightGreen
@@ -262,7 +271,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         savePreferencesButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
 //        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        savePreferencesButton.addTarget(self, action: #selector(savePreferences), for: .touchUpInside)
+        savePreferencesButton.addTarget(self, action: #selector(savePreferencesButtonTapped), for: .touchUpInside)
         savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
         savePreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
 
@@ -342,13 +351,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    func getRandomCuisine()->String {
-
-        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
-        print("random cuisine is: \(userStore.currentChosenCuisine)")
-        return userStore.currentChosenCuisine
-    }
+//    func getRandomCuisine()->String {
+//
+//        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+//        print("random cuisine is: \(userStore.currentChosenCuisine)")
+//        return userStore.currentChosenCuisine
+//    }
 
 //end of class
 }
+

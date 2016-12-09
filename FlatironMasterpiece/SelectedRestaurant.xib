@@ -24,6 +24,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="lBw-zm-EJv"/>
                 <outlet property="restaurantPricingLabel" destination="ilk-Ne-Fu2" id="T9e-pA-blA"/>
+                <outlet property="selectedCuisineImage" destination="cin-zN-AyG" id="alp-CN-0sH"/>
                 <outlet property="selectedCuisineLabel" destination="1JV-PU-BpF" id="sQw-g2-XGy"/>
                 <outlet property="selectedRestaurantAddressLabel" destination="8Hi-yE-2FO" id="qHx-Ee-EC7"/>
                 <outlet property="selectedRestaurantLabel" destination="oB5-k1-YXP" id="p2z-Ge-xus"/>

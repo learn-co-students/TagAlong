@@ -133,6 +133,7 @@ class WaitingForHostViewController: UIViewController {
     func goToTagAlongTabbedView() {
         print("User wants to go to chat/tabbed bar controller.")
         let tabVC = TabBarController()
+        tabVC.tagAlong = store.selectedTagAlongID!
         self.navigationController?.present(tabVC, animated: true, completion: nil)
     }
     
@@ -158,6 +159,12 @@ class WaitingForHostViewController: UIViewController {
                     self.waitingHostLabel.isHidden = true
                     self.enterTagALongLabel.isHidden = false
                     self.confirmButton.isHidden = false
+                    
+                    guard let tagAlong = self.store.selectedTagAlongID else { print("this has no value");return }
+                   FirebaseManager.joinChat(with: tagAlong, completion: {
+                        self.goToTagAlongTabbedView()
+                   })
+                    
                     
                 } else {
                     

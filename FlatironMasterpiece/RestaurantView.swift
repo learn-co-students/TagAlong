@@ -19,6 +19,7 @@ class RestaurantView: UIView{
 
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var selectedCuisineImage: UIImageView!
     @IBOutlet weak var selectedCuisineLabel: UILabel!
     @IBOutlet weak var selectedRestaurantLabel: UILabel!
     @IBOutlet weak var selectedRestaurantAddressLabel: UILabel!

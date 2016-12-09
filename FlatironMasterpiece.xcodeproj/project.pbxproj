@@ -39,6 +39,8 @@
 		451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */; };
 		451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */; };
 		451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */; };
+		45229D8A1DFA20F0005D322D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45229D891DFA20F0005D322D /* Message.swift */; };
+		45229D8C1DFA37B7005D322D /* RestaurantChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */; };
 		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */; };
 		453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921341DEB8E5100D19A45 /* TabBarController.swift */; };
@@ -101,6 +103,8 @@
 		451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-ExtraLight.ttf"; sourceTree = "<group>"; };
 		451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Regular.ttf"; sourceTree = "<group>"; };
+		45229D891DFA20F0005D322D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantChatViewController.swift; sourceTree = "<group>"; };
 		452C59991DE5EABC005884EE /* SelectedRestaurant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedRestaurant.xib; sourceTree = "<group>"; };
 		453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAlongViewController.swift; sourceTree = "<group>"; };
 		453921341DEB8E5100D19A45 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
 				95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
+				45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */,
 				454ACF3E1DF37A760013567E /* SearchingForTagAlongViewController.swift */,
 				453E06B31DE8EBC8007EE25A /* SelectedRestaurantViewController.swift */,
 				45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */,
@@ -238,6 +243,7 @@
 				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
 				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
 				453E00531DF8B67100694858 /* WaitingForHostViewController.swift */,
+				45229D891DFA20F0005D322D /* Message.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */,
 				453E06B41DE8EBC8007EE25A /* SelectedRestaurantViewController.swift in Sources */,
 				453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */,
+				45229D8C1DFA37B7005D322D /* RestaurantChatViewController.swift in Sources */,
 				453E06B21DE8E8C6007EE25A /* RestaurantView.swift in Sources */,
 				95FCF5101DF7044A009F9EEA /* Secrets.swift in Sources */,
 				454ACF3F1DF37A760013567E /* SearchingForTagAlongViewController.swift in Sources */,
@@ -480,6 +487,7 @@
 				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
 				2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
+				45229D8A1DFA20F0005D322D /* Message.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
