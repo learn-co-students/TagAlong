@@ -90,7 +90,7 @@ class WaitingForHostViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(goToTagAlongTabbedView), for: .touchUpInside)
         confirmButton.setTitleColor(phaedraYellow, for: .normal)
         confirmButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-//        confirmButton.isHidden = true
+        confirmButton.isHidden = true
         
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
