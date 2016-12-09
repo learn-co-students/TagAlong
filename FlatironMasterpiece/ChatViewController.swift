@@ -31,6 +31,7 @@ class ChatViewController: JSQMessagesViewController {
         
         //dismisses keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
 //        if let tagAlongID = tagAlongID {
 //        tagAlongRef = allChatsRef.child("\(tagAlongID)")
