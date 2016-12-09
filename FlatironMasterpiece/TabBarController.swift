@@ -21,21 +21,15 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let firstTab = SelectedRestaurantViewController()
-        let tabTwoBarItem2 = UITabBarItem(title: "Restaurant Info", image: UIImage(named: "fork-knife.png"), selectedImage: UIImage(named: "fork-knife.png"))
-        firstTab.tabBarItem = tabTwoBarItem2
+        let firstTab = RestaurantChatViewController()
+        let tabBarItem1 = UITabBarItem(title: "Restaurant Info", image: UIImage(named: "fork-knife.png"), selectedImage: UIImage(named: "fork-knife.png"))
+        firstTab.tabBarItem = tabBarItem1
         
-        let chatVC = ChatViewController()
-        let secondTab = chatVC
-        chatVC.tagalongTag = tagAlong
-        let tabOneBarItem1 = UITabBarItem(title: "Chat", image: UIImage(named: "ic_speaker_notes.png"), selectedImage: UIImage(named: "ic_speaker_notes.png"))
-        secondTab.tabBarItem = tabOneBarItem1
+        let secondTab = PreferenceViewController()
+        let tabBarItem2 = UITabBarItem(title: "Preferences", image: UIImage(named: "gear.png"), selectedImage: UIImage(named: "gear.png"))
+        secondTab.tabBarItem = tabBarItem2
         
-        let thirdTab = PreferenceViewController()
-        let tabeThreeBarItem3 = UITabBarItem(title: "Preferences", image: UIImage(named: "gear.png"), selectedImage: UIImage(named: "gear.png"))
-        thirdTab.tabBarItem = tabeThreeBarItem3
-        
-        self.viewControllers = [firstTab, secondTab, thirdTab]
+        self.viewControllers = [firstTab, secondTab]
         
     }
     
