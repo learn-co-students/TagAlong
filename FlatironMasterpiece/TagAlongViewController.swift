@@ -190,7 +190,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
-        let selectedTag = tagalongs[indexPath.row]
+        var selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
         let waitingForHostVC = WaitingForHostViewController()
@@ -203,8 +203,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
-        
+    
         // Remove tagalongID from Array
+        
 //        for (index, value) in tagalongs.enumerated() {
 //            if value == selectedTag {
 //                tagalongs.remove(at: index)
