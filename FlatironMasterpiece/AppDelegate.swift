@@ -48,9 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets the initial view controller
 
-        let initialViewController = PreferenceViewController()
-
- //      let frame = UIScreen.main.bounds
+//        let initialViewController = HostOrTagAlongViewController()
+//
+//       let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //
 //        if let window = window {

@@ -59,10 +59,13 @@ class SelectedRestaurantViewController: UIViewController {
         restaurantView.selectedRestaurantLabel.text = restaurant?.name
         print(restaurantView.selectedCuisineLabel.text)
         restaurantView.selectedRestaurantAddressLabel.text = restaurant?.address
+        if let unwrappedPriceLevel = restaurant?.priceLevel {
+            emojiString = changePriceToEmoji(level: unwrappedPriceLevel)
+        }
 //        emojiString = changePriceToEmoji(level: (restaurant?.priceLevel)!)
-//        print(emojiString)
+        print(emojiString)
 //        restaurantView.restaurantPricingLabel.text = emojiString
-        restaurantView.restaurantPricingLabel.text = String(describing: restaurant?.priceLevel)
+        restaurantView.restaurantPricingLabel.text = emojiString
         
     }
 
