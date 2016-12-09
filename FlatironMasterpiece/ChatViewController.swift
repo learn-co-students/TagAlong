@@ -20,6 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var chatID: String?
+    
     var tagalongTag = ""
     
     override func viewDidLoad() {
@@ -72,7 +73,6 @@ class ChatViewController: JSQMessagesViewController {
         
         FirebaseManager.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: self.messages.count)
     
-        
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         

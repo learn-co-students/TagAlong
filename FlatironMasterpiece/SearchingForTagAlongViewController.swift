@@ -161,10 +161,7 @@ class SearchingForTagAlongViewController: UIViewController {
     func returnToDeckView() {
         print("User wants to return to deck view")
         let shakeInstructionVC = ShakeInstructionViewController()
-//        self.navigationController?.present(shakeInstructionVC, animated: true, completion: nil)
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-//        let shakeInstructionVC = ShakeInstructionViewController()
-//        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
 
     func seeOtherTagAlongs() {
@@ -180,8 +177,6 @@ class SearchingForTagAlongViewController: UIViewController {
         print(acceptedGuestID)
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
-            
-            
             
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
