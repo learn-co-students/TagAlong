@@ -17,8 +17,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     var myTableView: UITableView!
     var tagAlongUsersLabel: UILabel = UILabel()
 
-    
-    
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     
     
@@ -47,8 +45,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func formatLabels() {
         view.addSubview(tagAlongUsersLabel)
         tagAlongUsersLabel.text = "Choose a Tag Along"
-        // TODO: - decide on preferences label font and font size
-        tagAlongUsersLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
+        tagAlongUsersLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
         tagAlongUsersLabel.textColor = phaedraYellow
         tagAlongUsersLabel.textAlignment = .center
         tagAlongUsersLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -66,7 +66,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-
+        
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
@@ -181,14 +181,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-            print("array is now \(userStore.preferredCuisineArray)")
+            print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
 
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
                 UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-                print("array is now \(userStore.preferredCuisineArray)")
+                print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
                 cell.toggledSelectedState()
             }
@@ -246,7 +246,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         logoutButton.titleLabel?.textAlignment = .center
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         logoutButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -255,7 +254,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        view.addSubview(replayTutorialButton)
 
         view.addSubview(savePreferencesButton)
         savePreferencesButton.backgroundColor = phaedraLightGreen
@@ -353,13 +351,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     }
 
-    func getRandomCuisine()->String {
-
-        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
-        print("random cuisine is: \(userStore.currentChosenCuisine)")
-        return userStore.currentChosenCuisine
-    }
+//    func getRandomCuisine()->String {
+//
+//        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
+//        print("random cuisine is: \(userStore.currentChosenCuisine)")
+//        return userStore.currentChosenCuisine
+//    }
 
 //end of class
 }
