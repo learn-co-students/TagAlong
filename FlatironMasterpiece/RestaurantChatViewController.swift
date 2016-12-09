@@ -55,13 +55,11 @@ class RestaurantChatViewController: UIViewController {
         print("chat button getting tapped")
         let chatVC = ChatViewController()
         //Erica's old nav controller
-        //self.navigationController?.pushViewController(chatVC, animated: true)
+        self.navigationController?.pushViewController(chatVC, animated: true)
         
         //Johann's test
 //        self.present(chatVC, animated: true, completion: nil)
-        
-        let newNav = UINavigationController()
-        newNav.present(chatVC, animated: true, completion: nil)
+    
 
     }
 
