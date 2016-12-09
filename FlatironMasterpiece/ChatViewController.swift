@@ -25,11 +25,13 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("getting loaded")
         self.title = "Chat"
         navigationController?.isNavigationBarHidden = true
         
-        //NOTE: - this hides the keyboard in chat
-        jsqSetCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+        //dismisses keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
 //        if let tagAlongID = tagAlongID {
 //        tagAlongRef = allChatsRef.child("\(tagAlongID)")
 //        }
@@ -57,6 +59,10 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         // Dummy Data
         
@@ -69,15 +75,6 @@ class ChatViewController: JSQMessagesViewController {
         //        finishReceivingMessage()
     }
     
-    
-    func jsqSetCollectionViewInsetsTopValue(_ top: CGFloat, bottomValue bottom: CGFloat) {
-        var insets = UIEdgeInsetsMake(top, 0.0, bottom, 0.0)
-        self.collectionView!.contentInset = insets
-        self.collectionView!.scrollIndicatorInsets = insets
-        if self.automaticallyScrollsToMostRecentMessage {
-            self.scrollToBottom(animated: true)
-        }
-    }
     
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {

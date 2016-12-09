@@ -52,8 +52,10 @@ class RestaurantChatViewController: UIViewController {
     }
     
     func goToChatVC() {
+        print("chat button getting tapped")
         let chatVC = ChatViewController()
-        self.navigationController?.pushViewController(chatVC, animated: true)
+        self.present(chatVC, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(chatVC, animated: true)
     }
 
 }
