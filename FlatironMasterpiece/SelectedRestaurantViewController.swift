@@ -53,12 +53,16 @@ class SelectedRestaurantViewController: UIViewController {
         self.title = "Restaurant Info"
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = UIColor.blue
+        
         restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
+        print(restaurantView.selectedCuisineLabel.text)
         restaurantView.selectedRestaurantLabel.text = restaurant?.name
+        print(restaurantView.selectedCuisineLabel.text)
         restaurantView.selectedRestaurantAddressLabel.text = restaurant?.address
-        emojiString = changePriceToEmoji(level: (restaurant?.priceLevel)!)
-        print(emojiString)
-        restaurantView.restaurantPricingLabel.text = emojiString
+//        emojiString = changePriceToEmoji(level: (restaurant?.priceLevel)!)
+//        print(emojiString)
+//        restaurantView.restaurantPricingLabel.text = emojiString
+        restaurantView.restaurantPricingLabel.text = String(describing: restaurant?.priceLevel)
         
     }
 
