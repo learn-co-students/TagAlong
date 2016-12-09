@@ -45,11 +45,6 @@ final class FirebaseManager {
     private init() {}
 
 
-
-
-
-
-
 //    static func upload(image: UIImage, handler: (Bool) -> Void) {
 //
 //        // upload to firebase
@@ -213,31 +208,23 @@ final class FirebaseManager {
     }
     
     static func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
-        
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            
             guard error == nil else { completion(false); return }
-            
             completion(true)
         })
     }
     
     static func sendPasswordReset(email: String, completion: @escaping (Bool) -> Void) {
-        
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
             completion(true)
-            
         })
-        
     }
     
     //MARK: - Firebase Facebook Methods
     static func facebookLogIn(completion: @escaping (Bool) -> Void) {
-        
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
-        
         if let token = FBSDKAccessToken.current() {
             print("ALL good")
             if let tokenString = token.tokenString {
@@ -250,7 +237,6 @@ final class FirebaseManager {
             }
             
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                
                 print("User has logged into Firebase")
                 guard error == nil else { completion(false); return }
                 completion(true)
@@ -429,11 +415,11 @@ final class FirebaseManager {
     }
     
     
-    func createGuestFrom(tagalong: String, completion:@escaping (User)->()){
-        var userName = guestID
-        //
+    func createGuestFrom(tagalong: String, completion: @escaping (User) -> ()) {
+      
+        
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
-            userName = snapshot.key as! String
+           var userName = snapshot.key as! String
             
             // This will need to be replaced with the userID
             FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
