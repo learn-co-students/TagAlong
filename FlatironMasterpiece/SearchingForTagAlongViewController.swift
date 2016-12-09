@@ -181,8 +181,7 @@ class SearchingForTagAlongViewController: UIViewController {
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
             
-            
-            
+
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
             

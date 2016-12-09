@@ -114,7 +114,7 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
                 // Add tagalong key to chat
                 
-               // FirebaseManager.createChatWithTagID(key: newKey)
+                FirebaseManager.createChatWithTagID(key: newKey)
                 
                 print("Chat ID Being created")
 
