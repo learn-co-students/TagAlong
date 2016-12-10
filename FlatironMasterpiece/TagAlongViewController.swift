@@ -30,7 +30,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         formatLabels()
         
         layoutTableView()
-        layoutScrollView()
+        //NOTE: - Erica is hiding this scrollview below.
+//        layoutScrollView()
         
         
 //        for tag in tagalongs {
@@ -68,6 +69,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //        tagAlongUserArray.append(user5)
 //    }
     
+    //NOTE: - this scrollview is being hidden
     func layoutScrollView() {
         //        var myImageView: UIImageView!
         //        var aspectRatio: NSLayoutConstraint?

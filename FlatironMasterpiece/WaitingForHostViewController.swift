@@ -183,8 +183,7 @@ class WaitingForHostViewController: UIViewController {
                    FirebaseManager.joinChat(with: tagAlong, completion: {
                         self.goToTagAlongTabbedView()
                    })
-                    
-                    
+                
                 } else {
                     
                     // TODO: Not true, it's FALSE so do something else.

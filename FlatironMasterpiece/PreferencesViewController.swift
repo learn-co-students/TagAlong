@@ -150,7 +150,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.foodLabel.text = cuisineArray[indexPath.item]
         
         //this gets back the cuisines from the
-         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? []
         print("this is user defaults cuisines \(ustoredUserCuisines)")
         
         for cuisine in ustoredUserCuisines {
@@ -184,12 +184,17 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
 
+            
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
-                UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
+                print("Johann Test - \(userStore.prefCuisine)")
+                var previousprefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as! [String]
+                previousprefs.append(selectedCuisine)
+                UserDefaults.standard.set(previousprefs, forKey: "UserCuisineArray")
                 print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
+                print("Johann Test - \(userStore.prefCuisine)")
                 cell.toggledSelectedState()
             }
         }
