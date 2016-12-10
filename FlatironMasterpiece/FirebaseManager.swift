@@ -461,9 +461,9 @@ final class FirebaseManager {
     
     func hideTagalong() {
         
-        guard let tagalongID = FirebaseManager.selectedTagAlongID else { return }
+        guard let tagalongID = selectedTagAlongID else { return }
         
-        FirebaseManager.ref.child("tagalongs").child(selectedTagAlongID).child("hidden").setValue([selectedTagAlongID: true])
+        FirebaseManager.ref.child("tagalongs").child(tagalongID).child("hidden").setValue([tagalongID: true])
     }
     
     

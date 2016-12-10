@@ -135,10 +135,10 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.tagalongs.append(tagalong)
                 
                 // Remove tagalongs
-                for (index, value) in tagalongs.enumerated() {
+                for (index, value) in self.tagalongs.enumerated() {
                     
                     if value.hidden == true {
-                        tagalongs.remove(at: index)
+                        self.tagalongs.remove(at: index)
                     }
                 }
                 

@@ -183,7 +183,7 @@ class SearchingForTagAlongViewController: UIViewController {
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
             
             // Add true value to hidden node
-            store.hideTagalong()
+            self.store.hideTagalong()
             
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
