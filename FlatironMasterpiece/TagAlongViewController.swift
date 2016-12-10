@@ -133,6 +133,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 tagalong.user = user
 
                 self.tagalongs.append(tagalong)
+                
+                // Remove tagalongs
+                for (index, value) in tagalongs.enumerated() {
+                    
+                    if value.hidden == true {
+                        tagalongs.remove(at: index)
+                    }
+                }
+                
                 self.myTableView.reloadData()
             })
             

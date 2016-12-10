@@ -178,12 +178,12 @@ class SearchingForTagAlongViewController: UIViewController {
         print(store.guestID)
         guard let acceptedGuestID = store.guestID else { print("leaving function");return }
         print(acceptedGuestID)
-        // add true value to hidden node 
         
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
             
-            
+            // Add true value to hidden node
+            store.hideTagalong()
             
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
