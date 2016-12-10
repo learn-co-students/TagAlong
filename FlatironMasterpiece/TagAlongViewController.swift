@@ -16,6 +16,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //    var tagAlongUserArray:[User] = []
     var myTableView: UITableView!
     var tagAlongUsersLabel: UILabel = UILabel()
+    let preferencesButton: UIButton = UIButton(type: UIButtonType.custom) as UIButton
+    let preferencesLabel = UILabel()
+    let preferencesImage = UIImage(named: "gear_redLarge.png")! as UIImage
 
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     var hostTagAlongInsteadButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
@@ -56,22 +59,52 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         hostTagAlongInsteadButton.backgroundColor = phaedraOrange
         hostTagAlongInsteadButton.layer.cornerRadius = 5
         hostTagAlongInsteadButton.layer.borderWidth = 2
-        hostTagAlongInsteadButton.layer.borderColor = phaedraDarkGreen.cgColor
-        hostTagAlongInsteadButton.setTitle("Be a Tag Along Host Instead", for: .normal)
+        hostTagAlongInsteadButton.layer.borderColor = phaedraYellow.cgColor
+        hostTagAlongInsteadButton.setTitle("Host a Tag Along Instead", for: .normal)
         hostTagAlongInsteadButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
         hostTagAlongInsteadButton.titleLabel?.adjustsFontSizeToFitWidth = true
         hostTagAlongInsteadButton.titleLabel?.minimumScaleFactor = 2
         hostTagAlongInsteadButton.titleLabel?.numberOfLines = 1
         hostTagAlongInsteadButton.titleLabel?.textAlignment = .center
         hostTagAlongInsteadButton.translatesAutoresizingMaskIntoConstraints = false
-        hostTagAlongInsteadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        hostTagAlongInsteadButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        hostTagAlongInsteadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        hostTagAlongInsteadButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         hostTagAlongInsteadButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68).isActive = true
-        hostTagAlongInsteadButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        hostTagAlongInsteadButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06).isActive = true
+        
         hostTagAlongInsteadButton.addTarget(self, action: #selector(goToShakeInstructions), for: .touchUpInside)
         hostTagAlongInsteadButton.setTitleColor(phaedraYellow, for: .normal)
         hostTagAlongInsteadButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-    }
+        
+        view.addSubview(preferencesLabel)
+        preferencesLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        preferencesLabel.lineBreakMode = .byWordWrapping
+        preferencesLabel.numberOfLines = 0
+        preferencesLabel.text = "Preferences"
+        preferencesLabel.textColor = phaedraYellow
+//        preferencesLabel.textAlignment = .center
+        preferencesLabel.textAlignment = .right
+        preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        preferencesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        preferencesLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        preferencesLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        
+        preferencesButton.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        preferencesButton.setImage(preferencesImage, for: .normal)
+        view.addSubview(preferencesButton)
+        preferencesButton.backgroundColor = phaedraOliveGreen
+        preferencesButton.layer.cornerRadius = 5
+        preferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
+        preferencesButton.titleLabel?.textAlignment = .center
+        preferencesButton.translatesAutoresizingMaskIntoConstraints = false
+        preferencesButton.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 4).isActive = true
+        preferencesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+        preferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        preferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.10).isActive = true
+        preferencesButton.addTarget(self, action: #selector(goToPreferences), for: .touchUpInside)
+        preferencesButton.imageView?.contentMode = .scaleAspectFit
+        preferencesButton.setTitleColor(phaedraOrange, for: .normal)
+        preferencesButton.setTitleColor(phaedraDarkGreen, for: .highlighted)    }
     
 //    func createFakeUsers() {
 //        let user1:User = User(firstName: "Dwayne", lastName: "Johnson", emailAddress: "therock@peoplesElbow.com", passWord: "rock", industry: "Entertainment", jobTitle: "Beast")
@@ -87,8 +120,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //    }
     
     func goToShakeInstructions() {
+        print("User wants to go to shakeinstructions")
         let shakeInstVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstVC, animated: true)
+    }
+    
+    func goToPreferences() {
+        print("User wants to go to preferences")
+        let preferencesVC = PreferenceViewController()
+        self.navigationController?.pushViewController(preferencesVC, animated: true)
     }
     
     //Firebase functions --- this can be refined in firebaseManager during refactoring
