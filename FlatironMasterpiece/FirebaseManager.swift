@@ -459,18 +459,12 @@ final class FirebaseManager {
         })
     }
     
-//    func observeToRemoveTagalong() {
-//        
-//        FirebaseManager.ref.child("tagalongs").observe(.childAdded) { (snapshot) in
-//            
-//            
-//            snapshot
-//            // Add hidden property on each tagalong 
-//            
-//            
-//            
-//        }
-//    }
+    func hideTagalong() {
+        
+        guard let tagalongID = FirebaseManager.selectedTagAlongID else { return }
+        
+        FirebaseManager.ref.child("tagalongs").child(selectedTagAlongID).child("hidden").setValue([selectedTagAlongID: true])
+    }
     
     
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
