@@ -13,7 +13,7 @@ class WaitingForHostViewController: UIViewController {
     
     let waitingHostLabel:UILabel = UILabel()
     let enterTagALongLabel: UILabel = UILabel()
-    let confirmButton: UIButton = UIButton()
+    let enterTagAlongButton: UIButton = UIButton()
     let cancelTagAlongLabel: UILabel = UILabel()
     let hostUnavailableLabel: UILabel = UILabel()
     let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
@@ -77,31 +77,32 @@ class WaitingForHostViewController: UIViewController {
         enterTagALongLabel.isHidden = true
         
         
-        view.addSubview(confirmButton)
-        confirmButton.backgroundColor = phaedraOrange
-        confirmButton.layer.cornerRadius = 5
-        confirmButton.setTitle("Start Chatting", for: .normal)
-        confirmButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
-        confirmButton.titleLabel?.textAlignment = .center
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.topAnchor.constraint(equalTo: waitingHostLabel.bottomAnchor, constant: 30).isActive = true
-        confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        confirmButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
-        confirmButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
-        confirmButton.addTarget(self, action: #selector(goToTagAlongTabbedView), for: .touchUpInside)
-        confirmButton.setTitleColor(phaedraYellow, for: .normal)
-        confirmButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        confirmButton.isHidden = true
+        view.addSubview(enterTagAlongButton)
+        enterTagAlongButton.backgroundColor = phaedraOrange
+        enterTagAlongButton.layer.cornerRadius = 5
+        enterTagAlongButton.setTitle("Start Chatting", for: .normal)
+        enterTagAlongButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
+        enterTagAlongButton.titleLabel?.textAlignment = .center
+        enterTagAlongButton.translatesAutoresizingMaskIntoConstraints = false
+        enterTagAlongButton.topAnchor.constraint(equalTo: waitingHostLabel.bottomAnchor, constant: 30).isActive = true
+        enterTagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        enterTagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
+        enterTagAlongButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        enterTagAlongButton.addTarget(self, action: #selector(goToTagAlongTabbedView), for: .touchUpInside)
+        enterTagAlongButton.setTitleColor(phaedraYellow, for: .normal)
+        enterTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
+        enterTagAlongButton.isHidden = true
         
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
         activityIndicator.layer.cornerRadius = 4
         activityIndicator.layer.backgroundColor = phaedraOliveGreen.cgColor
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 40).isActive = true
+        activityIndicator.topAnchor.constraint(equalTo: enterTagAlongButton.bottomAnchor, constant: 40).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         activityIndicator.startAnimating()
         
+        //NOTE: - hostUnavailable label
         view.addSubview(hostUnavailableLabel)
         hostUnavailableLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
         hostUnavailableLabel.lineBreakMode = .byWordWrapping
@@ -110,7 +111,7 @@ class WaitingForHostViewController: UIViewController {
         hostUnavailableLabel.textColor = phaedraYellow
         hostUnavailableLabel.textAlignment = .center
         hostUnavailableLabel.translatesAutoresizingMaskIntoConstraints = false
-        hostUnavailableLabel.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 100).isActive = true
+        hostUnavailableLabel.topAnchor.constraint(equalTo: enterTagAlongButton.bottomAnchor, constant: 100).isActive = true
         hostUnavailableLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         hostUnavailableLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         //change this later
@@ -125,7 +126,7 @@ class WaitingForHostViewController: UIViewController {
         cancelTagAlongLabel.textColor = phaedraYellow
         cancelTagAlongLabel.textAlignment = .center
         cancelTagAlongLabel.translatesAutoresizingMaskIntoConstraints = false
-        cancelTagAlongLabel.topAnchor.constraint(equalTo: confirmButton.bottomAnchor, constant: 100).isActive = true
+        cancelTagAlongLabel.topAnchor.constraint(equalTo: enterTagAlongButton.bottomAnchor, constant: 100).isActive = true
         cancelTagAlongLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         cancelTagAlongLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         cancelTagAlongLabel.isHidden = false
@@ -173,11 +174,12 @@ class WaitingForHostViewController: UIViewController {
                 
                 if result {
                     
-                    // TODO: Reveal enter tag along button
-                    
+                    //if host approves guest for tagalong
+                    //hide waitingHost label & hostUnavailable label
                     self.waitingHostLabel.isHidden = true
+                    //show tag along label & confirm button
                     self.enterTagALongLabel.isHidden = false
-                    self.confirmButton.isHidden = false
+                    self.enterTagAlongButton.isHidden = false
                     
                     guard let tagAlong = self.store.selectedTagAlongID else { print("this has no value");return }
                    FirebaseManager.joinChat(with: tagAlong, completion: {
@@ -196,7 +198,10 @@ class WaitingForHostViewController: UIViewController {
                 if noResult == "none" {
                     
                     // TODO: They've been denied, do something else.
+                    //if host rejects guest
+                    //show hostUnavailable label
                     self.hostUnavailableLabel.isHidden = false
+                    
                     self.cancelTagAlongLabel.isHidden = true
                     self.searchNewTagAlongButton.isHidden = false
                 }
