@@ -69,6 +69,33 @@ final class FirebaseManager {
 
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
+    
+    
+    static func sendToStorage(data:Data){
+        guard let currentUser = FirebaseManager.currentUser else { return }
+        
+            print(data)
+            let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
+        
+        
+                storageRef.put(data, metadata: nil, completion: { (metadata, error) in
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    print(metadata)
+                })
+        
+            
+            
+            
+            
+            //        let reference = FIRDatabase.database().reference(fromURL: "gs://newcarrots.appspot.com")
+            //        let usersRef = reference.child("users").child(uid)
+        
+        
+        
+    }
     static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
         // 1 - create a new user in Firebase
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
