@@ -162,7 +162,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         myTableView.backgroundColor = phaedraLightGreen
         
         //this determines the size of the tableview
-        myTableView.frame = CGRect(x: 0, y: 70, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.60)
+        myTableView.frame = CGRect(x: 0, y: 70, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.77)
         //        myTableView.layer.cornerRadius = 8
         
 //        myTableView.register(TableViewCell.self, forCellReuseIdentifier: "tagAlongCell")
