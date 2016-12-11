@@ -117,7 +117,6 @@ class WaitingForHostViewController: UIViewController {
         hostUnavailableLabel.topAnchor.constraint(equalTo: enterTagAlongButton.bottomAnchor, constant: 180).isActive = true
         hostUnavailableLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         hostUnavailableLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        //change this later
         hostUnavailableLabel.isHidden = true
         
         //NOTE: - Cancel Tag Along Label
@@ -156,7 +155,6 @@ class WaitingForHostViewController: UIViewController {
         let tabVC = TabBarController()
         tabVC.tagAlong = store.selectedTagAlongID!
         self.navigationController?.pushViewController(tabVC, animated: true)
-        //self.navigationController?.present(tabVC, animated: true, completion: nil)
     }
     
     func searchOtherTagAlongs() {

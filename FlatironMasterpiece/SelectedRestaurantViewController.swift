@@ -139,12 +139,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 //            self.navigationController?.present(chatVC, animated: true, completion: nil)
 ////
 
-
-            //segue way searchingForTagAlong vc
-//            let searchingVC = SearchingForTagAlongViewController()
-//            self.navigationController?.pushViewController(searchingVC, animated: true)
-
-
         })
         confirmTagAlongAlert.addAction(cancelAction)
         confirmTagAlongAlert.addAction(confirmAction)
