@@ -136,9 +136,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
+            
+        
             let tagDict = snapshot.value as! [String: Any]
+            print("------------------")
+            print(tagDict)
+            
             let tagId = snapshot.key
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
+            
             
             print("****************"+tagId)
             
@@ -150,7 +156,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 // Remove tagalongs
                 for (index, value) in self.tagalongs.enumerated() {
                     
-                    if value.hidden == "true" {
+                    if value.hidden == true {
                         self.tagalongs.remove(at: index)
                     }
                 }

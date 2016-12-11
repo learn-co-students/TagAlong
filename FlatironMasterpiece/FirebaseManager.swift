@@ -546,7 +546,7 @@ final class FirebaseManager {
         print("-------> \(tagalong) <-------")
 //        guard let tagalongID = selectedTagAlongID else { return }
 
-        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue("true")
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue(true)
     }
     
 
