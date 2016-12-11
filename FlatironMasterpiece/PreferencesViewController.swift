@@ -183,13 +183,17 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
-                print("Johann Test - \(userStore.prefCuisine)")
-                var previousprefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as! [String]
-                previousprefs.append(selectedCuisine)
-                UserDefaults.standard.set(previousprefs, forKey: "UserCuisineArray")
+                
+                //Johann's code
+//                print("Johann Test - \(userStore.prefCuisine)")
+//                var previousprefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as! [String]
+//                previousprefs.append(selectedCuisine)
+//                UserDefaults.standard.set(previousprefs, forKey: "UserCuisineArray")
+//                print("Johann Test - \(userStore.prefCuisine)")
+                UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
                 print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
-                print("Johann Test - \(userStore.prefCuisine)")
+
                 cell.toggledSelectedState()
             }
         }
