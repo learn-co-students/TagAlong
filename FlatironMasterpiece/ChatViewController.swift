@@ -27,7 +27,11 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print("getting loaded")
         self.title = "Chat"
-        navigationController?.isNavigationBarHidden = false
+//        navigationController?.isNavigationBarHidden = false
+        let block = UIBarButtonItem(title: "Report", style: UIBarButtonItemStyle.plain, target: self, action: "displayBlock")
+        navigationItem.rightBarButtonItem = block
+       // navigationItem.rightBarButtonItem
+        //
         
         //dismisses keyboard
         self.inputToolbar.contentView.leftBarButtonItem = nil
@@ -58,6 +62,10 @@ class ChatViewController: JSQMessagesViewController {
         guard let tagID = store.selectedTagAlongID else { return }
         
         observeMessages(for: tagID)
+        
+    }
+  
+    func displayBlock() {
         
     }
     
