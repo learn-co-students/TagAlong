@@ -39,12 +39,6 @@ class ShakeInstructionViewController: UIViewController {
         print("getlocationVC is working")
         placesClient = GMSPlacesClient.shared()
 
-//        if view == vview {
-//            vibrate()
-//            playSound()
-//        }
-//        playSound()
-
     }
 
 

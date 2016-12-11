@@ -14,13 +14,11 @@
 
 //ADD: take picture button, choose picture button, view with picture
 
-
 import Foundation
 import UIKit
 
 
 class PicPickerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -35,7 +33,6 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     // this should create the alert that allows you to choose how you want to get your picture
-    
     
 //
 //    
