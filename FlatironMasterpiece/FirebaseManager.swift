@@ -434,6 +434,13 @@ final class FirebaseManager {
 
     }
 
+    func blockUser(userID: String) {
+        guard let currentUser = FirebaseManager.currentUser else { print("no user printing");return}
+        FirebaseManager.ref.child("blockedID").child("\(currentUser)").child("blockedUser").observe(.childAdded, with: (FIRDataSnapshot) -> Void)
+    
+    
+    }
+    
     func denyTagalong(guestID: String) {
 
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
