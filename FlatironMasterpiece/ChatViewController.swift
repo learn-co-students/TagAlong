@@ -20,23 +20,28 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var chatID: String?
-    var tagalongTag = ""
+    
+//    var tagalongTag = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("getting loaded")
         self.title = "Chat"
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
         
-//        if let tagAlongID = tagAlongID {
-//        tagAlongRef = allChatsRef.child("\(tagAlongID)")
-//        }
+        //dismisses keyboard
+        self.inputToolbar.contentView.leftBarButtonItem = nil
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
+//       if let tagAlongID = tagAlongID {
+//            tagAlongRef = allChatsRef.child("\(tagAlongID)")
+//       }
         
         //Testing FirebaseManager 
-//        store.createChatWithTagID()
+//      store.createChatWithTagID()
         
-        
-        // Testing on a real user
+        //Testing on a real user
         self.senderId = FirebaseManager.currentUser
 
         //TODO: - change this displayName to the currentUser's name
@@ -46,10 +51,15 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-        
        // observeMessages()
-        observeMessages(for: self.tagalongTag)
+        guard let tagID = store.selectedTagAlongID else { return }
         
+        observeMessages(for: tagID)
+        
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,7 +74,6 @@ class ChatViewController: JSQMessagesViewController {
         //        finishReceivingMessage()
     }
     
-    
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
@@ -72,7 +81,6 @@ class ChatViewController: JSQMessagesViewController {
         
         FirebaseManager.sendMessage(senderId: senderId, senderDisplayName: senderDisplayName, text: text, date: date, messageCount: self.messages.count)
     
-        
         // message sent sound
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         
@@ -152,7 +160,7 @@ class ChatViewController: JSQMessagesViewController {
     
     
     // Observe Messages
-    private func observeMessages(for tag:String) {
+    private func observeMessages(for tag: String) {
         FirebaseManager.observeMessages(for: tag) { (id, name, text) in
             print(id)
             print(name)

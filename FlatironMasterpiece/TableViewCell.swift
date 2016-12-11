@@ -16,6 +16,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var restNameLabel: UILabel!
     @IBOutlet weak var restDistLabel: UILabel!
     @IBOutlet weak var diningTimeLabel: UILabel!
+
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

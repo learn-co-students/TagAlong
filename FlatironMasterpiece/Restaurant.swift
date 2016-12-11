@@ -60,18 +60,27 @@ class Restaurant {
                 print("&&&&&&&&&&&&&")
             }
         }
+        
+        //NOTE: - ELI, this is what I wrote so far for the missing image
+        if let noPhotoReference = dictionary["reference"] as? String {
+            print("\n\nno photo reference \(noPhotoReference)")
+            if noPhotoReference != "" {
+                self.photoImage = UIImage(named: "fork_red")
+            }
+        }
     
         //gets restaurant photoref
         if let restPhotoArray = dictionary["photos"] as? [[String:Any]] {
             let photoDict = restPhotoArray[0]
             if let rawPhotoRef = photoDict["photo_reference"] {
+                print("\n\nthis is the rawPhotoRef: \(rawPhotoRef)")
                 if let photoString = rawPhotoRef as? NSString {
                     self.photoRef = String(photoString)
                     APIClientGooglePlaces.getRestImages(photoRef: photoRef, completion: { (data) in
                         if let rawData = data {
                             self.photoImage = UIImage(data: rawData)
                         }
-                    })                    
+                    })
                 }
             }
         }

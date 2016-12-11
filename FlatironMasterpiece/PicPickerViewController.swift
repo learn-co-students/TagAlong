@@ -47,10 +47,11 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     func selectPicture() {
         let picker = UIImagePickerController()
-        picker.allowsEditing = true
         picker.delegate = self
+        picker.allowsEditing = true
+        
         present(picker, animated: true)
-        imagePickerControllerDidCancel(picker)
+ //       imagePickerControllerDidCancel(picker)
 
     }
     
@@ -62,11 +63,11 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         present(picker, animated: true)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-        print("Really, dismisssss!")
-        //AccountCreationViewController()
-    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        dismiss(animated: true)
+//        print("Really, dismisssss!")
+//        //AccountCreationViewController()
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -86,6 +87,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         guard let imageData = UIImageJPEGRepresentation(newImage, 0.6) else { return }
         guard let compressedJPGImage = UIImage(data: imageData) else { return }
         //send to firebase
+        
+        FirebaseManager.sendToStorage(data: imageData)
 
 //        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
 //            newImage = image

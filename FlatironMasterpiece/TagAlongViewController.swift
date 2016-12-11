@@ -16,8 +16,12 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //    var tagAlongUserArray:[User] = []
     var myTableView: UITableView!
     var tagAlongUsersLabel: UILabel = UILabel()
+    let preferencesButton: UIButton = UIButton(type: UIButtonType.custom) as UIButton
+    let preferencesLabel = UILabel()
+    let preferencesImage = UIImage(named: "gear_redLarge.png")! as UIImage
 
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    var hostTagAlongInsteadButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
     
     
     override func viewDidLoad() {
@@ -27,11 +31,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         //store.getTagalongs()
         // print(store.tagalongs.count)
         view.backgroundColor = phaedraOliveGreen
-        formatLabels()
-        
+        formatViews()
         layoutTableView()
-        layoutScrollView()
-        
         
 //        for tag in tagalongs {
 //            
@@ -42,17 +43,68 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    func formatLabels() {
+    
+    func formatViews() {
         view.addSubview(tagAlongUsersLabel)
         tagAlongUsersLabel.text = "Choose a Tag Along"
-        tagAlongUsersLabel.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        tagAlongUsersLabel.font = UIFont(name: "OpenSans-Bold", size: 17.0)
         tagAlongUsersLabel.textColor = phaedraYellow
         tagAlongUsersLabel.textAlignment = .center
         tagAlongUsersLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagAlongUsersLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300).isActive = true
+        tagAlongUsersLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         tagAlongUsersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tagAlongUsersLabel.specialConstrain(to: view)
-    }
+        
+        view.addSubview(hostTagAlongInsteadButton)
+        hostTagAlongInsteadButton.backgroundColor = phaedraOrange
+        hostTagAlongInsteadButton.layer.cornerRadius = 5
+        hostTagAlongInsteadButton.layer.borderWidth = 2
+        hostTagAlongInsteadButton.layer.borderColor = phaedraYellow.cgColor
+        hostTagAlongInsteadButton.setTitle("Host a Tag Along Instead", for: .normal)
+        hostTagAlongInsteadButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        hostTagAlongInsteadButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        hostTagAlongInsteadButton.titleLabel?.minimumScaleFactor = 2
+        hostTagAlongInsteadButton.titleLabel?.numberOfLines = 1
+        hostTagAlongInsteadButton.titleLabel?.textAlignment = .center
+        hostTagAlongInsteadButton.translatesAutoresizingMaskIntoConstraints = false
+        hostTagAlongInsteadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        hostTagAlongInsteadButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        hostTagAlongInsteadButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68).isActive = true
+        hostTagAlongInsteadButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06).isActive = true
+        
+        hostTagAlongInsteadButton.addTarget(self, action: #selector(goToShakeInstructions), for: .touchUpInside)
+        hostTagAlongInsteadButton.setTitleColor(phaedraYellow, for: .normal)
+        hostTagAlongInsteadButton.setTitleColor(phaedraLightGreen, for: .highlighted)
+        
+        view.addSubview(preferencesLabel)
+        preferencesLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        preferencesLabel.lineBreakMode = .byWordWrapping
+        preferencesLabel.numberOfLines = 0
+        preferencesLabel.text = "Preferences"
+        preferencesLabel.textColor = phaedraYellow
+//        preferencesLabel.textAlignment = .center
+        preferencesLabel.textAlignment = .right
+        preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        preferencesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        preferencesLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        preferencesLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        
+        preferencesButton.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        preferencesButton.setImage(preferencesImage, for: .normal)
+        view.addSubview(preferencesButton)
+        preferencesButton.backgroundColor = phaedraOliveGreen
+        preferencesButton.layer.cornerRadius = 5
+        preferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
+        preferencesButton.titleLabel?.textAlignment = .center
+        preferencesButton.translatesAutoresizingMaskIntoConstraints = false
+        preferencesButton.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 4).isActive = true
+        preferencesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+        preferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        preferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.10).isActive = true
+        preferencesButton.addTarget(self, action: #selector(goToPreferences), for: .touchUpInside)
+        preferencesButton.imageView?.contentMode = .scaleAspectFit
+        preferencesButton.setTitleColor(phaedraOrange, for: .normal)
+        preferencesButton.setTitleColor(phaedraDarkGreen, for: .highlighted)    }
     
 //    func createFakeUsers() {
 //        let user1:User = User(firstName: "Dwayne", lastName: "Johnson", emailAddress: "therock@peoplesElbow.com", passWord: "rock", industry: "Entertainment", jobTitle: "Beast")
@@ -67,58 +119,19 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
 //        tagAlongUserArray.append(user5)
 //    }
     
-    func layoutScrollView() {
-        //        var myImageView: UIImageView!
-        //        var aspectRatio: NSLayoutConstraint?
-        //        let burger = UIImage(named: "american")
-        //        myImageView = UIImageView(image: burger)
-        //        aspectRatio = NSLayoutConstraint(item: myImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: myImageView, attribute: .width, multiplier: (burger?.size.height)!/(burger?.size.width)!, constant: 1)
-        //        myImageView.addConstraint(aspectRatio!)
-        
-        //        let myScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
-        //        myScrollView.backgroundColor = phaedraOrange
-        //        myScrollView.addSubview(myImageView)
-        //        myScrollView.contentSize = myImageView.frame.size
-        //        view.addSubview(myScrollView)
-        
-        let myScrollView: UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 465, width: 380, height: 180))
-        let imageWidth: CGFloat = 355
-        let imageHeight: CGFloat = 180
-        var xPosition: CGFloat = 10
-        var yPosition: CGFloat = 0
-        var scrollViewContentSize: CGFloat = 0
-        
-        for image in cuisineImage {
-            let myImage: UIImage = image
-            let myImageView: UIImageView = UIImageView()
-            myImageView.image = myImage
-            
-            myImageView.contentMode = UIViewContentMode.scaleAspectFit
-            myImageView.frame.size.width = imageWidth
-            myImageView.frame.size.height = imageHeight
-            myImageView.center = self.view.center
-            myImageView.frame.origin.x = xPosition
-            myImageView.frame.origin.y = yPosition
-            
-            myScrollView.addSubview(myImageView)
-            
-            let spacer: CGFloat = 30
-            //            yPosition += imageHeight + spacer
-            xPosition += imageWidth + spacer
-            //            scrollViewContentSize += imageHeight
-            scrollViewContentSize += imageWidth
-            
-            
-            myScrollView.contentSize = CGSize(width: imageWidth, height: scrollViewContentSize)
-            myScrollView.contentSize = CGSize(width: scrollViewContentSize + 175, height: imageHeight)
-        }
-        
-        view.addSubview(myScrollView)
-        
+    func goToShakeInstructions() {
+        print("User wants to go to shakeinstructions")
+        let shakeInstVC = ShakeInstructionViewController()
+        self.navigationController?.pushViewController(shakeInstVC, animated: true)
+    }
+    
+    func goToPreferences() {
+        print("User wants to go to preferences")
+        let preferencesVC = PreferenceViewController()
+        self.navigationController?.pushViewController(preferencesVC, animated: true)
     }
     
     //Firebase functions --- this can be refined in firebaseManager during refactoring
-    
     // Get tagalongs
     func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
@@ -149,18 +162,19 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    
     // MARK: - set up tableview
     func layoutTableView() {
         self.myTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.backgroundColor = phaedraOliveGreen
+//        myTableView.backgroundColor = phaedraOliveGreen
+        myTableView.backgroundColor = phaedraLightGreen
         
         //this determines the size of the tableview
-        myTableView.frame = CGRect(x: 0, y: 50, width: 380, height: 400)
+        myTableView.frame = CGRect(x: 0, y: 70, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.77)
         //        myTableView.layer.cornerRadius = 8
         
+//        myTableView.register(TableViewCell.self, forCellReuseIdentifier: "tagAlongCell")
         
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tagAlongCell")
         self.view.addSubview(myTableView)
@@ -171,7 +185,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: - 4 is a default value, we can change this number of cells
         // Make this tagalongKey.count
         return self.tagalongs.count
     }

@@ -15,7 +15,7 @@ class RestaurantChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = phaedraDarkGreen
         setupViews()
     }
@@ -52,8 +52,14 @@ class RestaurantChatViewController: UIViewController {
     }
     
     func goToChatVC() {
+        print("chat button getting tapped")
         let chatVC = ChatViewController()
+        //Erica's old nav controller
         self.navigationController?.pushViewController(chatVC, animated: true)
+        
+        //Johann's test
+//        self.present(chatVC, animated: true, completion: nil)
+
     }
 
 }

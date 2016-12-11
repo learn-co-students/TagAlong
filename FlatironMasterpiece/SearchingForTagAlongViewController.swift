@@ -21,7 +21,7 @@ class SearchingForTagAlongViewController: UIViewController {
     var firstTimeLoaded = true
 
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraBeige
@@ -161,10 +161,7 @@ class SearchingForTagAlongViewController: UIViewController {
     func returnToDeckView() {
         print("User wants to return to deck view")
         let shakeInstructionVC = ShakeInstructionViewController()
-//        self.navigationController?.present(shakeInstructionVC, animated: true, completion: nil)
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-//        let shakeInstructionVC = ShakeInstructionViewController()
-//        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
 
     func seeOtherTagAlongs() {
@@ -178,28 +175,28 @@ class SearchingForTagAlongViewController: UIViewController {
         print(store.guestID)
         guard let acceptedGuestID = store.guestID else { print("leaving function");return }
         print(acceptedGuestID)
-        
+
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
-            
+
             // Add true value to hidden node
             self.store.hideTagalong()
-            
+
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
-            
+
             self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
-        
+
         // Segue into chat/tab bar view
-        
+
     }
 
     func denyTagalongAction() {
 
         guard let deniedGuestID = store.guestID else { print("leaving function");return }
         print(deniedGuestID)
-        
+
         store.denyTagalong(guestID: deniedGuestID)
 
     }

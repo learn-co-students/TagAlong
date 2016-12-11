@@ -11,9 +11,12 @@ import UIKit
 import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
+    let store = FirebaseManager.shared
+    
     var restaurantView: RestaurantView!
     var userStore = UsersDataStore.sharedInstance
-    var map: MKMapView?
+    var restStore = RestaurantDataStore.sharedInstance
+    var restMap: MKMapView?
     var restaurant: Restaurant?
     var emojiString = ""
     
@@ -51,23 +54,16 @@ class SelectedRestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
-        self.title = "Restaurant Info"
+        title = "Restaurant Info"
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = UIColor.blue
         
-        restaurantView.selectedCuisineImage.image = restaurant?.photoImage
-        restaurantView.selectedCuisineLabel.text = userStore.currentChosenCuisine
-        print(restaurantView.selectedCuisineLabel.text)
-        restaurantView.selectedRestaurantLabel.text = restaurant?.name
-        print(restaurantView.selectedCuisineLabel.text)
-        restaurantView.selectedRestaurantAddressLabel.text = restaurant?.address
-        if let unwrappedPriceLevel = restaurant?.priceLevel {
-            emojiString = changePriceToEmoji(level: unwrappedPriceLevel)
-        }
-        print(emojiString)
-        restaurantView.restaurantPricingLabel.text = emojiString
-        
+        restaurantView.restaurant = restaurant
+        restaurantView.setup(cuisine: userStore.currentChosenCuisine)
+
     }
+    
+  
 
     override func loadView() {
         super.loadView()
@@ -75,10 +71,17 @@ class SelectedRestaurantViewController: UIViewController {
         self.view = restaurantView
     }
 
-    func loadRestaurantsMap(lat: Double, long: Double) -> MKMapView {
-      
-       return map!
-    }
+//    func loadRestaurantsMap(lat: Double, long: Double) -> MKMapView {
+//       restaurantView.delegate = self
+//        
+//        let latitude = restaurant?.latitude
+//        let longitude = restaurant?.longitude
+//        let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//        restMap?.setCenter(coordinate, animated: true)
+//        
+//        
+//       return restMap!
+//    }
 
 
 //    func createTagAlong(user: String, date: Date, location: [String: Any]) -> [String: Any] {
@@ -106,16 +109,25 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             //TODO:
             print("confirm tapped")
             print("hey there before createtagalong")
+            
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
+                
+                guard let newKey = key else { return }
 
                 print("------------------- IS BEING CALLED ------------------------")
 
+                self.store.selectedTagAlongID = newKey
+                
                 // Add tagalong key to chat
-                FirebaseManager.createChatWithTagID(key: key)
+        
+                FirebaseManager.createChatWithTagID(key: newKey)
+                
+                
+                
                 print("Chat ID Being created")
 
                 // Add tagalong key to users (current tagalong and tagalongs)
-                FirebaseManager.updateUserWithTagAlongKey(key: key)
+                FirebaseManager.updateUserWithTagAlongKey(key: newKey)
                 
                 let searchingVC = SearchingForTagAlongViewController()
                 self.navigationController?.pushViewController(searchingVC, animated: true)
@@ -147,19 +159,4 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
 }
 
-extension SelectedRestaurantViewController {
-    func changePriceToEmoji(level:Int)->String {
-        switch level {
-        case 0:
-            return "💰"
-        case 1:
-            return "💰💰"
-        case 2:
-            return "💰💰💰"
-        case 3:
-            return "💰💰💰💰"
-        default:
-            return "💰💰"
-        }
-    }
-}
+

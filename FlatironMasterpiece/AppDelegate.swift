@@ -44,19 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
+//        MARK: - sets up the navigation controller for our app
 
-        //MARK: - sets the initial view controller
-
-//        let initialViewController = RestaurantChatViewController()
-//
-//       let frame = UIScreen.main.bounds
+//        let initialViewController = WaitingForHostViewController()
+//        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
-//
 //        if let window = window {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-
+//
            return true
     }
 

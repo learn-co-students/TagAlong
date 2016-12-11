@@ -102,7 +102,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
         self.view.addSubview(budgetSC)
         budgetSC.translatesAutoresizingMaskIntoConstraints = false
- //       budgetSC.topAnchor.constraint(equalTo: budgetLabel.bottomAnchor, constant: 20).isActive = true
         budgetSC.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 100).isActive = true
         budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -149,8 +148,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
         
-        //this gets back the cuisines from the
-         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+        //this gets back the cuisines from the userdefauts
+         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? []
         print("this is user defaults cuisines \(ustoredUserCuisines)")
         
         for cuisine in ustoredUserCuisines {
@@ -175,21 +174,22 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         if userStore.preferredCuisineArray.contains(selectedCuisine) {
 
             cell.toggledSelectedState()
-
             let index = userStore.preferredCuisineArray.index(of: selectedCuisine)
             guard let unwrappedindex = index else { return }
-
             userStore.preferredCuisineArray.remove(at: unwrappedindex)
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
             print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
-
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
-                UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
+                print("Johann Test - \(userStore.prefCuisine)")
+                var previousprefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as! [String]
+                previousprefs.append(selectedCuisine)
+                UserDefaults.standard.set(previousprefs, forKey: "UserCuisineArray")
                 print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
+                print("Johann Test - \(userStore.prefCuisine)")
                 cell.toggledSelectedState()
             }
         }
@@ -227,7 +227,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-
         replayTutorialButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
        // replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -295,6 +294,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func replayTutorial() {
         print("Replay tutorial requested.")
+        
     }
 
     func logoutUser() {
@@ -345,19 +345,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
 
         FirebaseManager.savePref(dictionary: dict)
-
         print(store.preferredCuisineArray)
-//        self.getRandomCuisine()
 
     }
-
-//    func getRandomCuisine()->String {
-//
-//        let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
-//        userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
-//        print("random cuisine is: \(userStore.currentChosenCuisine)")
-//        return userStore.currentChosenCuisine
-//    }
 
 //end of class
 }
