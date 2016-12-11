@@ -72,30 +72,30 @@ class ShakeInstructionViewController: UIViewController {
     }
 
     
-    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
-        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
-        let url = URL(fileURLWithPath: path!)
-
-        var audioPlayer: AVAudioPlayer?
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: url)
-        } catch {
-            print("Nothing to play")
-        }
-        return audioPlayer
-    }
-
-    func loadPlayer() {
-        if let shakeNoise = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
-            self.shakeNoise = shakeNoise
-        }
-        self.shakeNoise?.volume = 1.0
-        self.shakeNoise?.play()
-    }
-
-    func playSound() {
-       loadPlayer()
-    }
+//    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
+//        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+//        let url = URL(fileURLWithPath: path!)
+//
+//        var audioPlayer: AVAudioPlayer?
+//        do {
+//            try audioPlayer = AVAudioPlayer(contentsOf: url)
+//        } catch {
+//            print("Nothing to play")
+//        }
+//        return audioPlayer
+//    }
+//
+//    func loadPlayer() {
+//        if let shakeNoise = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
+//            self.shakeNoise = shakeNoise
+//        }
+//        self.shakeNoise?.volume = 1.0
+//        self.shakeNoise?.play()
+//    }
+//
+//    func playSound() {
+//       loadPlayer()
+//    }
     func vibrate() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
@@ -157,11 +157,11 @@ extension ShakeInstructionViewController {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
                             
-                            if self.view == self.vview {
-                                self.vibrate()
-                                self.playSound()
-                            }
-                            self.playSound()
+//                            if self.view == self.vview {
+//                                self.vibrate()
+//                                self.playSound()
+//                            }
+//                            self.playSound()
                             
                             self.shakeView.activityIndicator.removeFromSuperview()
                             self.shakeView.shakePhoneLabel.isHidden = true
