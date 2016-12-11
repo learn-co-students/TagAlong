@@ -546,8 +546,9 @@ final class FirebaseManager {
         print("-------> \(tagalong) <-------")
 //        guard let tagalongID = selectedTagAlongID else { return }
 
-        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue([tagalong: true])
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue("true")
     }
+    
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 

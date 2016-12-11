@@ -42,7 +42,7 @@ class SelectedRestaurantViewController: UIViewController {
 
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,
-        "hidden" : false,
+        "hidden" : "false",
         "date" : "December 1",
         "location" : [
             "restaurant" : "Peter Luger Stake House",
