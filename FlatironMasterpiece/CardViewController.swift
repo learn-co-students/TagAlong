@@ -138,8 +138,6 @@ class CardViewController: UIViewController {
         }
     }
     
-    
-    
     func makeLabels() {
         view.addSubview(testLabel)
         testLabel.text = "Whoops, out of options!  Shake the app to choose a new cuisine."
@@ -176,7 +174,6 @@ class CardViewController: UIViewController {
             
             let numberOfPlaces = 2.0
             let multiplier = pow(10.0, numberOfPlaces)
-            
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
  
             cardView.restDistanceLabel.text = "\(rounded) mi away"
