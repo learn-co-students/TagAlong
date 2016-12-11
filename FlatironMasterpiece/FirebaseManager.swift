@@ -542,11 +542,11 @@ final class FirebaseManager {
         })
     }
 
-    func hideTagalong() {
+    func hideTagalong(for tagalong: String) {
+        print("-------> \(tagalong) <-------")
+//        guard let tagalongID = selectedTagAlongID else { return }
 
-        guard let tagalongID = selectedTagAlongID else { return }
-
-        FirebaseManager.ref.child("tagalongs").child(tagalongID).child("hidden").setValue([tagalongID: true])
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue([tagalong: true])
     }
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {

@@ -150,7 +150,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 // Remove tagalongs
                 for (index, value) in self.tagalongs.enumerated() {
                     
-                    if value.hidden == true {
+                    if value.hidden == "true" {
                         self.tagalongs.remove(at: index)
                     }
                 }

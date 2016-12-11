@@ -19,7 +19,7 @@ struct Tagalong{
     var hidden: Bool
     var guest = ""
     
-    init(snapshot: [String:Any], tagID: String) {
+    init(snapshot: [String: Any], tagID: String) {
         print(snapshot)
         
         let user = snapshot["user"] as! String
