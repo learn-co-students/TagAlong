@@ -399,24 +399,38 @@ final class FirebaseManager {
     }
     
     
-    func createGuestFrom(tagalong: String, completion: @escaping (User) -> ()) {
-      
+//    func createGuestFrom(tagalong: String, completion: @escaping (User) -> Void) {
+//      
+//        
+//        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
+//           var userName = snapshot.key as! String
+//            
+//            // This will need to be replaced with the userID
+//            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
+//                let userInfo = snapshot.value as! [String: Any]
+//                let user = User(snapshot: userInfo)
+//                
+//                
+//                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+//                completion(user)
+//                
+//            })
+//        })
+//    }
+    
+    func createGuest(from guestID: String, completion: @escaping (User) -> Void) {
         
-        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
-           var userName = snapshot.key as! String
+        FirebaseManager.ref.child("users").child("\(guestID)").observe(.value, with: { (snapshot) in
+            let userInfo = snapshot.value as! [String: Any]
+            let user = User(snapshot: userInfo)
             
-            // This will need to be replaced with the userID
-            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
-                let userInfo = snapshot.value as! [String: Any]
-                let user = User(snapshot: userInfo)
-                
-                
-                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-                //self.newtagalongUserArray.append(user)
-                completion(user)
-                
-            })
+            
+            print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+            completion(user)
+            
         })
+        
+        
     }
 
     func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
@@ -424,7 +438,7 @@ final class FirebaseManager {
 
 
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
-        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+        FirebaseManager.ref.child("users").child("\(guestID)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
             print("Current Tagalong -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
