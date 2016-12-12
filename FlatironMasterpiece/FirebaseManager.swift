@@ -18,14 +18,10 @@ final class FirebaseManager {
     
     static let shared = FirebaseManager()
     
-    
     // Reference properties
     static var ref = FIRDatabase.database().reference().root
-    static var chatRef: FIRDatabaseReference!
-    
-    
+//    static var chatRef: FIRDatabaseReference!
     static var chatsRef: FIRDatabaseReference!
-    
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
     static var newMessageRefHandle: FIRDatabaseHandle?
     static var newTagalongRefHandle: FIRDatabaseHandle?
@@ -40,12 +36,9 @@ final class FirebaseManager {
     var tagalongs = [Tagalong]()
     
     //Tagalong ID from selected Tagalong
-    var selectedTagAlongID: String? //"in9xyf2doNghFp2cBlecJB3M4mf1"       // TODO: Remove this. Using it to test.
-    //User ID from guest requesting tagalong
-    var guestID: String? //"lgIUzQSOU0O5nBS9VvVy9WRIGsf1"           // TODO: Remove this. Using it to test.
-    
+    var selectedTagAlongID: String?
+    var guestID: String?
     var guestStatus = [String: Bool]()
-    
     var hostTagAlongID: String?
     
     
@@ -93,16 +86,11 @@ final class FirebaseManager {
     static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
         // 1 - create a new user in Firebase
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
-            
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
-            
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
-                
                 guard error == nil else { completion(false); return }
-                
                 completion(true)
-                
             })
         })
     }
@@ -155,7 +143,6 @@ final class FirebaseManager {
     
     
     static func sendEmailVerification() {
-        
         FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
             if error == nil {
                 print("Email sent")
@@ -216,10 +203,8 @@ final class FirebaseManager {
                 guard error == nil else { completion(false); return }
                 completion(true)
             }
-            
             print("User has logged in")
             print("=====================================================\n\n\n")
-            
         }
     }
     
@@ -232,22 +217,6 @@ final class FirebaseManager {
         // Outline of what the code should look like:
         let tagAlongsRef = FIRDatabase.database().reference().child("tagalongs")
         
-        //this is created when BOTH users in a tagalong have confirmed being in a tagalong
-        //        let tagAlongInfo = [
-        //            "host" : "UserID", <-- should be collected when host confirms
-        //            "location" : [     <-- should be collected from host
-        //                "name" : "taco bell", <-- should be collected from host / restaurant conf card
-        //                "latitude" : "30",
-        //                "longitude" : "30"
-        //            ],
-        //            "guests" : [   <-- should be collected when guest confirms, these are people who have clicked to initiate a tagalong w/ or w/o host confirmation
-        //                "UserID3" : true, <-- when this is true then create this dictionary and this createTagAlong() should be called
-        //                "UserID2" : false,
-        //                "UserID3" : false
-        //            ],
-        //            "date-time" : "figure out formatting here"
-        //        ] as [String : Any]
-        
         // Tagalong ID
         let tagAlongIDRef = tagAlongsRef.childByAutoId()
         
@@ -255,17 +224,13 @@ final class FirebaseManager {
         let tagAlongIDKey = tagAlongIDRef.key
         
         // Add Tagalong dictionary to Tagalong ID
-        
         tagAlongIDRef.updateChildValues(tagAlongInfo, withCompletionBlock: { error, ref in
-            
             if error != nil { print(error!.localizedDescription); completion(nil); return }
-            
             print("hey there")
             
             completion(tagAlongIDKey)
             
             print(tagAlongIDKey)
-            
             print("after completion")
         })
         
@@ -273,32 +238,24 @@ final class FirebaseManager {
         
     }
     
-    //2 - update user with tagalong id
     static func updateUserWithTagAlongKey(key: String) {
-        
-        // Add tagalong key to users
-        // 1. Create tagalongs
+    
         if FIRAuth.auth()?.currentUser?.uid != nil {
             guard let currentUser = currentUser else { return }
             ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
         }
         
-        // 2. Create current tagalongs
         if FIRAuth.auth()?.currentUser?.uid != nil {
             guard let currentUser = currentUser else { return }
             ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
         }
-        
     }
     
     
     ///this gets called in searchingForTagAlongVC (acceptTagalong())
     func updateGuestWithTagAlongKey(tagAlongkey: String) {
-        
         guard let unwrappedGuestID = guestID else { return }
-        
         FirebaseManager.ref.child("users").child(unwrappedGuestID).child("tagalongs").updateChildValues([tagAlongkey: true])
-        
         FirebaseManager.ref.child("users").child(unwrappedGuestID).child("currentTagalongs").setValue([tagAlongkey: true])
     }
     
@@ -313,7 +270,6 @@ final class FirebaseManager {
                 let userInfo = snapshot.value as! [String: Any]
                 let user = User(snapshot: userInfo)
                 
-                
                 print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
                 //self.newtagalongUserArray.append(user)
                 completion(user)
@@ -327,54 +283,27 @@ final class FirebaseManager {
     //MARK: - Tagalong Message Methods
     
     static func createChatWithTagID(key: String) {
-        //        self.chatRef = allChatsRef.child("\(key)")
         self.chatsRef = allChatsRef.child("\(key)")
-        
-        
-        //        let messageItem = [ // 2
-        //            "senderId": currentUser,
-        //            "senderName": currentUserEmail,
-        //            "text": "hey there nice to meet you :)",
-        //            "timestamp": String(Int(Date().timeIntervalSince1970))
-        //        ]
-        //
-        //        self.chatRef.childByAutoId().setValue(messageItem)
-        
-        
     }
     
     
     static func joinChat(with tagId:String, completion:()->()){
-        //        self.chatRef = allChatsRef.child("\(tagId)")
         self.chatsRef = allChatsRef.child("\(tagId)")
-        
-        //        self.chatRef.observe(.childAdded, with: { (snapshot) in
-        //            print(snapshot.value)
-        //
-        //
-        //        })
-        
         self.chatsRef.observe(.childAdded, with: { (snapshot) in
             print(snapshot.value)
         })
-        
     }
     
     
     static func observeTagalongs(completion: @escaping (String) -> Void) {
-        
         newTagalongRefHandle = ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
-            
             print("--------------------GETTING CALLED------------------")
-            
             print("tagalongQuery snapshot: \(snapshot.value)")
             print("tagalongKey: \(snapshot.key)")
             
             if let tagalongKey = snapshot.key as? String,
                 let tagalongValue = snapshot.value as? [String: Any] {
-                
                 completion(tagalongKey)
-                
             } else {
                 print("Error! Could not decode message data")
             }
@@ -384,17 +313,12 @@ final class FirebaseManager {
     
     // Request a tagalong
     static func requestTagAlong(key: String) {
-        
         guard let currentUser = currentUser else { return }
         ref.child("tagalongs").child("\(key)").child("guests").updateChildValues([currentUser : false])
         
     }
     
     func observeTagalongRequests(response: @escaping (FIRDataSnapshot?) -> Void) {
-        //        selectedTagAlongID = "-KYJz-QJjY4XHOe5qj3C" // TODO: Remove this. Using it to test.
-        
-        //        guard let theSelectedTagAlongID = selectedTagAlongID else { response(nil); return }
-        
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
         FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
@@ -402,51 +326,22 @@ final class FirebaseManager {
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").observe(.childAdded, with: { snapshot in
                 
                 DispatchQueue.main.async {
-                    
                     response(snapshot)
                 }
             })
         })
     }
     
-    
-    //    func createGuestFrom(tagalong: String, completion: @escaping (User) -> Void) {
-    //
-    //
-    //        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
-    //           var userName = snapshot.key as! String
-    //
-    //            // This will need to be replaced with the userID
-    //            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
-    //                let userInfo = snapshot.value as! [String: Any]
-    //                let user = User(snapshot: userInfo)
-    //
-    //
-    //                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-    //                completion(user)
-    //
-    //            })
-    //        })
-    //    }
-    
     func createGuest(from guestID: String, completion: @escaping (User) -> Void) {
-        
         FirebaseManager.ref.child("users").child("\(guestID)").observe(.value, with: { (snapshot) in
             let userInfo = snapshot.value as! [String: Any]
             let user = User(snapshot: userInfo)
-            
-            
             print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
             completion(user)
         })
-        
-        
     }
     
     func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
-        //get my own tag along id
-        
-        
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
         FirebaseManager.ref.child("users").child("\(guestID)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
@@ -454,7 +349,6 @@ final class FirebaseManager {
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
             completion(currentTagalong)
         })
-        
     }
     
     func checkIfBlocked(userID: String, handler: @escaping (Bool) -> Void) {
@@ -470,11 +364,8 @@ final class FirebaseManager {
                 let blockUserIDS = blockedUsers.keys
                 
                 handler(blockUserIDS.contains(userID))
-                
             }
         })
-        
-        
     }
     
     //    func checkIfBlocked(userID: String, handler: @escaping (blockedUsers) -> Void) {
@@ -498,22 +389,16 @@ final class FirebaseManager {
             if error == nil {
                 handler(true)
             }
-            
         })
-        
-        
     }
     
     func denyTagalong(guestID: String) {
-        
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
         FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
             print("Current Tagalong -> \(currentTagalong)")
             
-            
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : "none"])
-            
         })
     }
     
@@ -523,17 +408,14 @@ final class FirebaseManager {
         guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
         
         print("firebase manager observe guest tagalong - selected tag: \(selectedTag)")
-        
+    
         FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.value, with: { (snapshot) in
             completion(snapshot)
-            
         })
     }
     
     func hideTagalong(for tagalong: String) {
         print("-------> \(tagalong) <-------")
-        //        guard let tagalongID = selectedTagAlongID else { return }
-        
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue(true)
     }
     
@@ -543,7 +425,6 @@ final class FirebaseManager {
         print("\n\nFirebaseManager sendMessage:\nsenderId: \(senderId)\nsenderDisplayName: \(senderDisplayName)\ntext: \(text)\ndate: \(date)\nself.messages.count: \(messageCount)\n\n")
         
         let itemRef = self.chatsRef.childByAutoId()
-        
         let messageItem = [ // 2
             "senderId": senderId,
             "senderName": senderDisplayName,
@@ -552,15 +433,9 @@ final class FirebaseManager {
         ]
         
         itemRef.setValue(messageItem, withCompletionBlock: { error, ref in
-            
-            
-            
-            
-            
-            
         })
         
-        print("\n\nFirebaseManager sendMessage:\nchatRef: \(self.chatRef)\n\n")
+        print("\n\nFirebaseManager sendMessage:\nchatRef: \(self.chatsRef)\n\n")
         
         //        self.chatRef.updateChildValues(["\(messageCount)": messageItem])
         
@@ -568,10 +443,7 @@ final class FirebaseManager {
     
     static func observeMessages(for tagalong:String, completion: @escaping (String, String, String) -> Void) {
         print(tagalong)
-        
-        
-        
-        
+  
         self.chatsRef = FirebaseManager.allChatsRef.child("\(tagalong)")
         let chatQuery = chatsRef.queryLimited(toLast:25)
         
@@ -584,67 +456,6 @@ final class FirebaseManager {
                 let text = messageData["text"] else { completion("", "", ""); return }
             
             completion(id, name, text)
-            
         })
-        
-        
-        
-        //
-        //        newMessageRefHandle = chatsRef.observe(.childAdded, with: { (snapshot) -> Void in
-        //
-        //            print("--------------------GETTING CALLED------------------")
-        //
-        //            // 3. Extract the messageData from the snapshot
-        //
-        //            print("messageQuery snapshot: \(snapshot.value)")
-        //            let messageData = snapshot.value as! [String: Any]
-        //
-        //            if let id = messageData["senderId"] as? String,
-        //                let name = messageData["senderName"] as? String,
-        //                let text = messageData["text"] as? String,
-        //                text.characters.count > 0 {
-        //
-        //                completion(id, name, text)
-        //
-        //            } else {
-        //                print("Error! Could not decode message data")
-        //            }
-        //
-        //            print("----------------------------------------------\n\n\n")
-        //        })
     }
-    
-    
-    //    static func observeMessages(completion: @escaping (String, String, String) -> Void) {
-    //
-    //
-    //        // 1. Creating a query that limits the synchronization to the last 25 messages
-    //        //        let messageQuery = chatRef.queryLimited(toLast:25)
-    //
-    //        // 2. Observe every child item that has been added, and will be added, at the messages location.
-    //        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-    //
-    //            print("--------------------GETTING CALLED------------------")
-    //
-    //            // 3. Extract the messageData from the snapshot
-    //
-    //            print("messageQuery snapshot: \(snapshot.value)")
-    //            let messageData = snapshot.value as! [String: Any]
-    //
-    //            if let id = messageData["senderId"] as? String,
-    //                let name = messageData["senderName"] as? String,
-    //                let text = messageData["text"] as? String,
-    //                text.characters.count > 0 {
-    //
-    //                completion(id, name, text)
-    //
-    //            } else {
-    //                print("Error! Could not decode message data")
-    //            }
-    //
-    //            print("----------------------------------------------\n\n\n")
-    //        })
-    //    }
-    
-    
 }
