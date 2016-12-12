@@ -11,11 +11,12 @@ import UIKit
 import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
-    let store = FirebaseManager.shared
-    
-    var restaurantView: RestaurantView!
+    //NOTE: - dataStores
+    let firebaseStore = FirebaseManager.shared
     var userStore = UsersDataStore.sharedInstance
     var restStore = RestaurantDataStore.sharedInstance
+    
+    var restaurantView: RestaurantView!
     var restMap: MKMapView?
     var restaurant: Restaurant?
     var emojiString = ""
@@ -39,10 +40,9 @@ class SelectedRestaurantViewController: UIViewController {
             "lat" : -45,
             "long": 35
         ]
-        
-        
     ]
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
@@ -107,29 +107,27 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
                 print("------------------- IS BEING CALLED ------------------------")
 
-                self.store.selectedTagAlongID = newKey
+                self.firebaseStore.selectedTagAlongID = newKey
                 
                 // Add tagalong key to chat
         
                 FirebaseManager.createChatWithTagID(key: newKey)
                 
-                
-                
                 print("Chat ID Being created")
 
+                
+                let date:Double = Date().timeIntervalSince1970
+                
+                
                 // Add tagalong key to users (current tagalong and tagalongs)
                 FirebaseManager.updateUserWithTagAlongKey(key: newKey)
                 
                 let searchingVC = SearchingForTagAlongViewController()
                 self.navigationController?.pushViewController(searchingVC, animated: true)
                 
+                
+                
             })
-
-            // Testing Chat - should segue to
-
-//            let chatVC = ChatViewController()
-//            self.navigationController?.present(chatVC, animated: true, completion: nil)
-////
 
         })
         confirmTagAlongAlert.addAction(cancelAction)
