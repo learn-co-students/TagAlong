@@ -178,7 +178,7 @@ extension ShakeInstructionViewController {
                             //NOTE: - displays instructions to shake
                             self.shakeView.activityIndicator.removeFromSuperview()
                             self.shakeView.shakePhoneLabel.isHidden = true
-                            self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."
+                            self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!"
                             self.shakeView.chooseCuisineLabel.lineBreakMode = .byWordWrapping
                             self.shakeView.chooseCuisineLabel.numberOfLines = 4
                             self.shakeView.chooseCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 33.0)
