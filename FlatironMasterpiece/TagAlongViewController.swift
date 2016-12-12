@@ -11,6 +11,7 @@ import UIKit
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let store = FirebaseManager.shared
+    let userDataStore = UsersDataStore.sharedInstance
 
     var tagalongs = [Tagalong]()
 //    var tagAlongUserArray:[User] = []
@@ -33,9 +34,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = phaedraOliveGreen
         formatViews()
         layoutTableView()
-
-        
-        
     }
     
     
@@ -99,20 +97,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         preferencesButton.addTarget(self, action: #selector(goToPreferences), for: .touchUpInside)
         preferencesButton.imageView?.contentMode = .scaleAspectFit
         preferencesButton.setTitleColor(phaedraOrange, for: .normal)
-        preferencesButton.setTitleColor(phaedraDarkGreen, for: .highlighted)    }
-    
-//    func createFakeUsers() {
-//        let user1:User = User(firstName: "Dwayne", lastName: "Johnson", emailAddress: "therock@peoplesElbow.com", passWord: "rock", industry: "Entertainment", jobTitle: "Beast")
-//        let user2:User = User(firstName: "Erica", lastName: "Millado", emailAddress: "erica@lovestacos.com", passWord: "tacos", industry: "iOS", jobTitle: "iOS Developer")
-//        let user3:User = User(firstName: "Michelle", lastName: "Obama", emailAddress: "michelle@firstlady.com", passWord: "first", industry: "Being Awesome", jobTitle: "BossLady")
-//        let user4: User = User(firstName: "Johann", lastName: "Kerr", emailAddress: "johann@kerr.com", passWord: "ilovecode", industry: "iOS", jobTitle: "instructor")
-//        let user5: User = User(firstName: "Kermit", lastName: "The Frog", emailAddress: "livin@thegreenlife.com", passWord: "frogs", industry: "Entertainment", jobTitle: "Comedian")
-//        tagAlongUserArray.append(user1)
-//        tagAlongUserArray.append(user2)
-//        tagAlongUserArray.append(user3)
-//        tagAlongUserArray.append(user4)
-//        tagAlongUserArray.append(user5)
-//    }
+        preferencesButton.setTitleColor(phaedraDarkGreen, for: .highlighted)
+    }
     
     func goToShakeInstructions() {
         print("User wants to go to shakeinstructions")
@@ -131,15 +117,12 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
-            
-        
             let tagDict = snapshot.value as! [String: Any]
             print("------------------")
             print(tagDict)
             
             let tagId = snapshot.key
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
-            
             
             print("****************"+tagId)
             
@@ -170,7 +153,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         //this determines the size of the tableview
         myTableView.frame = CGRect(x: 0, y: 70, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.77)
-        //        myTableView.layer.cornerRadius = 8
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tagAlongCell")
         self.view.addSubview(myTableView)
     }
@@ -188,11 +170,16 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         let selectedTag = self.tagalongs[indexPath.row]
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
+        
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
-        myCell.restDistLabel.text = "0.4"
-        myCell.diningTimeLabel.text = "1:00pm"
+        myCell.restDistLabel.text = String(userDataStore.userDistanceToChosenRest)
+        
+        let date = NSDate()
+        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
+        myCell.diningTimeLabel.text = time
+        
         myCell.userImageView?.image = UIImage(named: "rock.png")
         
         return myCell

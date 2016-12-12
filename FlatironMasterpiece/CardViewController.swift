@@ -177,7 +177,7 @@ class CardViewController: UIViewController {
             let rounded = round(distance * 0.621371 * multiplier) / multiplier
  
             cardView.restDistanceLabel.text = "\(rounded) mi away"
-
+            userStore.userDistanceToChosenRest = rounded
             return cardView
         }
 

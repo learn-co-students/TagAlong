@@ -15,6 +15,8 @@ class UsersDataStore {
     var users: [User] = []
     
     var preferredCuisineArray:[String] = []
+    
+    //ERICA needs to figure out this prefCuisine prop Johann wrote
     var prefCuisine: [String]{
         get {
             let prefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as? [String] ?? []
@@ -29,8 +31,8 @@ class UsersDataStore {
     
     var userLat: Double = 0.0
     var userLong: Double = 0.0
-    var currentChosenCuisine:String = ""
     
+    var currentChosenCuisine:String = ""
     var chosenRestLat: Double = 0.0
     var chosenRestLong: Double = 0.0
     var chosenRestName:String = ""
@@ -50,6 +52,7 @@ class UsersDataStore {
             return "💰💰"
         }
     }
+    var userDistanceToChosenRest: Double = 0.0
     
     //ERICA's NOTES - this property might be deleted
     var userBudgetChoice:Int = 1
