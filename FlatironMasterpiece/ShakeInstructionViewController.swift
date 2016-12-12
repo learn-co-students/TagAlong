@@ -157,6 +157,16 @@ extension ShakeInstructionViewController {
 //                            }
 //                            self.playSound()
                             
+                            //NOTE: - tells user to come back later b/c restaurants are closed
+                            let closedRestAlert = UIAlertController(title: "No Restaurants Open", message: "Come back later when restaurants open up.", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                print("User closed alert controller")
+                            })
+                            closedRestAlert.addAction(okAction)
+                            self.present(closedRestAlert, animated: true, completion: nil)
+                            
+                            
+                            //NOTE: - displays instructions to shake
                             self.shakeView.activityIndicator.removeFromSuperview()
                             self.shakeView.shakePhoneLabel.isHidden = true
                             self.shakeView.chooseCuisineLabel.text = "Shake It, Baby!  And by \"it\", we mean your phone."

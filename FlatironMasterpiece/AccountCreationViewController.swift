@@ -497,7 +497,7 @@ extension AccountCreationViewController {
 
             } else {
                     print("error!")
-                    let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
+                    let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "An account with this information already exists.  Please login.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     print("User clicked alert controller")})
                     invalidCredentialsAlert.addAction(okAction)

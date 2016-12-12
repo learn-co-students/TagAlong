@@ -39,6 +39,7 @@ class RestaurantDataStore {
             }
 
         }
+        print("restaurants array size is \(restaurantsArray.count)")
         print("completed creating restaurants array")
         completion(true)
         

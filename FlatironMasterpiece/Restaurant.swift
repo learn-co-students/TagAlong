@@ -52,8 +52,10 @@ class Restaurant {
                    let this = Int(number)
                     if this == 1 {
                         self.openNow = true
+                        print("restaurant is OPEN")
                     } else {
                         self.openNow = false
+                        print("restaurant is CLOSED")
                     }
                 }
             } else {
