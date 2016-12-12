@@ -150,7 +150,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         //this gets back the cuisines from the
         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
         print("this is user defaults cuisines \(ustoredUserCuisines)")
-        
+        self.userStore.preferredCuisineArray = ustoredUserCuisines
+        print("the userstore.preferredCuisineArray is set to the userdefaultscuisineArray and is now \(self.userStore.preferredCuisineArray)")
         for cuisine in ustoredUserCuisines {
             
             if cuisineArray[indexPath.item] == cuisine {
