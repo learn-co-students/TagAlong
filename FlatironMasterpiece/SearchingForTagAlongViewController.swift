@@ -61,6 +61,7 @@ class SearchingForTagAlongViewController: UIViewController {
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
         activityIndicator.layer.cornerRadius = 4
+        activityIndicator.layer.backgroundColor = phaedraOrange.cgColor
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.topAnchor.constraint(equalTo: searchingLabel.bottomAnchor, constant: 50).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -121,7 +122,7 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongDetailLabel.textColor = phaedraOrange
         tagAlongDetailLabel.textAlignment = .center
         tagAlongDetailLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagAlongDetailLabel.topAnchor.constraint(equalTo: tagAlongFoundLabel.topAnchor, constant: 100).isActive = true
+        tagAlongDetailLabel.topAnchor.constraint(equalTo: tagAlongFoundLabel.topAnchor, constant: 200).isActive = true
         tagAlongDetailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tagAlongDetailLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         tagAlongDetailLabel.isHidden = true
@@ -209,6 +210,7 @@ class SearchingForTagAlongViewController: UIViewController {
         self.searchingLabel.isHidden = false
         self.beTagAlongGuestButton.isHidden = false
         self.searchAgainButton.isHidden = false
+        activityIndicator.isHidden = false
         
     }
     
