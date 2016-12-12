@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Tagalong{
+struct Tagalong {
     
     var tagID: String
     var date: String
