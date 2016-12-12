@@ -434,6 +434,15 @@ final class FirebaseManager {
 
     }
 
+//    func checkIfBlocked(userID: String, handler: @escaping (Bool) -> Void) {
+//        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return }
+//        FirebaseManager.ref.child("blockedUser").observe(.child(userID), with: {(snapshot) in
+//            let blockedUsers = snapshot.key
+//            
+//            
+//            )
+//    }
+//    }
     func blockUser(userID: String, handler: @escaping (Bool) -> Void) {
         guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return}
         
@@ -441,16 +450,12 @@ final class FirebaseManager {
             userID : true
         ]
         
-        
         FirebaseManager.ref.child("blockedID").child(currentUser).setValue(blockUserDictionary, withCompletionBlock: { error, ref in
-            
             if error == nil {
                 handler(true)
             }
             
         })
-        
-        
 //        FirebaseManager.ref.child("blockedID").child("\(currentUser)").child("blockedUser").observe(.childAdded, with: {(snapshot) in
 //            let blockedUser = snapshot.key
 //            FirebaseManager.ref.child("blockIDS").child("\(blockedUser)").updateChildValues([guestID: true])
