@@ -434,15 +434,30 @@ final class FirebaseManager {
 
     }
 
-//    func blockUser(userID: String) {
-//        guard let currentUser = FirebaseManager.currentUser else { print("no user printing");return}
+    func blockUser(userID: String, handler: @escaping (Bool) -> Void) {
+        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return}
+        
+        let blockUserDictionary = [
+            userID : true
+        ]
+        
+        
+        FirebaseManager.ref.child("blockedID").child(currentUser).setValue(blockUserDictionary, withCompletionBlock: { error, ref in
+            
+            if error == nil {
+                handler(true)
+            }
+            
+        })
+        
+        
 //        FirebaseManager.ref.child("blockedID").child("\(currentUser)").child("blockedUser").observe(.childAdded, with: {(snapshot) in
 //            let blockedUser = snapshot.key
 //            FirebaseManager.ref.child("blockIDS").child("\(blockedUser)").updateChildValues([guestID: true])
 //        })
 //    
-//    
-//    }
+    
+    }
     
     func denyTagalong(guestID: String) {
 

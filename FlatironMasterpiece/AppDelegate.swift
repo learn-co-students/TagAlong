@@ -36,11 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        MARK: - sets up the navigation controller for our app
 
          navController = UINavigationController()
-//        var loginVC = LogInViewController()
-          var chatVC = ChatViewController()
+        var loginVC = LogInViewController()
+//          var chatVC = ChatViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        self.navController?.pushViewController(chatVC, animated: false)
+        self.navController?.pushViewController(loginVC, animated: false)
         self.window?.rootViewController = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
