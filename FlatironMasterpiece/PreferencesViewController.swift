@@ -37,7 +37,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
-    var usersCuisineSelectionsArray:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -336,7 +335,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
         }
 
-        let saved = store.preferredCuisineArray
+        let saved = userStore.preferredCuisineArray
 
         var dict = [String: Any]()
         for save in saved{
@@ -344,7 +343,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
 
         FirebaseManager.savePref(dictionary: dict)
-        print(store.preferredCuisineArray)
+        print(userStore.preferredCuisineArray)
 
     }
 
