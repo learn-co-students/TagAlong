@@ -48,6 +48,7 @@ final class FirebaseManager {
 
     var hostTagAlongID: String?
 
+
     private init() {}
 
 
@@ -61,6 +62,7 @@ final class FirebaseManager {
 //
 //
 //    }
+
 
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
@@ -81,26 +83,19 @@ final class FirebaseManager {
                     print(metadata)
                 })
 
-
-
-
-
             //        let reference = FIRDatabase.database().reference(fromURL: "gs://newcarrots.appspot.com")
             //        let usersRef = reference.child("users").child(uid)
 
 
-
     }
+    
+    
     static func createNewUser(currentUser: User, completion: @escaping (Bool) -> Void) {
         // 1 - create a new user in Firebase
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
 
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
-
-           let storageRef = FIRStorage.storage().reference()
- //           let uploadData = UIImagePNGRepresentation(picImage)
-  //          storageRef.put(<#T##uploadData: Data##Data#>, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
 
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
 
@@ -118,29 +113,6 @@ final class FirebaseManager {
         let metaData = FIRStorageMetadata()
         //   ref.put(imageData, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
     }
-
-    //    func savePreferences() {
-    //        // Send to shake instruction view controller
-    //        let user = FIRAuth.auth()?.currentUser
-    //        guard let unwrappedUser = user else { return }
-    //        print(unwrappedUser)
-    //        if   FIRAuth.auth()?.currentUser != nil {
-    //
-    //        }
-    //        print("Save preferences tapped")
-    //        print(store.preferredCuisineArray)
-    //        let shakeInstructionVC = ShakeInstructionViewController()
-    //        self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
-    //
-    //    }
-    //    func savePreferencesToFirebase() {
-    //        if FIRAuth.auth()?.currentUser?.uid != nil {
-    //       //     let unique = FIRAuth.auth()?.currentUser?.uid
-    //        //    FIRDatabase.database().reference().child("users").child(unique).observeSingleEvent(of: .value, with: { (snapshot) in
-    //
-    //            })
-    //        }
-    //    }
     /* static func blockUser(user: String) {
      if FIRAuth.auth()?.currentUser?.uid != nil {
      let unique = FIRAuth.auth()?.currentUser?.uid
@@ -158,14 +130,7 @@ final class FirebaseManager {
 
         print("THis is the preferred array \(empArr)")
         UserDefaults.standard.set(empArr, forKey: "Preferences")
-//
-//        if FIRAuth.auth()?.currentUser?.uid != nil {
-//            let unique = FIRAuth.auth()?.currentUser?.uid
-//            print(unique!)
-//            //    FIRDatabase.database().reference().setValuesForKeys(dictionary)
-//            FIRDatabase.database().reference().child("users").child(unique!).child("preferences").updateChildValues(dictionary)
-//
-//        }
+
     }
 
     class func getUserPref() {
@@ -178,31 +143,7 @@ final class FirebaseManager {
         preferencesdict = UsersDataStore.sharedInstance.preferredCuisineArray
         print(preferencesArray)
 
-//
-//        let userID = FIRAuth.auth()?.currentUser?.uid
-//        //ref.child("users").child(userID).child("preferences").observe(.value, with: (FIRDataSnapshot) -> Void)
-//
-//
-//
-//
-//
-//
-//
-//        ref = FIRDatabase.database().reference()
-//        ref.child("users").child("userID").child("preferences").observe(.value, with: { (snapshot) in
-//
-//            print(snapshot)
-//        })
 
-//        var refhandle = ref.observe(FIRDataEventType.value, with: { (snapshot) in
-//            let userDict = snapshot.value as? [String : AnyObject] ?? [:]
-//        })
-        //        if FIRAuth.auth()?.currentUser?.uid == FIRAuth.auth()?.currentUser?.uid {
-        //
-        //            let unique = FIRAuth.auth()?.currentUser
-        //            print(uid)
-        //
-        //        }
     }
 
 
