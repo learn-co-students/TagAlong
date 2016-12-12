@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         GMSPlacesClient.provideAPIKey(gpSearchApiKey)
 
         FIRApp.configure()
@@ -33,27 +33,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 
-//        MARK: - sets up the navigation controller for our app
+        //MARK: - sets up the navigation controller for our app
 
-//         navController = UINavigationController()
+
+         navController = UINavigationController()
 //        var loginVC = LogInViewController()
-//
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-
-        //MARK: - sets the initial view controller
-
-        let initialViewController = PreferenceViewController()
+          var chatVC = ChatViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+        self.navController?.pushViewController(chatVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
+
+
+//        let initialViewController = PreferenceViewController()
+
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
 //
            return true
     }

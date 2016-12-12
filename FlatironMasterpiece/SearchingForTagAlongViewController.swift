@@ -18,6 +18,8 @@ class SearchingForTagAlongViewController: UIViewController {
     var tagAlongFoundLabel: UILabel = UILabel()
     var acceptButton = UIButton()
     var denyButton = UIButton()
+    var guestName = String()
+    var guestJob = String()
     var firstTimeLoaded = true
 
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
@@ -106,14 +108,14 @@ class SearchingForTagAlongViewController: UIViewController {
     func setupTagAlongMessageAndButtons() {
         view.addSubview(tagAlongFoundLabel)
         tagAlongFoundLabel.isHidden = true
-        tagAlongFoundLabel.text = "You have been matched with /n'Person"
         tagAlongFoundLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         tagAlongFoundLabel.textColor = phaedraOrange
         tagAlongFoundLabel.textAlignment = .center
         tagAlongFoundLabel.translatesAutoresizingMaskIntoConstraints = false
         tagAlongFoundLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         tagAlongFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        tagAlongFoundLabel.isHidden = true
 
         view.addSubview(acceptButton)
         acceptButton.isHidden = true
@@ -175,8 +177,12 @@ class SearchingForTagAlongViewController: UIViewController {
         print(store.guestID)
         guard let acceptedGuestID = store.guestID else { print("leaving function");return }
         print(acceptedGuestID)
+
         store.acceptTagalong(guestID: acceptedGuestID) { (currentTagAlongKey) in
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
+
+            // Add true value to hidden node
+            self.store.hideTagalong(for: currentTagAlongKey)
             
             let tabBarVC = TabBarController()
             tabBarVC.tagAlong = currentTagAlongKey
@@ -227,9 +233,22 @@ class SearchingForTagAlongViewController: UIViewController {
 //
 //                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
 //
-//
+//                
 //
 //                })
+            
+            guard let guestID = self.store.guestID else { print("no guest info");return }
+            
+            self.store.createGuest(from: guestID , completion: { (guest) in
+                
+                self.guestName = guest.firstName
+                self.guestJob = guest.jobTitle
+                self.tagAlongFoundLabel.text = "Match: \(self.guestName), \(self.guestJob)"
+
+                print(guest.firstName)
+                print(guest.jobTitle)
+                
+            })
 
                 print("\n\n")
 
