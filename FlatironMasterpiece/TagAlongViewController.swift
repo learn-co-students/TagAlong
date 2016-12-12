@@ -136,9 +136,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
+            
+        
             let tagDict = snapshot.value as! [String: Any]
+            print("------------------")
+            print(tagDict)
+            
             let tagId = snapshot.key
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
+            
             
             print("****************"+tagId)
             
@@ -146,6 +152,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 tagalong.user = user
 
                 self.tagalongs.append(tagalong)
+                
+                // Remove tagalongs
+                for (index, value) in self.tagalongs.enumerated() {
+                    
+                    if value.hidden == true {
+                        self.tagalongs.remove(at: index)
+                    }
+                }
+                
                 self.myTableView.reloadData()
             })
         })
@@ -194,7 +209,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
-        let selectedTag = tagalongs[indexPath.row]
+        var selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
         let waitingForHostVC = WaitingForHostViewController()
@@ -206,8 +221,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
-        
+    
         // Remove tagalongID from Array
+        
 //        for (index, value) in tagalongs.enumerated() {
 //            if value == selectedTag {
 //                tagalongs.remove(at: index)

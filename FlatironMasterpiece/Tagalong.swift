@@ -16,18 +16,23 @@ struct Tagalong{
     var longitude: Double
     var restaurant: String
     var user: User!
+    var hidden: Bool
     var guest = ""
     
-    init(snapshot: [String:Any], tagID: String) {
+    init(snapshot: [String: Any], tagID: String) {
         print(snapshot)
+        
+        let user = snapshot["user"] as! String
+        let hidden = snapshot["hidden"] as! Bool
         let date = snapshot["date"] as! String
         let location = snapshot["location"] as! [String: Any]
         let latitude = location["lat"] as! Double
         let longitude = location["long"] as! Double
         let restaurant = location["restaurant"] as! String
-        let user = snapshot["user"] as! String
+        
         
         // Need to set location to equal dictionary of lat, long, restaurant
+        self.hidden = hidden
         self.date = date
         self.longitude = longitude
         self.latitude = latitude
