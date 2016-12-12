@@ -87,11 +87,6 @@ class Restaurant {
             }
         }
         
-        //if rest has NO photo
-        if let noPhotoRef = dictionary["reference"] as? String {
-            self.noPhotoRef = noPhotoRef
-        }
-        
         //gets restaurant price level
         if let uPriceLevel = dictionary["price_level"] as? Int? {
             priceLevel = uPriceLevel
