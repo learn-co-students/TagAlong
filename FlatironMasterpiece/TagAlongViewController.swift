@@ -33,12 +33,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = phaedraOliveGreen
         formatViews()
         layoutTableView()
-        
-//        for tag in tagalongs {
-//            
-//            print(tag.tagID)
-//        }
-//        createFakeUsers()
+
         
         
     }
@@ -221,16 +216,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
-    
-        // Remove tagalongID from Array
-        
-//        for (index, value) in tagalongs.enumerated() {
-//            if value == selectedTag {
-//                tagalongs.remove(at: index)
-//            }
-//        }
-        
-        
     }
     
     
