@@ -20,10 +20,6 @@ class SelectedRestaurantViewController: UIViewController {
     var restaurant: Restaurant?
     var emojiString = ""
     
-    // Information needed from Deck View
-    var user: String?
-    var date: Date?
-    var location: [String: Any]?
 
     // Dummy Data
     var user1 = FirebaseManager.currentUser
@@ -33,12 +29,6 @@ class SelectedRestaurantViewController: UIViewController {
         "lat" : -45,                    // chosenRestLong
         "long": 35                      //chosenRestLat
     ]
-
-//    var tagalongInfoDict: [String: Any] [
-//        "user" : self.user1,
-//        "date" : self.date1,
-//        "location" : self.location1
-//    ]
 
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,

@@ -93,6 +93,7 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         beTagAlongGuestButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         beTagAlongGuestButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
+//        beTagAlongGuestButton.leadingAnchor.constraint(equalTo: searchAgainButton.trailingAnchor, constant: 5).isActive = true
         beTagAlongGuestButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
         
