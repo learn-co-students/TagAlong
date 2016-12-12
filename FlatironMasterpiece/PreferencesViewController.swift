@@ -332,8 +332,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)
         } else {
-
-            //send to search/tagalongVC
             let hostOrTagAlongVC = HostOrTagAlongViewController()
             self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
         }
