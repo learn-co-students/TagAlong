@@ -63,7 +63,7 @@ final class FirebaseManager {
 //
 //    }
 
->>>>>>> 432b6ff922124ce7603e438fc401917c246a084a
+
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
 
