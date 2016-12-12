@@ -15,7 +15,7 @@
 		250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */; };
 		250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CC1DF0CC770090AC68 /* FirebaseManager.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
-		25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */; };
@@ -53,6 +53,7 @@
 		45AB2D821DDD7F9400F5D09A /* RestaurantDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */; };
 		45AD14421DE166C9005B91CD /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD14411DE166C9005B91CD /* PreferencesViewController.swift */; };
 		45C84AAB1DDE2A8E00E623F8 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */; };
+		45D801451DFF4CD8003E2499 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D801441DFF4CD8003E2499 /* OnboardingViewController.swift */; };
 		45F196A51DF2A87F00BD24E9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F196A41DF2A87F00BD24E9 /* CardViewController.swift */; };
 		45F509F81DE4E92900A4F9C4 /* ShakeInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */; };
 		45F509FA1DE4F1CA00A4F9C4 /* ShakeGestureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F509F91DE4F1CA00A4F9C4 /* ShakeGestureView.xib */; };
@@ -117,6 +118,7 @@
 		45AB2D811DDD7F9400F5D09A /* RestaurantDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDataStore.swift; sourceTree = "<group>"; };
 		45AD14411DE166C9005B91CD /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		45C84AAA1DDE2A8E00E623F8 /* UsersDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
+		45D801441DFF4CD8003E2499 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		45F196A41DF2A87F00BD24E9 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		45F196A61DF2A8D300BD24E9 /* Abel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Abel-Regular.ttf"; sourceTree = "<group>"; };
 		45F509F71DE4E92900A4F9C4 /* ShakeInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeInstructionViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45FA58221DE9D1EF0075D914 /* HostOrTagAlongViewController.swift */,
 				95948B921DDE53B900C94BB4 /* LogInViewController.swift */,
+				45D801441DFF4CD8003E2499 /* OnboardingViewController.swift */,
 				95FCF5111DF73EF7009F9EEA /* PicPickerViewController.swift */,
 				45AD14411DE166C9005B91CD /* PreferencesViewController.swift */,
 				45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */,
@@ -449,7 +452,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
@@ -461,8 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2500B2051DF7450100B0C78D /* Tagalong.swift in Sources */,
-				25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */,
-				25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */,
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
 				279BBC711DF0E217008020D4 /* User.swift in Sources */,
@@ -491,6 +493,7 @@
 				45229D8A1DFA20F0005D322D /* Message.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */,
+				45D801451DFF4CD8003E2499 /* OnboardingViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
 				95FCF5121DF73EF7009F9EEA /* PicPickerViewController.swift in Sources */,

@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-
         //MARK: - sets up the navigation controller for our app
 
          navController = UINavigationController()
@@ -44,9 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
-
-
-//        let initialViewController = SearchingForTagAlongViewController()
+//        let initialViewController = RestaurantChatViewController()
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //        if let window = window {

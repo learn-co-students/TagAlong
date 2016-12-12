@@ -20,16 +20,6 @@ class SelectedRestaurantViewController: UIViewController {
     var restMap: MKMapView?
     var restaurant: Restaurant?
     var emojiString = ""
-    
-
-    // Dummy Data
-    var user1 = FirebaseManager.currentUser
-    var date1 = Date()
-    var location1: [String: Any] = [
-        "restaurant" : "Peter Lugar's", // UsersDataStore.sharedInstance.chosenRestName
-        "lat" : -45,                    // chosenRestLong
-        "long": 35                      //chosenRestLat
-    ]
 
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,
@@ -41,7 +31,6 @@ class SelectedRestaurantViewController: UIViewController {
             "long": 35
         ]
     ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +86,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             print("User clicked cancel")
         })
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
-            //TODO:
             print("confirm tapped")
             print("hey there before createtagalong")
             
@@ -110,15 +98,11 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 self.firebaseStore.selectedTagAlongID = newKey
                 
                 // Add tagalong key to chat
-        
+
                 FirebaseManager.createChatWithTagID(key: newKey)
                 
                 print("Chat ID Being created")
 
-                
-                let date:Double = Date().timeIntervalSince1970
-                
-                
                 // Add tagalong key to users (current tagalong and tagalongs)
                 FirebaseManager.updateUserWithTagAlongKey(key: newKey)
                 

@@ -37,14 +37,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB5-k1-YXP">
-                    <rect key="frame" x="54.5" y="268.5" width="212" height="33"/>
-                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
+                    <rect key="frame" x="63" y="268.5" width="194.5" height="30"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-yE-2FO">
-                    <rect key="frame" x="16" y="321.5" width="288" height="27.5"/>
+                    <rect key="frame" x="16" y="318.5" width="288" height="27.5"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                     <color key="textColor" red="1" green="1" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                     <size key="shadowOffset" width="3" height="2"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AjH-AI-aPz">
-                    <rect key="frame" x="52" y="369" width="216" height="31.5"/>
+                    <rect key="frame" x="52" y="366" width="216" height="31.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Level" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zct-o0-103">
                             <rect key="frame" x="0.0" y="0.0" width="103" height="31.5"/>
@@ -79,7 +79,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bqm-JU-Hmj">
-                    <rect key="frame" x="11" y="420.5" width="298" height="28.5"/>
+                    <rect key="frame" x="11" y="417.5" width="298" height="28.5"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNx-wz-m3m">
                             <rect key="frame" x="0.0" y="0.0" width="144" height="28.5"/>

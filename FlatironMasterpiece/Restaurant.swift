@@ -66,8 +66,9 @@ class Restaurant {
         //NOTE: - ELI, this is what I wrote so far for the missing image
         if let noPhotoReference = dictionary["reference"] as? String {
             print("\n\nno photo reference \(noPhotoReference)")
-            if noPhotoReference != "" {
-                self.photoImage = UIImage(named: "fork_red")
+            if !noPhotoReference.isEmpty {
+//            if noPhotoReference != "" {
+                self.photoImage = UIImage(named: "American.png")
             }
         }
     

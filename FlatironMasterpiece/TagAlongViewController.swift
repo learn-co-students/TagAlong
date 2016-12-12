@@ -189,7 +189,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                
+        print("a cell was tapped")
         var selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
