@@ -66,7 +66,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
-        
+
         view.addSubview(budgetLabel)
         budgetLabel.text = "Choose your budget"
         budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
@@ -147,13 +147,13 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
-        
+
         //this gets back the cuisines from the userdefauts
          let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? []
         print("this is user defaults cuisines \(ustoredUserCuisines)")
-        
+
         for cuisine in ustoredUserCuisines {
-            
+
             if cuisineArray[indexPath.item] == cuisine {
                 cell.alpha = 1.0
                 cell.layer.borderColor = phaedraOrange.cgColor
@@ -183,17 +183,14 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }else{
             if cell.isHighlighted == false {
                 userStore.preferredCuisineArray.append(selectedCuisine)
-                
-                //Johann's code
+
 //                print("Johann Test - \(userStore.prefCuisine)")
 //                var previousprefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as! [String]
 //                previousprefs.append(selectedCuisine)
-//                UserDefaults.standard.set(previousprefs, forKey: "UserCuisineArray")
-//                print("Johann Test - \(userStore.prefCuisine)")
                 UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
                 print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
                 cell.isHighlighted = true
-
+//                print("Johann Test - \(userStore.prefCuisine)")
                 cell.toggledSelectedState()
             }
         }
@@ -298,7 +295,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func replayTutorial() {
         print("Replay tutorial requested.")
-        
+
     }
 
     func logoutUser() {
@@ -355,4 +352,3 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
 //end of class
 }
-

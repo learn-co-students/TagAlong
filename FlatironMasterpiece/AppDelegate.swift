@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //MARK: - sets up the navigation controller for our app
 
 
-
          navController = UINavigationController()
         var loginVC = LogInViewController()
 
