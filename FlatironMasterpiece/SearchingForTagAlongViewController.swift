@@ -96,7 +96,7 @@ class SearchingForTagAlongViewController: UIViewController {
 //        beTagAlongGuestButton.leadingAnchor.constraint(equalTo: searchAgainButton.trailingAnchor, constant: 5).isActive = true
         beTagAlongGuestButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
-        
+//
         //NOTE: - Label for tagalong found
         view.addSubview(tagAlongFoundLabel)
         tagAlongFoundLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
@@ -133,8 +133,8 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         acceptButton.titleLabel?.textAlignment = .center
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
-        acceptButton.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 100).isActive = true
-        acceptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        acceptButton.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 150).isActive = true
+        acceptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 80).isActive = true
         acceptButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
         acceptButton.addTarget(self, action: #selector(acceptTagalongAction), for: .touchUpInside)
         acceptButton.setTitleColor(phaedraYellow, for: .normal)
@@ -149,10 +149,9 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         denyButton.titleLabel?.textAlignment = .center
         denyButton.translatesAutoresizingMaskIntoConstraints = false
-        denyButton.topAnchor.constraint(equalTo: acceptButton.bottomAnchor, constant: 100).isActive = true
-        denyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        denyButton.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 150).isActive = true
+        denyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -80).isActive = true
         denyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
-        denyButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
         denyButton.addTarget(self, action: #selector(denyTagalongAction), for: .touchUpInside)
         denyButton.setTitleColor(phaedraYellow, for: .normal)
         denyButton.setTitleColor(phaedraLightGreen, for: .highlighted)
