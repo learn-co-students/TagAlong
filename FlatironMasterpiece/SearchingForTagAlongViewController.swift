@@ -42,7 +42,7 @@ class SearchingForTagAlongViewController: UIViewController {
     
     func setupViews() {
         
-        //NOTE: - label that searches for tagalong
+        //NOTE: - Searching for tagalong label
         view.addSubview(searchingLabel)
         searchingLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
         searchingLabel.lineBreakMode = .byWordWrapping
@@ -55,7 +55,7 @@ class SearchingForTagAlongViewController: UIViewController {
         searchingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         searchingLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
-        
+        //NOTE: - Activity Indicator
         view.addSubview(activityIndicator)
         activityIndicator.color = phaedraYellow
         activityIndicator.layer.cornerRadius = 4
@@ -64,37 +64,39 @@ class SearchingForTagAlongViewController: UIViewController {
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         activityIndicator.startAnimating()
         
-//        view.addSubview(searchAgainButton)
-//        searchAgainButton.backgroundColor = phaedraOrange
-//        searchAgainButton.layer.cornerRadius = 5
-//        searchAgainButton.setTitle("Choose Another Restaurant", for: UIControlState.normal)
-////        searchAgainButton.setTitle("Tutorial Played", for: .highlighted)
-//        searchAgainButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
-//        searchAgainButton.titleLabel?.textAlignment = .center
-//        searchAgainButton.translatesAutoresizingMaskIntoConstraints = false
-//        searchAgainButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 340).isActive = true
-//        searchAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        searchAgainButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-//        searchAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
-//        searchAgainButton.addTarget(self, action: #selector(returnToDeckView), for: .touchUpInside)
-//        searchAgainButton.setTitleColor(phaedraYellow, for: .highlighted)
-//        
-//        view.addSubview(beTagAlongGuestButton)
-//        beTagAlongGuestButton.backgroundColor = phaedraOrange
-//        beTagAlongGuestButton.layer.cornerRadius = 5
-//        beTagAlongGuestButton.setTitle("Be A Tag Along Instead", for: UIControlState.normal)
-////        beTagAlongGuestButton.setTitle("Tutorial Played", for: .highlighted)
-//        beTagAlongGuestButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
-//        beTagAlongGuestButton.titleLabel?.textAlignment = .center
-//        beTagAlongGuestButton.translatesAutoresizingMaskIntoConstraints = false
-//        beTagAlongGuestButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
-//        beTagAlongGuestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        beTagAlongGuestButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-//        beTagAlongGuestButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
-//        beTagAlongGuestButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
-//        beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
+        //NOTE: - Search for a tagalong button
+        view.addSubview(searchAgainButton)
+        searchAgainButton.backgroundColor = phaedraOrange
+        searchAgainButton.layer.cornerRadius = 5
+        searchAgainButton.setTitle("Choose Another Restaurant", for: UIControlState.normal)
+//        searchAgainButton.setTitle("Tutorial Played", for: .highlighted)
+        searchAgainButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
+        searchAgainButton.titleLabel?.textAlignment = .center
+        searchAgainButton.translatesAutoresizingMaskIntoConstraints = false
+        searchAgainButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 340).isActive = true
+        searchAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchAgainButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        searchAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
+        searchAgainButton.addTarget(self, action: #selector(returnToDeckView), for: .touchUpInside)
+        searchAgainButton.setTitleColor(phaedraYellow, for: .highlighted)
         
-        //NOTE: - label for tagalong found
+        //NOTE: - Be a tagalong button
+        view.addSubview(beTagAlongGuestButton)
+        beTagAlongGuestButton.backgroundColor = phaedraOrange
+        beTagAlongGuestButton.layer.cornerRadius = 5
+        beTagAlongGuestButton.setTitle("Be A Tag Along Instead", for: UIControlState.normal)
+//        beTagAlongGuestButton.setTitle("Tutorial Played", for: .highlighted)
+        beTagAlongGuestButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
+        beTagAlongGuestButton.titleLabel?.textAlignment = .center
+        beTagAlongGuestButton.translatesAutoresizingMaskIntoConstraints = false
+        beTagAlongGuestButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
+        beTagAlongGuestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        beTagAlongGuestButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        beTagAlongGuestButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
+        beTagAlongGuestButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
+        beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .highlighted)
+        
+        //NOTE: - Label for tagalong found
         view.addSubview(tagAlongFoundLabel)
         tagAlongFoundLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
         tagAlongFoundLabel.lineBreakMode = .byWordWrapping
@@ -108,6 +110,7 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         tagAlongFoundLabel.isHidden = true
         
+        //NOTE: - Tag along details
         view.addSubview(tagAlongDetailLabel)
         tagAlongDetailLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
         tagAlongDetailLabel.lineBreakMode = .byWordWrapping
@@ -135,8 +138,9 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.addTarget(self, action: #selector(acceptTagalongAction), for: .touchUpInside)
         acceptButton.setTitleColor(phaedraYellow, for: .normal)
         acceptButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        acceptButton.isHidden = false
+        acceptButton.isHidden = true
         
+        //NOTE: - Deny tagalong button
         view.addSubview(denyButton)
         denyButton.backgroundColor = phaedraOrange
         denyButton.layer.cornerRadius = 5
@@ -151,23 +155,17 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.addTarget(self, action: #selector(denyTagalongAction), for: .touchUpInside)
         denyButton.setTitleColor(phaedraYellow, for: .normal)
         denyButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-        denyButton.isHidden = false
-        
-        
-        
+        denyButton.isHidden = true
         
     }
     
-    
-    
-    
-    
-    
+
     func returnToDeckView() {
         print("User wants to return to deck view")
         let shakeInstructionVC = ShakeInstructionViewController()
         self.navigationController?.pushViewController(shakeInstructionVC, animated: true)
     }
+    
     
     func seeOtherTagAlongs() {
         print("User wants to see other tagalongs")
@@ -188,10 +186,8 @@ class SearchingForTagAlongViewController: UIViewController {
             
             self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
-        
-        // Segue into chat/tab bar view
-        
     }
+    
     
     func denyTagalongAction() {
         
@@ -240,14 +236,8 @@ class SearchingForTagAlongViewController: UIViewController {
             print("\n\n")
             
             print("We have a new tag along person. \(snapshot)")
-            //            }
-            
-            
-            
             
         }
-        
-        
-        
     }
+    
 }
