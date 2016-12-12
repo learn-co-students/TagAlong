@@ -180,7 +180,6 @@ class SearchingForTagAlongViewController: UIViewController {
             self.store.updateGuestWithTagAlongKey(tagAlongkey: currentTagAlongKey)
 
             // Add true value to hidden node
-//            self.store.hideTagalong()
             self.store.hideTagalong(for: currentTagAlongKey)
             
             let tabBarVC = TabBarController()
@@ -232,9 +231,18 @@ class SearchingForTagAlongViewController: UIViewController {
 //
 //                    print("\(guest.firstName), \(guest.jobTitle), would like to tag along with you at 'restaurant'. Would you like them to tag along?")
 //
-//
+//                
 //
 //                })
+            
+            guard let guestID = self.store.guestID else { print("no guest info");return }
+            
+            self.store.createGuest(from: guestID , completion: { (guest) in
+                
+                print(guest.firstName)
+                print(guest.jobTitle)
+                
+            })
 
                 print("\n\n")
 
