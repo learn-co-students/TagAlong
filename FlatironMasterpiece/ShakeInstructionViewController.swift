@@ -158,12 +158,20 @@ extension ShakeInstructionViewController {
 //                            self.playSound()
                             
                             if self.restStore.restaurantsArray.count == 0 {
+                                
                                 //NOTE: - tells user to come back later b/c restaurants are closed
                                 let closedRestAlert = UIAlertController(title: "No Restaurants Open", message: "Come back later when restaurants open up.", preferredStyle: .alert)
                                 let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                     print("User closed alert controller")
                                 })
+                                let seePreferencesAction = UIAlertAction(title: "Change cuisine preferences", style: .default, handler: { (action) in
+                                    print("User wants to see preferences.")
+                                    let preferenceVC = PreferenceViewController()
+                                    self.navigationController?.pushViewController(preferenceVC, animated: true)
+                                })
+                                
                                 closedRestAlert.addAction(okAction)
+                                closedRestAlert.addAction(seePreferencesAction)
                                 self.present(closedRestAlert, animated: true, completion: nil)
                             }
                             
