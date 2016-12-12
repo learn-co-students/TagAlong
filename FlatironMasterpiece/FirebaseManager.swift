@@ -47,20 +47,34 @@ final class FirebaseManager {
     var guestStatus = [String: Bool]()
 
     var hostTagAlongID: String?
-    
+
+
     private init() {}
 
+
+//    static func upload(image: UIImage, handler: (Bool) -> Void) {
+//
+//        // upload to firebase
+//
+//        // when done.
+//
+//
+//
+//
+//    }
+
+>>>>>>> 432b6ff922124ce7603e438fc401917c246a084a
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
-    
-    
+
+
     static func sendToStorage(data:Data){
         guard let currentUser = FirebaseManager.currentUser else { return }
-        
+
             print(data)
             let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
-        
-        
+
+
                 storageRef.put(data, metadata: nil, completion: { (metadata, error) in
                     if error != nil {
                         print(error)
@@ -68,7 +82,11 @@ final class FirebaseManager {
                     }
                     print(metadata)
                 })
-        
+
+            //        let reference = FIRDatabase.database().reference(fromURL: "gs://newcarrots.appspot.com")
+            //        let usersRef = reference.child("users").child(uid)
+
+
     }
     
     
@@ -164,28 +182,21 @@ final class FirebaseManager {
     }
 
     static func loginToFirebase(email: String, password: String, completion: @escaping (Bool)-> Void) {
-
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-
             guard error == nil else { completion(false); return }
-
             completion(true)
         })
     }
 
     static func sendPasswordReset(email: String, completion: @escaping (Bool) -> Void) {
-
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             guard error == nil else { completion(false); return }
             completion(true)
-
         })
-
     }
 
     //MARK: - Firebase Facebook Methods
     static func facebookLogIn(completion: @escaping (Bool) -> Void) {
-
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         print("credential is \(credential)")
 
@@ -201,7 +212,6 @@ final class FirebaseManager {
             }
 
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-
                 print("User has logged into Firebase")
                 guard error == nil else { completion(false); return }
                 completion(true)
@@ -400,24 +410,37 @@ final class FirebaseManager {
     }
 
 
-    func createGuestFrom(tagalong: String, completion: @escaping (User)->()){
-        var userName = guestID
-        //
-        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
-            userName = snapshot.key as! String
+//    func createGuestFrom(tagalong: String, completion: @escaping (User) -> Void) {
+//
+//
+//        FirebaseManager.ref.child("tagalongs").child(tagalong).child("guests").observe(.value, with: { (snapshot) in
+//           var userName = snapshot.key as! String
+//
+//            // This will need to be replaced with the userID
+//            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
+//                let userInfo = snapshot.value as! [String: Any]
+//                let user = User(snapshot: userInfo)
+//
+//
+//                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+//                completion(user)
+//
+//            })
+//        })
+//    }
 
-            // This will need to be replaced with the userID
-            FirebaseManager.ref.child("users").child("\(userName)").observe(.value, with: { (snapshot) in
-                let userInfo = snapshot.value as! [String: Any]
-                let user = User(snapshot: userInfo)
+    func createGuest(from guestID: String, completion: @escaping (User) -> Void) {
+
+        FirebaseManager.ref.child("users").child("\(guestID)").observe(.value, with: { (snapshot) in
+            let userInfo = snapshot.value as! [String: Any]
+            let user = User(snapshot: userInfo)
 
 
-                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-                //self.newtagalongUserArray.append(user)
-                completion(user)
-
-            })
+            print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+            completion(user)
         })
+
+
     }
 
     func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
@@ -425,7 +448,7 @@ final class FirebaseManager {
 
 
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
-        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+        FirebaseManager.ref.child("users").child("\(guestID)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
             print("Current Tagalong -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
@@ -460,6 +483,13 @@ final class FirebaseManager {
         })
     }
 
+    func hideTagalong(for tagalong: String) {
+        print("-------> \(tagalong) <-------")
+//        guard let tagalongID = selectedTagAlongID else { return }
+
+        FirebaseManager.ref.child("tagalongs").child(tagalong).child("hidden").setValue(true)
+    }
+    
 
     static func sendMessage(senderId:String, senderDisplayName: String, text: String, date: Date, messageCount: Int) {
 
@@ -537,38 +567,37 @@ final class FirebaseManager {
 //        })
     }
 
-
-    static func observeMessages(completion: @escaping (String, String, String) -> Void) {
-
-
-        // 1. Creating a query that limits the synchronization to the last 25 messages
-        //        let messageQuery = chatRef.queryLimited(toLast:25)
-
-        // 2. Observe every child item that has been added, and will be added, at the messages location.
-        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
-
-            print("--------------------GETTING CALLED------------------")
-
-            // 3. Extract the messageData from the snapshot
-
-            print("messageQuery snapshot: \(snapshot.value)")
-            let messageData = snapshot.value as! [String: Any]
-
-            if let id = messageData["senderId"] as? String,
-                let name = messageData["senderName"] as? String,
-                let text = messageData["text"] as? String,
-                text.characters.count > 0 {
-
-                completion(id, name, text)
-
-            } else {
-                print("Error! Could not decode message data")
-            }
-
-            print("----------------------------------------------\n\n\n")
-        })
-    }
-
+    
+//    static func observeMessages(completion: @escaping (String, String, String) -> Void) {
+//
+//
+//        // 1. Creating a query that limits the synchronization to the last 25 messages
+//        //        let messageQuery = chatRef.queryLimited(toLast:25)
+//
+//        // 2. Observe every child item that has been added, and will be added, at the messages location.
+//        newMessageRefHandle = chatRef.observe(.childAdded, with: { (snapshot) -> Void in
+//
+//            print("--------------------GETTING CALLED------------------")
+//
+//            // 3. Extract the messageData from the snapshot
+//
+//            print("messageQuery snapshot: \(snapshot.value)")
+//            let messageData = snapshot.value as! [String: Any]
+//
+//            if let id = messageData["senderId"] as? String,
+//                let name = messageData["senderName"] as? String,
+//                let text = messageData["text"] as? String,
+//                text.characters.count > 0 {
+//
+//                completion(id, name, text)
+//
+//            } else {
+//                print("Error! Could not decode message data")
+//            }
+//
+//            print("----------------------------------------------\n\n\n")
+//        })
+//    }
 
 
 }

@@ -42,6 +42,7 @@ class SelectedRestaurantViewController: UIViewController {
 
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,
+        "hidden" : false,
         "date" : "December 1",
         "location" : [
             "restaurant" : "Peter Luger Stake House",
@@ -138,12 +139,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 //            let chatVC = ChatViewController()
 //            self.navigationController?.present(chatVC, animated: true, completion: nil)
 ////
-
-
-            //segue way searchingForTagAlong vc
-//            let searchingVC = SearchingForTagAlongViewController()
-//            self.navigationController?.pushViewController(searchingVC, animated: true)
-
 
         })
         confirmTagAlongAlert.addAction(cancelAction)

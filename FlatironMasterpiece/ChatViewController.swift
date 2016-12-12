@@ -38,16 +38,14 @@ class ChatViewController: JSQMessagesViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-//        if let tagAlongID = tagAlongID {
-//        tagAlongRef = allChatsRef.child("\(tagAlongID)")
-//        }
-        
+//       if let tagAlongID = tagAlongID {
+//            tagAlongRef = allChatsRef.child("\(tagAlongID)")
+//       }
         
         //Testing FirebaseManager 
-//        store.createChatWithTagID()
+//      store.createChatWithTagID()
         
-        
-        // Testing on a real user
+        //Testing on a real user
         self.senderId = FirebaseManager.currentUser
 
         //TODO: - change this displayName to the currentUser's name
@@ -56,7 +54,6 @@ class ChatViewController: JSQMessagesViewController {
         // Removing avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        
         
        // observeMessages()
         guard let tagID = store.selectedTagAlongID else { return }
@@ -84,7 +81,6 @@ class ChatViewController: JSQMessagesViewController {
         //        // animates the receiving of a new message on the view
         //        finishReceivingMessage()
     }
-    
     
     // Creates messages ref and saves a message to Firebase
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {

@@ -136,9 +136,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     func getTags(){
         FirebaseManager.newTagalongRefHandle = FirebaseManager.ref.child("tagalongs").observe(.childAdded, with: { (snapshot) -> Void in
             
+            
+        
             let tagDict = snapshot.value as! [String: Any]
+            print("------------------")
+            print(tagDict)
+            
             let tagId = snapshot.key
             var tagalong = Tagalong(snapshot: tagDict, tagID: tagId)
+            
             
             print("****************"+tagId)
             
@@ -146,11 +152,18 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                 tagalong.user = user
 
                 self.tagalongs.append(tagalong)
+                
+                // Remove tagalongs
+                for (index, value) in self.tagalongs.enumerated() {
+                    
+                    if value.hidden == true {
+                        self.tagalongs.remove(at: index)
+                    }
+                }
+                
                 self.myTableView.reloadData()
             })
-            
         })
-        
     }
     
     // MARK: - set up tableview
@@ -158,15 +171,11 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         self.myTableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.plain)
         myTableView.dataSource = self
         myTableView.delegate = self
-//        myTableView.backgroundColor = phaedraOliveGreen
         myTableView.backgroundColor = phaedraLightGreen
         
         //this determines the size of the tableview
         myTableView.frame = CGRect(x: 0, y: 70, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.77)
         //        myTableView.layer.cornerRadius = 8
-        
-//        myTableView.register(TableViewCell.self, forCellReuseIdentifier: "tagAlongCell")
-        
         myTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tagAlongCell")
         self.view.addSubview(myTableView)
     }
@@ -176,17 +185,14 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Make this tagalongKey.count
         return self.tagalongs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
-        
         let selectedTag = self.tagalongs[indexPath.row]
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
-        
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
@@ -203,21 +209,21 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
-        let selectedTag = tagalongs[indexPath.row]
+        var selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
         let waitingForHostVC = WaitingForHostViewController()
         self.navigationController?.pushViewController(waitingForHostVC, animated: true)
         
-        ///////////////////////////////
         // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
                 
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
-        
+    
         // Remove tagalongID from Array
+        
 //        for (index, value) in tagalongs.enumerated() {
 //            if value == selectedTag {
 //                tagalongs.remove(at: index)
