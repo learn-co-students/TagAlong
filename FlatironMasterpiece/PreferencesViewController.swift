@@ -12,14 +12,6 @@ import FirebaseAuth
 
 class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
 
-    //NOTE: - UI properties
-    let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-    let store = UsersDataStore.sharedInstance
-
     var preferencesLabel = UILabel()
     var budgetLabel = UILabel()
     var dineWithCompanyLabel = UILabel()
@@ -37,6 +29,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
+    //this gets back the cuisines from the userdefauts
+    var ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,10 +141,10 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.imageView.image = cuisineImage[indexPath.item]
         cell.foodLabel.text = cuisineArray[indexPath.item]
 
-        //this gets back the cuisines from the userdefauts
-         let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? []
+        //prints the userDefault cuisines (cuisines previously selected by the user
         print("this is user defaults cuisines \(ustoredUserCuisines)")
 
+        //
         for cuisine in ustoredUserCuisines {
 
             if cuisineArray[indexPath.item] == cuisine {
@@ -164,20 +158,27 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         print("Hey SELECTING ME!!")
         let selectedCuisine = cuisineArray[indexPath.row]
 
         //Johann start
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
 
+        //if the user array currently has the selected cuisine
         if userStore.preferredCuisineArray.contains(selectedCuisine) {
-
+            //turn that cuisine orange
             cell.toggledSelectedState()
-            let index = userStore.preferredCuisineArray.index(of: selectedCuisine)
+            //removes the cuisine if a user deselects it
+//            let index = userStore.preferredCuisineArray.index(of: selectedCuisine)
+            let index = ustoredUserCuisines.index(of: selectedCuisine)
+            
             guard let unwrappedindex = index else { return }
-            userStore.preferredCuisineArray.remove(at: unwrappedindex)
+//            userStore.preferredCuisineArray.remove(at: unwrappedindex)
+            ustoredUserCuisines.remove(at: unwrappedindex)
+            
+            print("userstore.preferredCuisineArray is now \(userStore.preferredCuisineArray)")
             UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
-            print("userdefaults cuisines array is now \(userStore.preferredCuisineArray)")
 
         }else{
             if cell.isHighlighted == false {
