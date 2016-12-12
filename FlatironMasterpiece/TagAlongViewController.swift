@@ -138,7 +138,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
                         self.tagalongs.remove(at: index)
                     }
                 }
-                
                 self.myTableView.reloadData()
             })
         })
