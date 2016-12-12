@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
-//        let initialViewController = RestaurantChatViewController()
+//        let initialViewController = SearchingForTagAlongViewController()
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //        if let window = window {

@@ -492,11 +492,11 @@ extension AccountCreationViewController {
             if success {
 
                 //SEND USER TO ONBOARDING VIEWCONTROLLER
-                let onboardingVC = OnboardingViewController()
-                self.navigationController?.modalPresentationStyle
-                self.navigationController?.pushViewController(onboardingVC, animated: true)
-//                let preferencesVC = PreferenceViewController()
-//                self.navigationController?.pushViewController(preferencesVC, animated: true)
+//                let onboardingVC = OnboardingViewController()
+//                self.navigationController?.modalPresentationStyle
+//                self.navigationController?.pushViewController(onboardingVC, animated: true)
+                let preferencesVC = PreferenceViewController()
+                self.navigationController?.pushViewController(preferencesVC, animated: true)
 
             } else {
                     print("error!")
