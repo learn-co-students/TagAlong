@@ -37,16 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-//         navController = UINavigationController()
-//        var loginVC = LogInViewController()
-////          var chatVC = ChatViewController()
-//
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(loginVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
+         navController = UINavigationController()
+        var loginVC = LogInViewController()
+//          var chatVC = ChatViewController()
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        self.navController?.pushViewController(loginVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
 
 
         let initialViewController = SearchingForTagAlongViewController()

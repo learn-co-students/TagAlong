@@ -35,10 +35,12 @@ class SelectedRestaurantViewController: UIViewController {
         "hidden" : false,
         "date" : "December 1",
         "location" : [
-            "restaurant" : "Peter Luger Stake House",
+            "restaurant" : "Peter Luger Steak House",
             "lat" : -45,
             "long": 35
         ]
+        
+        
     ]
 
     override func viewDidLoad() {
@@ -53,13 +55,12 @@ class SelectedRestaurantViewController: UIViewController {
 
     }
     
-  
-
     override func loadView() {
         super.loadView()
         restaurantView = RestaurantView()
         self.view = restaurantView
     }
+    
 
 //    func loadRestaurantsMap(lat: Double, long: Double) -> MKMapView {
 //       restaurantView.delegate = self

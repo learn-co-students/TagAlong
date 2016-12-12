@@ -37,7 +37,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
 
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
-    var usersCuisineSelectionsArray:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -332,13 +331,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             noCuisineAlert.addAction(okAction)
             self.present(noCuisineAlert, animated: true, completion: nil)
         } else {
-
-            //send to search/tagalongVC
             let hostOrTagAlongVC = HostOrTagAlongViewController()
             self.navigationController?.pushViewController(hostOrTagAlongVC, animated: true)
         }
 
-        let saved = store.preferredCuisineArray
+        let saved = userStore.preferredCuisineArray
 
         var dict = [String: Any]()
         for save in saved{
@@ -346,7 +343,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
 
         FirebaseManager.savePref(dictionary: dict)
-        print(store.preferredCuisineArray)
+        print(userStore.preferredCuisineArray)
 
     }
 
