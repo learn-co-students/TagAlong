@@ -35,10 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //MARK: - sets up the navigation controller for our app
 
-
          navController = UINavigationController()
         var loginVC = LogInViewController()
-//          var chatVC = ChatViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         self.navController?.pushViewController(loginVC, animated: false)
@@ -48,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 //        let initialViewController = PreferenceViewController()
-
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //        if let window = window {

@@ -178,7 +178,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
             ustoredUserCuisines.remove(at: unwrappedindex)
             
             print("userstore.preferredCuisineArray is now \(userStore.preferredCuisineArray)")
-            UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
+            
+//            UserDefaults.standard.set(userStore.preferredCuisineArray, forKey: "UserCuisineArray")
 
         }else{
             if cell.isHighlighted == false {
@@ -344,7 +345,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         }
 
         FirebaseManager.savePref(dictionary: dict)
-        print(userStore.preferredCuisineArray)
+        print("This is the userdefaults array that has just been saved \(userStore.preferredCuisineArray)")
 
     }
 
