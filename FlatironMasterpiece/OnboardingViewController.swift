@@ -16,7 +16,7 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.cyan.withAlphaComponent(0.10)
+        view.backgroundColor = UIColor.clear
         setupViews()
         
 
