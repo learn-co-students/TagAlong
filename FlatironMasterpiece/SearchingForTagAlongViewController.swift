@@ -91,7 +91,7 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
         beTagAlongGuestButton.titleLabel?.textAlignment = .center
         beTagAlongGuestButton.translatesAutoresizingMaskIntoConstraints = false
-        beTagAlongGuestButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 390).isActive = true
+        beTagAlongGuestButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 600).isActive = true
         beTagAlongGuestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         beTagAlongGuestButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         beTagAlongGuestButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
@@ -201,6 +201,14 @@ class SearchingForTagAlongViewController: UIViewController {
         print(deniedGuestID)
         
         store.denyTagalong(guestID: deniedGuestID)
+        
+        self.acceptButton.isHidden = true
+        self.denyButton.isHidden = true
+        self.tagAlongFoundLabel.isHidden = true
+        self.tagAlongDetailLabel.isHidden = true
+        self.searchingLabel.isHidden = false
+        self.beTagAlongGuestButton.isHidden = false
+        self.searchAgainButton.isHidden = false
         
     }
     
