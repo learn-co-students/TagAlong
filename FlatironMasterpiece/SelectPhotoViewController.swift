@@ -20,6 +20,11 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
 //    var industryEntry = UITextField()
 //    var jobEntry = UITextField()
 //    var createAccountButton = UIButton()
+    
+    
+    
+    
+    
     var picButton = UIButton()
     var picImage = UIImageView()
     
@@ -39,14 +44,17 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
 
     func addPhotoViews() {
         
+        
+        
+        
         view.addSubview(picButton)
         
         
         
-        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
-        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+        
         picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+        
+        
         picButton.isUserInteractionEnabled = true
         picButton.titleLabel?.numberOfLines = 2
         picButton.setTitle("Add\nPic", for: UIControlState.normal)
@@ -58,10 +66,10 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         //  picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 60
         picButton.translatesAutoresizingMaskIntoConstraints = false
-        picButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true
-        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+        picButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        picButton.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.2).isActive = true
+        picButton.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.08).isActive = true
         
         
         view.addSubview(picImage)
@@ -75,11 +83,20 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
         
-        picImage.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 120).isActive = true
+        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
 
+    }
+    
+    //Sets up pic button with relevant sizes text
+    func createPicButton() {
+        
+    }
+    //Constrains pic button to self.view
+    func constrainPicButton() {
+        
     }
     
 //    func createViews() {
