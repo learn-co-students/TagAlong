@@ -37,8 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          navController = UINavigationController()
 
 
-       var loginVC = LogInViewController()
-  //      var onboardingVC = OnboardingViewController()
+
+
+
+//        let initialViewController = LogInViewController()
+      var loginVC = LogInViewController()
+//  
+//        //      var onboardingVC = OnboardingViewController()
+
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
       self.navController?.pushViewController(loginVC, animated: false)
@@ -47,19 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
-
-
-//        let initialViewController = LogInViewController()
-//
-
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//      self.navController?.pushViewController(loginVC, animated: false)
-// //       self.navController?.pushViewController(onboardingVC, animated: true)
-//
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
 
            return true
     }
