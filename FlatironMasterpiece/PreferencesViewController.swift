@@ -232,7 +232,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         // replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         replayTutorialButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         replayTutorialButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        replayTutorialButton.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
+        replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
         
@@ -293,6 +293,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func replayTutorial() {
         print("Replay tutorial requested.")
+        let onboardingVC = OnboardingViewController()
+        self.navigationController?.pushViewController(onboardingVC, animated: true)
     }
     
     func logoutUser() {
