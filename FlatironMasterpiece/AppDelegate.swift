@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.navController?.pushViewController(loginVC, animated: false)
  //       self.navController?.pushViewController(onboardingVC, animated: true)
 
-        self.window?.rootViewController = navController
+        self.window?.rootViewConsendtroller = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 

@@ -180,7 +180,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         myCell.diningTimeLabel.text = "4:00"
         
         myCell.userImageView?.image = UIImage(named: "rock.png")
-        
+        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
+        myCell.userImageView?.image = UIImage(named:  )
         return myCell
     }
     
