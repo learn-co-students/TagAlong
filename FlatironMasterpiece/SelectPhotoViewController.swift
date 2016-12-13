@@ -22,6 +22,7 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
 //    var createAccountButton = UIButton()
     var picButton = UIButton()
     var picImage = UIImageView()
+    var goToPreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,35 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+        
+        view.addSubview(goToPreferencesButton)
+        goToPreferencesButton.backgroundColor = phaedraLightGreen
+        goToPreferencesButton.layer.cornerRadius = 5
+        goToPreferencesButton.layer.borderColor = phaedraDarkGreen.cgColor
+        goToPreferencesButton.layer.borderWidth = 2
+        goToPreferencesButton.setTitle("Save Preferences", for: .normal)
+        goToPreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        goToPreferencesButton.titleLabel?.textAlignment = .center
+        goToPreferencesButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        goToPreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 435).isActive = true
+        goToPreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        //        savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40).isActive = true
+        goToPreferencesButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        //        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        goToPreferencesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        goToPreferencesButton.addTarget(self, action: #selector(goToPreferencesButtonTapped), for: .touchUpInside)
+        goToPreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
+        goToPreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
 
+
+    }
+    
+    func goToPreferencesButtonTapped() {
+        
+        let preferencesVC = PreferenceViewController()
+        self.navigationController?.pushViewController(preferencesVC, animated: true)
+        
     }
     
 //    func createViews() {
