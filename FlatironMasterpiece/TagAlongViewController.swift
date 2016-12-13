@@ -175,9 +175,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = String(userDataStore.userDistanceToChosenRest)
         
-        let date = NSDate()
-        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
-        myCell.diningTimeLabel.text = time
+//        let date = NSDate()
+//        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
+        myCell.diningTimeLabel.text = "4:00"
         
         myCell.userImageView?.image = UIImage(named: "rock.png")
         
@@ -189,7 +189,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                
+        print("a cell was tapped")
         var selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below

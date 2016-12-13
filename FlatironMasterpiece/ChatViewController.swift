@@ -71,15 +71,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Dummy Data
-        
-        //        // messages from someone else
-        //        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
-        //        // messages sent from local sender
-        //        addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
-        //        addMessage(withId: senderId, name: "Me", text: "I like to run!")
-        //        // animates the receiving of a new message on the view
-        //        finishReceivingMessage()
     }
     
     // Creates messages ref and saves a message to Firebase
@@ -100,12 +91,6 @@ class ChatViewController: JSQMessagesViewController {
         //        isTyping = false
         
     }
-    
-//    deinit {
-//        if let refHandle = newMessageRefHandle {
-//            tagAlongRef.removeObserver(withHandle: refHandle)
-//        }
-//    }
     
     // MARK: Create Messages/ Create JSQMessage objects and append to array
     private func addMessage(withId id: String, name: String, text: String) {

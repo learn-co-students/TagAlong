@@ -32,31 +32,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-
         //MARK: - sets up the navigation controller for our app
 
-
-
          navController = UINavigationController()
-        var loginVC = LogInViewController()
-//          var chatVC = ChatViewController()
+//        var loginVC = LogInViewController()
+        var onboardingVC = OnboardingViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        self.navController?.pushViewController(loginVC, animated: false)
+//        self.navController?.pushViewController(loginVC, animated: false)
+        self.navController?.pushViewController(onboardingVC, animated: true)
         self.window?.rootViewController = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
+//        let initialViewController = WaitingForHostViewController()
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
 
-        let initialViewController = SearchingForTagAlongViewController()
-
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
-//
            return true
     }
 

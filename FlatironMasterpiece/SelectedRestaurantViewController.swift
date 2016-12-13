@@ -11,24 +11,15 @@ import UIKit
 import MapKit
 class SelectedRestaurantViewController: UIViewController {
 
-    let store = FirebaseManager.shared
-    
-    var restaurantView: RestaurantView!
+    //NOTE: - dataStores
+    let firebaseStore = FirebaseManager.shared
     var userStore = UsersDataStore.sharedInstance
     var restStore = RestaurantDataStore.sharedInstance
+    
+    var restaurantView: RestaurantView!
     var restMap: MKMapView?
     var restaurant: Restaurant?
     var emojiString = ""
-    
-
-    // Dummy Data
-    var user1 = FirebaseManager.currentUser
-    var date1 = Date()
-    var location1: [String: Any] = [
-        "restaurant" : "Peter Lugar's", // UsersDataStore.sharedInstance.chosenRestName
-        "lat" : -45,                    // chosenRestLong
-        "long": 35                      //chosenRestLat
-    ]
 
     var tagalongInfo: [String: Any] = [
         "user" : FirebaseManager.currentUser,
@@ -39,10 +30,8 @@ class SelectedRestaurantViewController: UIViewController {
             "lat" : -45,
             "long": 35
         ]
-        
-        
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantView.delegate = self
@@ -97,7 +86,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
             print("User clicked cancel")
         })
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
-            //TODO:
             print("confirm tapped")
             print("hey there before createtagalong")
             
@@ -107,13 +95,11 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
                 print("------------------- IS BEING CALLED ------------------------")
 
-                self.store.selectedTagAlongID = newKey
+                self.firebaseStore.selectedTagAlongID = newKey
                 
                 // Add tagalong key to chat
-        
+
                 FirebaseManager.createChatWithTagID(key: newKey)
-                
-                
                 
                 print("Chat ID Being created")
 
@@ -123,13 +109,9 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 let searchingVC = SearchingForTagAlongViewController()
                 self.navigationController?.pushViewController(searchingVC, animated: true)
                 
+                
+                
             })
-
-            // Testing Chat - should segue to
-
-//            let chatVC = ChatViewController()
-//            self.navigationController?.present(chatVC, animated: true, completion: nil)
-////
 
         })
         confirmTagAlongAlert.addAction(cancelAction)

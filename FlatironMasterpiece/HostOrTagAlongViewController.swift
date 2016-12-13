@@ -26,15 +26,6 @@ class HostOrTagAlongViewController: UIViewController {
      }
     
     override func viewWillAppear(_ animated: Bool) {
-//        view.addSubview(searchLabel)
-//        searchLabel.center.x -= view.bounds.width
-//        searchButton.center.x -= view.bounds.width
-//        tagAlongLabel.center.x -= view.bounds.width
-//        tagAlongButton.center.x -= view.bounds.width
-//        UIView.animate(withDuration: 0.5) {
-//            self.searchLabel.center.x += self.view.bounds.width
-//        }
-        
     }
 
     func setupViews() {

@@ -478,8 +478,7 @@ extension AccountCreationViewController {
 
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
-
-
+ 
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
@@ -492,6 +491,10 @@ extension AccountCreationViewController {
 
             if success {
 
+                //SEND USER TO ONBOARDING VIEWCONTROLLER
+//                let onboardingVC = OnboardingViewController()
+//                self.navigationController?.modalPresentationStyle
+//                self.navigationController?.pushViewController(onboardingVC, animated: true)
                 let preferencesVC = PreferenceViewController()
                 self.navigationController?.pushViewController(preferencesVC, animated: true)
 
@@ -503,7 +506,6 @@ extension AccountCreationViewController {
                     invalidCredentialsAlert.addAction(okAction)
                     self.present(invalidCredentialsAlert, animated: true, completion: nil)
             }
-
 
         })
 
@@ -542,15 +544,4 @@ extension AccountCreationViewController {
         //
 //        print("view should dismiss")
 //        super.dismiss(animated: true, completion: nil)
-    }
-
-
-
-
-
-
-extension AccountCreationViewController {
-
-
-
 }

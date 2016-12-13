@@ -28,8 +28,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t6-Qn-zgQ">
-                        <rect key="frame" x="244" y="70" width="66" height="22"/>
-                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                        <rect key="frame" x="252.5" y="72.5" width="57.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.63921568630000003" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

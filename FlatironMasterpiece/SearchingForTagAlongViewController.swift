@@ -72,13 +72,13 @@ class SearchingForTagAlongViewController: UIViewController {
         searchAgainButton.layer.cornerRadius = 5
         searchAgainButton.setTitle("Choose Another Restaurant", for: UIControlState.normal)
         //        searchAgainButton.setTitle("Tutorial Played", for: .highlighted)
-        searchAgainButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
+        searchAgainButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 15.0)
         searchAgainButton.titleLabel?.textAlignment = .center
         searchAgainButton.translatesAutoresizingMaskIntoConstraints = false
         searchAgainButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 340).isActive = true
         searchAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchAgainButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        searchAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
+        searchAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
         searchAgainButton.addTarget(self, action: #selector(returnToDeckView), for: .touchUpInside)
         searchAgainButton.setTitleColor(phaedraYellow, for: .normal)
         searchAgainButton.setTitleColor(phaedraLightGreen, for: .highlighted)
@@ -90,7 +90,7 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.layer.cornerRadius = 5
         beTagAlongGuestButton.setTitle("Be A Tag Along Instead", for: UIControlState.normal)
         //        beTagAlongGuestButton.setTitle("Tutorial Played", for: .highlighted)
-        beTagAlongGuestButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
+        beTagAlongGuestButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 15.0)
         beTagAlongGuestButton.titleLabel?.textAlignment = .center
         beTagAlongGuestButton.translatesAutoresizingMaskIntoConstraints = false
         beTagAlongGuestButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 400).isActive = true
