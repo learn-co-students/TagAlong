@@ -376,7 +376,7 @@ extension FirebaseManager {
     
     func acceptTagalong(guestID: String, completion: @escaping (String)-> Void) {
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
-        FirebaseManager.ref.child("users").child("\(guestID)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
+        FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
             print("Current Tagalong -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
