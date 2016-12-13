@@ -502,8 +502,12 @@ extension AccountCreationViewController {
 //                let onboardingVC = OnboardingViewController()
 //                self.navigationController?.modalPresentationStyle
 //                self.navigationController?.pushViewController(onboardingVC, animated: true)
-                let preferencesVC = PreferenceViewController()
-                self.navigationController?.pushViewController(preferencesVC, animated: true)
+                
+//                let preferencesVC = PreferenceViewController()
+//                self.navigationController?.pushViewController(preferencesVC, animated: true)
+                
+                let selectPhotoVC = SelectPhotoViewController()
+                self.navigationController?.pushViewController(selectPhotoVC, animated: true)
 
             } else {
                     print("error!")

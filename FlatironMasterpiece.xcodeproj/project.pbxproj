@@ -14,6 +14,7 @@
 		250347EC1DDF67EA00B896AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250347EB1DDF67EA00B896AA /* FBSDKLoginKit.framework */; };
 		250501CB1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */; };
 		250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CC1DF0CC770090AC68 /* FirebaseManager.swift */; };
+		2520E6461E00854500E7B4A1 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520E6451E00854500E7B4A1 /* SelectPhotoViewController.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
 		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
@@ -79,6 +80,7 @@
 		250347ED1DDFB8B400B896AA /* FlatironMasterpiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlatironMasterpiece.entitlements; sourceTree = "<group>"; };
 		250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTagAlongsTableViewController.swift; sourceTree = "<group>"; };
 		250501CC1DF0CC770090AC68 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		2520E6451E00854500E7B4A1 /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
 		25C9897B1DE347DB003C993C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				250347BE1DDD1A1B00B896AA /* AccountCreationViewController.swift */,
+				2520E6451E00854500E7B4A1 /* SelectPhotoViewController.swift */,
 				45F196A41DF2A87F00BD24E9 /* CardViewController.swift */,
 				25C9897B1DE347DB003C993C /* ChatViewController.swift */,
 				45FA58221DE9D1EF0075D914 /* HostOrTagAlongViewController.swift */,
@@ -493,6 +496,7 @@
 				45229D8A1DFA20F0005D322D /* Message.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */,
+				2520E6461E00854500E7B4A1 /* SelectPhotoViewController.swift in Sources */,
 				45D801451DFF4CD8003E2499 /* OnboardingViewController.swift in Sources */,
 				25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */,
 				453921351DEB8E5100D19A45 /* TabBarController.swift in Sources */,
