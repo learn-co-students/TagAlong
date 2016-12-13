@@ -482,7 +482,7 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-
+        let userID = FirebaseManager.currentUser
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
  
@@ -491,7 +491,7 @@ extension AccountCreationViewController {
         }
 
         //1 - create an instance of a user
-        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job, userID: userID!)
 
         //2 - called on FirebaseManger to create a user based on the above currentUser
         FirebaseManager.createNewUser(currentUser: currentUser, completion: { success in
