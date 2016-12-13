@@ -61,15 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.backgroundColor = phaedraDarkGreen
 //        self.window?.makeKeyAndVisible()
 
-        let initialViewController = PreferenceViewController()
-
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
-
            return true
     }
 
