@@ -39,15 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-=======
+
 //        let initialViewController = LogInViewController()
-//       var loginVC = LogInViewController()
+      var loginVC = LogInViewController()
 //  
 //        //      var onboardingVC = OnboardingViewController()
 
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-      self.navController?.pushViewController(initialViewController, animated: false)
+      self.navController?.pushViewController(loginVC, animated: false)
  //       self.navController?.pushViewController(onboardingVC, animated: true)
 
         self.window?.rootViewController = navController
