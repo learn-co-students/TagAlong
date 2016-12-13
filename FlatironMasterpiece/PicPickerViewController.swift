@@ -85,7 +85,16 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         guard let compressedJPGImage = UIImage(data: imageData) else { return }
         //send to firebase
         
-        FirebaseManager.sendToStorage(data: imageData)
+       // FirebaseManager.sendToStorage(data: imageData)
+        
+        FirebaseManager.sendToStorage(data: imageData, handler: { success in
+            
+            print("view should dismiss")
+
+            super.dismiss(animated: true, completion: nil)
+
+            
+        })
 
 //        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
 //            newImage = image
@@ -93,8 +102,8 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
 //            print("Something went wrong")
 //        }
 //        
-        print("view should dismiss")
-        super.dismiss(animated: true, completion: nil)
+//        print("view should dismiss")
+//        super.dismiss(animated: true, completion: nil)
     }
     
     
