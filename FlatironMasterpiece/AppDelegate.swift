@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
          navController = UINavigationController()
 //        var loginVC = LogInViewController()
-        var onboardingVC = OnboardingViewController()
+        let onboardingVC = OnboardingViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
 //        self.navController?.pushViewController(loginVC, animated: false)
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
 
-//        let initialViewController = WaitingForHostViewController()
+        let initialViewController = OnboardingViewController()
 //        let frame = UIScreen.main.bounds
 //        window = UIWindow(frame: frame)
 //        if let window = window {
