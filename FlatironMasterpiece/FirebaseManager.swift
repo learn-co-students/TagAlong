@@ -95,6 +95,7 @@ final class FirebaseManager {
                         // Call on a completion?
                         
                         handler(true)
+                        print("THIS IS A UID: \(currentUser)")
                     }
 
                 })
