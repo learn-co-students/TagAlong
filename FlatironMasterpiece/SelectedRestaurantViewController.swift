@@ -85,7 +85,7 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             print("User clicked cancel")
         })
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+        let confirmAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
             print("confirm tapped")
             print("hey there before createtagalong")
             
