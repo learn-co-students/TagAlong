@@ -1,6 +1,6 @@
 # Tag Along App
 
-![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/logo.imageset/1548x1548.png)
+![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/tagalong_logo.png)
 	
 Team: Joyce Matos, Erica Millado, Eli Miller, Nick Rigano
 
