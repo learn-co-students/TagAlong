@@ -202,14 +202,21 @@ extension AccountCreationViewController {
         if let selectedImage = selectedImageFromPicker {
             let data = UIImagePNGRepresentation(selectedImage)
             guard let imageData = data else { return }
-            FirebaseManager.sendToStorage(data: imageData)
+            print("okkkkkkkkk\(imageData)")
+            FirebaseManager.sendToStorage(data: imageData, handler: { success in
+                
+                print("view should dismiss")
+                
+                super.dismiss(animated: true, completion: nil)
+                
+                
+            })
             picImage.image = selectedImage
-        print("selected:::: \(picImage)")
-        }
-        dismiss(animated: true, completion: nil)
-
-    }
+            
+     //       FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("profilePic").setValue(["\()" : true])
     
+    }
+    }
 
     func createViews() {
 
@@ -546,3 +553,4 @@ extension AccountCreationViewController {
 //        print("view should dismiss")
 //        super.dismiss(animated: true, completion: nil)
 }
+

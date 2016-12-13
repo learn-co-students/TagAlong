@@ -20,7 +20,7 @@ final class FirebaseManager {
     
     // Reference properties
     static var ref = FIRDatabase.database().reference().root
-//    static var chatRef: FIRDatabaseReference!
+    //    static var chatRef: FIRDatabaseReference!
     static var chatsRef: FIRDatabaseReference!
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
     static var newMessageRefHandle: FIRDatabaseHandle?
@@ -61,19 +61,52 @@ final class FirebaseManager {
     //this function is called in AccountCreationViewController, createAccountButton()
     
     
-    static func sendToStorage(data:Data){
-        guard let currentUser = FirebaseManager.currentUser else { return }
+    static func sendToStorage(data: Data, handler: @escaping (Bool) -> Void) {
+        guard let currentUser = FirebaseManager.currentUser else { handler(false); return }
         
         print(data)
         let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
         
         
         storageRef.put(data, metadata: nil, completion: { (metadata, error) in
-            if error != nil {
-                print(error)
-                return
+            
+            DispatchQueue.main.async {
+                
+                
+                
+                if error != nil {
+                    handler(false)
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                guard let theMetaData = metadata else { return }
+                
+                
+                let info = [
+                    "ProfilePic" : String(describing: theMetaData.downloadURL()!)
+                ]
+                
+                
+                ref.child("users").child(currentUser).updateChildValues(info, withCompletionBlock: { error, ref in
+                    
+                    DispatchQueue.main.async {
+                        
+                        // Call on a completion?
+                        
+                        handler(true)
+                    }
+
+                })
+              
+                
+                
             }
-            print(metadata)
+            
+            
+            //            print(metadata)
+            //            print(metadata?.downloadURL())
+            //            ref.child("users").child(currentUser).child("ProfilePic").setValue([(metadata): true])
         })
         
         //        let reference = FIRDatabase.database().reference(fromURL: "gs://newcarrots.appspot.com")
@@ -239,7 +272,7 @@ extension FirebaseManager {
     }
     
     static func updateUserWithTagAlongKey(key: String) {
-    
+        
         if FIRAuth.auth()?.currentUser?.uid != nil {
             guard let currentUser = currentUser else { return }
             ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
@@ -408,7 +441,7 @@ extension FirebaseManager {
         guard let selectedTag = selectedTagAlongID else { print("selected tag along is nil");return}
         
         print("firebase manager observe guest tagalong - selected tag: \(selectedTag)")
-    
+        
         FirebaseManager.ref.child("tagalongs").child("\(selectedTag)").child("guests").child("\(guestID)").observe(.value, with: { (snapshot) in
             completion(snapshot)
         })
@@ -443,7 +476,7 @@ extension FirebaseManager {
     
     static func observeMessages(for tagalong:String, completion: @escaping (String, String, String) -> Void) {
         print(tagalong)
-  
+        
         self.chatsRef = FirebaseManager.allChatsRef.child("\(tagalong)")
         let chatQuery = chatsRef.queryLimited(toLast:25)
         
