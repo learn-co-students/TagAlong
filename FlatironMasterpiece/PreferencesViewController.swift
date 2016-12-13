@@ -226,7 +226,6 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
         replayTutorialButton.titleLabel?.textAlignment = .center
         replayTutorialButton.translatesAutoresizingMaskIntoConstraints = false
-        
         replayTutorialButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 400).isActive = true
         replayTutorialButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
         // replayTutorialButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -235,6 +234,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         replayTutorialButton.addTarget(self, action: #selector(replayTutorial), for: .touchUpInside)
         replayTutorialButton.setTitleColor(phaedraDarkGreen, for: .normal)
         replayTutorialButton.setTitleColor(phaedraYellow, for: .highlighted)
+        replayTutorialButton.isHidden = true
         
         view.addSubview(logoutButton)
         logoutButton.backgroundColor = phaedraOrange
@@ -253,6 +253,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
         logoutButton.setTitleColor(phaedraYellow, for: .normal)
         logoutButton.setTitleColor(phaedraLightGreen, for: .highlighted)
+        logoutButton.isHidden = true
         
         view.addSubview(savePreferencesButton)
         savePreferencesButton.backgroundColor = phaedraLightGreen
