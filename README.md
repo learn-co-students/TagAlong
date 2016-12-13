@@ -1,8 +1,14 @@
 # Tag Along App
-	
-Team: Joyce Matos, Erica Millado, Eli Miller, Nick Rigano
 
-Tag Along is an app that curates a selection of restaurants specific to a users' preferences and is unique in that it allows users to meet people nearby and connect over a shared cusisine interest. Users do this by either choosing to be a "host" which initiates an open invite for anyone willing to tag along to the restaurant of their choice, or they become a "guest" and request to tag along with a host. 
+![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/tagalong_logo.png)
+
+## Team:
+[Joyce Matos](https://github.com/JoyceMatos)	
+[Erica Millado](https://github.com/yayitserica)
+[Eli Miller](https://github.com/elimiller783)
+[Nick Rigano](https://github.com/nrigano)
+
+Tag Along is an app that curates a selection of restaurants specific to a users' preferences.  It is unique in that it allows users to meet people nearby that share cuisine interests.  Users do this by either choosing to be a "host" or "guest" in a Tag Along.  Never dine alone again!
 
 Tag Along was inspired by our instructor, who really hates to dine alone.
 
