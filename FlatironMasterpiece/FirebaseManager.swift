@@ -207,8 +207,8 @@ final class FirebaseManager {
             print("=====================================================\n\n\n")
         }
     }
-    
-    
+}
+extension FirebaseManager {
     //MARK: - Firebase chat methods
     
     //1 - call this when a tagalong is created (restaurant card review) and
