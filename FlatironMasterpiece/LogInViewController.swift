@@ -163,6 +163,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
         fbLoginButton.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: 50).isActive = true
         fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        fbLoginButton.isHidden = true
         
         
         // Forgot Password Button
