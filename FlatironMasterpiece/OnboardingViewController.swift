@@ -14,16 +14,55 @@ class OnboardingViewController: UIViewController {
     var goToLoginButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 30))
     let friendsArray = ["👫", "👬", "👭", "🍔", "🌮", "🍕", "🍝", "🍜", "🍣", "🍰", "🍦", "🍻"] //11
     var friendsLabel = UILabel()
+    var tacoTwo = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = phaedraOrange
         setupViews()
-        
-
         // Do any additional setup after loading the view.
     }
+ 
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(/*animated*/) {
+//        setOverlayTitle()
+//            
+//            
+//        }
+//    }
+//    
+//    func setOverlayTitle()
+//    {
+//
+//        
+//        UIView.animate(withDuration: 1.0, delay: 2.0, options: UIViewAnimationOptions.curveEaseOut, animations:
+//            {
+//                self.friendsLabel.alpha = 0.0
+//                
+//        },
+//    
+//                       completion:
+//            {(finished: Bool) -> Void in
+//                print(self.iterator)
+//                self.friendsLabel.text = hello[self.iterator]
+//                
+//                // Fade in
+//                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations:
+//                    {
+//                        self.lblAnime!.alpha = 1.0
+//                },
+//                                           completion:
+//                    {(finished: Bool) -> Void in
+//                        self.iterator++
+//                        
+//                        if self.iterator < hello.count
+//                        {
+//                            self.setOverlayTitle();
+//                        }
+//                })
+//        })
+//    }
 
     func setupViews() {
         view.addSubview(welcomeLabel)
@@ -44,9 +83,17 @@ class OnboardingViewController: UIViewController {
         friendsLabel.text = friendsArray[4]
         friendsLabel.textAlignment = .center
         friendsLabel.translatesAutoresizingMaskIntoConstraints = false
-        friendsLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 50).isActive = true
+        friendsLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 45).isActive = true
         friendsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         friendsLabel.font = friendsLabel.font.withSize(102)
+        
+        view.addSubview(tacoTwo)
+        tacoTwo.text = friendsArray[4]
+        tacoTwo.textAlignment = .center
+        tacoTwo.translatesAutoresizingMaskIntoConstraints = false
+        tacoTwo.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 45).isActive = true
+        tacoTwo.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -25).isActive = true
+        tacoTwo.font = tacoTwo.font.withSize(102)
         
 //        view.addSubview(waitingHostLabel)
 //        waitingHostLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
