@@ -41,7 +41,7 @@ class OnboardingViewController: UIViewController {
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
         view.addSubview(friendsLabel)
-        friendsLabel.text = friendsArray[11]
+        friendsLabel.text = friendsArray[4]
         friendsLabel.textAlignment = .center
         friendsLabel.translatesAutoresizingMaskIntoConstraints = false
         friendsLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 50).isActive = true
