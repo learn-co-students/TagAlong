@@ -204,7 +204,7 @@ extension AccountCreationViewController {
             guard let imageData = data else { return }
             print("okkkkkkkkk\(imageData)")
             FirebaseManager.sendToStorage(data: imageData, handler: { success in
-                
+                print("*************\(FirebaseManager.currentUser)")
                 print("view should dismiss")
                 
                 super.dismiss(animated: true, completion: nil)
@@ -216,7 +216,7 @@ extension AccountCreationViewController {
      //       FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("profilePic").setValue(["\()" : true])
     
     }
-    }
+}
 
     func createViews() {
 

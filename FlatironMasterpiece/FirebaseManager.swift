@@ -62,8 +62,12 @@ final class FirebaseManager {
     
     
     static func sendToStorage(data: Data, handler: @escaping (Bool) -> Void) {
-        guard let currentUser = FirebaseManager.currentUser else { handler(false); return }
         
+        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { handler(false); return }
+        
+        print("THIS IS THE UID::::::::::: \(currentUser)")
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        print("UID \(uid)")
         print(data)
         let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
         
@@ -88,7 +92,7 @@ final class FirebaseManager {
                 ]
                 
                 
-                ref.child("users").child(currentUser).updateChildValues(info, withCompletionBlock: { error, ref in
+                ref.child("users").child(uid!).updateChildValues(info, withCompletionBlock: { error, ref in
                     
                     DispatchQueue.main.async {
                         
@@ -123,6 +127,7 @@ final class FirebaseManager {
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
+                print("rawUser \(rawUser.uid)")
                 guard error == nil else { completion(false); return }
                 completion(true)
             })

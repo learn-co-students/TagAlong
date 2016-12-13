@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.makeKeyAndVisible()
 //
 
-        let initialViewController = SelectPhotoViewController()
+        let initialViewController = LogInViewController()
 //
 
         let frame = UIScreen.main.bounds
