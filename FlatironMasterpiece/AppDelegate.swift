@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: - sets up the navigation controller for our app
         navController = UINavigationController()
-        var login = TagAlongViewController()
+        var login = LogInViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         self.navController?.pushViewController(login, animated: false)
