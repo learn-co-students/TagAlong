@@ -44,13 +44,13 @@ class HostOrTagAlongViewController: UIViewController {
         view.addSubview(searchButton)
         searchButton.backgroundColor = phaedraOrange
         searchButton.layer.cornerRadius = 5
-        searchButton.setTitle("Search", for: .normal)
+        searchButton.setTitle("Search For Restaurant", for: .normal)
         searchButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         searchButton.titleLabel?.textAlignment = .center
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.topAnchor.constraint(equalTo: searchLabel.bottomAnchor, constant: 20).isActive = true
         searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        searchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
+        searchButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
         searchButton.addTarget(self, action: #selector(searchForRestaurant), for: .touchUpInside)
         searchButton.setTitleColor(phaedraYellow, for: .normal)
         searchButton.setTitleColor(phaedraLightGreen, for: .highlighted)
