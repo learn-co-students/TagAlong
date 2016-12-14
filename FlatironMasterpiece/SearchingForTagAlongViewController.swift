@@ -126,6 +126,7 @@ class SearchingForTagAlongViewController: UIViewController {
         guestPhoto.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         guestPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
         guestPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        guestPhoto.isHidden = false
         
         //NOTE: - Tag along details
         view.addSubview(tagAlongDetailLabel)
@@ -269,6 +270,15 @@ class SearchingForTagAlongViewController: UIViewController {
                 
                 print(guest.firstName)
                 print(guest.jobTitle)
+                
+                
+                
+             FirebaseManager.downloadPic(uid: guestID, handler: { (image) in
+             
+                    self.guestPhoto.image = image
+                    print("Helllooooo image is here")
+             })
+                
                 
             })
                             
