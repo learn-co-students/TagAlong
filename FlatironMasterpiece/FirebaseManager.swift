@@ -299,15 +299,10 @@ extension FirebaseManager {
     
     static func updateUserWithTagAlongKey(key: String) {
         
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
+            guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        print("Current user: \(FIRAuth.auth()?.currentUser?.uid)")
             ref.child("users").child(currentUser).child("tagalongs").updateChildValues([key: true])
-        }
-        
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            guard let currentUser = currentUser else { return }
             ref.child("users").child(currentUser).child("currentTagalongs").setValue([key: true])
-        }
     }
     
     

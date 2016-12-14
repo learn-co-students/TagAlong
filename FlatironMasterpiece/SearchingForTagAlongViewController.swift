@@ -131,7 +131,7 @@ class SearchingForTagAlongViewController: UIViewController {
         //NOTE: - Tag along details
         view.addSubview(tagAlongDetailLabel)
         tagAlongDetailLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
-        tagAlongDetailLabel.text = "iOS Developer, Joyce, would like to tag along with you."
+//        tagAlongDetailLabel.text = "iOS Developer, Joyce, would like to tag along with you."
         tagAlongDetailLabel.lineBreakMode = .byWordWrapping
         tagAlongDetailLabel.numberOfLines = 0
         tagAlongDetailLabel.textColor = phaedraOrange
