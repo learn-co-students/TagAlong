@@ -16,8 +16,8 @@ class User {
     let passWord: String
     let industry: String
     let jobTitle: String
-    let storage = FIRStorage.storage().reference()
-   // let userID: String
+   // let storage = FIRStorage.storage().reference()
+    var userID: String = ""
 
     let image = UIImageView()
 
@@ -40,7 +40,7 @@ class User {
         self.emailAddress = email
         self.jobTitle = jobTitle
         self.industry = industry
-
+        
         self.passWord = ""
     }
 
@@ -52,7 +52,8 @@ class User {
         self.passWord = passWord
         self.industry = industry
         self.jobTitle = jobTitle
-       // self.userID = userID
+        
+        
 }
 
     func serialize() -> [String : String] {
@@ -62,7 +63,7 @@ class User {
             "lastName" : lastName,
             "jobTitle" : jobTitle,
             "industry" : industry,
-
+            
         ]
     }
 

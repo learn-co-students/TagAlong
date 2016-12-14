@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let store = FirebaseManager.shared
@@ -128,7 +128,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user
-                
+                tagalong.user.userID = tagDict["user"] as! String
+            
                 self.tagalongs.append(tagalong)
                 
                 // Remove tagalongs
@@ -165,25 +166,44 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+ 
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         let selectedTag = self.tagalongs[indexPath.row]
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
+        
         
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = String(userDataStore.userDistanceToChosenRest)
         
+        
         //        let date = NSDate()
         //        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
         myCell.diningTimeLabel.text = "4:00"
-        myCell.userImageView?.image = UIImage(named: "rock.png")
+
+  //  FirebaseManager.storageRef.child("\(selectedTag.user)")
+        OperationQueue.main.addOperation {
+            
+            print("++++++++\(selectedTag.user.userID)-----------------------")
+            FirebaseManager.downloadPic(uid: selectedTag.user.userID) { (image) in
+                myCell.userImageView.image = image
+                print("*********\(myCell.imageView?.image)***********")
+        }
+       
+    }
+        
+        
+        //    myCell.userImageView?.image = UIImage(named: "rock.png")
         
         //        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
         //        myCell.userImageView?.image = UIImage(named:  )
         return myCell
     }
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
