@@ -92,7 +92,6 @@ struct Tagalong {
         let longitude = location["long"] as! Double
         let restaurant = location["restaurant"] as! String
         
-        
         // Need to set location to equal dictionary of lat, long, restaurant
         self.hidden = hidden
         self.date = date
@@ -100,9 +99,25 @@ struct Tagalong {
         self.latitude = latitude
         self.restaurant = restaurant
         self.tagID = tagID
+        
+    }
     
+    func serialize()->[String:Any] {
         
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .short
+                let date = dateFormatter.date(from: self.date)?.timeIntervalSince1970 ?? 0.0
         
+                return [
+                    "user" : FIRAuth.auth()?.currentUser?.uid,
+                    "hidden" : false,
+                    "date" : Double(date),
+                    "location" : [
+                        "restaurant" : self.restaurant,
+                        "lat" : self.latitude,
+                        "long": self.longitude,
+                    ]
+                ]
         
     }
     
