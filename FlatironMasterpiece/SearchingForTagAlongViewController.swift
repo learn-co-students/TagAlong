@@ -126,7 +126,7 @@ class SearchingForTagAlongViewController: UIViewController {
         guestPhoto.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         guestPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
         guestPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        guestPhoto.isHidden = false
+        guestPhoto.isHidden = true
         
         //NOTE: - Tag along details
         view.addSubview(tagAlongDetailLabel)
