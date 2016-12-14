@@ -232,11 +232,7 @@ extension AccountCreationViewController {
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-
         view.addSubview(picButton)
-        
-        
-        
         //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
         //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
         picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
@@ -256,22 +252,14 @@ extension AccountCreationViewController {
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
-        
-
-        
-
       
         view.addSubview(picImage)
-        
-      
         picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-        
        // picImage.backgroundColor = UIColor.red
         picImage.layer.borderWidth = 0
         picImage.layer.cornerRadius = 60
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        
         picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
