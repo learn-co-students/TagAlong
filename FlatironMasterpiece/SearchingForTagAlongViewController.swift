@@ -235,10 +235,10 @@ class SearchingForTagAlongViewController: UIViewController {
         store.observeTagalongRequests { (snapshot) in
             
             //Prevents old tagalongs to appear if
-                        if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
+   //                     if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
             
             // Only detects recents tagalongs
-                        if !self.firstTimeLoaded {
+       //                 if !self.firstTimeLoaded {
             
             //Alert user of new tag along
             print("\n ==============Getting called.===============")
@@ -272,7 +272,7 @@ class SearchingForTagAlongViewController: UIViewController {
                 
             })
                             
-            }
+            //}
             
             print("\n\n")
             
