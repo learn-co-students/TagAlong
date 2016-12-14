@@ -241,6 +241,46 @@ final class FirebaseManager {
         }
     }
 }
+
+
+//MARK: - Block Methods
+
+extension FirebaseManager {
+    
+    
+    class func checkIfBlocked(userID: String, handler: @escaping (Bool) -> ()){
+        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); return}
+        FirebaseManager.ref.child("blockedID").child(userID).child(currentUser).observe(.value, with: { (snapshot) in
+            let isBlocked = snapshot.value as? Bool
+
+            if isBlocked != nil {
+                handler(true)
+            }else {
+                handler(false)
+            }
+        })
+        
+    
+    }
+    
+    class func block(userID: String, handler: @escaping (Bool) -> Void) {
+        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return}
+        
+        let blockUserDictionary = [
+            userID : true
+        ]
+      
+        FirebaseManager.ref.child("blockedID").child(currentUser).setValue(blockUserDictionary, withCompletionBlock: { error, ref in
+            if error == nil {
+                handler(true)
+            }
+        })
+        
+
+    }
+    
+    
+}
 extension FirebaseManager {
     //MARK: - Firebase chat methods
     
@@ -300,12 +340,24 @@ extension FirebaseManager {
             
             // This will need to be replaced with the userID
             FirebaseManager.ref.child("users").child(userName).observe(.value, with: { (snapshot) in
-                let userInfo = snapshot.value as! [String: Any]
-                let user = User(snapshot: userInfo)
                 
-                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-                //self.newtagalongUserArray.append(user)
-                completion(user)
+                let userInfo = snapshot.value as? [String: Any]
+                
+                
+                if let userDict = userInfo {
+                    print(snapshot)
+                    print(userDict)
+
+                    let user = User(snapshot: userDict)
+                    user.userID = userName
+                    print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                    //self.newtagalongUserArray.append(user)
+                    completion(user)
+                }
+                
+                
+                
+           
                 
             })
         })
@@ -355,9 +407,9 @@ extension FirebaseManager {
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}
         FirebaseManager.ref.child("users").child("\(currentUser)").child("currentTagalongs").observe(.childAdded, with: { (snapshot) in
             let currentTagalong = snapshot.key
-            print("Current Tagalong -> \(currentTagalong)")
+            print("Current Tagalong from observe requests -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").observe(.childAdded, with: { snapshot in
-                
+                print(snapshot)
                 DispatchQueue.main.async {
                     response(snapshot)
                 }
@@ -368,7 +420,9 @@ extension FirebaseManager {
     func createGuest(from guestID: String, completion: @escaping (User) -> Void) {
         FirebaseManager.ref.child("users").child("\(guestID)").observe(.value, with: { (snapshot) in
             let userInfo = snapshot.value as! [String: Any]
+            print(userInfo)
             let user = User(snapshot: userInfo)
+            user.userID = guestID
             print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
             completion(user)
         })
@@ -384,46 +438,7 @@ extension FirebaseManager {
         })
     }
     
-    func checkIfBlocked(userID: String, handler: @escaping (Bool) -> Void) {
-        
-        guard let currentUser = FirebaseManager.currentUser else { print("No user printing"); handler(false); return }
-        
-        FirebaseManager.ref.child("blockedID").child(currentUser).observeSingleEvent(of: .value, with: { snapshot in
-            
-            DispatchQueue.main.async {
-                
-                guard let blockedUsers = snapshot.value as? [String : Bool] else { handler(false); return }
-                
-                let blockUserIDS = blockedUsers.keys
-                
-                handler(blockUserIDS.contains(userID))
-            }
-        })
-    }
-    
-    //    func checkIfBlocked(userID: String, handler: @escaping (blockedUsers) -> Void) {
-    //        let empArr: [String] = []
-    //            guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return }
-    //        FirebaseManager.ref.child("blockedUser").child(\(currentUser)).observe(.value(userID), with: {(snapshot) in
-    //            let blockedUsers = snapshot.key as? String
-    //              empArr.append(blockedUsers)
-    //
-    //            )
-    //    }
-    //    }
-    func blockUser(userID: String, handler: @escaping (Bool) -> Void) {
-        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return}
-        
-        let blockUserDictionary = [
-            userID : true
-        ]
-        
-        FirebaseManager.ref.child("blockedID").child(currentUser).setValue(blockUserDictionary, withCompletionBlock: { error, ref in
-            if error == nil {
-                handler(true)
-            }
-        })
-    }
+
     
     func denyTagalong(guestID: String) {
         guard let currentUser = FirebaseManager.currentUser else { print("hey coming out as nil");return}

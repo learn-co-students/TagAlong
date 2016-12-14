@@ -12,15 +12,15 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let store = FirebaseManager.shared
     let userDataStore = UsersDataStore.sharedInstance
-
+    
     var tagalongs = [Tagalong]()
-//    var tagAlongUserArray:[User] = []
+    //    var tagAlongUserArray:[User] = []
     var myTableView: UITableView!
     var tagAlongUsersLabel: UILabel = UILabel()
     let preferencesButton: UIButton = UIButton(type: UIButtonType.custom) as UIButton
     let preferencesLabel = UILabel()
     let preferencesImage = UIImage(named: "gear_redLarge.png")! as UIImage
-
+    
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     var hostTagAlongInsteadButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
     
@@ -75,7 +75,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         preferencesLabel.numberOfLines = 0
         preferencesLabel.text = "Preferences"
         preferencesLabel.textColor = phaedraYellow
-//        preferencesLabel.textAlignment = .center
+        //        preferencesLabel.textAlignment = .center
         preferencesLabel.textAlignment = .right
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         preferencesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
@@ -128,7 +128,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user
-
+                
                 self.tagalongs.append(tagalong)
                 
                 // Remove tagalongs
@@ -175,13 +175,13 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = String(userDataStore.userDistanceToChosenRest)
         
-//        let date = NSDate()
-//        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
+        //        let date = NSDate()
+        //        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
         myCell.diningTimeLabel.text = "4:00"
-selectedTag.user
+        selectedTag.user
         myCell.userImageView?.image = UIImage(named: "rock.png")
-//        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
-//        myCell.userImageView?.image = UIImage(named:  )
+        //        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
+        //        myCell.userImageView?.image = UIImage(named:  )
         return myCell
     }
     
@@ -193,16 +193,30 @@ selectedTag.user
         print("a cell was tapped")
         var selectedTag = tagalongs[indexPath.row]
         
-        //ERICA added this nav controller code below
-        let waitingForHostVC = WaitingForHostViewController()
-        self.navigationController?.pushViewController(waitingForHostVC, animated: true)
-        
-        // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
-        FirebaseManager.requestTagAlong(key: selectedTag.tagID)
+        print("HEY THIS IS THE HOST \(selectedTag.user.userID)")
+        let host = selectedTag.user.userID
+        FirebaseManager.checkIfBlocked(userID: host) { (isBlocked) in
+            if isBlocked == true {
+                print("hey im blocked")
+                //TODO: - make an alert controller here to tell user that host is unavailable
+            }else {
+                print("not blocked")
+                let waitingForHostVC = WaitingForHostViewController()
+                waitingForHostVC.host = host
+                self.navigationController?.pushViewController(waitingForHostVC, animated: true)
                 
-        // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
-        store.selectedTagAlongID = selectedTag.tagID
-        store.guestID = FirebaseManager.currentUser
+                // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
+                FirebaseManager.requestTagAlong(key: selectedTag.tagID)
+                
+                // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
+                self.store.selectedTagAlongID = selectedTag.tagID
+                self.store.guestID = FirebaseManager.currentUser
+                
+            }
+        }
+        
+        //ERICA added this nav controller code below
+        
     }
     
     

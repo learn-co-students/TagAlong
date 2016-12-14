@@ -21,6 +21,14 @@ class OnboardingViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = phaedraOrange
         setupViews()
+        
+        
+       
+        
+    
+       
+        
+        
         // Do any additional setup after loading the view.
     }
  

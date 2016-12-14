@@ -17,7 +17,7 @@ class User {
     let industry: String
     let jobTitle: String
     let storage = FIRStorage.storage().reference()
-    let userID: String
+    var userID: String = ""
 
     let image = UIImageView()
 
@@ -26,13 +26,14 @@ class User {
 
 
     init(snapshot: [String: Any]){
+        
         let firstName = snapshot["firstName"] as! String
         let lastName = snapshot["lastName"] as! String
         let email = snapshot["email"] as! String
         let jobTitle = snapshot["jobTitle"] as! String
         let industry = snapshot["industry"] as! String
 //        let currentTagAlong = snapshot["currentTagAlong"] as! String
-       let userID = snapshot["ID"] as! String
+       let userID = snapshot["ID"] as? String ?? ""
         
         self.userID = userID
         self.firstName = firstName
@@ -44,7 +45,7 @@ class User {
         self.passWord = ""
     }
 
-    init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String, userID: String) {
+    init(firstName: String, lastName:String, emailAddress: String, passWord: String, industry: String, jobTitle: String) {
 
         self.firstName = firstName
         self.lastName = lastName
@@ -52,7 +53,7 @@ class User {
         self.passWord = passWord
         self.industry = industry
         self.jobTitle = jobTitle
-        self.userID = userID
+        
 }
 
     func serialize() -> [String : String] {

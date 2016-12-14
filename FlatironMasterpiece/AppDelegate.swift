@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
         //MARK: - sets up the navigation controller for our app
         navController = UINavigationController()
         var onboardingVC = OnboardingViewController()
@@ -42,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = navController
         self.window?.backgroundColor = phaedraDarkGreen
         self.window?.makeKeyAndVisible()
-        
 //        
 //        let initialViewController = SelectPhotoViewController()
 //        let frame = UIScreen.main.bounds

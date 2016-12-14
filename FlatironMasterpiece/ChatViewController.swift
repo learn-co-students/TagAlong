@@ -16,6 +16,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var username: String?
     var messages = [JSQMessage]()
+    var recipient = ""
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
@@ -27,7 +28,7 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print("getting loaded")
         self.title = "Chat"
-//        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
         let block = UIBarButtonItem(title: "Report", style: UIBarButtonItemStyle.plain, target: self, action: "displayBlock")
         navigationItem.rightBarButtonItem = block
        // navigationItem.rightBarButtonItem
@@ -63,7 +64,7 @@ class ChatViewController: JSQMessagesViewController {
     }
   
     func displayBlock() {
-        
+        blockUser()
     }
     
     func dismissKeyboard() {
@@ -166,6 +167,15 @@ class ChatViewController: JSQMessagesViewController {
         }
         
 
+    }
+    
+    
+    func blockUser(){
+        FirebaseManager.block(userID: self.recipient) { (success) in
+            if success {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
 }

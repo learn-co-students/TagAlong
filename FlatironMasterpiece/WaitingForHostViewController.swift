@@ -227,7 +227,7 @@ import UIKit
 class WaitingForHostViewController: UIViewController {
     
     let store = FirebaseManager.shared
-    
+    var host = ""
     let waitingHostLabel:UILabel = UILabel()
     let enterTagALongLabel: UILabel = UILabel()
     let enterTagAlongButton: UIButton = UIButton()
@@ -370,6 +370,7 @@ class WaitingForHostViewController: UIViewController {
     func goToTagAlongTabbedView() {
         print("User wants to go to chat/tabbed bar controller.")
         let tabVC = TabBarController()
+        tabVC.participant = host
         tabVC.tagAlong = store.selectedTagAlongID!
         self.navigationController?.pushViewController(tabVC, animated: true)
     }

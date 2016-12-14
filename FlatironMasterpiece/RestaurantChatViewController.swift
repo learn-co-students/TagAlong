@@ -13,6 +13,8 @@ class RestaurantChatViewController: UIViewController {
     var goToChatLabel = UILabel()
     var chatButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
 
+    
+    var guest = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -54,6 +56,7 @@ class RestaurantChatViewController: UIViewController {
     func goToChatVC() {
         print("chat button getting tapped")
         let chatVC = ChatViewController()
+        chatVC.recipient = guest
         //Erica's old nav controller
         self.navigationController?.pushViewController(chatVC, animated: true)
         

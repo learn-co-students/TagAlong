@@ -11,6 +11,7 @@ import Firebase
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     var tagAlong  = ""
+    var participant = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         
         let firstTab = RestaurantChatViewController()
+        firstTab.guest = participant
         let tabBarItem1 = UITabBarItem(title: "Restaurant Info", image: UIImage(named: "fork-knife.png"), selectedImage: UIImage(named: "fork-knife.png"))
         firstTab.tabBarItem = tabBarItem1
         
