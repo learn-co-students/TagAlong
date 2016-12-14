@@ -198,7 +198,13 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         FirebaseManager.checkIfBlocked(userID: host) { (isBlocked) in
             if isBlocked == true {
                 print("hey im blocked")
-                //TODO: - make an alert controller here to tell user that host is unavailable
+                //this alert is presented when a blocked user tries to tap on a host who has blocked them
+                let userIsBlockedAlert = UIAlertController(title: "Host Unavailable", message: "The host you selected is currently unavailable.  Please choose another host.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    print("User closed alert controller")
+                })
+                userIsBlockedAlert.addAction(okAction)
+                self.present(userIsBlockedAlert, animated: true, completion: nil)
             }else {
                 print("not blocked")
                 let waitingForHostVC = WaitingForHostViewController()
