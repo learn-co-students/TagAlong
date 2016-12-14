@@ -34,23 +34,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //MARK: - sets up the navigation controller for our app
-//        navController = UINavigationController()
-//        var onboardingVC = OnboardingViewController()
-//        let frame = UIScreen.main.bounds
-//        window = UIWindow(frame: frame)
-//        self.navController?.pushViewController(onboardingVC, animated: false)
-//        self.window?.rootViewController = navController
-//        self.window?.backgroundColor = phaedraDarkGreen
-//        self.window?.makeKeyAndVisible()
-        
-//        
-        let initialViewController = SearchingForTagAlongViewController()
+        navController = UINavigationController()
+        var onboardingVC = OnboardingViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        if let window = window {
-            window.rootViewController = initialViewController
-            window.makeKeyAndVisible()
-        }
+        self.navController?.pushViewController(onboardingVC, animated: false)
+        self.window?.rootViewController = navController
+        self.window?.backgroundColor = phaedraDarkGreen
+        self.window?.makeKeyAndVisible()
+        
+//        
+//        let initialViewController = AccountCreationViewController()
+//        let frame = UIScreen.main.bounds
+//        window = UIWindow(frame: frame)
+//        if let window = window {
+//            window.rootViewController = initialViewController
+//            window.makeKeyAndVisible()
+//        }
         
         return true
     }

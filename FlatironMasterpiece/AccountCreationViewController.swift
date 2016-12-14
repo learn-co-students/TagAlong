@@ -227,7 +227,7 @@ extension AccountCreationViewController {
         createAccountLabel.textColor = UIColor.white
         createAccountLabel.textAlignment = .center
         createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200).isActive = true
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -276,7 +276,7 @@ extension AccountCreationViewController {
         firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        firstNameEntry.topAnchor.constraint(equalTo: picButton.bottomAnchor, constant: 20).isActive = true
+        firstNameEntry.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
