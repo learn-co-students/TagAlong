@@ -36,7 +36,7 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picButton.backgroundColor = phaedraLightGreen
         picButton.layer.borderColor = phaedraDarkGreen.cgColor
         //  picButton.layer.borderWidth = 2
-        picButton.layer.cornerRadius = 60
+        picButton.layer.cornerRadius = 0
         picButton.translatesAutoresizingMaskIntoConstraints = false
         picButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -47,7 +47,7 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
 //         picImage.backgroundColor = UIColor.red.withAlphaComponent(0.2)
         picImage.layer.borderWidth = 0
-        picImage.layer.cornerRadius = 60
+        picImage.layer.cornerRadius = 0
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
         picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
