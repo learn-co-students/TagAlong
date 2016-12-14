@@ -64,20 +64,14 @@ final class FirebaseManager {
     static func sendToStorage(data: Data, handler: @escaping (Bool) -> Void) {
         
         guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { handler(false); return }
-        
-        print("THIS IS THE UID::::::::::: \(currentUser)")
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        print("UID \(uid)")
-        print(data)
+      
         let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
         
         
         storageRef.put(data, metadata: nil, completion: { (metadata, error) in
             
             DispatchQueue.main.async {
-                
-                
-                
+                                
                 if error != nil {
                     handler(false)
                     print(error!.localizedDescription)
@@ -88,11 +82,11 @@ final class FirebaseManager {
                 
                 
                 let info = [
-                    "ProfilePic" : String(describing: theMetaData.downloadURL()!)
+                    "ProfilePic" : theMetaData.downloadURL()!.absoluteString
                 ]
                 
                 
-                ref.child("users").child(uid!).updateChildValues(info, withCompletionBlock: { error, ref in
+                ref.child("users").child(currentUser).updateChildValues(info, withCompletionBlock: { error, ref in
                     
                     DispatchQueue.main.async {
                         
