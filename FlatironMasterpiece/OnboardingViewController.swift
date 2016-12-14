@@ -75,7 +75,7 @@ class OnboardingViewController: UIViewController {
         welcomeLabel.textAlignment = .center
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
-        welcomeLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        welcomeLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
 //        welcomeLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
@@ -108,22 +108,22 @@ class OnboardingViewController: UIViewController {
 //        waitingHostLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
         view.addSubview(goToLoginButton)
-        goToLoginButton.backgroundColor = phaedraLightGreen
-        goToLoginButton.layer.cornerRadius = 5
-        goToLoginButton.layer.borderWidth = 2
+        goToLoginButton.backgroundColor = phaedraYellow
+        goToLoginButton.layer.cornerRadius = 7
+        goToLoginButton.layer.borderWidth = 5
         goToLoginButton.layer.borderColor = phaedraDarkGreen.cgColor
         goToLoginButton.setTitle("Let's Tag Along!", for: UIControlState.normal)
-        goToLoginButton.setTitle("Tutorial Played", for: .highlighted)
-        goToLoginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        goToLoginButton.setTitle("Let's Tag Along", for: .highlighted)
+        goToLoginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         goToLoginButton.titleLabel?.textAlignment = .center
         goToLoginButton.translatesAutoresizingMaskIntoConstraints = false
         goToLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        goToLoginButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 200).isActive = true
-        goToLoginButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        goToLoginButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        goToLoginButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 250).isActive = true
+        goToLoginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        goToLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         goToLoginButton.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
-        goToLoginButton.setTitleColor(phaedraDarkGreen, for: .normal)
-        goToLoginButton.setTitleColor(phaedraYellow, for: .highlighted)
+        goToLoginButton.setTitleColor(phaedraOrange, for: .normal)
+        goToLoginButton.setTitleColor(phaedraLightGreen, for: .highlighted)
     }
     
     func gotoLogin() {
