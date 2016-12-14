@@ -219,34 +219,34 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         FirebaseManager.ref.child("tagalongs").child(selectedTag.tagID).child("user").observeSingleEvent(of: .value, with: { snapshot in
             
-            DispatchQueue.main.async {
-                
-                print("\n\n\n\n")
-                
-                print(snapshot.value ?? "No Value")
-                print("ZZZZZZZZZZZZZZZRRRRRRRRRRRRRRRRRR")
-                let usersID = snapshot.value as? String
-                
-                
-                FirebaseManager.shared.checkIfBlocked(userID: usersID!, handler: { isBlocked in
-                    
-                    DispatchQueue.main.async {
-                        
-                        
-                        if !isBlocked {
-                            
-                            self.navigationController?.pushViewController(waitingForHostVC, animated: true)
-                            
-                        } else {
-                            
-                            // TODO: Show an alert to the user that they are BLOCKED (they suck)
-                        }
-                        
-                    }
-                })
-                
-            }
-            
+//            DispatchQueue.main.async {
+//                
+//                print("\n\n\n\n")
+//                
+//                print(snapshot.value ?? "No Value")
+//                print("ZZZZZZZZZZZZZZZRRRRRRRRRRRRRRRRRR")
+//                let usersID = snapshot.value as? String
+//                print("++++++++++++++++\(usersID)++++++++++")
+//                
+//                FirebaseManager.shared.checkIfBlocked(userID: usersID!, handler: { isBlocked in
+//                    
+//                    DispatchQueue.main.async {
+//                        
+//                        
+//                        if !isBlocked {
+//                            
+//                            self.navigationController?.pushViewController(waitingForHostVC, animated: true)
+//                            
+//                        } else {
+//                            
+//                            // TODO: Show an alert to the user that they are BLOCKED (they suck)
+//                        }
+//                        
+//                    }
+//                })
+//                
+//            }
+//            
         }, withCancel: nil)
         
         
@@ -267,6 +267,9 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
+        
+        print("This is selectedtagalongID \(store.selectedTagAlongID)")
+        print("THis is guestID \(store.guestID)")
     }
     
     
