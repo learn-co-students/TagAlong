@@ -222,10 +222,10 @@ class SearchingForTagAlongViewController: UIViewController {
         self.denyButton.isHidden = true
         self.tagAlongFoundLabel.isHidden = true
         self.tagAlongDetailLabel.isHidden = true
+        self.guestPhoto.isHidden = true
         self.searchingLabel.isHidden = false
         self.beTagAlongGuestButton.isHidden = false
         self.searchAgainButton.isHidden = false
-        self.guestPhoto.isHidden = false
         activityIndicator.isHidden = false
         
     }
