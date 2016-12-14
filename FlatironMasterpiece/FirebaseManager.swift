@@ -321,12 +321,15 @@ extension FirebaseManager {
             
             // This will need to be replaced with the userID
             FirebaseManager.ref.child("users").child(userName).observe(.value, with: { (snapshot) in
-                let userInfo = snapshot.value as! [String: Any]
-                let user = User(snapshot: userInfo)
+                let userInfo = snapshot.value as? [String: Any]
+                if let userDict = userInfo {
+                    let user = User(snapshot: userDict)
+                    
+                    print("=-=-=-=-=-=-= \(userDict)-=-=-=-=-=-=-=-=")
+                    //self.newtagalongUserArray.append(user)
+                    completion(user)
+                }
                 
-                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-                //self.newtagalongUserArray.append(user)
-                completion(user)
                 
             })
         })
@@ -388,10 +391,13 @@ extension FirebaseManager {
     
     func createGuest(from guestID: String, completion: @escaping (User) -> Void) {
         FirebaseManager.ref.child("users").child("\(guestID)").observe(.value, with: { (snapshot) in
-            let userInfo = snapshot.value as! [String: Any]
-            let user = User(snapshot: userInfo)
-            print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
-            completion(user)
+            let userInfo = snapshot.value as? [String: Any]
+            if let userDict = userInfo {
+                let user = User(snapshot: userDict)
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                completion(user)
+            }
+            
         })
     }
     

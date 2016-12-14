@@ -9,6 +9,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 class SelectedRestaurantViewController: UIViewController {
 
     //NOTE: - dataStores
@@ -22,7 +23,7 @@ class SelectedRestaurantViewController: UIViewController {
     var emojiString = ""
 
     var tagalongInfo: [String: Any] = [
-        "user" : FirebaseManager.currentUser,
+        "user" : FIRAuth.auth()?.currentUser?.uid,
         "hidden" : false,
         "date" : "December 1",
         "location" : [
