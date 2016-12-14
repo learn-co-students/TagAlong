@@ -19,6 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var recipient = ""
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
+    var block = UIBarButtonItem()
     
     var chatID: String?
     
@@ -26,13 +27,12 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = phaedraBeige
         print("getting loaded")
         self.title = "Chat"
         navigationController?.isNavigationBarHidden = false
-        let block = UIBarButtonItem(title: "Report", style: UIBarButtonItemStyle.plain, target: self, action: "displayBlock")
+        block = UIBarButtonItem(title: "Report", style: UIBarButtonItemStyle.plain, target: self, action: "displayBlock")
         navigationItem.rightBarButtonItem = block
-       // navigationItem.rightBarButtonItem
-        //
         
         //dismisses keyboard
         self.inputToolbar.contentView.leftBarButtonItem = nil
