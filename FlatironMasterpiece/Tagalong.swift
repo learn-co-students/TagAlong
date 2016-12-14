@@ -68,7 +68,7 @@
 //    
 //}
 
-
+import Firebase
 struct Tagalong {
     
     var tagID: String
@@ -84,6 +84,7 @@ struct Tagalong {
         print(snapshot)
         
         let user = snapshot["user"] as! String
+        
         let hidden = snapshot["hidden"] as! Bool
         let date = snapshot["date"] as! String
         let location = snapshot["location"] as! [String: Any]
@@ -99,6 +100,8 @@ struct Tagalong {
         self.latitude = latitude
         self.restaurant = restaurant
         self.tagID = tagID
+    
+        
         
         
     }

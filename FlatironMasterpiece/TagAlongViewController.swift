@@ -7,20 +7,20 @@
 //
 
 import UIKit
-
+import Firebase
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let store = FirebaseManager.shared
     let userDataStore = UsersDataStore.sharedInstance
-
+    
     var tagalongs = [Tagalong]()
-//    var tagAlongUserArray:[User] = []
+    //    var tagAlongUserArray:[User] = []
     var myTableView: UITableView!
     var tagAlongUsersLabel: UILabel = UILabel()
     let preferencesButton: UIButton = UIButton(type: UIButtonType.custom) as UIButton
     let preferencesLabel = UILabel()
     let preferencesImage = UIImage(named: "gear_redLarge.png")! as UIImage
-
+    
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     var hostTagAlongInsteadButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
     
@@ -75,7 +75,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         preferencesLabel.numberOfLines = 0
         preferencesLabel.text = "Preferences"
         preferencesLabel.textColor = phaedraYellow
-//        preferencesLabel.textAlignment = .center
+        //        preferencesLabel.textAlignment = .center
         preferencesLabel.textAlignment = .right
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
         preferencesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
@@ -128,7 +128,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user
-
+                tagalong.user.userID = tagDict["user"] as! String
+            
                 self.tagalongs.append(tagalong)
                 
                 // Remove tagalongs
@@ -165,25 +166,44 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+ 
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         let selectedTag = self.tagalongs[indexPath.row]
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
+        
         
         myCell.userNameLabel.text = fullName
         myCell.userIndustryLabel.text = selectedTag.user.industry
         myCell.restNameLabel.text = selectedTag.restaurant
         myCell.restDistLabel.text = String(userDataStore.userDistanceToChosenRest)
         
-//        let date = NSDate()
-//        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
+        
+        //        let date = NSDate()
+        //        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
         myCell.diningTimeLabel.text = "4:00"
-selectedTag.user
-        myCell.userImageView?.image = UIImage(named: "rock.png")
-//        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
-//        myCell.userImageView?.image = UIImage(named:  )
+
+  //  FirebaseManager.storageRef.child("\(selectedTag.user)")
+        OperationQueue.main.addOperation {
+            
+            print("++++++++\(selectedTag.user.userID)-----------------------")
+            FirebaseManager.downloadPic(uid: selectedTag.user.userID) { (image) in
+                myCell.userImageView.image = image
+                print("*********\(myCell.imageView?.image)***********")
+        }
+       
+    }
+        
+        
+        //    myCell.userImageView?.image = UIImage(named: "rock.png")
+        
+        //        let profilePic = FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("ProfilePic")
+        //        myCell.userImageView?.image = UIImage(named:  )
         return myCell
     }
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
@@ -191,18 +211,65 @@ selectedTag.user
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("a cell was tapped")
-        var selectedTag = tagalongs[indexPath.row]
+        let selectedTag = tagalongs[indexPath.row]
         
         //ERICA added this nav controller code below
         let waitingForHostVC = WaitingForHostViewController()
+        
+        
+        FirebaseManager.ref.child("tagalongs").child(selectedTag.tagID).child("user").observeSingleEvent(of: .value, with: { snapshot in
+            
+//            DispatchQueue.main.async {
+//                
+//                print("\n\n\n\n")
+//                
+//                print(snapshot.value ?? "No Value")
+//                print("ZZZZZZZZZZZZZZZRRRRRRRRRRRRRRRRRR")
+//                let usersID = snapshot.value as? String
+//                print("++++++++++++++++\(usersID)++++++++++")
+//                
+//                FirebaseManager.shared.checkIfBlocked(userID: usersID!, handler: { isBlocked in
+//                    
+//                    DispatchQueue.main.async {
+//                        
+//                        
+//                        if !isBlocked {
+//                            
+//                            self.navigationController?.pushViewController(waitingForHostVC, animated: true)
+//                            
+//                        } else {
+//                            
+//                            // TODO: Show an alert to the user that they are BLOCKED (they suck)
+//                        }
+//                        
+//                    }
+//                })
+//                
+//            }
+//            
+        }, withCancel: nil)
+        
+        
+        
+        
+        
+        // TODO: At this point, take the uniqueID of the tagAlong. With that, grab the unique ID of the host (or creator) of the tagalon somehow.
+        
+        // TODO: After we get unique ID of creator (or host) then we call on that method to see if we're blocked.
+        
+        // TODO: The part where we check to see if we're blocked has a closure as one of the arguments to the function, in that closure, if WE AREN't blocked (if it returns false) then we push the viewcontroller.  If not, if we are blocked, show up an laert.
+        
         self.navigationController?.pushViewController(waitingForHostVC, animated: true)
         
         // Create an alert to confirm tagalong request. Once user had confirmed, this function will be added to the alert
         FirebaseManager.requestTagAlong(key: selectedTag.tagID)
-                
+        
         // Store tagalongID and userID to firebase (This ID will later be used to observe child values for requests)
         store.selectedTagAlongID = selectedTag.tagID
         store.guestID = FirebaseManager.currentUser
+        
+        print("This is selectedtagalongID \(store.selectedTagAlongID)")
+        print("THis is guestID \(store.guestID)")
     }
     
     

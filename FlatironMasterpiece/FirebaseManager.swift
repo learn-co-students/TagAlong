@@ -20,6 +20,8 @@ final class FirebaseManager {
     
     // Reference properties
     static var ref = FIRDatabase.database().reference().root
+    static var storage = FIRStorage.storage()
+    static var storageRef = storage.reference(forURL: "gs://newcarrots.appspot.com")
     //    static var chatRef: FIRDatabaseReference!
     static var chatsRef: FIRDatabaseReference!
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
@@ -27,11 +29,13 @@ final class FirebaseManager {
     static var newTagalongRefHandle: FIRDatabaseHandle?
     static var currentUser = FIRAuth.auth()?.currentUser?.uid
     static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
+
     //    private var USER_REF = Firebase(url: "\(ref)/users")
     //    var USER_REF: Firebase {
     //        return USER_REF
     //    }
     
+       
     // Tagalongs that populate tagalong tableview
     var tagalongs = [Tagalong]()
     
@@ -121,7 +125,8 @@ final class FirebaseManager {
             guard error == nil, let rawUser = user else { completion(false); return }
             //2 - save the new user in Firebase
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
-                print("rawUser \(rawUser.uid)")
+              currentUser.userID = rawUser.uid
+                
                 guard error == nil else { completion(false); return }
                 completion(true)
             })
@@ -141,6 +146,27 @@ final class FirebaseManager {
      }
      }
      */
+    
+    static func downloadPic(uid: String, handler: @escaping (UIImage) ->()) {
+        let store = FirebaseManager.storageRef
+        let userStore = store.child("\(uid).png")
+        print(userStore)
+        var userProfileImage = UIImage()
+        userStore.data(withMaxSize: 1 * 1024 * 1024, completion: { (data, error) -> Void in
+            print(data)
+
+            if error != nil {
+                print("error")
+            } else {
+                print("image")
+             userProfileImage = UIImage(data: data!)!
+                handler(userProfileImage)
+
+            }
+        
+        })
+    }
+    
     
     class func savePref(dictionary: [String: Any]) {
         var empArr: [String] = []
