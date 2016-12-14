@@ -314,21 +314,28 @@ extension FirebaseManager {
     }
     
     
-    static func createUserFrom(tagalong: String, completion:@escaping (User)->()){
+    static func createUserFrom(tagalong: String, completion: @escaping (User) -> ()) {
         
         FirebaseManager.ref.child("tagalongs").child(tagalong).child("user").observeSingleEvent(of: .value, with: { (snapshot) in
             let userName = snapshot.value as! String
             
             // This will need to be replaced with the userID
             FirebaseManager.ref.child("users").child(userName).observe(.value, with: { (snapshot) in
-                let userInfo = snapshot.value as? [String: Any]
-                if let userDict = userInfo {
-                    let user = User(snapshot: userDict)
-                    
-                    print("=-=-=-=-=-=-= \(userDict)-=-=-=-=-=-=-=-=")
-                    //self.newtagalongUserArray.append(user)
-                    completion(user)
-                }
+                let userInfo = snapshot.value as! [String: Any]
+                let user = User(snapshot: userInfo)
+                
+                print("=-=-=-=-=-=-= \(userInfo)-=-=-=-=-=-=-=-=")
+                //self.newtagalongUserArray.append(user)
+                completion(user)
+                
+                //JOHANN'S HANDIWORK
+//                if let userDict = userInfo {
+//                    let user = User(snapshot: userDict)
+//                    
+//                    print("=-=-=-=-=-=-= \(userDict)-=-=-=-=-=-=-=-=")
+//                    //self.newtagalongUserArray.append(user)
+//                    completion(user)
+//                }
                 
                 
             })
