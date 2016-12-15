@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.makeKeyAndVisible()
         
 //        
-        let initialViewController = OnboardingViewController()
+        let initialViewController = LogInViewController()
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         if let window = window {
