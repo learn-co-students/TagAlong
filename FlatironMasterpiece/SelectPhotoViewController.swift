@@ -64,7 +64,7 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picImage.layer.cornerRadius = 0
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 160).isActive = true
+        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
