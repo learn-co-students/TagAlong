@@ -21,6 +21,8 @@ class HostOrTagAlongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = phaedraOliveGreen
+        navigationController?.isNavigationBarHidden = true
+        
         setupViews()
         self.title = "Search or Tag Along"
      }

@@ -224,9 +224,12 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             if isBlocked == true {
                 print("hey im blocked")
                 //this alert is presented when a blocked user tries to tap on a host who has blocked them
-                let userIsBlockedAlert = UIAlertController(title: "Host Unavailable", message: "The host you selected is currently unavailable.  Please choose another host.", preferredStyle: .alert)
+                let userIsBlockedAlert = UIAlertController(title: "Host Unavailable", message: "The host you selected is currently unavailable.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     print("User closed alert controller")
+                    
+                    //let hostOrTagVC = HostOrTagAlongViewController()
+                    //self.navigationController?.present(hostOrTagVC, animated: true, completion: nil)
                 })
                 userIsBlockedAlert.addAction(okAction)
                 self.present(userIsBlockedAlert, animated: true, completion: nil)

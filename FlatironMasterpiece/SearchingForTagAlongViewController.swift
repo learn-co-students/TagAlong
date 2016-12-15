@@ -264,11 +264,10 @@ class SearchingForTagAlongViewController: UIViewController {
                 
                 self.guestName = guest.firstName
                 self.guestJob = guest.jobTitle
-                self.tagAlongDetailLabel.text = "\(self.guestJob), \(self.guestName), would like to tag along with you."
+                self.tagAlongDetailLabel.text = "\(self.guestName), \(self.guestJob), would like to tag along with you."
                 
                 print(guest.firstName)
                 print(guest.jobTitle)
-                
                 
                 
              FirebaseManager.downloadPic(uid: guestID, handler: { (image) in

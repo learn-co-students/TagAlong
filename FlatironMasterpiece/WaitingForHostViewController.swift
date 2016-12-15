@@ -16,7 +16,7 @@ class WaitingForHostViewController: UIViewController {
     let enterTagAlongButton: UIButton = UIButton()
 //    let cancelTagAlongLabel: UILabel = UILabel()
     let hostUnavailableLabel: UILabel = UILabel()
-//    let searchNewTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
+    let goToHostOrTagAlongButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 35))
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     //    var guestStatus = FirebaseManager.shared.guestStatus {
@@ -114,7 +114,7 @@ class WaitingForHostViewController: UIViewController {
         hostUnavailableLabel.textColor = phaedraYellow
         hostUnavailableLabel.textAlignment = .center
         hostUnavailableLabel.translatesAutoresizingMaskIntoConstraints = false
-        hostUnavailableLabel.topAnchor.constraint(equalTo: enterTagAlongButton.bottomAnchor, constant: 180).isActive = true
+        hostUnavailableLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         hostUnavailableLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         hostUnavailableLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         hostUnavailableLabel.isHidden = true
@@ -133,20 +133,21 @@ class WaitingForHostViewController: UIViewController {
 //        cancelTagAlongLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
 //        cancelTagAlongLabel.isHidden = false
         
-//        view.addSubview(searchNewTagAlongButton)
-//        searchNewTagAlongButton.backgroundColor = phaedraOrange
-//        searchNewTagAlongButton.layer.cornerRadius = 5
-//        searchNewTagAlongButton.setTitle("Get New Tag Along", for: .normal)
-//        searchNewTagAlongButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
-//        searchNewTagAlongButton.titleLabel?.textAlignment = .center
-//        searchNewTagAlongButton.translatesAutoresizingMaskIntoConstraints = false
-//        searchNewTagAlongButton.topAnchor.constraint(equalTo: cancelTagAlongLabel.bottomAnchor, constant: 20).isActive = true
-//        searchNewTagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        searchNewTagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
-//        searchNewTagAlongButton.addTarget(self, action: #selector(searchOtherTagAlongs), for: .touchUpInside)
-//        searchNewTagAlongButton.setTitleColor(phaedraYellow, for: .normal)
-//        searchNewTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
-//        searchNewTagAlongButton.isHidden = false
+        view.addSubview(goToHostOrTagAlongButton)
+        goToHostOrTagAlongButton.backgroundColor = phaedraOrange
+        goToHostOrTagAlongButton.layer.cornerRadius = 5
+        goToHostOrTagAlongButton.setTitle("Get New Tag Along", for: .normal)
+        goToHostOrTagAlongButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
+        goToHostOrTagAlongButton.titleLabel?.textAlignment = .center
+        goToHostOrTagAlongButton.translatesAutoresizingMaskIntoConstraints = false
+        goToHostOrTagAlongButton.topAnchor.constraint(equalTo: waitingHostLabel.bottomAnchor, constant: 130).isActive = true
+        goToHostOrTagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        goToHostOrTagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
+        goToHostOrTagAlongButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        goToHostOrTagAlongButton.addTarget(self, action: #selector(goToHostOrTagAlong), for: .touchUpInside)
+        goToHostOrTagAlongButton.setTitleColor(phaedraYellow, for: .normal)
+        goToHostOrTagAlongButton.setTitleColor(phaedraLightGreen, for: .highlighted)
+        goToHostOrTagAlongButton.isHidden = true
         
     }
     
@@ -158,10 +159,10 @@ class WaitingForHostViewController: UIViewController {
         self.navigationController?.pushViewController(tabVC, animated: true)
     }
     
-    func searchOtherTagAlongs() {
+    func goToHostOrTagAlong() {
         print("User wants to pick a different Tag Along.")
-        let tagAlongVC = TagAlongViewController()
-        self.navigationController?.present(tagAlongVC, animated: true, completion: nil)
+        let hostOrTagAlong = HostOrTagAlongViewController()
+        self.navigationController?.present(hostOrTagAlong, animated: true, completion: nil)
         
     }
     
@@ -202,7 +203,10 @@ class WaitingForHostViewController: UIViewController {
                     // TODO: They've been denied, do something else.
                     //if host rejects guest
                     //show hostUnavailable label
+                    self.waitingHostLabel.isHidden = true
+                    self.goToHostOrTagAlongButton.isHidden = false
                     self.hostUnavailableLabel.isHidden = false
+                    self.activityIndicator.stopAnimating()
                     print("this noResult is being called")
 //                    self.cancelTagAlongLabel.isHidden = true
 //                    self.searchNewTagAlongButton.isHidden = false
