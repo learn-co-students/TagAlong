@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
      
 
-        var login = TagAlongViewController()
+        var login = TabBarController()
 
 
         let frame = UIScreen.main.bounds
