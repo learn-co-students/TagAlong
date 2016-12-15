@@ -291,6 +291,8 @@ final class FirebaseManager {
 
 extension FirebaseManager {
     
+    //////////////////////
+    //WHAT JOHANN DID
     
     class func checkIfBlocked(userID: String, handler: @escaping (Bool) -> ()){
         guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); return}
@@ -303,7 +305,6 @@ extension FirebaseManager {
                 handler(false)
             }
         })
-        
     
     }
     
@@ -487,45 +488,6 @@ extension FirebaseManager {
             print("Current Tagalong -> \(currentTagalong)")
             FirebaseManager.ref.child("tagalongs").child("\(currentTagalong)").child("guests").updateChildValues([guestID : true])
             completion(currentTagalong)
-        })
-    }
-    
-     class func checkIfBlocked(userID: String, handler: @escaping (Bool) -> ()){
-        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); return}
-        FirebaseManager.ref.child("blockedID").child(userID).child(currentUser).observe(.value, with: { (snapshot) in
-            let isBlocked = snapshot.value as? Bool
-
-            if isBlocked != nil {
-                handler(true)
-            }else {
-                handler(false)
-            }
-        })
-        
-    }
-
-    //    func checkIfBlocked(userID: String, handler: @escaping (blockedUsers) -> Void) {
-    //        let empArr: [String] = []
-    //            guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return }
-    //        FirebaseManager.ref.child("blockedUser").child(\(currentUser)).observe(.value(userID), with: {(snapshot) in
-    //            let blockedUsers = snapshot.key as? String
-    //              empArr.append(blockedUsers)
-    //
-    //            )
-    //    }
-    //    }
-
-    class func block(userID: String, handler: @escaping (Bool) -> Void) {
-        guard let currentUser = FirebaseManager.currentUser else { print("no user printing"); handler(false); return}
-        
-        let blockUserDictionary = [
-            userID : true
-        ]
-      
-        FirebaseManager.ref.child("blockedID").child(currentUser).setValue(blockUserDictionary, withCompletionBlock: { error, ref in
-            if error == nil {
-                handler(true)
-            }
         })
     }
     
