@@ -173,7 +173,16 @@ class ChatViewController: JSQMessagesViewController {
     func blockUser(){
         FirebaseManager.block(userID: self.recipient) { (success) in
             if success {
-                self.navigationController?.popToRootViewController(animated: true)
+                let hostOrTagVC = HostOrTagAlongViewController()
+                self.navigationController?.show(hostOrTagVC, sender: self)
+                
+                //"push" brings the blocker back to host/tagalong but w/ nav bar at top
+                //self.navigationController?.pushViewController(hostOrTagVC, animated: true)
+                
+                //"present" does not give user buttons that work
+                //self.navigationController?.present(hostOrTagVC, animated: true, completion: nil)
+                
+                //self.navigationController?.popToRootViewController(animated: true)
             }
         }
     }
