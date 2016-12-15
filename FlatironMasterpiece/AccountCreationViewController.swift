@@ -62,6 +62,9 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var password = false
     var industry = false
     var jobtitle = false
+    
+    
+    let store = FirebaseManager.shared
 
 
 var manager = CLLocationManager()
@@ -470,7 +473,10 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-        let userID = FirebaseManager.currentUser
+        //let userID = FirebaseManager.currentUser
+       // let userID = store.currentUser.userID
+        
+    
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
  
@@ -482,9 +488,11 @@ extension AccountCreationViewController {
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
 
         //2 - called on FirebaseManger to create a user based on the above currentUser
-        FirebaseManager.createNewUser(currentUser: currentUser, completion: { success in
+        FirebaseManager.createNewUser(currentUser: currentUser, completion: { success,user in
 
             if success {
+                self.store.currentUser = user
+              
 
                 //SEND USER TO ONBOARDING VIEWCONTROLLER
 //                let onboardingVC = OnboardingViewController()

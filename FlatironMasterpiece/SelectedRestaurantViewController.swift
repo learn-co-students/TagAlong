@@ -22,8 +22,8 @@ class SelectedRestaurantViewController: UIViewController {
     var restaurant: Restaurant?
     var emojiString = ""
 
+
     var tagalongInfo: [String: Any] = [
-        "user" : FIRAuth.auth()?.currentUser?.uid,
         "hidden" : false,
         "date" : "December 1",
         "location" : [
@@ -89,7 +89,8 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let confirmAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
             print("confirm tapped")
             print("hey there before createtagalong")
-            
+            self.tagalongInfo["user"] = self.firebaseStore.currentUser.userID
+            print("UserId - \(self.firebaseStore.currentUser.userID)")
             FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
                 
                 guard let newKey = key else { return }

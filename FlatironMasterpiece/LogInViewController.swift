@@ -15,6 +15,8 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    
+    
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()

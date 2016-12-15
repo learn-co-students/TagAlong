@@ -46,8 +46,8 @@ class ChatViewController: JSQMessagesViewController {
 //      store.createChatWithTagID()
         
         //Testing on a real user
-        self.senderId = FirebaseManager.currentUser
-
+       // self.senderId = FirebaseManager.currentUser
+        self.senderId = store.currentUser.userID
         //TODO: - change this displayName to the currentUser's name
         self.senderDisplayName = FirebaseManager.currentUserEmail
         
