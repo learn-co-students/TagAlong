@@ -25,14 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         GMSPlacesClient.provideAPIKey(gpSearchApiKey)
-        
+
         FIRApp.configure()
-        
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
+
+
         //MARK: - sets up the navigation controller for our app
         navController = UINavigationController()
         var onboardingVC = OnboardingViewController()
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = initialViewController
 //            window.makeKeyAndVisible()
 //        }
-        
+
         return true
     }
 
