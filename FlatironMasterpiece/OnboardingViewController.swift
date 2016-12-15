@@ -118,7 +118,7 @@ class OnboardingViewController: UIViewController {
         view.addSubview(goToLoginButton)
         goToLoginButton.backgroundColor = phaedraYellow
         goToLoginButton.layer.cornerRadius = 7
-        goToLoginButton.layer.borderWidth = 5
+        goToLoginButton.layer.borderWidth = 4
         goToLoginButton.layer.borderColor = phaedraDarkGreen.cgColor
         goToLoginButton.setTitle("Let's Tag Along!", for: UIControlState.normal)
         goToLoginButton.setTitle("Let's Tag Along", for: .highlighted)
@@ -126,9 +126,9 @@ class OnboardingViewController: UIViewController {
         goToLoginButton.titleLabel?.textAlignment = .center
         goToLoginButton.translatesAutoresizingMaskIntoConstraints = false
         goToLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        goToLoginButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 250).isActive = true
+        goToLoginButton.topAnchor.constraint(equalTo: tacoTwo.bottomAnchor, constant: 50).isActive = true
         goToLoginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
-        goToLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        goToLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         goToLoginButton.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
         goToLoginButton.setTitleColor(phaedraOrange, for: .normal)
         goToLoginButton.setTitleColor(phaedraLightGreen, for: .highlighted)

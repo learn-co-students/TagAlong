@@ -10,7 +10,7 @@ import UIKit
 
 class SelectPhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    
+    var welcomeLabel = UILabel()
     var picButton = UIButton()
     var picImage = UIImageView()
     var userChoseImage:Bool = false
@@ -24,6 +24,20 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
      }
 
     func addPhotoViews() {
+        
+        view.addSubview(welcomeLabel)
+        welcomeLabel.text = "Choose your picture!"
+        welcomeLabel.textColor = phaedraOrange
+        welcomeLabel.textAlignment = .center
+//        welcomeLabel.layer.borderWidth = 2
+//        welcomeLabel.layer.cornerRadius = 5
+        welcomeLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
+//        welcomeLabel.layer.borderColor = phaedraDarkGreen.cgColor
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        
+        
         
         view.addSubview(picButton)
         picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
@@ -50,7 +64,8 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         picImage.layer.cornerRadius = 0
         picImage.translatesAutoresizingMaskIntoConstraints = false
         //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
+        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 160).isActive = true
+        
         picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
@@ -64,7 +79,8 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
         savePreferencesButton.titleLabel?.textAlignment = .center
         savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 435).isActive = true
+//        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: picImage.bottomAnchor, constant: 250).isActive = true
+        savePreferencesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
         savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
         savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
@@ -135,18 +151,24 @@ extension SelectPhotoViewController {
                 let data = UIImagePNGRepresentation(selectedImage)
                 guard let imageData = data else { return }
                 print("okkkkkkkkk\(imageData)")
-                FirebaseManager.sendToStorage(data: imageData, handler: { success in
-                    
-                    print("view should dismiss")
-                    
-                    super.dismiss(animated: true, completion: nil)
-                    
-                })
+                
+               
+                
+                
+               
                 picImage.image = selectedImage
                 userChoseImage = true
                 print("imagePickerController() - userChoseImage: \(userChoseImage)")
                 //       FirebaseManager.ref.child("users").child(FirebaseManager.currentUser).child("profilePic").setValue(["\()" : true])
-                
+                super.dismiss(animated: true, completion: {
+                    FirebaseManager.sendToStorage(data: imageData, handler: { success in
+                        
+                        print("view should dismiss")
+                        
+                        
+                        
+                    })
+                })
             }
     }
 }

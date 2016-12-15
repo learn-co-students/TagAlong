@@ -15,6 +15,8 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    
+    
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()
@@ -70,7 +72,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     func createViews() {
         // login label
         view.addSubview(loginLabel)
-        loginLabel.text = "Log In"
+        loginLabel.text = "Welcome"
         loginLabel.font = UIFont(name: "OpenSans-Bold", size: 30.0)
         loginLabel.textColor = UIColor.white
         loginLabel.backgroundColor = UIColor.clear
@@ -118,17 +120,15 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // login button
         view.addSubview(loginButton)
-        loginButton.backgroundColor = UIColor.clear
-//        loginButton.backgroundColor = phaedraYellow
-        loginButton.layer.borderColor = phaedraLightGreen.cgColor
-        loginButton.layer.borderWidth = 2
+        loginButton.backgroundColor = phaedraOrange
+   
         loginButton.layer.cornerRadius = 5
-        loginButton.setTitle("Enter", for: UIControlState.normal)
+        loginButton.setTitle("Log In", for: UIControlState.normal)
         loginButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         loginButton.titleLabel?.textAlignment = .center
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 //        loginButton.setTitleColor(phaedraDarkGreen, for: .normal)
-        loginButton.setTitleColor(phaedraLightGreen, for: .normal)
+        loginButton.setTitleColor(phaedraYellow, for: .normal)
         loginButton.setTitleColor(phaedraOliveGreen, for: .highlighted)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: 120).isActive = true
@@ -169,15 +169,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(forgotPasswordButton)
         forgotPasswordButton.setTitle("Forgot Password?", for: UIControlState.normal)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
-        forgotPasswordButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 10)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15)
         forgotPasswordButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         forgotPasswordButton.backgroundColor = UIColor.clear
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:5).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant:08).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.30).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        
         forgotPasswordButton.backgroundColor = UIColor.clear
         
     }

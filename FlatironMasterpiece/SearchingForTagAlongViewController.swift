@@ -1,3 +1,4 @@
+
 //
 //  SearchingForTagAlongViewController.swift
 //  FlatironMasterpiece
@@ -21,9 +22,10 @@ class SearchingForTagAlongViewController: UIViewController {
     var denyButton = UIButton()
     var guestName = String()
     var guestJob = String()
-    var firstTimeLoaded = true
-    
+    var guestPhoto = UIImageView()
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+
+    var firstTimeLoaded = true
     
     
     override func viewDidLoad() {
@@ -101,8 +103,6 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .normal)
         beTagAlongGuestButton.setTitleColor(phaedraLightGreen, for: .highlighted)
         
-        
-        
         //NOTE: - Label for tagalong found
         view.addSubview(tagAlongFoundLabel)
         tagAlongFoundLabel.font = UIFont(name: "OpenSans-Semibold", size: 25.0)
@@ -112,20 +112,33 @@ class SearchingForTagAlongViewController: UIViewController {
         tagAlongFoundLabel.textColor = phaedraOrange
         tagAlongFoundLabel.textAlignment = .center
         tagAlongFoundLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagAlongFoundLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        tagAlongFoundLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 75).isActive = true
         tagAlongFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tagAlongFoundLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         tagAlongFoundLabel.isHidden = true
         
+        //NOTE: - Image view for guest photo
+        view.addSubview(guestPhoto)
+        guestPhoto.backgroundColor = phaedraLightGreen
+        guestPhoto.layer.borderColor = phaedraDarkGreen.cgColor
+        guestPhoto.layer.cornerRadius = 0
+        guestPhoto.translatesAutoresizingMaskIntoConstraints = false
+        guestPhoto.topAnchor.constraint(equalTo: tagAlongFoundLabel.topAnchor, constant: 100).isActive = true
+        guestPhoto.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        guestPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        guestPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        guestPhoto.isHidden = true
+        
         //NOTE: - Tag along details
         view.addSubview(tagAlongDetailLabel)
         tagAlongDetailLabel.font = UIFont(name: "OpenSans-Light", size: 20.0)
+//        tagAlongDetailLabel.text = "iOS Developer, Joyce, would like to tag along with you."
         tagAlongDetailLabel.lineBreakMode = .byWordWrapping
         tagAlongDetailLabel.numberOfLines = 0
         tagAlongDetailLabel.textColor = phaedraOrange
         tagAlongDetailLabel.textAlignment = .center
         tagAlongDetailLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagAlongDetailLabel.topAnchor.constraint(equalTo: tagAlongFoundLabel.topAnchor, constant: 150).isActive = true
+        tagAlongDetailLabel.topAnchor.constraint(equalTo: guestPhoto.topAnchor, constant: 150).isActive = true
         tagAlongDetailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tagAlongDetailLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         tagAlongDetailLabel.isHidden = true
@@ -139,7 +152,7 @@ class SearchingForTagAlongViewController: UIViewController {
         acceptButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         acceptButton.titleLabel?.textAlignment = .center
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
-        acceptButton.topAnchor.constraint(equalTo: tagAlongDetailLabel.bottomAnchor, constant: 100).isActive = true
+        acceptButton.topAnchor.constraint(equalTo: tagAlongDetailLabel.bottomAnchor, constant: 50).isActive = true
         acceptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 80).isActive = true
         acceptButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
         acceptButton.addTarget(self, action: #selector(acceptTagalongAction), for: .touchUpInside)
@@ -155,7 +168,7 @@ class SearchingForTagAlongViewController: UIViewController {
         denyButton.titleLabel?.font = UIFont(name: "OpenSans-Light", size: 17.0)
         denyButton.titleLabel?.textAlignment = .center
         denyButton.translatesAutoresizingMaskIntoConstraints = false
-        denyButton.topAnchor.constraint(equalTo: tagAlongDetailLabel.bottomAnchor, constant: 100).isActive = true
+        denyButton.topAnchor.constraint(equalTo: tagAlongDetailLabel.bottomAnchor, constant: 50).isActive = true
         denyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -80).isActive = true
         denyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
         denyButton.addTarget(self, action: #selector(denyTagalongAction), for: .touchUpInside)
@@ -211,6 +224,7 @@ class SearchingForTagAlongViewController: UIViewController {
         self.denyButton.isHidden = true
         self.tagAlongFoundLabel.isHidden = true
         self.tagAlongDetailLabel.isHidden = true
+        self.guestPhoto.isHidden = true
         self.searchingLabel.isHidden = false
         self.beTagAlongGuestButton.isHidden = false
         self.searchAgainButton.isHidden = false
@@ -222,13 +236,7 @@ class SearchingForTagAlongViewController: UIViewController {
     func observeTagalongRequests() {
         
         store.observeTagalongRequests { (snapshot) in
-            
-            //Prevents old tagalongs to appear if
-                       // if self.firstTimeLoaded { self.firstTimeLoaded = false; return }
-            
-            // Only detects recents tagalongs
-                      //  if !self.firstTimeLoaded {
-            
+
             //Alert user of new tag along
             print("\n ==============Getting called.===============")
             
@@ -239,6 +247,7 @@ class SearchingForTagAlongViewController: UIViewController {
             self.denyButton.isHidden = false
             self.tagAlongFoundLabel.isHidden = false
             self.tagAlongDetailLabel.isHidden = false
+            self.guestPhoto.isHidden = false
             self.searchingLabel.isHidden = true
             self.beTagAlongGuestButton.isHidden = true
             self.searchAgainButton.isHidden = true
@@ -258,12 +267,16 @@ class SearchingForTagAlongViewController: UIViewController {
                 print(guest.firstName)
                 print(guest.jobTitle)
                 
+                
+                
+             FirebaseManager.downloadPic(uid: guestID, handler: { (image) in
+             
+                    self.guestPhoto.image = image
+                    print("Helllooooo image is here")
+             })
+                
+                
             })
-                            
-           // }
-            
-            
-        
             
             print("\n\n")
             

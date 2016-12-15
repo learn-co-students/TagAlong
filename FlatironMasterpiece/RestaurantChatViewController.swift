@@ -11,6 +11,7 @@ import UIKit
 class RestaurantChatViewController: UIViewController {
     
     var goToChatLabel = UILabel()
+    var goToChatLabel2 = UILabel()
     var chatButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
 
     
@@ -28,7 +29,10 @@ class RestaurantChatViewController: UIViewController {
         chatButton.layer.cornerRadius = 7
         chatButton.layer.borderWidth = 2
         chatButton.layer.borderColor = phaedraDarkGreen.cgColor
-        chatButton.setTitle("Chat with Tag Along", for: .normal)
+        chatButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        chatButton.titleLabel?.numberOfLines = 0
+        chatButton.setTitle("Chat with Tag Along\nEnjoy Your Meal!", for: .normal)
+        
         chatButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 16.0)
         chatButton.titleLabel?.textAlignment = .center
         chatButton.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +55,19 @@ class RestaurantChatViewController: UIViewController {
         goToChatLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         goToChatLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         goToChatLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
+    
+        view.addSubview(goToChatLabel2)
+        goToChatLabel2.text = "Click Below To Start Chatting!"
+        goToChatLabel2.font = UIFont(name: "OpenSans-Bold", size: 16.0)
+        goToChatLabel2.textColor = phaedraYellow
+        goToChatLabel2.lineBreakMode = .byWordWrapping
+        goToChatLabel2.numberOfLines = 0
+        goToChatLabel2.textAlignment = .center
+        goToChatLabel2.translatesAutoresizingMaskIntoConstraints = false
+        goToChatLabel2.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
+        goToChatLabel2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        goToChatLabel2.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
+
     }
     
     func goToChatVC() {

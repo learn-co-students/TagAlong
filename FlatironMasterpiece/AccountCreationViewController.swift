@@ -1,4 +1,5 @@
 
+
 //
 //  ViewController.swift
 //  CreationAccount
@@ -62,6 +63,9 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var password = false
     var industry = false
     var jobtitle = false
+    
+    
+    let store = FirebaseManager.shared
 
 
 var manager = CLLocationManager()
@@ -227,44 +231,44 @@ extension AccountCreationViewController {
         createAccountLabel.textColor = UIColor.white
         createAccountLabel.textAlignment = .center
         createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -250).isActive = true
+        createAccountLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -180).isActive = true
         createAccountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         createAccountLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         createAccountLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-        view.addSubview(picButton)
-        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
-        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
-        picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-        picButton.isUserInteractionEnabled = true
-        picButton.titleLabel?.numberOfLines = 2
-        picButton.setTitle("Add\nPic", for: UIControlState.normal)
-        picButton.titleLabel?.textAlignment = .center
-        picButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
-        picButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
-        picButton.backgroundColor = phaedraYellow
-        picButton.layer.borderColor = phaedraDarkGreen.cgColor
-      //  picButton.layer.borderWidth = 2
-        picButton.layer.cornerRadius = 60
-        picButton.translatesAutoresizingMaskIntoConstraints = false
-        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
-        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
-      
-        view.addSubview(picImage)
-        picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-       // picImage.backgroundColor = UIColor.red
-        picImage.layer.borderWidth = 0
-        picImage.layer.cornerRadius = 60
-        picImage.translatesAutoresizingMaskIntoConstraints = false
-        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
-        picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-        picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
-        
+//        view.addSubview(picButton)
+//        //picButton.addTarget(self, action: #selector(picButtonTapped), for: .touchUpInside)
+//        //   picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector("selectProfileImage")))
+//        picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+//        //picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+//        picButton.isUserInteractionEnabled = true
+//        picButton.titleLabel?.numberOfLines = 2
+//        picButton.setTitle("Add\nPic", for: UIControlState.normal)
+//        picButton.titleLabel?.textAlignment = .center
+//        picButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+//        picButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
+//        picButton.backgroundColor = phaedraYellow
+//        picButton.layer.borderColor = phaedraDarkGreen.cgColor
+//      //  picButton.layer.borderWidth = 2
+//        picButton.layer.cornerRadius = 60
+//        picButton.translatesAutoresizingMaskIntoConstraints = false
+//        picButton.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
+//        picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+//        picButton.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+//        picButton.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+//      
+//        view.addSubview(picImage)
+//        picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
+//       // picImage.backgroundColor = UIColor.red
+//        picImage.layer.borderWidth = 0
+//        picImage.layer.cornerRadius = 60
+//        picImage.translatesAutoresizingMaskIntoConstraints = false
+//        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
+//        picImage.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
+//        picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+//        picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+//        picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+//        
         // First Name Textfield
         view.addSubview(firstNameEntry)
         firstNameEntry.placeholder = "First Name"
@@ -276,7 +280,7 @@ extension AccountCreationViewController {
         firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
-        firstNameEntry.topAnchor.constraint(equalTo: picButton.bottomAnchor, constant: 20).isActive = true
+        firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
         firstNameEntry.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         firstNameEntry.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.66).isActive = true
         firstNameEntry.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -470,7 +474,10 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-        let userID = FirebaseManager.currentUser
+        //let userID = FirebaseManager.currentUser
+       // let userID = store.currentUser.userID
+        
+    
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
  
@@ -479,19 +486,23 @@ extension AccountCreationViewController {
         }
 
         //1 - create an instance of a user
-     
-        var currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
-        
+
+
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job )
+
 
         //2 - called on FirebaseManger to create a user based on the above currentUser
-        FirebaseManager.createNewUser(currentUser: currentUser, completion: { success in
+        FirebaseManager.createNewUser(currentUser: currentUser, completion: { success,user in
 
-            if success {
-                
+            if success {  
                 
                 //print("Current User \(FirebaseManager.currentUser!)")
                 //guard let userid = FirebaseManager.currentUser else { return }
+                //ERICA - we kept the below line when merging
                 currentUser.userID = (FIRAuth.auth()?.currentUser?.uid)!
+
+                self.store.currentUser = user
+        
 
                 //SEND USER TO ONBOARDING VIEWCONTROLLER
 //                let onboardingVC = OnboardingViewController()

@@ -68,7 +68,7 @@
 //    
 //}
 
-
+import Firebase
 struct Tagalong {
     
     var tagID: String
@@ -84,13 +84,13 @@ struct Tagalong {
         print(snapshot)
         
         let user = snapshot["user"] as! String
+        
         let hidden = snapshot["hidden"] as! Bool
         let date = snapshot["date"] as! String
         let location = snapshot["location"] as! [String: Any]
         let latitude = location["lat"] as! Double
         let longitude = location["long"] as! Double
         let restaurant = location["restaurant"] as! String
-        
         
         // Need to set location to equal dictionary of lat, long, restaurant
         self.hidden = hidden
@@ -100,6 +100,24 @@ struct Tagalong {
         self.restaurant = restaurant
         self.tagID = tagID
         
+    }
+    
+    func serialize()->[String:Any] {
+        
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .short
+                let date = dateFormatter.date(from: self.date)?.timeIntervalSince1970 ?? 0.0
+        
+                return [
+                    "user" : FIRAuth.auth()?.currentUser?.uid,
+                    "hidden" : false,
+                    "date" : Double(date),
+                    "location" : [
+                        "restaurant" : self.restaurant,
+                        "lat" : self.latitude,
+                        "long": self.longitude,
+                    ]
+                ]
         
     }
     

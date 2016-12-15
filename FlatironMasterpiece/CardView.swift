@@ -65,14 +65,14 @@ class CardView: UIView {
         //card image view
         restImageView = UIImageView(frame: CGRect(x: self.bounds.width * -0.0001, y: self.bounds.height * -0.10, width: self.bounds.width, height: self.bounds.height * 0.66))
         restImageView.image = restaurant.photoImage
+//        restImageView.contentMode = UIViewContentMode.scaleToFill
         self.addSubview(restImageView)
         restImageView.backgroundColor = UIColor.yellow
 
         //card restaurant name label
         restNameLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.57, width: labelWidth, height: self.bounds.width * 0.08))
-        restNameLabel.backgroundColor = phaedraOrange
-        restNameLabel.textColor = phaedraYellow
-        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        restNameLabel.textColor = phaedraOrange
+        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 22.0)
         restNameLabel.text = restaurant.name
         restNameLabel.textAlignment = .center
         restHoursLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -80,18 +80,16 @@ class CardView: UIView {
 
         //card cusisine label
         restCuisineLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.64, width: labelWidth, height: self.bounds.width * 0.08))
-        restCuisineLabel.backgroundColor = phaedraOrange
-        restCuisineLabel.textColor = phaedraYellow
-        restCuisineLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        restCuisineLabel.textColor = phaedraOrange
+        restCuisineLabel.font = UIFont(name: "OpenSans-Semibold", size: 18.0)
         restCuisineLabel.text = userStore.currentChosenCuisine
         restCuisineLabel.textAlignment = .center
         self.addSubview(restCuisineLabel)
         
         //card restaurant pricelevel label
         restCostLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.71, width: labelWidth, height: self.bounds.width * 0.08))
-        restCostLabel.backgroundColor = phaedraOrange
-        restCostLabel.textColor = phaedraYellow
-        restCostLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        restCostLabel.textColor = phaedraOrange
+        restCostLabel.font = UIFont(name: "OpenSans-semiBold", size: 18.0)
         guard let unwrappedRestCost = restStore.restaurantsArray[0].priceLevel else { return }
         let costEmoji = convertPriceToEMOJI(priceLevel: unwrappedRestCost)
         restCostLabel.text = costEmoji
@@ -100,9 +98,8 @@ class CardView: UIView {
        
         //card restaurant distance label
         restDistanceLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.78, width: labelWidth, height: self.bounds.width * 0.08))
-        restDistanceLabel.backgroundColor = phaedraOrange
-        restDistanceLabel.textColor = phaedraYellow
-        restDistanceLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        restDistanceLabel.textColor = phaedraOrange
+        restDistanceLabel.font = UIFont(name: "OpenSans-Semibold", size: 18.0)
         //TODO: - this restDistanceLabel needs to be filled with actual distance!
         restDistanceLabel.text = "0.5 mi"
         restDistanceLabel.textAlignment = .center
@@ -112,7 +109,7 @@ class CardView: UIView {
         restHoursLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.85, width: labelWidth, height: self.bounds.width * 0.08))
         restHoursLabel.backgroundColor = phaedraOrange
         restHoursLabel.textColor = phaedraYellow
-        restHoursLabel.font = UIFont(name: "OpenSans-Bold", size: 12.0)
+        restHoursLabel.font = UIFont(name: "OpenSans-Semibold", size: 12.0)
         let hoursString = convertHoursToString(isopen: restStore.restaurantsArray[0].openNow)
         restHoursLabel.text = hoursString
         restHoursLabel.textAlignment = .center

@@ -9,6 +9,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 class SelectedRestaurantViewController: UIViewController {
 
     //NOTE: - dataStores
@@ -21,8 +22,8 @@ class SelectedRestaurantViewController: UIViewController {
     var restaurant: Restaurant?
     var emojiString = ""
 
+
     var tagalongInfo: [String: Any] = [
-        "user" : FirebaseManager.currentUser,
         "hidden" : false,
         "date" : "December 1",
         "location" : [
@@ -31,6 +32,8 @@ class SelectedRestaurantViewController: UIViewController {
             "long": 35
         ]
     ]
+    
+    var newTagAlongInfo:[String:Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,16 @@ class SelectedRestaurantViewController: UIViewController {
         
         restaurantView.restaurant = restaurant
         restaurantView.setup(cuisine: userStore.currentChosenCuisine)
+        
+        self.newTagAlongInfo = [
+            "hidden" : false,
+            "date" : "December 1",
+            "location" : [
+                "restaurant" : userStore.chosenRestName,
+                "lat" : -45,
+                "long": 35
+            ]
+        ]
 
     }
     
@@ -81,6 +94,22 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
 
     func sendToTagAlongConfirmation() {
 
+        
+        guard let selectedRestaurant = self.restaurant else { return }
+        guard let restaurantname = selectedRestaurant.name else { return }
+        guard let restaurantlat = selectedRestaurant.latitude else { return}
+        guard let restaurantlong = selectedRestaurant.longitude else { return }
+        
+        var tagalongDict: [String: Any] = [
+            "hidden" : false,
+            "date" : "\(Date().timeIntervalSinceNow)",
+            "location" : [
+                "restaurant" : "\(restaurantname)",
+                "lat" : restaurantlat,
+                "long": restaurantlong
+            ]
+        ]
+
         let confirmTagAlongAlert = UIAlertController(title: "Confirm", message: "Click \"OK\" to confirm that you want to host a Tag Along", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             print("User clicked cancel")
@@ -88,8 +117,14 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
         let confirmAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
             print("confirm tapped")
             print("hey there before createtagalong")
+            tagalongDict["user"] = self.firebaseStore.currentUser.userID
+            print("UserId - \(self.firebaseStore.currentUser.userID)")
             
-            FirebaseManager.createTagAlong(with: self.tagalongInfo, completion: { (key) in
+            
+            
+            
+            
+            FirebaseManager.createTagAlong(with: tagalongDict, completion: { (key) in
                 
                 guard let newKey = key else { return }
 
@@ -108,8 +143,6 @@ extension SelectedRestaurantViewController: RestaurantViewDelegate {
                 
                 let searchingVC = SearchingForTagAlongViewController()
                 self.navigationController?.pushViewController(searchingVC, animated: true)
-                
-                
                 
             })
 

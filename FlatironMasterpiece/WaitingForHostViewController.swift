@@ -426,8 +426,7 @@ class WaitingForHostViewController: UIViewController {
                 }
                 
             }
-            
-            
+
         }
         
     }
