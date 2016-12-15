@@ -65,6 +65,8 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         hostTagAlongInsteadButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         hostTagAlongInsteadButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68).isActive = true
         hostTagAlongInsteadButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06).isActive = true
+        //hiding button below, resolve in 1.1
+        hostTagAlongInsteadButton.isHidden = true
         
         hostTagAlongInsteadButton.addTarget(self, action: #selector(goToShakeInstructions), for: .touchUpInside)
         hostTagAlongInsteadButton.setTitleColor(phaedraYellow, for: .normal)

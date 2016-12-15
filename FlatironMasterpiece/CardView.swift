@@ -72,7 +72,7 @@ class CardView: UIView {
         //card restaurant name label
         restNameLabel = UILabel(frame: CGRect(x: labelXLocation, y: self.bounds.height * 0.57, width: labelWidth, height: self.bounds.width * 0.08))
         restNameLabel.textColor = phaedraOrange
-        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 22.0)
+        restNameLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
         restNameLabel.text = restaurant.name
         restNameLabel.textAlignment = .center
         restHoursLabel.translatesAutoresizingMaskIntoConstraints = false

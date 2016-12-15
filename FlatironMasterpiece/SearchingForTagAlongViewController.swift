@@ -102,6 +102,8 @@ class SearchingForTagAlongViewController: UIViewController {
         beTagAlongGuestButton.addTarget(self, action: #selector(seeOtherTagAlongs), for: .touchUpInside)
         beTagAlongGuestButton.setTitleColor(phaedraYellow, for: .normal)
         beTagAlongGuestButton.setTitleColor(phaedraLightGreen, for: .highlighted)
+        //we are hiding this button, resolve in 1.1
+        beTagAlongGuestButton.isHidden = true
         
         //NOTE: - Label for tagalong found
         view.addSubview(tagAlongFoundLabel)
@@ -226,7 +228,7 @@ class SearchingForTagAlongViewController: UIViewController {
         self.tagAlongDetailLabel.isHidden = true
         self.guestPhoto.isHidden = true
         self.searchingLabel.isHidden = false
-        self.beTagAlongGuestButton.isHidden = false
+        //self.beTagAlongGuestButton.isHidden = false
         self.searchAgainButton.isHidden = false
         activityIndicator.isHidden = false
         
