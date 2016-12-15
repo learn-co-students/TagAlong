@@ -19,7 +19,7 @@ target 'FlatironMasterpiece' do
   pod 'ZLSwipeableViewSwift', :git => 'git@github.com:zhxnlai/ZLSwipeableViewSwift.git'
   pod 'Cartography'
   pod 'Firebase/Storage'
-
+  pod 'IQKeyboardManagerSwift'
 end
 
 post_install do |installer|

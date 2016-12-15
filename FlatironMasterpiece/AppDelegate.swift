@@ -12,7 +12,7 @@ import GooglePlaces
 import CoreLocation
 import Firebase
 import FBSDKLoginKit
-
+import IQKeyboardManagerSwift 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(gpSearchApiKey)
 
         FIRApp.configure()
-
+        IQKeyboardManager.sharedManager().enable = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         //MARK: - sets up the navigation controller for our app
