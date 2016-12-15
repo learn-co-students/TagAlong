@@ -16,6 +16,10 @@ class User {
     let passWord: String
     let industry: String
     let jobTitle: String
+    
+    //ERICA - this is where we get the host's (user) restaurant
+    //let restaurantName: String?
+    
    // let storage = FIRStorage.storage().reference()
     var userID: String = ""
 
@@ -31,6 +35,7 @@ class User {
         let email = snapshot["email"] as! String
         let jobTitle = snapshot["jobTitle"] as! String
         let industry = snapshot["industry"] as! String
+     //   let restaurantName = snapshot["restaurantName"] as! String
 //        let currentTagAlong = snapshot["currentTagAlong"] as! String
  //      let userID = snapshot["ID"] as! String
         
@@ -40,7 +45,7 @@ class User {
         self.emailAddress = email
         self.jobTitle = jobTitle
         self.industry = industry
-        
+       // self.restaurantName = restaurantName
         self.passWord = ""
     }
 
@@ -52,6 +57,7 @@ class User {
         self.passWord = passWord
         self.industry = industry
         self.jobTitle = jobTitle
+      //  self.restaurantName = restaurantName
         
         
 }
@@ -62,7 +68,8 @@ class User {
             "firstName" : firstName,
             "lastName" : lastName,
             "jobTitle" : jobTitle,
-            "industry" : industry,
+            "industry" : industry
+          // "restaurantName": restaurantName!,
             
         ]
     }

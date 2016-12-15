@@ -129,7 +129,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
             FirebaseManager.createUserFrom(tagalong: tagId, completion: { (user) in
                 tagalong.user = user
                 tagalong.user.userID = tagDict["user"] as! String
-            
+                
                 self.tagalongs.append(tagalong)
                 
                 // Remove tagalongs
@@ -166,7 +166,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- 
+        
         let myCell = tableView.dequeueReusableCell(withIdentifier: "tagAlongCell", for: indexPath) as! TableViewCell
         let selectedTag = self.tagalongs[indexPath.row]
         let fullName = selectedTag.user.firstName + " " + selectedTag.user.lastName
@@ -180,18 +180,20 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         //        let date = NSDate()
         //        let time = String(NSCalendar.current.component(.hour, from: date as Date)) + ":" + String(NSCalendar.current.component(.minute, from: date as Date))
-        myCell.diningTimeLabel.text = "4:00"
-
-  //  FirebaseManager.storageRef.child("\(selectedTag.user)")
-        OperationQueue.main.addOperation {
-            
-            print("++++++++\(selectedTag.user.userID)-----------------------")
-            FirebaseManager.downloadPic(uid: selectedTag.user.userID) { (image) in
+        // myCell.diningTimeLabel.text = "4:00"
+        
+        //  FirebaseManager.storageRef.child("\(selectedTag.user)")
+        
+        print("++++++++\(selectedTag.user.userID)-----------------------")
+        
+        FirebaseManager.downloadPic(uid: selectedTag.user.userID) { (image) in
+            OperationQueue.main.addOperation {
+                
                 myCell.userImageView.image = image
                 print("*********\(myCell.imageView?.image)***********")
+            }
+            
         }
-       
-    }
         
         
         //    myCell.userImageView?.image = UIImage(named: "rock.png")
@@ -219,34 +221,34 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         FirebaseManager.ref.child("tagalongs").child(selectedTag.tagID).child("user").observeSingleEvent(of: .value, with: { snapshot in
             
-//            DispatchQueue.main.async {
-//                
-//                print("\n\n\n\n")
-//                
-//                print(snapshot.value ?? "No Value")
-//                print("ZZZZZZZZZZZZZZZRRRRRRRRRRRRRRRRRR")
-//                let usersID = snapshot.value as? String
-//                print("++++++++++++++++\(usersID)++++++++++")
-//                
-//                FirebaseManager.shared.checkIfBlocked(userID: usersID!, handler: { isBlocked in
-//                    
-//                    DispatchQueue.main.async {
-//                        
-//                        
-//                        if !isBlocked {
-//                            
-//                            self.navigationController?.pushViewController(waitingForHostVC, animated: true)
-//                            
-//                        } else {
-//                            
-//                            // TODO: Show an alert to the user that they are BLOCKED (they suck)
-//                        }
-//                        
-//                    }
-//                })
-//                
-//            }
-//            
+            //            DispatchQueue.main.async {
+            //
+            //                print("\n\n\n\n")
+            //
+            //                print(snapshot.value ?? "No Value")
+            //                print("ZZZZZZZZZZZZZZZRRRRRRRRRRRRRRRRRR")
+            //                let usersID = snapshot.value as? String
+            //                print("++++++++++++++++\(usersID)++++++++++")
+            //
+            //                FirebaseManager.shared.checkIfBlocked(userID: usersID!, handler: { isBlocked in
+            //
+            //                    DispatchQueue.main.async {
+            //
+            //
+            //                        if !isBlocked {
+            //
+            //                            self.navigationController?.pushViewController(waitingForHostVC, animated: true)
+            //
+            //                        } else {
+            //
+            //                            // TODO: Show an alert to the user that they are BLOCKED (they suck)
+            //                        }
+            //
+            //                    }
+            //                })
+            //
+            //            }
+            //
         }, withCancel: nil)
         
         

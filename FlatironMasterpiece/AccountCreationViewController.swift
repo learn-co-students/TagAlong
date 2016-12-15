@@ -485,7 +485,7 @@ extension AccountCreationViewController {
         }
 
         //1 - create an instance of a user
-        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job)
+        let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job )
 
         //2 - called on FirebaseManger to create a user based on the above currentUser
         FirebaseManager.createNewUser(currentUser: currentUser, completion: { success,user in
