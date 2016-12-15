@@ -33,7 +33,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("login view controller working")
         
         //Code needed for Core motion
-        self.becomeFirstResponder()
+       // self.becomeFirstResponder()
 
         //sets background image
         let backgroundImage = UIImage(named: "foodWoodenTable")
@@ -48,7 +48,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         //dismisses keyboard
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 
-        loginEmail.becomeFirstResponder()
+       // loginEmail.becomeFirstResponder()
         view.addGestureRecognizer(tap)
         
         // Logic for Logging in
@@ -226,7 +226,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("register button tapped")
         
         let accountCreationVC = AccountCreationViewController()
-        self.navigationController?.pushViewController(accountCreationVC, animated: true)
+        
+        // TODO: Not working. Could be that we're no longer in a navigation controller.
+        // TODO: When App Delegate is squared away we should change this back to the having the navigationController pushing the VC (uncomment that code).
+        // TODO: App Delegate has the initial view controller be the login VC but it instead needs to be a navigation controller where that nav controllers root vc (or first vc, whatever its called) is the login VC...
+        
+        self.present(accountCreationVC, animated: true, completion: nil)
+        
+      //  self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     
     func forgotPasswordTapped(sender: UIButton!) {
