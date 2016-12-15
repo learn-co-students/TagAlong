@@ -149,7 +149,6 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
         guard let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else { return }
         guard let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber else { return }
         
-        
         let keyboardFrameRect = keyboardEndFrame.cgRectValue
         let keyboardHeight = keyboardFrameRect.size.height / 3
         let duration = animationDuration.doubleValue
