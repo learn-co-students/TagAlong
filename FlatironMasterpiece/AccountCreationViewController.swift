@@ -380,6 +380,7 @@ extension AccountCreationViewController {
 
         // Create Account Button
         view.addSubview(createAccountButton)
+        
         createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
         createAccountButton.setTitle("Create Account", for: UIControlState.normal)
         createAccountButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15.0)
@@ -394,6 +395,7 @@ extension AccountCreationViewController {
 
     }
 
+    
 
     
     
@@ -456,12 +458,23 @@ extension AccountCreationViewController {
 //    }
 
     func createAccountButtonTapped(sender: UIButton!) {
+        createAccountButton.isEnabled = false
+        // TODO: Disable button
+        //        createAccountButton.isEnabled = true
+                let tapGesture = UITapGestureRecognizer(target: self, action: "disableButton" )
+                let tapped = tapGesture.numberOfTapsRequired == 1
+        //        if tapGesture.numberOfTapsRequired == 1 {
+        //            createAccountButton.isEnabled = false
+        //        }
+        //        createAccountButton.addGestureRecognizer(tapGesture )
 
         if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
+            print("PRESS ACCOUNT BUTTON")
             let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "Please complete the entire form.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 print("User clicked alert controller")
+                self.createAccountButton.isEnabled = true
             })
             invalidCredentialsAlert.addAction(okAction)
             self.present(invalidCredentialsAlert, animated: true, completion: nil)
