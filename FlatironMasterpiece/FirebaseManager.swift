@@ -51,19 +51,6 @@ final class FirebaseManager {
     
     private init() {}
     
-    
-    //    static func upload(image: UIImage, handler: (Bool) -> Void) {
-    //
-    //        // upload to firebase
-    //
-    //        // when done.
-    //
-    //
-    //
-    //
-    //    }
-    
-    
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
     
@@ -110,13 +97,7 @@ final class FirebaseManager {
             }
             
             
-            //            print(metadata)
-            //            print(metadata?.downloadURL())
-            //            ref.child("users").child(currentUser).child("ProfilePic").setValue([(metadata): true])
-        })
-        
-        //        let reference = FIRDatabase.database().reference(fromURL: "gs://newcarrots.appspot.com")
-        //        let usersRef = reference.child("users").child(uid)
+                   })
         
         
     }
@@ -136,19 +117,6 @@ final class FirebaseManager {
         })
     }
     
-    static func storeImage(image: UIImage) {
-        let ref = FIRStorage.storage().reference()
-        let imageData = UIImagePNGRepresentation(image)
-        let metaData = FIRStorageMetadata()
-        //   ref.put(imageData, metadata: <#T##FIRStorageMetadata?#>, completion: <#T##((FIRStorageMetadata?, Error?) -> Void)?##((FIRStorageMetadata?, Error?) -> Void)?##(FIRStorageMetadata?, Error?) -> Void#>)
-    }
-    /* static func blockUser(user: String) {
-     if FIRAuth.auth()?.currentUser?.uid != nil {
-     let unique = FIRAuth.auth()?.currentUser?.uid
-     FIRDatabase.database().reference().child("blockedUsers").child(unique).child
-     }
-     }
-     */
     
     static func downloadPic(uid: String, handler: @escaping (UIImage) ->()) {
         let store = FirebaseManager.storageRef
@@ -394,20 +362,6 @@ extension FirebaseManager {
                     //self.newtagalongUserArray.append(user)
                     completion(user)
                 }
-                
-                
-                
-           
-                
-                //JOHANN'S HANDIWORK
-//                if let userDict = userInfo {
-//                    let user = User(snapshot: userDict)
-//                    
-//                    print("=-=-=-=-=-=-= \(userDict)-=-=-=-=-=-=-=-=")
-//                    //self.newtagalongUserArray.append(user)
-//                    completion(user)
-//                }
-                
                 
             })
         })
