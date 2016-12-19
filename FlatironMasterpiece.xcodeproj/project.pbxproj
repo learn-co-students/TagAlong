@@ -155,6 +155,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27577A081E0705B4008C14D3 /* AudioAssets */ = {
+			isa = PBXGroup;
+			children = (
+				279FC3891DF668460094A4BB /* SprayShake.mp3 */,
+			);
+			name = AudioAssets;
+			sourceTree = "<group>";
+		};
+		27577A091E0705FD008C14D3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		27AAFE221DDAC9AA00C08348 = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
-				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
+				27577A091E0705FD008C14D3 /* New Group */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
 				95B39D0B1DFF5C17009F2821 /* Secrets.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
@@ -188,7 +204,7 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
-				279FC3891DF668460094A4BB /* SprayShake.mp3 */,
+				27577A081E0705B4008C14D3 /* AudioAssets */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				452C599E1DE61E34005884EE /* Controllers */,
 				452C599B1DE61D1D005884EE /* DataStores */,
