@@ -12,7 +12,8 @@ import GooglePlaces
 import CoreLocation
 import Firebase
 import FBSDKLoginKit
-import IQKeyboardManagerSwift 
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

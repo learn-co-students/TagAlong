@@ -277,7 +277,7 @@ extension AccountCreationViewController {
         firstNameEntry.textAlignment = .center
         firstNameEntry.layer.borderWidth = 2
         firstNameEntry.layer.cornerRadius = 5
-        firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        firstNameEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
         firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
@@ -292,7 +292,7 @@ extension AccountCreationViewController {
         lastNameEntry.layer.borderWidth = 2
         lastNameEntry.layer.cornerRadius = 5
         lastNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        lastNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        lastNameEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         lastNameEntry.backgroundColor = UIColor.white
 
         lastNameEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -307,7 +307,7 @@ extension AccountCreationViewController {
         emailEntry.layer.borderWidth = 2
         emailEntry.layer.cornerRadius = 5
         emailEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        emailEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        emailEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         emailEntry.textAlignment = .center
         emailEntry.backgroundColor = UIColor.white
         emailEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -322,7 +322,7 @@ extension AccountCreationViewController {
         passwordEntry.layer.borderWidth = 2
         passwordEntry.layer.cornerRadius = 5
         passwordEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        passwordEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         passwordEntry.textAlignment = .center
         passwordEntry.backgroundColor = UIColor.white
 
@@ -338,7 +338,7 @@ extension AccountCreationViewController {
         passwordVerification.layer.borderWidth = 2
         passwordVerification.layer.cornerRadius = 5
         passwordVerification.layer.borderColor = phaedraDarkGreen.cgColor
-        passwordVerification.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordVerification.font = UIFont(name: "Abel-Regular", size: 14.0)
         passwordVerification.textAlignment = .center
 
         passwordVerification.backgroundColor = UIColor.white
@@ -354,7 +354,7 @@ extension AccountCreationViewController {
         industryEntry.layer.borderWidth = 2
         industryEntry.layer.cornerRadius = 5
         industryEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        industryEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        industryEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         industryEntry.textAlignment = .center
         industryEntry.backgroundColor = UIColor.white
         industryEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -369,7 +369,7 @@ extension AccountCreationViewController {
         jobEntry.layer.borderWidth = 2
         jobEntry.layer.cornerRadius = 5
         jobEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        jobEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        jobEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         jobEntry.textAlignment = .center
         jobEntry.backgroundColor = UIColor.white
         jobEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -383,7 +383,7 @@ extension AccountCreationViewController {
         
         createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
         createAccountButton.setTitle("Create Account", for: UIControlState.normal)
-        createAccountButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15.0)
+        createAccountButton.titleLabel?.font = UIFont(name: "Abel-Regular", size: 18.0)
         createAccountButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         createAccountButton.backgroundColor = phaedraYellow
         createAccountButton.layer.borderColor = phaedraDarkGreen.cgColor
