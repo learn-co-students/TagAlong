@@ -34,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         //MARK: - sets up the navigation controller for our app
-  
-        
-        
-        
         
         navController = UINavigationController()
         var onboardingVC = OnboardingViewController()

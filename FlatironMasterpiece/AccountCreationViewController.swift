@@ -35,14 +35,6 @@ struct Constants {
 
 
 class AccountCreationViewController: UIViewController, CLLocationManagerDelegate , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    //static let shared = AccountCreationViewController()
-   
-    
-    let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
 
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
@@ -55,23 +47,18 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var createAccountButton = UIButton()
     var picButton = UIButton()
     var picImage = UIImageView()
-    
-    
+  
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
     var password = false
     var industry = false
     var jobtitle = false
-    
-    
+  
     let store = FirebaseManager.shared
 
-
-var manager = CLLocationManager()
-
-
-    
+    var manager = CLLocationManager()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         Locate()
@@ -119,11 +106,11 @@ var manager = CLLocationManager()
     func dismissKeyboard() {
         view.endEditing(true)
     }
+  
     func Locate() {
         
         manager.delegate = self
-        
-        manager.requestWhenInUseAuthorization()
+                manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         func locationManager(manager: CLLocationManager,
@@ -135,6 +122,8 @@ var manager = CLLocationManager()
             }
         }
     }
+  
+    //ELI - revisit this func
     func tapCreateButtonOnce() {
         self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
@@ -356,18 +345,13 @@ extension AccountCreationViewController {
         //AccountCreationViewController()
     }
 
-    
 
-    
-    
     func sendEmail() {
 
         FirebaseManager.sendEmailVerification()
-
-
     }
 
-
+    //ERICA - what is this?  Who wrote this?  What is it for?
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -412,12 +396,12 @@ extension AccountCreationViewController {
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
  
+        //ERICA - THIS SHOULD PROBABLY BE DELETED
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
 
         //1 - create an instance of a user
-
 
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job )
 

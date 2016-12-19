@@ -90,6 +90,8 @@ class ShakeInstructionViewController: UIViewController {
     func playSound() {
        loadPlayer()
     }
+  
+    //ELI - this func isn't working yet
     func vibrate() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
@@ -155,8 +157,7 @@ extension ShakeInstructionViewController {
                                 self.vibrate()
                                 self.playSound()
                             }
-                            self.playSound()
-                            
+                          
                             if self.restStore.restaurantsArray.count == 0 {
                                 
                                 //NOTE: - tells user to come back later b/c restaurants are closed

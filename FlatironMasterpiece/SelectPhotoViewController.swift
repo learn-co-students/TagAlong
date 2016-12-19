@@ -151,11 +151,7 @@ extension SelectPhotoViewController {
                 let data = UIImagePNGRepresentation(selectedImage)
                 guard let imageData = data else { return }
                 print("okkkkkkkkk\(imageData)")
-                
-               
-                
-                
-               
+              
                 picImage.image = selectedImage
                 userChoseImage = true
                 print("imagePickerController() - userChoseImage: \(userChoseImage)")

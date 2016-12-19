@@ -215,8 +215,6 @@ class CardViewController: UIViewController {
                 let selectedRestVC = SelectedRestaurantViewController()
                 self.navigationController?.pushViewController(selectedRestVC, animated: true)
                 
-                
-                
             }
         }
         swipeableView.didCancel = {view in
