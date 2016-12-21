@@ -126,8 +126,14 @@ class CardViewController: UIViewController {
             print("shaken")
                     
             var currentRandomCuisine = userStore.currentChosenCuisine
+            print("currentRandomCuisine \(currentRandomCuisine)")
             //if the current random cuisine is not the new random cuisine
+            
             let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+            print("randomNum \(randomNum)")
+            
+            print("preferredCuisineArray \(userStore.preferredCuisineArray)")
+            
             if currentRandomCuisine != userStore.preferredCuisineArray[randomNum] {
                 userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
                 print("random cuisine is: \(userStore.currentChosenCuisine)")
