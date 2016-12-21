@@ -32,45 +32,6 @@ class OnboardingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
  
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(/*animated*/) {
-//        setOverlayTitle()
-//            
-//            
-//        }
-//    }
-//    
-//    func setOverlayTitle()
-//    {
-//
-//        
-//        UIView.animate(withDuration: 1.0, delay: 2.0, options: UIViewAnimationOptions.curveEaseOut, animations:
-//            {
-//                self.friendsLabel.alpha = 0.0
-//                
-//        },
-//    
-//                       completion:
-//            {(finished: Bool) -> Void in
-//                print(self.iterator)
-//                self.friendsLabel.text = hello[self.iterator]
-//                
-//                // Fade in
-//                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations:
-//                    {
-//                        self.lblAnime!.alpha = 1.0
-//                },
-//                                           completion:
-//                    {(finished: Bool) -> Void in
-//                        self.iterator++
-//                        
-//                        if self.iterator < hello.count
-//                        {
-//                            self.setOverlayTitle();
-//                        }
-//                })
-//        })
-//    }
 
     func setupViews() {
         view.addSubview(welcomeLabel)
@@ -139,5 +100,44 @@ class OnboardingViewController: UIViewController {
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
 
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewDidAppear(/*animated*/) {
+    //        setOverlayTitle()
+    //
+    //
+    //        }
+    //    }
+    //
+    //    func setOverlayTitle()
+    //    {
+    //
+    //
+    //        UIView.animate(withDuration: 1.0, delay: 2.0, options: UIViewAnimationOptions.curveEaseOut, animations:
+    //            {
+    //                self.friendsLabel.alpha = 0.0
+    //
+    //        },
+    //
+    //                       completion:
+    //            {(finished: Bool) -> Void in
+    //                print(self.iterator)
+    //                self.friendsLabel.text = hello[self.iterator]
+    //
+    //                // Fade in
+    //                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations:
+    //                    {
+    //                        self.lblAnime!.alpha = 1.0
+    //                },
+    //                                           completion:
+    //                    {(finished: Bool) -> Void in
+    //                        self.iterator++
+    //
+    //                        if self.iterator < hello.count
+    //                        {
+    //                            self.setOverlayTitle();
+    //                        }
+    //                })
+    //        })
+    //    }
 
 }
