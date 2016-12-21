@@ -1,0 +1,35 @@
+//    func selectPicture() {
+//        print("selected piccccc")
+//        let picker = UIImagePickerController()
+//        picker.allowsEditing = true
+//        picker.delegate = self
+//        present(picker, animated: true)
+//    }
+
+//    func takePicture() {
+//        let picker = UIImagePickerController()
+//        picker.allowsEditing = true
+//        picker.sourceType = .camera
+//        picker.delegate = self
+//        present(picker, animated: true)
+//        if let image = UIImage(named: "example.png") {
+//            if let data = UIImageJPEGRepresentation(image, 0.8) {
+//                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+//                print("saved")
+//                try? data.write(to: filename)
+//            }
+//        }
+//    }
+
+
+
+
+
+                //SEND USER TO ONBOARDING VIEWCONTROLLER
+//                let onboardingVC = OnboardingViewController()
+//                self.navigationController?.modalPresentationStyle
+//                self.navigationController?.pushViewController(onboardingVC, animated: true)
+                
+//                let preferencesVC = PreferenceViewController()
+//                self.navigationController?.pushViewController(preferencesVC, animated: true)
+                

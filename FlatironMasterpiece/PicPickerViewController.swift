@@ -20,10 +20,6 @@ import UIKit
 //ELI - is this used at all or is SelectPhotoViewController() actually being used?
 class PicPickerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        print("view is running")
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
