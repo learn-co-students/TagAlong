@@ -1,4 +1,4 @@
-# Tag Along App
+# [Tag Along App](http://tagalongapp.wixsite.com/tagalong)
 
 ![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/tagalong_logo.png)
 

@@ -16,7 +16,7 @@
 		250501CD1DF0CC770090AC68 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250501CC1DF0CC770090AC68 /* FirebaseManager.swift */; };
 		2520E6461E00854500E7B4A1 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520E6451E00854500E7B4A1 /* SelectPhotoViewController.swift */; };
 		25C9897C1DE347DB003C993C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9897B1DE347DB003C993C /* ChatViewController.swift */; };
-		25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		25E4F4A91DEA107B00CFDE32 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		25E4F4AB1DEA10B600CFDE32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */; };
 		2623031424E2DCD30372C65C /* Pods_FlatironMasterpiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B360800C2A9D1D23C9C5FE1A /* Pods_FlatironMasterpiece.framework */; };
 		270DAE361DEF8D6300100E58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 270DAE351DEF8D6300100E58 /* GoogleService-Info.plist */; };
@@ -155,6 +155,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27577A081E0705B4008C14D3 /* AudioAssets */ = {
+			isa = PBXGroup;
+			children = (
+				279FC3891DF668460094A4BB /* SprayShake.mp3 */,
+			);
+			name = AudioAssets;
+			sourceTree = "<group>";
+		};
+		27577A091E0705FD008C14D3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		27AAFE221DDAC9AA00C08348 = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				27AAFE2E1DDAC9AA00C08348 /* AppDelegate.swift */,
-				25E4F4AA1DEA10B600CFDE32 /* Chat.storyboard */,
+				27577A091E0705FD008C14D3 /* New Group */,
 				950A2C6C1DE9F95D001F2145 /* Direction.swift */,
 				95B39D0B1DFF5C17009F2821 /* Secrets.swift */,
 				950A2C6E1DEC9F01001F2145 /* Scheduler.swift */,
@@ -188,7 +204,7 @@
 				27AAFE371DDAC9AA00C08348 /* LaunchScreen.storyboard */,
 				45F8AD6C1DDF5155001BD45C /* Extensions.swift */,
 				27AAFE351DDAC9AA00C08348 /* Assets.xcassets */,
-				279FC3891DF668460094A4BB /* SprayShake.mp3 */,
+				27577A081E0705B4008C14D3 /* AudioAssets */,
 				45F553471DDCF03A002E799A /* APIClients */,
 				452C599E1DE61E34005884EE /* Controllers */,
 				452C599B1DE61D1D005884EE /* DataStores */,
@@ -353,7 +369,7 @@
 					27AAFE2A1DDAC9AA00C08348 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = KXY9EDFTF5;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -456,7 +472,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -467,8 +482,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2500B2051DF7450100B0C78D /* Tagalong.swift in Sources */,
-				25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */,
-				25E4F4A91DEA107B00CFDE32 /* BuildFile in Sources */,
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
+				25E4F4A91DEA107B00CFDE32 /* (null) in Sources */,
 				45F8AD8F1DDF83CF001BD45C /* CuisineCollectionViewCell.swift in Sources */,
 				45F509FC1DE4FD0D00A4F9C4 /* ShakeView.swift in Sources */,
 				279BBC711DF0E217008020D4 /* User.swift in Sources */,
@@ -622,8 +637,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -633,6 +648,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fba92996-8685-411c-918d-ebfc9935b6be";
+				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -645,8 +662,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -656,6 +673,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f9c9c3b5-4474-4345-a284-9ad52a38d5f8";
+				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
