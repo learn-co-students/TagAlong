@@ -10,14 +10,14 @@
 import UIKit
 import CoreLocation
 import GooglePlaces
-import AudioToolbox
-import AVFoundation
+//import AudioToolbox
+//import AVFoundation
 
 class ShakeInstructionViewController: UIViewController {
 
     var shakeView: ShakeView!
 
-    var shakeNoise: AVAudioPlayer?
+  //  var shakeNoise: AVAudioPlayer?
     var vview: UIView!
 
     //NOTE: - google places / core location properties
@@ -66,34 +66,34 @@ class ShakeInstructionViewController: UIViewController {
     }
 
     
-    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
-        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
-        let url = URL(fileURLWithPath: path!)
-
-        var audioPlayer: AVAudioPlayer?
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: url)
-        } catch {
-            print("Nothing to play")
-        }
-        return audioPlayer
-    }
-
-    func loadPlayer() {
-        if let shakeNoise = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
-            self.shakeNoise = shakeNoise
-        }
-        self.shakeNoise?.volume = 1.0
-        self.shakeNoise?.play()
-    }
-
-    func playSound() {
-       loadPlayer()
-    }
-    func vibrate() {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    }
-
+//    func setupAudioPlayerWithFile(file: String, type: String) -> AVAudioPlayer? {
+//        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+//        let url = URL(fileURLWithPath: path!)
+//
+//        var audioPlayer: AVAudioPlayer?
+//        do {
+//            try audioPlayer = AVAudioPlayer(contentsOf: url)
+//        } catch {
+//            print("Nothing to play")
+//        }
+//        return audioPlayer
+//    }
+//
+//    func loadPlayer() {
+//        if let shakeNoise = self.setupAudioPlayerWithFile(file: "SprayShake", type: "mp3") {
+//            self.shakeNoise = shakeNoise
+//        }
+//        self.shakeNoise?.volume = 1.0
+//        self.shakeNoise?.play()
+//    }
+//
+//    func playSound() {
+//       loadPlayer()
+//    }
+//    func vibrate() {
+//        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//    }
+//
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
@@ -151,11 +151,11 @@ extension ShakeInstructionViewController {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
                             
-                            if self.view == self.vview {
-                                self.vibrate()
-                                self.playSound()
-                            }
-                            self.playSound()
+//                            if self.view == self.vview {
+//                                self.vibrate()
+//                                self.playSound()
+//                            }
+//                            self.playSound()
                             
                             if self.restStore.restaurantsArray.count == 0 {
                                 
