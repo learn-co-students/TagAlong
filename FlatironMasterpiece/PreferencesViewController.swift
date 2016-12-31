@@ -73,6 +73,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 5).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        budgetLabel.isHidden = true
+        
         
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
@@ -105,6 +107,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
+        budgetSC.isHidden = true
     }
     
     
