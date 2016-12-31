@@ -75,11 +75,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         budgetLabel.isHidden = true
         
-        
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
-        
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +149,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.foodLabel.text = cuisineArray[indexPath.item]
         
         //this gets back the cuisines from the
-        let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [""]
+        //let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [""]
+        guard let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") else { return cell }
         print("this is user defaults cuisines \(ustoredUserCuisines)")
         self.userStore.preferredCuisineArray = ustoredUserCuisines
         print("the userstore.preferredCuisineArray is set to the userdefaultscuisineArray and is now \(self.userStore.preferredCuisineArray)")

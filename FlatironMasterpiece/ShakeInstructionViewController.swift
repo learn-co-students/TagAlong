@@ -26,6 +26,8 @@ class ShakeInstructionViewController: UIViewController {
 
     let restStore = RestaurantDataStore.sharedInstance
     let userStore = UsersDataStore.sharedInstance
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,7 @@ class ShakeInstructionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let locationManager = CLLocationManager()
+        
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
