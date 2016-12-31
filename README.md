@@ -13,7 +13,7 @@
 
 ## Details:
 
-Tag Along is an app that offers a selection of restaurants specific to a users' preferences, and is unique in that it allows users to meet people nearby and connect over a shared cusisine interest. Users do this by either choosing to be a "host" which initiates an open invite for anyone willing to tag along to the restaurant of their choice, or they become a "guest" and request to tag along with a host. 
+Tag Along is an app that offers a selection of restaurants specific to a users' preferences, and is unique in that it allows users to meet people nearby and connect over a shared cuisine interest. Users do this by either choosing to be a "host" which initiates an open invite for anyone willing to tag along to the restaurant of their choice, or they become a "guest" and request to tag along with a host. 
 
 The idea behind this app is to help users explore local restaurants with an option of getting to know their neighbors.
 
