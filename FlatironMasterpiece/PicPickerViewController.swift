@@ -17,7 +17,7 @@
 import Foundation
 import UIKit
 
-
+//ELI - is this used at all or is SelectPhotoViewController() actually being used?
 class PicPickerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     

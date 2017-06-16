@@ -240,7 +240,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             guard let email = emailField.text else { return }
         }
         
-        
         forgotPasswordAlert.addTextField { (textField) in
             textField.placeholder = "Email address"
         }

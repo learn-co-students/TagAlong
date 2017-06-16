@@ -40,7 +40,6 @@
 		451C01B51DEE4359007B1388 /* YanoneKaffeesatz-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */; };
 		451C01B61DEE435C007B1388 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */; };
 		451C01B71DEE435E007B1388 /* YanoneKaffeesatz-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */; };
-		45229D8A1DFA20F0005D322D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45229D891DFA20F0005D322D /* Message.swift */; };
 		45229D8C1DFA37B7005D322D /* RestaurantChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */; };
 		452C599A1DE5EABC005884EE /* SelectedRestaurant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452C59991DE5EABC005884EE /* SelectedRestaurant.xib */; };
 		453921331DEB8C0B00D19A45 /* TagAlongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */; };
@@ -106,7 +105,6 @@
 		451C01A71DEE13F8007B1388 /* YanoneKaffeesatz-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-ExtraLight.ttf"; sourceTree = "<group>"; };
 		451C01A81DEE13F8007B1388 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		451C01A91DEE13F8007B1388 /* YanoneKaffeesatz-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Regular.ttf"; sourceTree = "<group>"; };
-		45229D891DFA20F0005D322D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		45229D8B1DFA37B7005D322D /* RestaurantChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantChatViewController.swift; sourceTree = "<group>"; };
 		452C59991DE5EABC005884EE /* SelectedRestaurant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedRestaurant.xib; sourceTree = "<group>"; };
 		453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAlongViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				453921321DEB8C0B00D19A45 /* TagAlongViewController.swift */,
 				250501CA1DF0825F0090AC68 /* UserTagAlongsTableViewController.swift */,
 				453E00531DF8B67100694858 /* WaitingForHostViewController.swift */,
-				45229D891DFA20F0005D322D /* Message.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -369,7 +366,7 @@
 					27AAFE2A1DDAC9AA00C08348 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = KXY9EDFTF5;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -509,7 +506,6 @@
 				950A2C6D1DE9F95D001F2145 /* Direction.swift in Sources */,
 				2500B1E21DF619B400B0C78D /* TagalongDataStore.swift in Sources */,
 				27AAFE2F1DDAC9AA00C08348 /* AppDelegate.swift in Sources */,
-				45229D8A1DFA20F0005D322D /* Message.swift in Sources */,
 				453921411DEC778700D19A45 /* TableViewCell.swift in Sources */,
 				45FA58231DE9D1EF0075D914 /* HostOrTagAlongViewController.swift in Sources */,
 				2520E6461E00854500E7B4A1 /* SelectPhotoViewController.swift in Sources */,
@@ -637,8 +633,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = KXY9EDFTF5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -650,6 +646,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99d1efea-0dd8-48d5-9f81-1051708c8d82";
 				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -662,8 +660,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlatironMasterpiece/FlatironMasterpiece.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = KXY9EDFTF5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FlatironMasterpiece",
@@ -675,6 +673,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99d1efea-0dd8-48d5-9f81-1051708c8d82";
 				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

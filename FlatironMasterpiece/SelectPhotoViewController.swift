@@ -37,8 +37,6 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
-        
-        
         view.addSubview(picButton)
         picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
         picButton.isUserInteractionEnabled = true
@@ -151,11 +149,7 @@ extension SelectPhotoViewController {
                 let data = UIImagePNGRepresentation(selectedImage)
                 guard let imageData = data else { return }
                 print("okkkkkkkkk\(imageData)")
-                
-               
-                
-                
-               
+              
                 picImage.image = selectedImage
                 userChoseImage = true
                 print("imagePickerController() - userChoseImage: \(userChoseImage)")

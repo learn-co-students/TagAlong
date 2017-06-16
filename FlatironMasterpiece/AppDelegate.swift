@@ -12,7 +12,8 @@ import GooglePlaces
 import CoreLocation
 import Firebase
 import FBSDKLoginKit
-import IQKeyboardManagerSwift 
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -33,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         //MARK: - sets up the navigation controller for our app
-  
-        
-        
-        
         
         navController = UINavigationController()
         var onboardingVC = OnboardingViewController()

@@ -8,29 +8,31 @@
 import Foundation
 
 final class UsersDataStore {
-    
+
     static let sharedInstance = UsersDataStore()
     var users: [User] = []
-    var preferredCuisineArray:[String] = []
+    //var preferredCuisineArray:[String] = []
     
     fileprivate init() {}
 
     //ERICA needs to figure out this prefCuisine prop Johann wrote
-//    var prefCuisine: [String]{
-//        get {
-//            let prefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as? [String] ?? []
-//            
-//            return prefs
-//        }
-//        
-//        set{
-//            UserDefaults.standard.set(self.prefCuisine, forKey: "UserCuisineArray")
-//        }
-//    }
-    
+    var preferredCuisineArray: [String]{
+        get {
+            let prefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as? [String] ?? []
+
+            return prefs
+        }
+
+        set{
+
+
+            UserDefaults.standard.set(newValue, forKey: "UserCuisineArray")
+        }
+    }
+
     var userLat: Double = 0.0
     var userLong: Double = 0.0
-    
+
     var currentChosenCuisine:String = ""
     var chosenRestLat: Double = 0.0
     var chosenRestLong: Double = 0.0
@@ -51,20 +53,20 @@ final class UsersDataStore {
             return "💰💰"
         }
     }
-    
+
     var userDistanceToChosenRest: Double = 0.0
-    
+
     //ERICA's NOTES - this property might be deleted
     var userBudgetChoice:Int = 1
-    
+
     //get this from firebase user login data
     //    func getUsersFromDatabase {
     //firstname
     //industry
     //jobtitle
     //}
-    
-    
-    
-    
+
+
+
+
 }
