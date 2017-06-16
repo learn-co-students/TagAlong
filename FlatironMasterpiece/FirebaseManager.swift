@@ -104,15 +104,13 @@ final class FirebaseManager {
         print(userStore)
         var userProfileImage = UIImage()
         userStore.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) -> Void in
-            print(data)
-
             if error != nil {
                 print(error?.localizedDescription)
                 print("error")
             } else {
                 print("image")
-                userProfileImage = UIImage(data: data!)!
-                handler(userProfileImage)
+                    userProfileImage = UIImage(data: data!)!
+                    handler(userProfileImage)
             }
         })
     }

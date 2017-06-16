@@ -9,6 +9,9 @@
 
 import UIKit
 import Firebase
+
+// TODO: - Load images async
+
 class TagAlongViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let store = FirebaseManager.shared
@@ -24,7 +27,6 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
     var hostTagAlongInsteadButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 100, height: 30))
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,9 +193,7 @@ class TagAlongViewController: UIViewController, UITableViewDataSource, UITableVi
         
         FirebaseManager.downloadPic(uid: selectedTag.user.userID) { (image) in
             OperationQueue.main.addOperation {
-                
                 myCell.userImageView.image = image
-                print("*********\(myCell.imageView?.image)***********")
             }
             
         }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: - Give option to be the tag along as well
+
 class HostOrTagAlongViewController: UIViewController {
     
     let searchLabel:UILabel = UILabel()
@@ -78,7 +80,7 @@ class HostOrTagAlongViewController: UIViewController {
         tagAlongButton.translatesAutoresizingMaskIntoConstraints = false
         tagAlongButton.topAnchor.constraint(equalTo: tagAlongLabel.bottomAnchor, constant: 20).isActive = true
         tagAlongButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        tagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
+        tagAlongButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         tagAlongButton.addTarget(self, action: #selector(joinATagAlong), for: .touchUpInside)
         tagAlongButton.setTitleColor(phaedraOrange, for: .normal)
         tagAlongButton.setTitleColor(phaedraDarkGreen, for: .highlighted)
