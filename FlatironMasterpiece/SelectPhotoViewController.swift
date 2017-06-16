@@ -11,10 +11,11 @@ import UIKit
 class SelectPhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var welcomeLabel = UILabel()
+    var instructionLabel = UILabel()
     var picButton = UIButton()
     var picImage = UIImageView()
     var userChoseImage:Bool = false
-    var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
+    var setPhoto = UIButton(frame: CGRect(x: 100, y: 200, width: 200, height: 25))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,78 +23,81 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
         addPhotoViews()
         print("viewDidLoad() - userChoseImage: \(userChoseImage)")
      }
+    
+    // MARK: - View Methods
 
     func addPhotoViews() {
         
         view.addSubview(welcomeLabel)
-        welcomeLabel.text = "Choose your picture!"
+        welcomeLabel.text = "Select a photo"
         welcomeLabel.textColor = phaedraOrange
         welcomeLabel.textAlignment = .center
-//        welcomeLabel.layer.borderWidth = 2
-//        welcomeLabel.layer.cornerRadius = 5
-        welcomeLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
-//        welcomeLabel.layer.borderColor = phaedraDarkGreen.cgColor
+        welcomeLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
+        view.addSubview(instructionLabel)
+        instructionLabel.text = "To continue you must upload a photo. Tap on 'Add Photo' to select a photo"
+        instructionLabel.textColor = phaedraOrange
+        instructionLabel.textAlignment = .center
+        instructionLabel.font = UIFont(name: "OpenSans-Regular", size: 16.0)
+        instructionLabel.lineBreakMode = .byTruncatingTail
+        instructionLabel.numberOfLines = 0
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 30).isActive = true
+        instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        instructionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+
         view.addSubview(picButton)
         picButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
         picButton.isUserInteractionEnabled = true
         picButton.titleLabel?.numberOfLines = 2
-        picButton.setTitle("Add\nPic", for: UIControlState.normal)
+        picButton.setTitle("Add Photo", for: UIControlState.normal)
         picButton.titleLabel?.textAlignment = .center
         picButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
         picButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         picButton.backgroundColor = phaedraLightGreen
         picButton.layer.borderColor = phaedraDarkGreen.cgColor
-        //  picButton.layer.borderWidth = 2
         picButton.layer.cornerRadius = 0
         picButton.translatesAutoresizingMaskIntoConstraints = false
-        picButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
+        picButton.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 70).isActive = true
         picButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         picButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         picButton.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         view.addSubview(picImage)
         picImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectProfileImage)))
-//         picImage.backgroundColor = UIColor.red.withAlphaComponent(0.2)
         picImage.layer.borderWidth = 0
         picImage.layer.cornerRadius = 0
         picImage.translatesAutoresizingMaskIntoConstraints = false
-        //       picButton.setBackgroundImage(compressedJPGImage, forState: UIControlState.normal)
-        picImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
-        
-        picImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        picImage.topAnchor.constraint(equalTo: picButton.topAnchor, constant: 0).isActive = true
+        picImage.centerXAnchor.constraint(equalTo: picButton.centerXAnchor, constant: 0).isActive = true
         picImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         picImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
         
-        view.addSubview(savePreferencesButton)
-        savePreferencesButton.backgroundColor = phaedraLightGreen
-        savePreferencesButton.layer.cornerRadius = 5
-        savePreferencesButton.layer.borderColor = phaedraDarkGreen.cgColor
-        savePreferencesButton.layer.borderWidth = 2
-        savePreferencesButton.setTitle("Set Profile Pic", for: .normal)
-        savePreferencesButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
-        savePreferencesButton.titleLabel?.textAlignment = .center
-        savePreferencesButton.translatesAutoresizingMaskIntoConstraints = false
-//        savePreferencesButton.topAnchor.constraint(greaterThanOrEqualTo: picImage.bottomAnchor, constant: 250).isActive = true
-        savePreferencesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
-        savePreferencesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        savePreferencesButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
-        savePreferencesButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
-        savePreferencesButton.addTarget(self, action: #selector(goToPreferencesButtonTapped), for: .touchUpInside)
-        savePreferencesButton.setTitleColor(phaedraDarkGreen, for: .normal)
-        savePreferencesButton.setTitleColor(phaedraOrange, for: .highlighted)
+        view.addSubview(setPhoto)
+        setPhoto.backgroundColor = phaedraOrange
+        setPhoto.layer.cornerRadius = 5
+        setPhoto.setTitle("Set Profile Photo", for: .normal)
+        setPhoto.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14.0)
+        setPhoto.titleLabel?.textAlignment = .center
+        setPhoto.translatesAutoresizingMaskIntoConstraints = false
+        setPhoto.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
+        setPhoto.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        setPhoto.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45).isActive = true
+        setPhoto.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08).isActive = true
+        setPhoto.addTarget(self, action: #selector(goToPreferencesButtonTapped), for: .touchUpInside)
+
     }
     
     func goToPreferencesButtonTapped() {
-        print("save preferences tapped")
         if userChoseImage {
             let preferencesVC = PreferenceViewController()
-            self.navigationController?.pushViewController(preferencesVC, animated: true)
+            self.show(preferencesVC, sender: nil)
+            
         } else {
-            //noPhotoChosen alert is called
+
             let noPhotoAlert = UIAlertController(title: "Missing Profile Photo", message: "Please upload a profile photo.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 print("User closed alert controller")
@@ -101,15 +105,6 @@ class SelectPhotoViewController: UIViewController, UINavigationControllerDelegat
             noPhotoAlert.addAction(okAction)
             self.present(noPhotoAlert, animated: true, completion: nil)
         }
-    }
-    
-    //Sets up pic button with relevant sizes text
-    func createPicButton() {
-        
-    }
-    //Constrains pic button to self.view
-    func constrainPicButton() {
-        
     }
     
 }

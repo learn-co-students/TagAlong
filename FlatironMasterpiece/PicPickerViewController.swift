@@ -23,8 +23,7 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Pic picker should appear")
-  //      present(alertController, animated: true, completion: nil)
+
         selectPicture()
     }
     
@@ -44,7 +43,6 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         picker.allowsEditing = true
         
         present(picker, animated: true)
- //       imagePickerControllerDidCancel(picker)
 
     }
     
@@ -81,25 +79,10 @@ class PicPickerViewController: UIViewController, UINavigationControllerDelegate,
         guard let compressedJPGImage = UIImage(data: imageData) else { return }
         //send to firebase
         
-       // FirebaseManager.sendToStorage(data: imageData)
         
         FirebaseManager.sendToStorage(data: imageData, handler: { success in
-            
-            print("view should dismiss")
-
             super.dismiss(animated: true, completion: nil)
-
-            
         })
-
-//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            newImage = image
-//        } else {
-//            print("Something went wrong")
-//        }
-//        
-//        print("view should dismiss")
-//        super.dismiss(animated: true, completion: nil)
     }
     
     
