@@ -44,7 +44,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         //NOTE: hides top navController
         self.title = "Preferences"
         navigationController?.isNavigationBarHidden = true
-        createSegmentedController()
+      //  createSegmentedController()
         layoutCuisineCollectionView()
         formatButtons()
         formatLabels()
@@ -56,24 +56,24 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func formatLabels() {
         view.addSubview(preferencesLabel)
-        preferencesLabel.text = "PREFERENCES"
+        preferencesLabel.text = "Preferences"
         preferencesLabel.font = UIFont(name: "OpenSans-Bold", size: 20.0)
         preferencesLabel.textColor = phaedraOrange
         preferencesLabel.textAlignment = .center
         preferencesLabel.translatesAutoresizingMaskIntoConstraints = false
-        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        preferencesLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         preferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         preferencesLabel.specialConstrain(to: view)
         
-        view.addSubview(budgetLabel)
-        budgetLabel.text = "Choose your budget"
-        budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
-        budgetLabel.textColor = phaedraOrange
-        budgetLabel.textAlignment = .center
-        budgetLabel.translatesAutoresizingMaskIntoConstraints = false
-        budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 5).isActive = true
-        budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        budgetLabel.isHidden = true
+//        view.addSubview(budgetLabel)
+//        budgetLabel.text = "Choose your budget"
+//        budgetLabel.font = UIFont(name: "OpenSans-Bold", size: 16.0)
+//        budgetLabel.textColor = phaedraOrange
+//        budgetLabel.textAlignment = .center
+//        budgetLabel.translatesAutoresizingMaskIntoConstraints = false
+//        budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 5).isActive = true
+//        budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+//        budgetLabel.isHidden = true
         
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
@@ -81,36 +81,37 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
+        cuisinePreferencesLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 40).isActive = true
         cuisinePreferencesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cuisinePreferencesLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 145).isActive = true
+//        cuisinePreferencesLabel.heightAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 40).isActive = true
+//        cuisinePreferencesLabel.width.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 40).isActive = true
     }
     
     
-    func createSegmentedController() {
-        let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
-        let budgetSC = UISegmentedControl(items: budgetArray)
-        budgetSC.selectedSegmentIndex = 0
-        budgetSC.frame = CGRect.zero
-        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12.0)! ], for: .normal)
-        budgetSC.layer.cornerRadius = 5
-        budgetSC.layer.borderWidth = 2
-        budgetSC.layer.borderColor = phaedraDarkGreen.cgColor
-        budgetSC.backgroundColor = phaedraLightGreen
-        budgetSC.tintColor = phaedraDarkGreen
-        budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
-        self.view.addSubview(budgetSC)
-        budgetSC.translatesAutoresizingMaskIntoConstraints = false
-        //       budgetSC.topAnchor.constraint(equalTo: budgetLabel.bottomAnchor, constant: 20).isActive = true
-        budgetSC.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 100).isActive = true
-        budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-        budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
-        budgetSC.isHidden = true
-    }
+//    func createSegmentedController() {
+//        let budgetArray:[String] = ["💰", "💰💰", "💰💰💰", "💰💰💰💰"]
+//        let budgetSC = UISegmentedControl(items: budgetArray)
+//        budgetSC.selectedSegmentIndex = 0
+//        budgetSC.frame = CGRect.zero
+//        budgetSC.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12.0)! ], for: .normal)
+//        budgetSC.layer.cornerRadius = 5
+//        budgetSC.layer.borderWidth = 2
+//        budgetSC.layer.borderColor = phaedraDarkGreen.cgColor
+//        budgetSC.backgroundColor = phaedraLightGreen
+//        budgetSC.tintColor = phaedraDarkGreen
+//        budgetSC.addTarget(self, action: #selector(printChosenBudget(sender:)), for: .valueChanged)
+//        self.view.addSubview(budgetSC)
+//        budgetSC.translatesAutoresizingMaskIntoConstraints = false
+//        //       budgetSC.topAnchor.constraint(equalTo: budgetLabel.bottomAnchor, constant: 20).isActive = true
+//        budgetSC.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 100).isActive = true
+//        budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+//        budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+//        budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
+//        budgetSC.isHidden = true
+//    }
     
     
     func layoutCuisineCollectionView() {
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 86, height: 86)
@@ -124,13 +125,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cuisineCollectionView.layer.cornerRadius = 5
         cuisineCollectionView.layer.borderWidth = 2
         cuisineCollectionView.layer.borderColor = phaedraDarkGreen.cgColor
-        
         cuisineCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cuisineCollectionView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 170).isActive = true
+        cuisineCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 180).isActive = true
         cuisineCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cuisineCollectionView.heightAnchor.constraint(equalToConstant: 225).isActive = true
         cuisineCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
