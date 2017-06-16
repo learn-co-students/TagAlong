@@ -246,9 +246,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             let emailField = forgotPasswordAlert.textFields![0] as UITextField
             print("the user entered \(emailField)")
             guard let email = emailField.text else { return }
-
         }
-        
         
         forgotPasswordAlert.addTextField { (textField) in
             textField.placeholder = "Email address"

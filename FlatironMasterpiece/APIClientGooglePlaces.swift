@@ -14,7 +14,6 @@ typealias json = [String:Any]
 
 class APIClientGooglePlaces {
     
-    
     class func getRestaurants(lat:Double, long:Double, queryString:String, completion:@escaping(json)-> Void) {
         
         var query = ""
@@ -30,7 +29,7 @@ class APIClientGooglePlaces {
             case "Latin":
             query = "latin"
             default:
-            query = "fastfood"
+            query = "vegetarian"
         }
         
         let textSearchUrlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?location=\(lat),\(long)&radius=800&type=restaurant&query=\(query)&key=\(gpSearchApiKey)"

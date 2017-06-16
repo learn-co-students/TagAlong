@@ -29,9 +29,9 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
     let cuisineReuseIdentifier = "Cuisine Cell"
     var savePreferencesButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
     
-    let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Unhealthy2x")!]
+    let cuisineImage:[UIImage] = [UIImage(named: "American")!, UIImage(named:"Asian")!, UIImage(named: "Healthy")!, UIImage(named: "Italian")!, UIImage(named: "Latin3x")!, UIImage(named: "Fruit")!]
     
-    let cuisineArray:[String] = ["American", "Asian", "Healthy", "Italian", "Latin", "Unhealthy"]
+    let cuisineArray:[String] = ["American", "Asian", "Healthy", "Italian", "Latin", "Vegetarian"]
     
     //NOTE: - userStore properties
     let userStore = UsersDataStore.sharedInstance
@@ -73,11 +73,11 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         budgetLabel.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 5).isActive = true
         budgetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        budgetLabel.isHidden = true
         
         view.addSubview(cuisinePreferencesLabel)
         cuisinePreferencesLabel.text = "Choose at least 2 cuisines"
         cuisinePreferencesLabel.font = UIFont(name: "OpenSans-Light", size: 16.0)
-        
         cuisinePreferencesLabel.textColor = phaedraOrange
         cuisinePreferencesLabel.textAlignment = .center
         cuisinePreferencesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -105,6 +105,7 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         budgetSC.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         budgetSC.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         budgetSC.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
+        budgetSC.isHidden = true
     }
     
     
@@ -148,7 +149,8 @@ class PreferenceViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.foodLabel.text = cuisineArray[indexPath.item]
         
         //this gets back the cuisines from the
-        let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [" "]
+        //let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") ?? [""]
+        guard let ustoredUserCuisines = UserDefaults.standard.stringArray(forKey: "UserCuisineArray") else { return cell }
         print("this is user defaults cuisines \(ustoredUserCuisines)")
         self.userStore.preferredCuisineArray = ustoredUserCuisines
         print("the userstore.preferredCuisineArray is set to the userdefaultscuisineArray and is now \(self.userStore.preferredCuisineArray)")

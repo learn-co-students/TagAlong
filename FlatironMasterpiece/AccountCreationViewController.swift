@@ -35,14 +35,6 @@ struct Constants {
 
 
 class AccountCreationViewController: UIViewController, CLLocationManagerDelegate , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    //static let shared = AccountCreationViewController()
-   
-    
-    let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
-    let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
-    let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
-    let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
-    let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
 
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
@@ -55,23 +47,18 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var createAccountButton = UIButton()
     var picButton = UIButton()
     var picImage = UIImageView()
-    
-    
+  
     var firstNameConfirmed = false
     var lastNameConfirmed = false
     var emailConfirmed = false
     var password = false
     var industry = false
     var jobtitle = false
-    
-    
+  
     let store = FirebaseManager.shared
 
-
-var manager = CLLocationManager()
-
-
-    
+    var manager = CLLocationManager()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         Locate()
@@ -119,11 +106,11 @@ var manager = CLLocationManager()
     func dismissKeyboard() {
         view.endEditing(true)
     }
+  
     func Locate() {
         
         manager.delegate = self
-        
-        manager.requestWhenInUseAuthorization()
+                manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         func locationManager(manager: CLLocationManager,
@@ -135,6 +122,8 @@ var manager = CLLocationManager()
             }
         }
     }
+  
+    //ELI - revisit this func
     func tapCreateButtonOnce() {
         self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
@@ -187,7 +176,7 @@ extension AccountCreationViewController {
         firstNameEntry.textAlignment = .center
         firstNameEntry.layer.borderWidth = 2
         firstNameEntry.layer.cornerRadius = 5
-        firstNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        firstNameEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         firstNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
         firstNameEntry.translatesAutoresizingMaskIntoConstraints = false
         firstNameEntry.topAnchor.constraint(equalTo: createAccountLabel.bottomAnchor, constant: 20).isActive = true
@@ -202,7 +191,7 @@ extension AccountCreationViewController {
         lastNameEntry.layer.borderWidth = 2
         lastNameEntry.layer.cornerRadius = 5
         lastNameEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        lastNameEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        lastNameEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         lastNameEntry.backgroundColor = UIColor.white
         
         lastNameEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -217,7 +206,7 @@ extension AccountCreationViewController {
         emailEntry.layer.borderWidth = 2
         emailEntry.layer.cornerRadius = 5
         emailEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        emailEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        emailEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         emailEntry.textAlignment = .center
         emailEntry.backgroundColor = UIColor.white
         emailEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -232,7 +221,7 @@ extension AccountCreationViewController {
         passwordEntry.layer.borderWidth = 2
         passwordEntry.layer.cornerRadius = 5
         passwordEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        passwordEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         passwordEntry.textAlignment = .center
         passwordEntry.backgroundColor = UIColor.white
         
@@ -248,7 +237,7 @@ extension AccountCreationViewController {
         passwordVerification.layer.borderWidth = 2
         passwordVerification.layer.cornerRadius = 5
         passwordVerification.layer.borderColor = phaedraDarkGreen.cgColor
-        passwordVerification.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        passwordVerification.font = UIFont(name: "Abel-Regular", size: 14.0)
         passwordVerification.textAlignment = .center
         
         passwordVerification.backgroundColor = UIColor.white
@@ -264,7 +253,7 @@ extension AccountCreationViewController {
         industryEntry.layer.borderWidth = 2
         industryEntry.layer.cornerRadius = 5
         industryEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        industryEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        industryEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         industryEntry.textAlignment = .center
         industryEntry.backgroundColor = UIColor.white
         industryEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -279,7 +268,7 @@ extension AccountCreationViewController {
         jobEntry.layer.borderWidth = 2
         jobEntry.layer.cornerRadius = 5
         jobEntry.layer.borderColor = phaedraDarkGreen.cgColor
-        jobEntry.font = UIFont(name: "OpenSans-Light", size: 14.0)
+        jobEntry.font = UIFont(name: "Abel-Regular", size: 14.0)
         jobEntry.textAlignment = .center
         jobEntry.backgroundColor = UIColor.white
         jobEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -293,7 +282,7 @@ extension AccountCreationViewController {
         
         createAccountButton.addTarget(self, action: #selector(createAccountButtonTapped(sender:)), for: .touchUpInside)
         createAccountButton.setTitle("Create Account", for: UIControlState.normal)
-        createAccountButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 15.0)
+        createAccountButton.titleLabel?.font = UIFont(name: "Abel-Regular", size: 18.0)
         createAccountButton.setTitleColor(phaedraDarkGreen, for: UIControlState.normal)
         createAccountButton.backgroundColor = phaedraYellow
         createAccountButton.layer.borderColor = phaedraDarkGreen.cgColor
@@ -356,18 +345,13 @@ extension AccountCreationViewController {
         //AccountCreationViewController()
     }
 
-    
 
-    
-    
     func sendEmail() {
 
         FirebaseManager.sendEmailVerification()
-
-
     }
 
-
+    //ERICA - what is this?  Who wrote this?  What is it for?
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -412,12 +396,12 @@ extension AccountCreationViewController {
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
  
+        //ERICA - THIS SHOULD PROBABLY BE DELETED
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
 
         //1 - create an instance of a user
-
 
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job )
 

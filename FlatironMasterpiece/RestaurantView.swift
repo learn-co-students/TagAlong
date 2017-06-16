@@ -27,9 +27,7 @@ class RestaurantView: UIView, MKMapViewDelegate {
     }
     
     var alreadyZoomedIn = false
-
-    
-    
+     
     @IBOutlet weak var restMap: MKMapView!
     @IBOutlet weak var selectedCuisineLabel: UILabel!
     @IBOutlet weak var selectedRestaurantLabel: UILabel!

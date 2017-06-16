@@ -14,20 +14,22 @@ class UsersDataStore {
     
     var users: [User] = []
     
-    var preferredCuisineArray:[String] = []
+    //var preferredCuisineArray:[String] = []
     
     //ERICA needs to figure out this prefCuisine prop Johann wrote
-//    var prefCuisine: [String]{
-//        get {
-//            let prefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as? [String] ?? []
-//            
-//            return prefs
-//        }
-//        
-//        set{
-//            UserDefaults.standard.set(self.prefCuisine, forKey: "UserCuisineArray")
-//        }
-//    }
+    var preferredCuisineArray: [String]{
+        get {
+            let prefs = UserDefaults.standard.object(forKey: "UserCuisineArray") as? [String] ?? []
+            
+            return prefs
+        }
+        
+        set{
+            
+            
+            UserDefaults.standard.set(newValue, forKey: "UserCuisineArray")
+        }
+    }
     
     var userLat: Double = 0.0
     var userLong: Double = 0.0

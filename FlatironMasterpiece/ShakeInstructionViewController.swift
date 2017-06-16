@@ -16,20 +16,20 @@ import GooglePlaces
 class ShakeInstructionViewController: UIViewController {
 
     var shakeView: ShakeView!
-
-  //  var shakeNoise: AVAudioPlayer?
+    
     var vview: UIView!
 
-    //NOTE: - google places / core location properties
+    //NOTE: - Google places / core location properties
     var placesClient: GMSPlacesClient?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
 
     let restStore = RestaurantDataStore.sharedInstance
     let userStore = UsersDataStore.sharedInstance
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
         vview = ShakeView()
         view.backgroundColor = UIColor.blue
@@ -38,7 +38,6 @@ class ShakeInstructionViewController: UIViewController {
 
         print("getlocationVC is working")
         placesClient = GMSPlacesClient.shared()
-
     }
 
 
@@ -46,13 +45,14 @@ class ShakeInstructionViewController: UIViewController {
         super.loadView()
         shakeView = ShakeView()
         self.view = shakeView
-
     }
+    
+    //var shakeNoise: AVAudioPlayer?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let locationManager = CLLocationManager()
+        
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
@@ -94,6 +94,7 @@ class ShakeInstructionViewController: UIViewController {
 //        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 //    }
 //
+
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
             print("shaken")
@@ -112,7 +113,6 @@ extension ShakeInstructionViewController {
         print("get location func is working")
         placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
 
-
             if let error = error {
                 print("there is an error in getlocation")
                 print("this is the \(error.localizedDescription)")
@@ -120,7 +120,6 @@ extension ShakeInstructionViewController {
             }
 
             guard let placeLikelihoodList = placeLikelihoodList else { return }
-
             guard let place = placeLikelihoodList.likelihoods.first?.place else { return }
 
             let placeName = place.name
@@ -151,12 +150,13 @@ extension ShakeInstructionViewController {
                         print("turn off activity indicator in shake view")
                         OperationQueue.main.addOperation {
                             
+
 //                            if self.view == self.vview {
 //                                self.vibrate()
 //                                self.playSound()
 //                            }
 //                            self.playSound()
-                            
+
                             if self.restStore.restaurantsArray.count == 0 {
                                 
                                 //NOTE: - tells user to come back later b/c restaurants are closed

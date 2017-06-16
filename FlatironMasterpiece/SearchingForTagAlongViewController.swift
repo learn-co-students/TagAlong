@@ -214,7 +214,7 @@ class SearchingForTagAlongViewController: UIViewController {
         }
     }
     
-    
+    //ERICA + JOYCE = this needs to be revisited because of errors
     func denyTagalongAction() {
         
         guard let deniedGuestID = store.guestID else { print("leaving function");return }

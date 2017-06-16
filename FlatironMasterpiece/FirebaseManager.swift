@@ -17,8 +17,7 @@ typealias tagalongInfoDict = [String:Any]
 final class FirebaseManager {
     
     static let shared = FirebaseManager()
-    
-    
+  
     var currentUser: User!
     
     // Reference properties
@@ -30,6 +29,8 @@ final class FirebaseManager {
     static let allChatsRef = FIRDatabase.database().reference().child("chats")
     static var newMessageRefHandle: FIRDatabaseHandle?
     static var newTagalongRefHandle: FIRDatabaseHandle?
+  
+    //ERICA - are these two properties ever being used??
     static var currentUser = FIRAuth.auth()?.currentUser?.uid
     static var currentUserEmail = FIRAuth.auth()?.currentUser?.email
 
@@ -37,8 +38,7 @@ final class FirebaseManager {
     //    var USER_REF: Firebase {
     //        return USER_REF
     //    }
-    
-       
+  
     // Tagalongs that populate tagalong tableview
     var tagalongs = [Tagalong]()
     
@@ -47,20 +47,17 @@ final class FirebaseManager {
     var guestID: String?
     var guestStatus = [String: Bool]()
     var hostTagAlongID: String?
-    
-    
+  
     private init() {}
     
     //MARK: - Firebase user methods
     //this function is called in AccountCreationViewController, createAccountButton()
-    
     
     static func sendToStorage(data: Data, handler: @escaping (Bool) -> Void) {
         
         guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { handler(false); return }
       
         let storageRef = FIRStorage.storage().reference().child("\(currentUser).png")
-        
         
         storageRef.put(data, metadata: nil, completion: { (metadata, error) in
             
@@ -73,39 +70,34 @@ final class FirebaseManager {
                 }
                 
                 guard let theMetaData = metadata else { return }
-                
-                
+              
                 let info = [
                     "ProfilePic" : theMetaData.downloadURL()!.absoluteString
                 ]
-                
                 
                 ref.child("users").child(currentUser).updateChildValues(info, withCompletionBlock: { error, ref in
                     
                     DispatchQueue.main.async {
                         
                         // Call on a completion?
-                        
                         handler(true)
                         print("THIS IS A UID: \(currentUser)")
                     }
 
                 })
               
-                
-                
             }
             
-            
-                   })
-        
-        
+         })
+      
     }
     
     
     static func createNewUser(currentUser: User, completion: @escaping (Bool, User?) -> Void) {
         // 1 - create a new user in Firebase
+      
         FIRAuth.auth()?.createUser(withEmail: currentUser.emailAddress, password: currentUser.passWord, completion: { (user, error) in
+          
             guard error == nil, let rawUser = user else { completion(false, nil); return }
             //2 - save the new user in Firebase
             self.ref.child("users").child(rawUser.uid).setValue(currentUser.serialize(), withCompletionBlock: { error, ref in
@@ -131,11 +123,9 @@ final class FirebaseManager {
                 print("error")
             } else {
                 print("image")
-             userProfileImage = UIImage(data: data!)!
+                userProfileImage = UIImage(data: data!)!
                 handler(userProfileImage)
-
             }
-        
         })
     }
     
