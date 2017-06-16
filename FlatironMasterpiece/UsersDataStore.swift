@@ -7,15 +7,14 @@
 //
 import Foundation
 
-class UsersDataStore {
+final class UsersDataStore {
     
     static let sharedInstance = UsersDataStore()
-    fileprivate init() {}
-    
     var users: [User] = []
-    
     var preferredCuisineArray:[String] = []
     
+    fileprivate init() {}
+
     //ERICA needs to figure out this prefCuisine prop Johann wrote
 //    var prefCuisine: [String]{
 //        get {
@@ -35,10 +34,10 @@ class UsersDataStore {
     var currentChosenCuisine:String = ""
     var chosenRestLat: Double = 0.0
     var chosenRestLong: Double = 0.0
-    var chosenRestName:String = ""
-    var chosenRestAddress:String = ""
+    var chosenRestName: String = ""
+    var chosenRestAddress: String = ""
     var chosenRestPriceLevel: Int = 0
-    var chosenRestPriceEmojis:String {
+    var chosenRestPriceEmojis: String {
         switch chosenRestPriceLevel {
         case 1:
             return "💰"
@@ -52,6 +51,7 @@ class UsersDataStore {
             return "💰💰"
         }
     }
+    
     var userDistanceToChosenRest: Double = 0.0
     
     //ERICA's NOTES - this property might be deleted

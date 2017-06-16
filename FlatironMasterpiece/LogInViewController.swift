@@ -15,8 +15,6 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    
-    
     var imageView: UIImageView!
     var loginLabel = UILabel()
     var loginEmail = UITextField()
@@ -49,15 +47,12 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         //dismisses keyboard
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-
         loginEmail.becomeFirstResponder()
         view.addGestureRecognizer(tap)
         
         // Logic for Logging in
         
         FirebaseManager.listenForLogIn()
-        
-        
     }
     
     func dismissKeyboard() {
@@ -224,29 +219,25 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func createAccountButtonTapped(sender: UIButton!) {
-        print("register button tapped")
-        
         let accountCreationVC = AccountCreationViewController()
-        self.navigationController?.pushViewController(accountCreationVC, animated: true)
+        self.navigationController?.present(accountCreationVC, animated: true, completion: nil)
+        
+      //  self.navigationController?.pushViewController(accountCreationVC, animated: true)
     }
     
     func forgotPasswordTapped(sender: UIButton!) {
 
-
         //MARK: - forgotPasswordAlert code
 
-        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address so we can send you info on how to reset your password.", preferredStyle: .alert)
+        let forgotPasswordAlert = UIAlertController(title: "Forgotten Password", message: "Enter your email address and we will send you information on how to reset your password shortly.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            print("User cancelled in forgotPasswordAlertController")
         }
         
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            print("User pushed OK on alertController")
             let emailField = forgotPasswordAlert.textFields![0] as UITextField
             print("the user entered \(emailField)")
             guard let email = emailField.text else { return }
-
         }
         
         

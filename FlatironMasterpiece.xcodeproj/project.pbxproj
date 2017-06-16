@@ -648,7 +648,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fba92996-8685-411c-918d-ebfc9935b6be";
+				PROVISIONING_PROFILE = "99d1efea-0dd8-48d5-9f81-1051708c8d82";
 				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -673,7 +673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-carrot-coat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f9c9c3b5-4474-4345-a284-9ad52a38d5f8";
+				PROVISIONING_PROFILE = "99d1efea-0dd8-48d5-9f81-1051708c8d82";
 				PROVISIONING_PROFILE_SPECIFIER = "Team Carrot Coat iOS 0916";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

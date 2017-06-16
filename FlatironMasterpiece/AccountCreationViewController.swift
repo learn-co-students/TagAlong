@@ -30,20 +30,18 @@ struct Constants {
     static let PASSWORDVERIFICATION = "passwordverification"
     static let INDUSTRY = "industry"
     static let JOBTITLE = "jobtitle"
-
+    
 }
 
 
 class AccountCreationViewController: UIViewController, CLLocationManagerDelegate , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    //static let shared = AccountCreationViewController()
-   
     
     let phaedraDarkGreen = UIColor(red:0.00, green:0.64, blue:0.53, alpha:1.0)
     let phaedraOliveGreen = UIColor(red:0.47, green:0.74, blue:0.56, alpha:1.0)
     let phaedraLightGreen = UIColor(red:0.75, green:0.92, blue:0.62, alpha:1.0)
     let phaedraYellow = UIColor(red:1.00, green:1.00, blue:0.62, alpha:1.0)
     let phaedraOrange = UIColor(red:1.00, green:0.38, blue:0.22, alpha:1.0)
-
+    
     var createAccountLabel = UILabel()
     var firstNameEntry = UITextField()
     var lastNameEntry = UITextField()
@@ -53,9 +51,9 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var industryEntry = UITextField()
     var jobEntry = UITextField()
     var createAccountButton = UIButton()
+    var cancelButton = UIButton()
     var picButton = UIButton()
     var picImage = UIImageView()
-    
     
     var firstNameConfirmed = false
     var lastNameConfirmed = false
@@ -64,34 +62,31 @@ class AccountCreationViewController: UIViewController, CLLocationManagerDelegate
     var industry = false
     var jobtitle = false
     
-    
     let store = FirebaseManager.shared
-
-
-var manager = CLLocationManager()
-
-
+    var manager = CLLocationManager()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Locate()
-
+        
         //Just this line creates the blur
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"foodWoodenTable")!)
         //below this creates the actual picture
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "foodWoodenTable")?.draw(in: self.view.bounds)
-
+        
         var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-
+        
         UIGraphicsEndImageContext()
-
+        
         self.view.backgroundColor = UIColor(patternImage: image)
-
+        
         createViews()
-                let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
- //       view.backgroundColor = phaedraLightGreen
+        //       view.backgroundColor = phaedraLightGreen
         firstNameEntry.accessibilityLabel = Constants.FIRSTNAME
         lastNameEntry.accessibilityLabel = Constants.LASTNAME
         emailEntry.accessibilityLabel = Constants.EMAILCONFIRMATION
@@ -111,7 +106,7 @@ var manager = CLLocationManager()
         //
         //        }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -119,22 +114,23 @@ var manager = CLLocationManager()
     func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    
     func Locate() {
         
         manager.delegate = self
-        
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
-        func locationManager(manager: CLLocationManager,
-                             didChangeAuthorizationStatus status: CLAuthorizationStatus)
-        {
+        func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
             if status == .authorizedAlways || status == .authorizedWhenInUse {
                 manager.startUpdatingLocation()
                 // ...
             }
         }
     }
+    
+    
     func tapCreateButtonOnce() {
         self.createAccountButton.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: Selector("tapDelay"))
@@ -144,11 +140,15 @@ var manager = CLLocationManager()
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: "enableButton", userInfo: nil, repeats: false)
         //createAccountButton.addGestureRecognizer(tap)
     }
-
+    
     func enableButton() {
         createAccountButton.isEnabled = true
     }
-
+    
+    func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -164,8 +164,18 @@ extension UIView {
 
 // MARK: Set Up
 extension AccountCreationViewController {
-
+    
     func createViews() {
+        
+        // Cancel Button
+        view.addSubview(cancelButton)
+        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        cancelButton.setTitle("X", for: UIControlState.normal)
+        cancelButton.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 42)
+        cancelButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
         // Create Account Label
         view.addSubview(createAccountLabel)
@@ -304,7 +314,7 @@ extension AccountCreationViewController {
         createAccountButton.specialConstrain(to: view)
         
     }
-
+    
     func selectProfileImage() {
         print(123)
         
@@ -317,13 +327,13 @@ extension AccountCreationViewController {
         
         present(picker, animated: true, completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-       
+        
         var selectedImageFromPicker: UIImage?
-       
+        
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-
+            
             
             print("This is an edited image \(editedImage)")
             selectedImageFromPicker = editedImage
@@ -331,7 +341,7 @@ extension AccountCreationViewController {
             print("This is the original \(original)")
             selectedImageFromPicker = original
         }
-     
+        
         
         
         if let selectedImage = selectedImageFromPicker {
@@ -347,45 +357,42 @@ extension AccountCreationViewController {
                 
             })
             picImage.image = selectedImage
+        }
     }
-}
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
         print("Really, dismiss!")
         //AccountCreationViewController()
     }
-
     
-
+    
+    
     
     
     func sendEmail() {
-
+        
         FirebaseManager.sendEmailVerification()
-
-
+        
+        
     }
-
-
+    
+    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
-
-
+    
+    
     func createAccountButtonTapped(sender: UIButton!) {
         createAccountButton.isEnabled = false
         // TODO: Disable button
-        //        createAccountButton.isEnabled = true
-                let tapGesture = UITapGestureRecognizer(target: self, action: "disableButton" )
-                let tapped = tapGesture.numberOfTapsRequired == 1
-        //        if tapGesture.numberOfTapsRequired == 1 {
-        //            createAccountButton.isEnabled = false
-        //        }
-        //        createAccountButton.addGestureRecognizer(tapGesture )
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "disableButton" )
+        let tapped = tapGesture.numberOfTapsRequired == 1
 
+        
         if (firstNameEntry.text?.isEmpty)! || (lastNameEntry.text?.isEmpty)! || (emailEntry.text?.isEmpty)! || (passwordEntry.text?.isEmpty)! || (passwordVerification.text?.isEmpty)! || (industryEntry.text?.isEmpty)! || (jobEntry.text?.isEmpty)! {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
             print("PRESS ACCOUNT BUTTON")
@@ -397,7 +404,7 @@ extension AccountCreationViewController {
             invalidCredentialsAlert.addAction(okAction)
             self.present(invalidCredentialsAlert, animated: true, completion: nil)
         }
-
+        
         guard let firstName = firstNameEntry.text, !firstName.isEmpty else { print("Need first name"); return }
         guard let lastName = lastNameEntry.text, !lastName.isEmpty else { print("Need a last name"); return }
         guard let email = emailEntry.text, !email.isEmpty else { print("No email"); return }
@@ -405,49 +412,46 @@ extension AccountCreationViewController {
         guard let passwordVerify = passwordVerification.text, !passwordVerify.isEmpty else { print("Password doesn't match"); return }
         guard let industry = industryEntry.text, !industry.isEmpty else { print("Need an industry"); return }
         guard let job = jobEntry.text, !job.isEmpty else { print("Need a job"); return }
-        //let userID = FirebaseManager.currentUser
-       // let userID = store.currentUser.userID
         
-    
         //TODO: - Add a check to see if password matches password verification
         print("Enter email or password")
- 
+        
         if firstName != "" && lastName != "" && email != "" && password != "" && passwordVerify != "" && industry != "" && job != "" {
             //       self.ref.child("users").child(user.uid).setValue(["username": firstName])
         }
-
+        
         //1 - create an instance of a user
-
-
+        
+        
         let currentUser = User(firstName: firstName, lastName: lastName, emailAddress: email, passWord: password, industry: industry, jobTitle: job )
-
-
+        
+        
         //2 - called on FirebaseManger to create a user based on the above currentUser
         FirebaseManager.createNewUser(currentUser: currentUser, completion: { success,user in
-
-            if success {  
+            
+            if success {
                 
                 currentUser.userID = (FIRAuth.auth()?.currentUser?.uid)!
-
+                
                 self.store.currentUser = user
-        
-
+                
+                
                 let selectPhotoVC = SelectPhotoViewController()
                 self.navigationController?.pushViewController(selectPhotoVC, animated: true)
-
+                
             } else {
-                    print("error!")
-                    let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "An account with this information already exists.  Please login.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("error!")
+                let invalidCredentialsAlert = UIAlertController(title: "Invalid Submission", message: "An account with this information already exists.  Please login.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     print("User clicked alert controller")})
-                    invalidCredentialsAlert.addAction(okAction)
-                    self.present(invalidCredentialsAlert, animated: true, completion: nil)
+                invalidCredentialsAlert.addAction(okAction)
+                self.present(invalidCredentialsAlert, animated: true, completion: nil)
             }
-
+            
         })
-
+        
     }//end of createAccountButtonTapped
-
+    
     
 }
 

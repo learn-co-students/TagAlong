@@ -194,20 +194,14 @@ extension ShakeInstructionViewController {
                         data in
 
                         if let rawData = data {
-
                             print("\n\n")
-
                             restaurant.photoImage = UIImage(data: rawData)
                         }
                     })
                 }
               })
         })
-   
-    
     }
-
-    //get location ends 
 
 }
 

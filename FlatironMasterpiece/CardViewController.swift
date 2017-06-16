@@ -121,16 +121,15 @@ class CardViewController: UIViewController {
 
         
     //NOTE: - shake listening function
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEventSubtype.motionShake) {
-            print("shaken")
-                    
             var currentRandomCuisine = userStore.currentChosenCuisine
-            //if the current random cuisine is not the new random cuisine
-            let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count)))
+            
+            // NOTE: - If the current random cuisine is not the new random cuisine
+            let randomNum = Int(arc4random_uniform(UInt32(userStore.preferredCuisineArray.count - 1)))
             if currentRandomCuisine != userStore.preferredCuisineArray[randomNum] {
                 userStore.currentChosenCuisine = userStore.preferredCuisineArray[randomNum]
-                print("random cuisine is: \(userStore.currentChosenCuisine)")
                 getLocation()
                 let shakeVC = ShakeInstructionViewController()
                 self.navigationController?.pushViewController(shakeVC, animated: false)
