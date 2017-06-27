@@ -8,8 +8,6 @@ src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202
 src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.46.08%20PM.png" width = "215"> <img
 src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.52.30%20PM.png" width = "215">
 
-![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/tagalong_logo.png)
-
 ## Details:
 
 Tag Along is an app that offers a selection of restaurants specific to a users' preferences, and is unique in that it allows users to meet people nearby and connect over a shared cuisine interest. Users do this by either choosing to be a "host" which initiates an open invite for anyone willing to tag along to the restaurant of their choice, or they become a "guest" and request to tag along with a host. 
@@ -25,7 +23,7 @@ This project is written in Swift for iOS devices.
 - Once the users have been matched they are able to message one another to make any planning arrangements for their tagalong.
 
 
-## Resources
+## Tools and 3rd Party Libraries
 - MapKit
 - Firebase Realtime Database
 - Google Places API
