@@ -1,5 +1,13 @@
 # [Tag Along App](http://tagalongapp.wixsite.com/tagalong)
 
+<img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.47.40%20PM.png" width = "215"> <img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.52.30%20PM.png" width = "215"> <img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.44.04%20PM.png" width = "215"> <img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.44.09%20PM.png" width = "215">  <img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.45.44%20PM.png" width = "215">  <img
+src="https://github.com/learn-co-students/TagAlong/blob/master/Screen%20Shot%202017-06-26%20at%209.46.08%20PM.png" width = "215">
+
 ![alt tag](https://github.com/learn-co-students/TagAlong/blob/master/FlatironMasterpiece/Assets.xcassets/tagalong_logo.png)
 
 ## Details:
